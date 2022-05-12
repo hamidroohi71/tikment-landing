@@ -21,4 +21,9 @@ const TopBarElement = styled.section`
   background: linear-gradient(to right, #0089a7, #04165d);
   border-radius: 0 34px 34px 0;
   align-items: center;
+  width: 78vw;
+  position: absolute;
+  top: 41px;
+  left: 0;
+  height: 68px;
 `;

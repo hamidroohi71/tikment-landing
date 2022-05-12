@@ -1,5 +1,6 @@
 import React from "react";
 import data from "./data.json";
+import styled from "styled-components";
 
 export default function SocailMedia() {
   const socails = data.socialMedai;
@@ -10,5 +11,22 @@ export default function SocailMedia() {
       style={{ backgroundImage: `url(${item.icon})` }}
     />
   ));
-  return <section>{socialElements}</section>;
+  return <SocialMediaElement>{socialElements}</SocialMediaElement>;
 }
+
+const SocialMediaElement = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 2px solid #e4e4e4;
+  padding-right: 11px;
+  height: 100%;
+
+  & > a {
+    display: inline-block;
+    width: 41px;
+    height: 41px;
+    border-radius: 50%;
+    margin: 0 11px;
+  }
+`;
