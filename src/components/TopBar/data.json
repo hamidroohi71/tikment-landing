@@ -1,0 +1,24 @@
+{
+  "socialMedai": [
+    {
+      "name": "linkedIn",
+      "href": "/",
+      "icon": "/social/linkedIn.svg"
+    },
+    {
+      "name": "twitter",
+      "href": "/",
+      "icon": "/social/twitter.svg"
+    },
+    {
+      "name": "instagram",
+      "href": "/",
+      "icon": "/social/instagram.svg"
+    },
+    {
+      "name": "facebook",
+      "href": "/",
+      "icon": "/social/facebook.svg"
+    }
+  ]
+}
