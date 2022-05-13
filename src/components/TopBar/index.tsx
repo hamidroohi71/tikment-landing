@@ -26,4 +26,5 @@ const TopBarElement = styled.section`
   top: 41px;
   left: 0;
   height: 68px;
+  box-shadow: 0px 10px 14px #033f7733;
 `;
