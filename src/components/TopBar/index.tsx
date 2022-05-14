@@ -17,6 +17,7 @@ export default function TopBar() {
 }
 
 const TopBarElement = styled.section`
+  z-index: 10;
   display: flex;
   background: linear-gradient(to right, #0089a7, #04165d);
   border-radius: 0 34px 34px 0;
