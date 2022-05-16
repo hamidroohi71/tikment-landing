@@ -1,0 +1,56 @@
+{
+  "jobType": [
+    {
+      "type": "درمانی",
+      "logo": "/fastContactForm/jobType/medical.svg"
+    },
+    {
+      "type": "خدماتی",
+      "logo": "/fastContactForm/jobType/service.svg"
+    },
+    {
+      "type": "صنعتی",
+      "logo": "/fastContactForm/jobType/industrial.svg"
+    },
+    {
+      "type": "آموزشی",
+      "logo": "/fastContactForm/jobType/educational.svg"
+    },
+    {
+      "type": "تجاری",
+      "logo": "/fastContactForm/jobType/commercial.svg"
+    }
+  ],
+  "number": [
+    {
+      "number": "1-50",
+      "logo": "/fastContactForm/number/number.svg"
+    },
+    {
+      "number": "50-100",
+      "logo": "/fastContactForm/number/number.svg"
+    },
+    {
+      "number": "100-500",
+      "logo": "/fastContactForm/number/number.svg"
+    },
+    {
+      "number": "+500",
+      "logo": "/fastContactForm/number/number.svg"
+    }
+  ],
+  "method": [
+    {
+      "method": "تشخیص چهره",
+      "logo": "/fastContactForm/method/faceDetection.svg"
+    },
+    {
+      "method": "اپلیکیشن موبایل",
+      "logo": "/fastContactForm/method/mobileApp.svg"
+    },
+    {
+      "method": "اثر انگشت",
+      "logo": "/fastContactForm/method/fingerPrint.svg"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Background from "./background";
 import Mobile from "./mobile";
+import StartForm from "./startForm";
 import Title from "./title";
 
 export default function PageIntro() {
@@ -10,7 +11,7 @@ export default function PageIntro() {
       <Background />
       <Mobile />
       <Title />
-      {/* form */}
+      <StartForm />
     </PageIntroduction>
   );
 }
