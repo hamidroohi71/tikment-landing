@@ -1,0 +1,16 @@
+{
+  "serviceData": [
+    {
+      "name": "پیش از فروش",
+      "logo": "/services/beforeSale.svg"
+    },
+    {
+      "name": "حین فروش",
+      "logo": "/services/duringSale.svg"
+    },
+    {
+      "name": "پس از فروش",
+      "logo": "/services/afterSale.svg"
+    }
+  ]
+}

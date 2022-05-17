@@ -1,0 +1,28 @@
+{
+  "customerData": [
+    {
+      "name": "دانشگاه آزاد اسلامی",
+      "logo": "/customers/AzadUni.svg"
+    },
+    {
+      "name": "سازمان دامپزشکی کشور",
+      "logo": "/customers/Veterinary.svg"
+    },
+    {
+      "name": "شهرداری تهران",
+      "logo": "/customers/Municipality.svg"
+    },
+    {
+      "name": "شرکت ملی نفت ایران",
+      "logo": "/customers/OilFirm.svg"
+    },
+    {
+      "name": "سازمان بیمه سلامت ایران",
+      "logo": "/customers/Insurance.svg"
+    },
+    {
+      "name": "کارگزاری کارآمد",
+      "logo": "/customers/Karamad.svg"
+    }
+  ]
+}

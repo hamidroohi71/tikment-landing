@@ -12,6 +12,7 @@
     "@types/react-dom": "^18.0.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-responsive-carousel": "^3.2.23",
     "react-scripts": "5.0.1",
     "react-spring": "^9.4.5",
     "source-map-explorer": "^2.5.2",
