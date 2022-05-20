@@ -7,6 +7,7 @@ import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import InitialVideo from "./components/initialVideo";
+import Navigation from "./components/navigation";
 import PageIntro from "./components/PageIntro";
 import Product from "./components/Products";
 import SalesService from "./components/salesService";
@@ -22,6 +23,7 @@ function App() {
     <div>
       {loaded ? (
         <>
+          <Navigation />
           <Header />
           <PageIntro />
           <Customer />
