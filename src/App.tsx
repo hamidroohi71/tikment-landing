@@ -12,7 +12,7 @@ import Product from "./components/Products";
 import SalesService from "./components/salesService";
 
 function App() {
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
 
   setTimeout(() => {
     setLoaded(true);

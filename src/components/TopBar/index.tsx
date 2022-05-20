@@ -4,10 +4,17 @@ import Menu from "./menu";
 import Search from "./search";
 import SocailMedia from "./socialMedia";
 import styled from "styled-components";
+import { animated, useSpring, easings } from "react-spring";
 
 export default function TopBar() {
+  const styleProps = useSpring({
+    from: { transform: "translateX(-100%)" },
+    to: { transform: "translateX(0)" },
+    delay: 500,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
   return (
-    <TopBarElement>
+    <TopBarElement style={styleProps}>
       <ContactUs />
       <Menu />
       <Search />
@@ -16,7 +23,7 @@ export default function TopBar() {
   );
 }
 
-const TopBarElement = styled.section`
+const TopBarElement = styled(animated.section)`
   z-index: 10;
   display: flex;
   background: linear-gradient(to right, #0089a7, #04165d);

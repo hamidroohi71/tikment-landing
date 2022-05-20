@@ -1,16 +1,23 @@
 import React from "react";
 import Logo from "./Logo.svg";
 import styled from "styled-components";
+import { animated, useSpring, easings } from "react-spring";
 
 export default function LogoBox() {
+  const styleProps = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    delay: 500,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
   return (
-    <LogoBoxElement>
+    <LogoBoxElement style={styleProps}>
       <img src={Logo} alt="Tikment" />
     </LogoBoxElement>
   );
 }
 
-const LogoBoxElement = styled.section`
+const LogoBoxElement = styled(animated.section)`
   z-index: 10;  
   background: #f9f8f7;
   box-shadow: inset 0px 0px 80px #75C9DB80, 0px 3px 3px #8125254D;

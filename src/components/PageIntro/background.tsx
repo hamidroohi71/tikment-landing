@@ -1,5 +1,5 @@
 import React from "react";
-import { animated, useSpring } from "react-spring";
+import { animated, useSpring, easings } from "react-spring";
 import styled from "styled-components";
 import BackgroundImg from "./backgroundImage.webp";
 import Mask from "./Mask.webp";
@@ -7,8 +7,8 @@ import Mask from "./Mask.webp";
 export default function Background() {
   const maskStyle = useSpring({
     to: { WebkitMaskSize: "100%" },
-    from: { WebkitMaskSize: "300%" },
-    config: { duration: 500 },
+    from: { WebkitMaskSize: "250%" },
+    config: { duration: 2000, easing: easings.easeOutQuart },
   });
 
   return (
