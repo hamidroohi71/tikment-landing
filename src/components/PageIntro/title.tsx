@@ -28,6 +28,7 @@ export default function Title() {
 const TitleElement = styled.section`
   display: flex;
   flex-direction: column;
+  padding-right: 2vw;
 `;
 
 const Title1 = styled(animated.img)`

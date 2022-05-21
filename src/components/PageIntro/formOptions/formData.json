@@ -24,19 +24,19 @@
   "number": [
     {
       "number": "1-50",
-      "logo": "/fastContactForm/number/number.svg"
+      "logo": "/fastContactForm/number/person.svg"
     },
     {
       "number": "50-100",
-      "logo": "/fastContactForm/number/number.svg"
+      "logo": "/fastContactForm/number/person.svg"
     },
     {
       "number": "100-500",
-      "logo": "/fastContactForm/number/number.svg"
+      "logo": "/fastContactForm/number/person.svg"
     },
     {
       "number": "+500",
-      "logo": "/fastContactForm/number/number.svg"
+      "logo": "/fastContactForm/number/person.svg"
     }
   ],
   "method": [
