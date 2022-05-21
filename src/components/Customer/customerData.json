@@ -2,27 +2,69 @@
   "customerData": [
     {
       "name": "دانشگاه آزاد اسلامی",
-      "logo": "/customers/AzadUni.svg"
+      "logo": "/customers/AzadUni.svg",
+      "comment": {
+        "author": "مهندس جمشید صلواتی",
+        "position": "رییس سازمان دامپزشکی کشور",
+        "profilePic": "/customers/profile/Veterinary.webp",
+        "comment": "تیم پشتیبانی تیکمنت یکی از بهترین تیم‌هایی  بودند که در سال‌های اخیر با اون‌ها همکاری داشتیم",
+        "subComment": "چه کسب‌وکارتون کوچک باشه چه بزرگ، سیستم حضوروغیاب تیکمنت بهترین گزینه برای شماست و اون رو به تمامی همکارانم توصیه می‌کنم"
+      }
     },
     {
       "name": "سازمان دامپزشکی کشور",
-      "logo": "/customers/Veterinary.svg"
+      "logo": "/customers/Veterinary.svg",
+      "comment": {
+        "author": "مهندس جمشید صلواتی",
+        "position": "رییس سازمان دامپزشکی کشور",
+        "profilePic": "/customers/profile/Veterinary.webp",
+        "comment": "تیم پشتیبانی تیکمنت یکی از بهترین تیم‌هایی  بودند که در سال‌های اخیر با اون‌ها همکاری داشتیم",
+        "subComment": "چه کسب‌وکارتون کوچک باشه چه بزرگ، سیستم حضوروغیاب تیکمنت بهترین گزینه برای شماست و اون رو به تمامی همکارانم توصیه می‌کنم"
+      }
     },
     {
       "name": "شهرداری تهران",
-      "logo": "/customers/Municipality.svg"
+      "logo": "/customers/Municipality.svg",
+      "comment": {
+        "author": "مهندس جمشید صلواتی",
+        "position": "رییس سازمان دامپزشکی کشور",
+        "profilePic": "/customers/profile/Veterinary.webp",
+        "comment": "تیم پشتیبانی تیکمنت یکی از بهترین تیم‌هایی  بودند که در سال‌های اخیر با اون‌ها همکاری داشتیم",
+        "subComment": "چه کسب‌وکارتون کوچک باشه چه بزرگ، سیستم حضوروغیاب تیکمنت بهترین گزینه برای شماست و اون رو به تمامی همکارانم توصیه می‌کنم"
+      }
     },
     {
       "name": "شرکت ملی نفت ایران",
-      "logo": "/customers/OilFirm.svg"
+      "logo": "/customers/OilFirm.svg",
+      "comment": {
+        "author": "مهندس جمشید صلواتی",
+        "position": "رییس سازمان دامپزشکی کشور",
+        "profilePic": "/customers/profile/Veterinary.webp",
+        "comment": "تیم پشتیبانی تیکمنت یکی از بهترین تیم‌هایی  بودند که در سال‌های اخیر با اون‌ها همکاری داشتیم",
+        "subComment": "چه کسب‌وکارتون کوچک باشه چه بزرگ، سیستم حضوروغیاب تیکمنت بهترین گزینه برای شماست و اون رو به تمامی همکارانم توصیه می‌کنم"
+      }
     },
     {
       "name": "سازمان بیمه سلامت ایران",
-      "logo": "/customers/Insurance.svg"
+      "logo": "/customers/Insurance.svg",
+      "comment": {
+        "author": "مهندس جمشید صلواتی",
+        "position": "رییس سازمان دامپزشکی کشور",
+        "profilePic": "/customers/profile/Veterinary.webp",
+        "comment": "تیم پشتیبانی تیکمنت یکی از بهترین تیم‌هایی  بودند که در سال‌های اخیر با اون‌ها همکاری داشتیم",
+        "subComment": "چه کسب‌وکارتون کوچک باشه چه بزرگ، سیستم حضوروغیاب تیکمنت بهترین گزینه برای شماست و اون رو به تمامی همکارانم توصیه می‌کنم"
+      }
     },
     {
       "name": "کارگزاری کارآمد",
-      "logo": "/customers/Karamad.svg"
+      "logo": "/customers/Karamad.svg",
+      "comment": {
+        "author": "مهندس جمشید صلواتی",
+        "position": "رییس سازمان دامپزشکی کشور",
+        "profilePic": "/customers/profile/Veterinary.webp",
+        "comment": "تیم پشتیبانی تیکمنت یکی از بهترین تیم‌هایی  بودند که در سال‌های اخیر با اون‌ها همکاری داشتیم",
+        "subComment": "چه کسب‌وکارتون کوچک باشه چه بزرگ، سیستم حضوروغیاب تیکمنت بهترین گزینه برای شماست و اون رو به تمامی همکارانم توصیه می‌کنم"
+      }
     }
   ]
 }
