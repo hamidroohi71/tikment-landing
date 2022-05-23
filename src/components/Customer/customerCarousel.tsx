@@ -3,11 +3,13 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import data from "./customerData.json";
 import "./carouselOverride.css";
 import styled from "styled-components";
-import { NONAME } from "dns";
+import CommentSlider from "./CommentSlider";
 
 export default function CustomerCarousel({
   enterComment,
+  showComment,
 }: {
+  showComment: boolean;
   enterComment: () => void;
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -22,20 +24,11 @@ export default function CustomerCarousel({
     </Item>
   ));
 
-  const comments = data.customerData.map((item) => (
-    <div>
-      <img src={item.comment.profilePic} alt={item.comment.author} />
-      <h3>{item.comment.author}</h3>
-      <h2>{item.comment.position}</h2>
-      <div>
-        <p>{item.comment.comment}</p>
-        <p>{item.comment.subComment}</p>
-      </div>
-    </div>
-  ));
   return (
     <>
-      <CommentContainer>{comments}</CommentContainer>
+      <CommentContainer show={showComment}>
+        <CommentSlider selectedIndex={currentIndex} />
+      </CommentContainer>
       <CarouselSection onClick={enterComment}>{customerData}</CarouselSection>
     </>
   );
@@ -67,6 +60,11 @@ const Item = styled.div`
   }
 `;
 
-const CommentContainer = styled.div`
-  display: none;
+const CommentContainer = styled.div<{ show: boolean }>`
+  display: ${({ show }) => (show ? "block" : "none")};
+  position: absolute;
+  top: 8vh;
+  left: 10vw;
+  right: 10vw;
+  bottom: 32vh;
 `;

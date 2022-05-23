@@ -25,6 +25,7 @@ export default function Customer() {
         </TotalCustomer>
       </Statistics>
       <CustomerCarousel
+        showComment={showComment}
         enterComment={() => {
           setShowComment(true);
         }}
@@ -40,6 +41,7 @@ const CustomerElement = styled.section`
   flex-direction: column;
   justify-content: center;
   padding: 8vh 10vw;
+  position: relative;
 `;
 
 const Statistics = styled(animated.div)`
