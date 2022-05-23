@@ -23,7 +23,7 @@ export default function Contact() {
 }
 
 const ContactSection = styled.section`
-  height: 50vh;
+  height: 100vh;
   padding: 11vh 21vw;
   display: flex;
   justify-content: center;

@@ -13,6 +13,7 @@ export default function FAQ() {
 }
 
 const FAQSection = styled.section`
+  height: 100vh;
   flex-direction: column;
   display: flex;
   justify-content: center;

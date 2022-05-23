@@ -17,7 +17,7 @@ function NavigationDot({ selected }: { selected: boolean }) {
   return <Dot selected={selected}></Dot>;
 }
 
-export default function Navigation() {
+export default function Navigation({ section }: { section: number }) {
   const styleProps = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
@@ -27,7 +27,7 @@ export default function Navigation() {
   const elements = [];
 
   for (let i = 0; i < 7; i++) {
-    elements.push(<NavigationDot selected={i === 0} />);
+    elements.push(<NavigationDot selected={i === section} />);
   }
   return <NavigationBar style={styleProps}>{elements}</NavigationBar>;
 }
