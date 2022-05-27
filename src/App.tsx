@@ -23,9 +23,9 @@ function App() {
     <div>
       {loaded ? (
         <>
-          <Header />
           <ScrollBody>
             <>
+              <Header />
               <PageIntro />
               <Customer />
               <Product />

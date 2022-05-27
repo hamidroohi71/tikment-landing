@@ -27,7 +27,7 @@ export default function Navigation({ section }: { section: number }) {
   const elements = [];
 
   for (let i = 0; i < 7; i++) {
-    elements.push(<NavigationDot selected={i === section} />);
+    elements.push(<NavigationDot key={i} selected={i === section} />);
   }
   return <NavigationBar style={styleProps}>{elements}</NavigationBar>;
 }

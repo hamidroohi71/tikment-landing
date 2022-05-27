@@ -6,17 +6,24 @@ const { Lethargy } = require("lethargy");
 
 export default function ScrollBody({ children }: { children: JSX.Element }) {
   const [section, setSection] = useState(0);
+  const [Changing, setChanging] = useState(false);
 
   const nextSection = () => {
     if (section < 8) {
       setSection(section + 1);
+      HandleChanging(true);
     }
   };
 
   const prevSection = () => {
     if (section > 0) {
       setSection(section - 1);
+      HandleChanging(true);
     }
+  };
+
+  const HandleChanging = (state: boolean) => {
+    setChanging(state);
   };
 
   const lethargy = new Lethargy();

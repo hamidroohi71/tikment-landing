@@ -1,0 +1,97 @@
+{
+  "products": [
+    {
+      "id": 0,
+      "name": "انواع حسگر تغییر چهره",
+      "pics": [
+        "/products/faceDetection/1.png",
+        "/products/faceDetection/2.png",
+        "/products/faceDetection/3.png"
+      ],
+      "benefits": [
+        {
+          "name": "تشخیص چهره با ماسک",
+          "logo": "/products/faceDetection/icons/0.svg"
+        },
+        {
+          "name": "WIFI BLUETOOTH",
+          "logo": "/products/faceDetection/icons/1.svg"
+        },
+        {
+          "name": "TCP/IP",
+          "logo": "/products/faceDetection/icons/2.svg"
+        },
+        {
+          "name": "کارتخوان",
+          "logo": "/products/faceDetection/icons/3.svg"
+        },
+        {
+          "name": "دوربین مادون قرمز",
+          "logo": "/products/faceDetection/icons/4.svg"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "انواع حسگر اثر انگشت",
+      "pics": [
+        "/products/fingerPrint/1.png",
+        "/products/fingerPrint/2.png",
+        "/products/fingerPrint/3.png"
+      ],
+      "benefits": [
+        {
+          "name": "GEO-FENCE",
+          "logo": "/products/fingerPrint/icons/0.svg"
+        },
+        {
+          "name": "تشخیص اثر انگشت زنده",
+          "logo": "/products/fingerPrint/icons/1.svg"
+        },
+        {
+          "name": "TCP/IP",
+          "logo": "/products/fingerPrint/icons/2.svg"
+        },
+        {
+          "name": "WIFI BLUETOOTH",
+          "logo": "/products/fingerPrint/icons/3.svg"
+        },
+        {
+          "name": "کارتخوان",
+          "logo": "/products/fingerPrint/icons/4.svg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "نرم‌افزار تیکمنت",
+      "pics": [
+        "/products/application/1.png",
+        "/products/application/2.png",
+        "/products/application/3.png"
+      ],
+      "benefits": [
+        {
+          "name": "رابط کاربری آسان و روان",
+          "logo": "/products/application/icons/0.svg"
+        },
+        {
+          "name": "ثبت آسان تردد",
+          "logo": "/products/application/icons/1.svg"
+        },
+        {
+          "name": "GEO-FENCE",
+          "logo": "/products/application/icons/2.svg"
+        },
+        {
+          "name": "گزارش‌های هوش تجاری",
+          "logo": "/products/application/icons/3.svg"
+        },
+        {
+          "name": "درخواست مرخصی و اضافه‌کار",
+          "logo": "/products/application/icons/4.svg"
+        }
+      ]
+    }
+  ]
+}
