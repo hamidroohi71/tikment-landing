@@ -7,8 +7,10 @@ import Number from "./formOptions/number";
 import styled from "styled-components";
 import ProgressBar from "./formOptions/progressBar";
 import { useSpring, animated, easings } from "react-spring";
+import { useSection } from "../../context/sectionStore";
 
 export default function StartForm() {
+  const { activeSection } = useSection();
   const styleProps1 = useSpring({
     from: { transform: "scaleX(0)" },
     to: { transform: "scaleX(1)" },
@@ -25,6 +27,13 @@ export default function StartForm() {
     from: { opacity: 0 },
     to: { opacity: 1 },
     delay: 3000,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+
+  const styleProps4 = useSpring({
+    to: {
+      transform: activeSection === 1 ? "translateX(0%)" : "translateX(100%)",
+    },
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
@@ -46,7 +55,7 @@ export default function StartForm() {
 
   console.log(answers);
   return (
-    <StartFormElement>
+    <StartFormElement style={styleProps4}>
       <TitleBox>
         <RingSign></RingSign>
         <Title style={styleProps1}>{done ? result : "برای انتخاب بهتر"}</Title>
@@ -83,7 +92,7 @@ export default function StartForm() {
   );
 }
 
-const StartFormElement = styled.section`
+const StartFormElement = styled(animated.section)`
   z-index: 10;
   position: relative;
 `;

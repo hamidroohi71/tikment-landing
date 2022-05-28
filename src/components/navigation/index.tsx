@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { animated, useSpring, easings } from "react-spring";
+import { useSection } from "../../context/sectionStore";
 
 const Dot = styled.div<{ selected: boolean }>`
   background-color: #37b3b8;
@@ -17,7 +18,8 @@ function NavigationDot({ selected }: { selected: boolean }) {
   return <Dot selected={selected}></Dot>;
 }
 
-export default function Navigation({ section }: { section: number }) {
+export default function Navigation() {
+  const { activeSection } = useSection();
   const styleProps = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
@@ -27,7 +29,7 @@ export default function Navigation({ section }: { section: number }) {
   const elements = [];
 
   for (let i = 0; i < 7; i++) {
-    elements.push(<NavigationDot key={i} selected={i === section} />);
+    elements.push(<NavigationDot key={i} selected={i === activeSection - 1} />);
   }
   return <NavigationBar style={styleProps}>{elements}</NavigationBar>;
 }

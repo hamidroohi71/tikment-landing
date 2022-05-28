@@ -2,28 +2,25 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useWheel } from "react-use-gesture";
 import Navigation from "../navigation";
+import { useSection } from "../../context/sectionStore";
 const { Lethargy } = require("lethargy");
 
 export default function ScrollBody({ children }: { children: JSX.Element }) {
-  const [section, setSection] = useState(0);
-  const [Changing, setChanging] = useState(false);
+  const { activeSection, setActiveSection, nextSection, setNextSection } =
+    useSection();
 
-  const nextSection = () => {
-    if (section < 8) {
-      setSection(section + 1);
-      HandleChanging(true);
+  const nextSectionHnadler = () => {
+    if (activeSection < 9) {
+      setNextSection(activeSection + 1);
+      setActiveSection(null);
     }
   };
 
-  const prevSection = () => {
-    if (section > 0) {
-      setSection(section - 1);
-      HandleChanging(true);
+  const prevSectionHandler = () => {
+    if (activeSection > 1) {
+      setNextSection(activeSection - 1);
+      setActiveSection(null);
     }
-  };
-
-  const HandleChanging = (state: boolean) => {
-    setChanging(state);
   };
 
   const lethargy = new Lethargy();
@@ -34,9 +31,9 @@ export default function ScrollBody({ children }: { children: JSX.Element }) {
       if (s) {
         if (!wait) {
           if (s < 0) {
-            nextSection();
+            nextSectionHnadler();
           } else if (s > 0) {
-            prevSection();
+            prevSectionHandler();
           }
           return true;
         }
@@ -48,8 +45,8 @@ export default function ScrollBody({ children }: { children: JSX.Element }) {
 
   return (
     <Body {...bind()}>
-      <Navigation section={section} />
-      <Content section={section}>{children}</Content>
+      <Navigation />
+      <Content section={activeSection}>{children}</Content>
     </Body>
   );
 }
@@ -65,6 +62,4 @@ const Content = styled.div<{ section: number }>`
   height: 900%;
   display: flex;
   flex-direction: column;
-  transform: ${({ section }) => `translateY(-${(100 / 9) * section}%)`};
-  transition: 0.5s ease-in-out;
 `;

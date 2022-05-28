@@ -5,12 +5,18 @@ import Search from "./search";
 import SocailMedia from "./socialMedia";
 import styled from "styled-components";
 import { animated, useSpring, easings } from "react-spring";
+import { useSection } from "../../context/sectionStore";
 
 export default function TopBar() {
+  const { activeSection } = useSection();
   const styleProps = useSpring({
-    from: { transform: "translateX(-100%)" },
-    to: { transform: "translateX(0)" },
-    delay: 500,
+    from: {
+      transform: activeSection !== 1 ? "translateX(0%)" : "translateX(-100%)",
+    },
+    to: {
+      transform: activeSection === 1 ? "translateX(0%)" : "translateX(-85%)",
+    },
+    delay: activeSection === 1 ? 500 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
   return (

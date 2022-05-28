@@ -2,8 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import TikmentName from "./tikment.png";
 import { animated, useSpring, easings } from "react-spring";
+import { useSection } from "../../context/sectionStore";
 
 export default function Title() {
+  const { activeSection } = useSection();
   const styleProps1 = useSpring({
     from: { transform: "translateX(100%)", opacity: 0 },
     to: { transform: "translateX(0%)", opacity: 1 },
@@ -16,8 +18,15 @@ export default function Title() {
     delay: 1000,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
+
+  const styleProps3 = useSpring({
+    to: {
+      transform: activeSection === 1 ? "translateX(0%)" : "translateX(100%)",
+    },
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
   return (
-    <TitleElement>
+    <TitleElement style={styleProps3}>
       <Title2 style={styleProps1}>سیستم‌های حضور و غیاب</Title2>
       <Title1 style={styleProps2} src={TikmentName} alt="تیکمنت" />
       <Title3 style={styleProps1}>انتخاب مدیران، شایستهٔ کارمندان</Title3>
@@ -25,7 +34,7 @@ export default function Title() {
   );
 }
 
-const TitleElement = styled.section`
+const TitleElement = styled(animated.section)`
   display: flex;
   flex-direction: column;
   padding-right: 2vw;

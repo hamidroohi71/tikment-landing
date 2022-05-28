@@ -1,18 +1,28 @@
 import React from "react";
 import { animated, useSpring, easings } from "react-spring";
 import styled from "styled-components";
+import { useSection } from "../../context/sectionStore";
 import BackgroundImg from "./backgroundImage.webp";
 import Mask from "./Mask.webp";
 
 export default function Background() {
+  const { activeSection } = useSection();
   const maskStyle = useSpring({
     to: { WebkitMaskSize: "100%" },
     from: { WebkitMaskSize: "250%" },
     config: { duration: 2000, easing: easings.easeOutQuart },
   });
 
+  const maskPositionStyle = useSpring({
+    to: {
+      transform:
+        activeSection === 1 ? "translate(0%, 0%)" : "translate(-100%, -100%)",
+    },
+    config: { duration: 500 },
+  });
+
   return (
-    <BackgroundImage style={maskStyle}>
+    <BackgroundImage style={{ ...maskPositionStyle, ...maskStyle }}>
       <img src={BackgroundImg} alt="tikment-station" />
     </BackgroundImage>
   );
@@ -28,7 +38,6 @@ const BackgroundImage = styled(animated.div)`
   mask-repeat: no-repeat;
   mask-position: 0%;
   mask-origin: content-box;
-
   & > img {
     width: 100%;
     height: 100%;
