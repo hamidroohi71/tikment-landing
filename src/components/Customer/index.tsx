@@ -13,6 +13,17 @@ export default function Customer() {
     to: { opacity: showComment ? 0 : 1 },
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
+  const untilTodayStyle = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: activeSection === 2 ? 1 : 0 },
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+  const totalSentenceStyle = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: activeSection === 2 ? 1 : 0 },
+    delay: activeSection === 2 ? 2000 : 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
 
   useEffect(() => {
     console.log(active);
@@ -30,21 +41,28 @@ export default function Customer() {
       setActive(true);
     } else if (activeSection !== null) {
       setActive(false);
+      setShowComment(false);
     }
   }, [activeSection]);
+
+  const AnimatedTotalNum = animated(TotalNumber);
 
   return (
     <CustomerElement>
       <Statistics style={styleProps2}>
-        <UntilToday>
+        <UntilToday style={untilTodayStyle}>
           تا امروز
           <Date>1401/03/03</Date>
         </UntilToday>
-        <MiddleText>سیستم حضور و غیاب تیکمنت</MiddleText>
+        <MiddleText style={untilTodayStyle}>
+          سیستم حضور و غیاب تیکمنت
+        </MiddleText>
         <TotalCustomer>
-          در
-          <TotalNumber>34561</TotalNumber>
-          سازمان خصوصی و دولتی فعال بوده است.
+          <animated.span style={untilTodayStyle}>در</animated.span>
+          <AnimatedTotalNum style={untilTodayStyle}>34561</AnimatedTotalNum>
+          <TotalNumSentence style={totalSentenceStyle}>
+            سازمان خصوصی و دولتی فعال بوده است.
+          </TotalNumSentence>
         </TotalCustomer>
       </Statistics>
       <CustomerCarousel
@@ -59,12 +77,13 @@ export default function Customer() {
 
 const CustomerElement = styled.section`
   height: 100vh;
+  width: 100vw;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 8vh 10vw;
-  position: relative;
+  position: absolute;
 `;
 
 const Statistics = styled(animated.div)`
@@ -72,7 +91,7 @@ const Statistics = styled(animated.div)`
   flex-direction: column;
 `;
 
-const UntilToday = styled.p`
+const UntilToday = styled(animated.p)`
   font-size: 3vw;
   color: #183573;
   display: flex;
@@ -93,7 +112,7 @@ const Date = styled.span`
   margin-right: 25px;
 `;
 
-const MiddleText = styled.p`
+const MiddleText = styled(animated.p)`
   font-size: 4vw;
   color: #e67205;
   margin: 0;
@@ -105,3 +124,5 @@ const TotalNumber = styled(Date)`
   margin: 0 25px;
   color: #3b0002;
 `;
+
+const TotalNumSentence = styled(animated.span)``;

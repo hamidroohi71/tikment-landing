@@ -15,7 +15,7 @@ export default function CommentSlider({
       <h3>{item.comment.author}</h3>
       <h2>
         {item.comment.position}
-        <span></span>
+        <span />
       </h2>
     </Title>
   ));
@@ -93,11 +93,11 @@ const Avatar = styled.div<{ selected: boolean; preSelected: boolean }>`
   border-radius: 50%;
   transform: ${({ selected, preSelected }) =>
     selected
-      ? "scale(3.12) translateX(0%)"
+      ? " translateX(200%)"
       : preSelected
-      ? "scale(1) translateX(350%)"
-      : "scale(1) translateX(-100%)"};
-  overflow: hidden;
+      ? "translateX(350%)"
+      : " translateX(-100%)"};
+
   transform-origin: left;
   transition: 1s ease-out;
   transition-delay: 0s;
@@ -105,7 +105,12 @@ const Avatar = styled.div<{ selected: boolean; preSelected: boolean }>`
   & > img {
     width: 100%;
     height: 100%;
-    overlow: hidden;
+    overflow: hidden;
+    transform: ${({ selected, preSelected }) =>
+      selected ? "scale(3.12) " : preSelected ? "scale(1) " : "scale(1)"};
+    transform-origin: right;
+    transition: 1s ease-out;
+    transition-delay: 0s;
   }
 `;
 
