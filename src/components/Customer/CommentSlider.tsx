@@ -68,7 +68,7 @@ const CommentPart = styled.div`
   display: flex;
   height: 100%;
   flex-direction: column;
-  padding: 56px;
+  padding: 0 56px 56px;
 `;
 
 const CommentTitle = styled.div`
@@ -161,7 +161,6 @@ const Comment = styled.div<{ selected: boolean }>`
     margin: 0 0 13px;
     color: #292929;
     position: relative;
-    padding-left: 53px;
     z-index: 5;
     transition: 1s ease-out;
     transition-delay: ${({ selected }) => (selected ? "1.1s" : "0s")};

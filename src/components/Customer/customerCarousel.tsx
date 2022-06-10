@@ -18,6 +18,7 @@ export default function CustomerCarousel({
   const [currentIndex, setCurrentIndex] = useState(0);
   const customerData = data.customerData.map((customer, index) => (
     <Item
+      selected={currentIndex === index}
       key={customer.name}
       onClick={() => {
         setCurrentIndex(index);
@@ -54,11 +55,11 @@ const CarouselSection = styled(animated.section)`
   align-items: center;
   margin-top: 74px;
 `;
-const Item = styled.div`
+const Item = styled.div<{ selected: boolean }>`
   width: 9vw;
   height: 9vw;
   border-radius: 50%;
-  background: linear-gradient(180deg, #75c9db 0%, #4af3f8 100%);
+  // background: linear-gradient(180deg, #75c9db 0%, #4af3f8 100%);
   box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
   border: 1px solid #75c9db4d;
   backdrop-filter: blur(7px);
@@ -67,6 +68,8 @@ const Item = styled.div`
   justify-content: center;
   margin: 0 2vw;
   cursor: pointer;
+  transform: ${({ selected }) => (selected ? "scale(1.4)" : "scale(1)")};
+  transition: 0.2s ease-out;
 
   & > img {
     width: 70%;
