@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { useSection } from "../../context/sectionStore";
 
 export default function Contact() {
+  const { activeSection, nextSection, setActiveSection } = useSection();
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    if (active) {
+      setTimeout(() => {
+        setActiveSection(nextSection);
+      }, 500);
+    }
+  }, [active, nextSection]);
+
+  useEffect(() => {
+    if (activeSection === 6) {
+      setActive(true);
+    } else if (activeSection !== null) {
+      setActive(false);
+    }
+  }, [activeSection]);
   return (
     <ContactSection>
       <h2>برای مشاورهٔ رایگان در اولین فرصت با شما تماس می‌گیریم.</h2>

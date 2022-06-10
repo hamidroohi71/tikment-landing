@@ -1,9 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ProductSlider from "./ProductSlider";
+import { useSection } from "../../context/sectionStore";
 
 export default function Product() {
   const [titleOn, setTitleOn] = useState(true);
+  const { activeSection, nextSection, setActiveSection } = useSection();
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    if (active) {
+      setTimeout(() => {
+        setActiveSection(nextSection);
+      }, 500);
+    }
+  }, [active, nextSection]);
+
+  useEffect(() => {
+    if (activeSection === 3) {
+      setActive(true);
+    } else if (activeSection !== null) {
+      setActive(false);
+    }
+  }, [activeSection]);
   return (
     <ProductSection>
       <TitlePart show={titleOn}>

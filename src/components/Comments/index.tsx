@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Comment from "./comment";
 import data from "./commentsData.json";
+import { useSection } from "../../context/sectionStore";
 
 export default function Comments() {
+  const { activeSection, nextSection, setActiveSection } = useSection();
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    if (active) {
+      setTimeout(() => {
+        setActiveSection(nextSection);
+      }, 500);
+    }
+  }, [active, nextSection]);
+
+  useEffect(() => {
+    if (activeSection === 6) {
+      setActive(true);
+    } else if (activeSection !== null) {
+      setActive(false);
+    }
+  }, [activeSection]);
   const commentList = data.comments.map((item) => (
     <Comment key={item.id} comment={item} />
   ));

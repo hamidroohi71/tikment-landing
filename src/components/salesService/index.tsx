@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import data from "./serviceData.json";
+import { useSection } from "../../context/sectionStore";
 
 export default function SalesService() {
+  const { activeSection, nextSection, setActiveSection } = useSection();
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    if (active) {
+      setTimeout(() => {
+        setActiveSection(nextSection);
+      }, 500);
+    }
+  }, [active, nextSection]);
+
+  useEffect(() => {
+    if (activeSection === 5) {
+      setActive(true);
+    } else if (activeSection !== null) {
+      setActive(false);
+    }
+  }, [activeSection]);
   const serviceCards = data.serviceData.map((service, index) => (
     <Service key={service.name}>
       <span>{index + 1}</span>

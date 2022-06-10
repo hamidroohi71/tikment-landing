@@ -1,15 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import CustomerCarousel from "./customerCarousel";
 import { useSpring, animated, easings } from "react-spring";
+import { useSection } from "../../context/sectionStore";
 
 export default function Customer() {
+  const { activeSection, nextSection, setActiveSection } = useSection();
   const [showComment, setShowComment] = useState(false);
+  const [active, setActive] = useState(false);
   const styleProps2 = useSpring({
     from: { opacity: 1 },
     to: { opacity: showComment ? 0 : 1 },
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
+
+  useEffect(() => {
+    console.log(active);
+
+    if (active) {
+      console.log("here");
+      setTimeout(() => {
+        setActiveSection(nextSection);
+      }, 500);
+    }
+  }, [active, nextSection]);
+
+  useEffect(() => {
+    if (activeSection === 2) {
+      setActive(true);
+    } else if (activeSection !== null) {
+      setActive(false);
+    }
+  }, [activeSection]);
+
   return (
     <CustomerElement>
       <Statistics style={styleProps2}>

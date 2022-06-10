@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import AdvantagesList from "./advantageItems";
 import BackgroundImage from "./background.png";
+import { useSection } from "../../context/sectionStore";
 
 export default function Advantage() {
+  const { activeSection, nextSection, setActiveSection } = useSection();
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    if (active) {
+      setTimeout(() => {
+        setActiveSection(nextSection);
+      }, 500);
+    }
+  }, [active, nextSection]);
+
+  useEffect(() => {
+    if (activeSection === 4) {
+      setActive(true);
+    } else if (activeSection !== null) {
+      setActive(false);
+    }
+  }, [activeSection]);
   return (
     <AdvantageSection>
       <TitlePart show={true}>

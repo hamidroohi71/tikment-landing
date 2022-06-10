@@ -26,8 +26,6 @@ export default function PageIntro() {
     }
   }, [activeSection]);
 
-  console.log(activeSection, nextSection, active);
-
   return (
     <PageIntroduction>
       <Background />
