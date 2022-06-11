@@ -18,4 +18,6 @@ const FAQSection = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  transform: translateY(100vh);
 `;

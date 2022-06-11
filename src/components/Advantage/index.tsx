@@ -43,6 +43,8 @@ const AdvantageSection = styled.section`
   height: 100vh;
   background: url(${BackgroundImage}) center/cover;
   padding-top: 292px;
+  position: absolute;
+  transform: translateY(100vh);
 `;
 
 const TitlePart = styled.div<{ show: boolean }>`

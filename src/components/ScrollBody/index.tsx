@@ -55,11 +55,12 @@ const Body = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  position: relative;
 `;
 
 const Content = styled.div<{ section: number }>`
   width: 100%;
-  height: 900%;
-  display: flex;
-  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
 `;

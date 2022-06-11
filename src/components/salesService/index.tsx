@@ -45,6 +45,8 @@ const ServicesSection = styled.section`
   height: 100vh;
   overflow: hidden;
   padding: 13vh 12vw 0;
+  position: absolute;
+  transform: translateY(100vh);
 `;
 
 const Title = styled.h2`

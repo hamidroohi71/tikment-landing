@@ -33,4 +33,6 @@ export default function Footer() {
 const FooterSection = styled.section`
   height: 100vh;
   position: relative;
+  position: absolute;
+  transform: translateY(100vh);
 `;

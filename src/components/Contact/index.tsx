@@ -46,4 +46,6 @@ const ContactSection = styled.section`
   padding: 11vh 21vw;
   display: flex;
   justify-content: center;
+  position: absolute;
+  transform: translateY(100vh);
 `;

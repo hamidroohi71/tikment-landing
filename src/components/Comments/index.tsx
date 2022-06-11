@@ -37,6 +37,8 @@ export default function Comments() {
 const CommentSection = styled.section`
   height: 100vh;
   overflow: hidden;
+  position: absolute;
+  transform: translateY(100vh);
 `;
 
 const Title = styled.h2`
