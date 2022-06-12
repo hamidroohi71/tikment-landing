@@ -11,12 +11,12 @@ let listInterval: any;
 export default function Advantage() {
   const { activeSection, nextSection, setActiveSection } = useSection();
   const [active, setActive] = useState(false);
-  const [index, setIndex] = useState(7);
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     if (activeSection === 4) {
       listInterval = setInterval(() => {
-        setIndex(7);
+        setIndex((index) => index + 1);
       }, 10000);
     } else {
       setIndex(0);
@@ -24,7 +24,7 @@ export default function Advantage() {
     }
   }, [activeSection]);
 
-  console.log(index);
+  console.log("index:", index, "activeSection:", activeSection);
 
   const sectionStyle = useSpring({
     from: { opacity: 0 },
