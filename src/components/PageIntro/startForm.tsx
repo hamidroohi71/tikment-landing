@@ -53,7 +53,7 @@ export default function StartForm() {
     setAnswers([...newOne]);
   };
 
-  console.log(answers);
+  // console.log(answers);
   return (
     <StartFormElement style={styleProps4}>
       <TitleBox>

@@ -26,10 +26,7 @@ export default function Customer() {
   });
 
   useEffect(() => {
-    console.log(active);
-
     if (active) {
-      console.log("here");
       setTimeout(() => {
         setActiveSection(nextSection);
       }, 500);

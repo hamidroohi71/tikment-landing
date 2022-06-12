@@ -1,12 +1,32 @@
 import React from "react";
-import Image from "./assets/laptop.png";
+import LaptopImage from "./assets/laptop2.webp";
+import { useSpring, easings, animated } from "react-spring";
+import styled from "styled-components";
 
-export default function Management() {
+export default function Management({ active }: { active: boolean }) {
+  const sectionStyle = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: active ? 1 : 0 },
+    delay: active ? 2000 : 0,
+    config: { duration: 2000, easing: easings.easeOutQuart },
+  });
+
+  const textStyle = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: active ? 1 : 0 },
+    delay: active ? 3000 : 0,
+    config: { duration: 2000, easing: easings.easeOutQuart },
+  });
   return (
-    <section>
-      <div>
-        <h2>مدیریت بهینهٔ شیفت‌ها</h2>
-        <p>
+    <>
+      <Image
+        style={sectionStyle}
+        src={LaptopImage}
+        alt="مدیریت بهینهٔ شیفت‌ها"
+      />
+      <TextBox>
+        <MainTitle style={sectionStyle}>مدیریت بهینهٔ شیفت‌ها</MainTitle>
+        <Text style={textStyle}>
           مدیریت شیفت همیشه یکی از چالش‌های اصلی سازمان‌هایی است که
           <b>خارج از ساعات اداری</b> فعالیت دارند. در بخش
           <b>تعیین شیفت نرم‌افزار</b> ، می‌توانید به راحتی انواع پارامترها را
@@ -15,11 +35,36 @@ export default function Management() {
             تاخیر و تعجیل مجاز، تعریف ساعات غیرحضوری و شیفت‌های چرخشی، شیفت‌های
             نگهبانی و شیفت‌های شب و روز
           </b>
-        </p>
-      </div>
-      <div>
-        <img src={Image} alt="مدیریت بهینهٔ شیفت‌ها" />
-      </div>
-    </section>
+        </Text>
+      </TextBox>
+    </>
   );
 }
+
+const Image = styled(animated.img)`
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+`;
+
+const TextBox = styled.div`
+  position: absolute;
+  top: 26vh;
+  right: 15vw;
+  left: 45.7vw;
+  display: flex;
+  flex-direction: column;
+`;
+
+const MainTitle = styled(animated.h2)`
+  font-size: 3.9vw;
+  color: #183573;
+  margin: 0;
+`;
+
+const Text = styled(animated.p)`
+  font-size: 1.6vw;
+  color: #292929;
+  font-weight: 300;
+  padding-left: 8vw;
+`;

@@ -7,7 +7,7 @@ import RightArrow from "./rightArrow.svg";
 export default function ProductSlider() {
   const productsData = data.products;
   const [slideIndex, setSlideIndex] = useState(0);
-  console.log(productsData);
+  // console.log(productsData);
 
   const productSlides = productsData.map((item, index) => (
     <ProductSlide

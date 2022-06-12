@@ -1,22 +1,68 @@
 import React from "react";
-import Image from "./assets/mobile.png";
+import MobileImage from "./assets/mobile2.webp";
+import { useSpring, easings, animated } from "react-spring";
+import styled from "styled-components";
 
-export default function Trip() {
+export default function Trip({ active }: { active: boolean }) {
+  const sectionStyle = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: active ? 1 : 0 },
+    delay: active ? 2000 : 0,
+    config: { duration: 2000, easing: easings.easeOutQuart },
+  });
+
+  const textStyle = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: active ? 1 : 0 },
+    delay: active ? 3000 : 0,
+    config: { duration: 2000, easing: easings.easeOutQuart },
+  });
   return (
-    <section>
-      <div>
-        <h3>با خیالی راحت</h3>
-        <h2>حتی در سفر</h2>
-        <p>
+    <>
+      <Image style={sectionStyle} src={MobileImage} alt="سفر" />
+      <TextBox>
+        <SubTitle style={sectionStyle}>با خیالی راحت</SubTitle>
+        <MainTitle style={sectionStyle}>حتی در سفر</MainTitle>
+        <Text style={textStyle}>
           حتی در<b>سفر و دورکاری</b> ، تیکمنت در کنار شماست. با اپلیکیشن
           <b>تیکمنت</b>، مدیران می‌توانند فقط با یک کلیک درخواست‌ها را بررسی
           کنند کارمندان نیز در <b>ایام دورکاری</b>، به‌راحتی ساعت شروع و پایان
           کارشان را ثبت می‌کنند
-        </p>
-      </div>
-      <div>
-        <img src={Image} alt="سفر" />
-      </div>
-    </section>
+        </Text>
+      </TextBox>
+    </>
   );
 }
+
+const Image = styled(animated.img)`
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+`;
+
+const TextBox = styled.div`
+  position: absolute;
+  top: 26vh;
+  right: 57vw;
+  display: flex;
+  flex-direction: column;
+  padding-left: 8vw;
+`;
+
+const MainTitle = styled(animated.h2)`
+  font-size: 4.6vw;
+  color: #183573;
+  margin: 0;
+`;
+
+const SubTitle = styled(MainTitle)`
+  font-size: 3.9vw;
+  font-weight: 500;
+  margin: 0;
+`;
+
+const Text = styled(animated.p)`
+  font-size: 1.6vw;
+  color: #292929;
+  font-weight: 300;
+`;
