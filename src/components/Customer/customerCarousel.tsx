@@ -76,7 +76,6 @@ const Item = styled.div<{ selected: boolean }>`
     height: 70%;
     object-fit: contain;
     filter: ${({selected}) => (selected ? "brightness(0) saturate(100%) invert(11%) sepia(37%) saturate(4190%) hue-rotate(216deg) brightness(96%) contrast(110%)" : "contrast(100%)")};
-
   }
 `;
 
