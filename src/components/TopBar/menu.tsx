@@ -16,6 +16,6 @@ const MenuElement = styled.section`
 
 const MenuLink = styled.a`
   text-align: center;
-  font-size: 28px;
+  font-size: 1.4vw;
   color: #f5f5f5;
 `;

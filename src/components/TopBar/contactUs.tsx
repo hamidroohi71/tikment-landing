@@ -25,7 +25,8 @@ const ContactElement = styled.section`
 
   p {
     text-align: center;
-    font: normal normal medium 35px/60px Yekan Bakh;
+    font-size: 1.8vw;
+    font-weight: 500;
     color: #f5f5f5;
     margin: 0;
     margin-right: 21px;
