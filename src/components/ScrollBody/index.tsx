@@ -43,9 +43,14 @@ export default function ScrollBody({ children }: { children: JSX.Element }) {
     }
   });
 
+  const goToSection = (index: number) => {
+    setNextSection(index + 1);
+    setActiveSection(null);
+  };
+
   return (
     <Body {...bind()}>
-      <Navigation />
+      <Navigation goToSection={goToSection} />
       <Content section={activeSection}>{children}</Content>
     </Body>
   );

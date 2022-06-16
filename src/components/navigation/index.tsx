@@ -12,13 +12,33 @@ const Dot = styled.div<{ selected: boolean }>`
   margin: 18px 0;
   border-radius: 50%;
   transition: 0.3s ease-out;
+  cursor: pointer;
 `;
 
-function NavigationDot({ selected }: { selected: boolean }) {
-  return <Dot selected={selected}></Dot>;
+function NavigationDot({
+  selected,
+  index,
+  goToSection,
+}: {
+  selected: boolean;
+  index: number;
+  goToSection: (index: number) => void;
+}) {
+  return (
+    <Dot
+      onClick={() => {
+        goToSection(index);
+      }}
+      selected={selected}
+    ></Dot>
+  );
 }
 
-export default function Navigation() {
+export default function Navigation({
+  goToSection,
+}: {
+  goToSection: (index: number) => void;
+}) {
   const { activeSection } = useSection();
   const styleProps = useSpring({
     from: { opacity: 0 },
@@ -29,7 +49,14 @@ export default function Navigation() {
   const elements = [];
 
   for (let i = 0; i < 7; i++) {
-    elements.push(<NavigationDot key={i} selected={i === activeSection - 1} />);
+    elements.push(
+      <NavigationDot
+        goToSection={goToSection}
+        index={i}
+        key={i}
+        selected={i === activeSection - 1}
+      />
+    );
   }
   return <NavigationBar style={styleProps}>{elements}</NavigationBar>;
 }
