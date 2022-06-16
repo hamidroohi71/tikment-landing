@@ -24,8 +24,8 @@ const MobilePhoto = styled(animated.section)`
   width: 38vw;
   height: 93vh;
   position: absolute;
-  top: 182px;
-  left: -0.3vw;
+  top: 16.8vh;
+  left: -3.5vw;
 
   & > img {
     width: 100%;

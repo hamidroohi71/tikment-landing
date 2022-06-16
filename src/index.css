@@ -17,6 +17,16 @@
   font-weight: 100;
 }
 
+@font-face {
+  font-family: 'Digital-7';
+  src:url('Digital-7.ttf.woff') format('woff'),
+      url('Digital-7.ttf.svg#Digital-7') format('svg'),
+      url('Digital-7.ttf.eot'),
+      url('Digital-7.ttf.eot?#iefix') format('embedded-opentype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

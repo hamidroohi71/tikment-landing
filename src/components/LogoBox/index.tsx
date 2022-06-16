@@ -18,7 +18,7 @@ export default function LogoBox() {
 }
 
 const LogoBoxElement = styled(animated.section)`
-  z-index: 10;  
+  z-index: 30;  
   background: #f9f8f7;
   box-shadow: inset 0px 0px 80px #75C9DB80, 0px 3px 3px #8125254D;
   blur(2px);

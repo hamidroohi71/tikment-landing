@@ -11,7 +11,7 @@ export default function ProgressBar({ percent }: { percent: number }) {
 
 const ProgressBarElement = styled.section`
   position: absolute;
-  bottom: 30px;
+  bottom: 1.5vw;
   right: 0;
   left: 0;
   margin: auto;

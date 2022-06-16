@@ -134,17 +134,13 @@ const FormBox = styled(animated.div)`
   right: 32px;
   width: 53vw;
   height: 36vh;
-  background: linear-gradient(
-    180deg,
-    rgb(117 201 219 / 10%) 0%,
-    rgb(74 243 248 / 10%) 100%
-  );
+
   box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
   border: 1px solid #75c9db4d;
   border-radius: 3vw;
   backdrop-filter: blur(13px);
   transform-origin: top;
-  padding: 48px 40px;
+  padding: 2.5vw 2vw;
 `;
 
 const FormContent = styled(animated.div)``;

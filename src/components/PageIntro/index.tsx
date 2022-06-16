@@ -27,7 +27,7 @@ export default function PageIntro() {
   }, [activeSection]);
 
   return (
-    <PageIntroduction>
+    <PageIntroduction active={active}>
       <Background />
       <Mobile />
       <Title />
@@ -36,10 +36,15 @@ export default function PageIntro() {
   );
 }
 
-const PageIntroduction = styled.section`
+const PageIntroduction = styled.section<{ active: boolean }>`
   padding: 20vh 11vw 0;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   position: absolute;
+  z-index: ${({ active }) => (active ? 20 : 0)};
+
+  @media (max-width: 1200px) {
+    padding: 19vh 8vw 0;
+  }
 `;

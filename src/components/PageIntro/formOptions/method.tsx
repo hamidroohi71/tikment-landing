@@ -59,7 +59,7 @@ const OptionBox = styled.section`
 const Title = styled.h3`
   color: #183573;
   font-size: 1.5vw;
-  font-weight: 100;
+  font-weight: 300;
 `;
 
 const Option = styled.div`

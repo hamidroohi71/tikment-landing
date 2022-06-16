@@ -43,18 +43,28 @@ const TitleElement = styled(animated.section)`
 const Title1 = styled(animated.img)`
   width: 22vw;
   height: auto;
-  margin-bottom: 8vh;
+  margin-bottom: 3.4vw;
   transform-origin: right;
+  @media (max-width: 1200px) {
+    width: 16vw;
+    margin-bottom: 3vw;
+  }
 `;
 const Title2 = styled(animated.h2)`
   font-size: 2.7vw;
-  fon-weight: 100;
+  font-weight: 300;
   color: #9e9e9e;
   margin: 0;
   margin-bottom: 8px;
+  @media (max-width: 1200px) {
+    font-size: 2vw;
+  }
 `;
 const Title3 = styled(animated.h3)`
   font-size: 3.6vw;
   color: #183573;
-  margin: 0;
+  margin: 0 0 10px;
+  @media (max-width: 1200px) {
+    font-size: 3vw;
+  }
 `;

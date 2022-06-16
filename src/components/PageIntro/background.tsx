@@ -7,8 +7,9 @@ import Mask from "./Mask.webp";
 
 export default function Background() {
   const { activeSection } = useSection();
+  const width = window.innerWidth;
   const maskStyle = useSpring({
-    to: { WebkitMaskSize: "100%" },
+    to: { WebkitMaskSize: width < 1201 ? "120%" : "100%" },
     from: { WebkitMaskSize: "250%" },
     config: { duration: 2000, easing: easings.easeOutQuart },
   });
