@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import data from "./serviceData.json";
 import { useSection } from "../../context/sectionStore";
+import { useSpring, easings, animated } from "react-spring";
 
 export default function SalesService() {
   const { activeSection, nextSection, setActiveSection } = useSection();
@@ -22,6 +23,14 @@ export default function SalesService() {
       setActive(false);
     }
   }, [activeSection]);
+
+  const sectionStyle = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: active ? 1 : 0 },
+    delay: active ? 1000 : 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+
   const serviceCards = data.serviceData.map((service, index) => (
     <Service key={service.name}>
       <span>{index + 1}</span>
@@ -33,7 +42,7 @@ export default function SalesService() {
     </Service>
   ));
   return (
-    <ServicesSection>
+    <ServicesSection style={sectionStyle}>
       <Title>در کنارتان هستیم</Title>
       <Subtitle>از نصب سخت‌افزار تا آموزش نرم‌افزار و راه‌اندازی</Subtitle>
       <ServicesContainer>{serviceCards}</ServicesContainer>
@@ -41,26 +50,28 @@ export default function SalesService() {
   );
 }
 
-const ServicesSection = styled.section`
+const ServicesSection = styled(animated.section)`
   height: 100vh;
+  width: 100vw;
   overflow: hidden;
   padding: 13vh 12vw 0;
   position: absolute;
-  transform: translateY(100vh);
 `;
 
 const Title = styled.h2`
-  font-size: 72px;
+  font-size: 3.7vw;
   color: #e67205;
   text-align: center;
   margin: 0;
+  font-weight: 500;
 `;
 
 const Subtitle = styled.h3`
-  font-size: 46px;
+  font-size: 2.3vw;
   color: #183573;
   text-align: center;
   margin: 0 0 0;
+  font-weight: 500;
 `;
 
 const ServicesContainer = styled.div`
