@@ -69,30 +69,25 @@ export default function StartForm() {
             addAnswer={addAnswer}
             answers={answers}
           />
-
           <Number
             step={step}
             answers={answers}
             nextStep={changeStep}
             addAnswer={addAnswer}
           />
-
           <Method
             step={step}
             answers={answers}
             nextStep={changeStep}
             addAnswer={addAnswer}
           />
-
           <FreeTest
             step={step}
             answers={answers}
             nextStep={changeStep}
             addAnswer={addAnswer}
           />
-
           <ContactInfo step={step} answers={answers} nextStep={changeStep} />
-
           <ProgressBar percent={(step / 5) * 100} />
         </FormContent>
       </FormBox>

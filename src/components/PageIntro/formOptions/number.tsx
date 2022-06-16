@@ -32,7 +32,7 @@ export default function Number({
   return (
     <>
       <Title show={step === 2}>چند نفر در سازمان شما مشغول به کارند؟</Title>
-      <OptionBox>{numberElements}</OptionBox>;
+      <OptionBox>{numberElements}</OptionBox>
     </>
   );
 }
@@ -70,7 +70,7 @@ const Option = styled.div<{ show: boolean; selected: boolean; index: number }>`
   margin: auto;
   transform: ${({ index, selected }) =>
     selected ? "translateX(-10vw)" : `translateX(${-index * 10 - 10}vw)`};
-
+  transition: 0.5s ease-out;
   z-index: ${({ show, selected }) => (show ? 25 : selected ? 25 : 0)};
   & > img {
     width: 55%;

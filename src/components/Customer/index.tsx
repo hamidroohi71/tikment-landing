@@ -21,7 +21,7 @@ export default function Customer() {
   const totalSentenceStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: activeSection === 2 ? 1 : 0 },
-    delay: activeSection === 2 ? 5500 : 0,
+    delay: activeSection === 2 ? 2500 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
@@ -46,7 +46,7 @@ export default function Customer() {
 
   const num = useSpring({
     num: active ? 34561 : 0,
-    config: { duration: active ? 5000 : 0, easing: easings.easeOutQuart },
+    config: { duration: active ? 2000 : 0, easing: easings.easeOutQuart },
   });
 
   return (

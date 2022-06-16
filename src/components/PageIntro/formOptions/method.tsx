@@ -70,7 +70,7 @@ const Option = styled.div<{ show: boolean; selected: boolean; index: number }>`
   margin: auto;
   transform: ${({ index, selected }) =>
     selected ? "translateX(-20vw)" : `translateX(${-index * 10 - 20}vw)`};
-
+  transition: 0.5s ease-out;
   z-index: ${({ show, selected }) => (show ? 25 : selected ? 25 : 0)};
   & > img {
     width: 55%;
