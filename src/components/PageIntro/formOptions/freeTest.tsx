@@ -2,59 +2,39 @@ import React from "react";
 import styled from "styled-components";
 
 export default function FreeTest({
+  step,
   nextStep,
   addAnswer,
   answers,
 }: {
+  step: number;
   nextStep: (newStep: number) => void;
   addAnswer: (answer: any) => void;
   answers: any;
 }) {
   return (
     <>
-      <Title>مایل به تست رایگان تیکمنت هستید؟</Title>
+      <Title show={step === 4}>مایل به تست رایگان تیکمنت هستید؟</Title>
       <OptionBox>
-        <SelectedOption
-          onClick={() => {
-            nextStep(2);
-          }}
-        >
-          <img src={answers[0].logo} alt={answers[0].type} />
-          <p>{answers[0].type}</p>
-        </SelectedOption>
-        <SelectedOption
-          onClick={() => {
-            nextStep(2);
-          }}
-        >
-          <img src={answers[1].logo} alt={answers[1].number} />
-          <p>{answers[1].number}</p>
-        </SelectedOption>
-        <SelectedOption
-          onClick={() => {
-            nextStep(2);
-          }}
-        >
-          <img src={answers[2].logo} alt={answers[2].method} />
-          <p>{answers[2].method}</p>
-        </SelectedOption>
         <Option
+          index={0}
+          show={step === 4}
+          selected={step > 3 && answers[3] === 0}
           onClick={() => {
             nextStep(5);
-            addAnswer([
-              { freeTest: "yes", logo: "/fastContactForm/freeTest/yes.svg" },
-            ]);
+            addAnswer(0);
           }}
         >
           <img src="/fastContactForm/freeTest/yes.svg" alt="Yes Tikment" />
           <p>بله</p>
         </Option>
         <Option
+          index={1}
+          show={step === 4}
+          selected={step > 4 && answers[3] === 1}
           onClick={() => {
             nextStep(5);
-            addAnswer([
-              { freeTest: "no", logo: "/fastContactForm/freeTest/yes.svg" },
-            ]);
+            addAnswer(1);
           }}
         >
           <img src="/fastContactForm/freeTest/yes.svg" alt="No Tikment" />
@@ -71,13 +51,15 @@ const OptionBox = styled.section`
   justify-content: space-between;
 `;
 
-const Title = styled.h3`
+const Title = styled.h3<{ show: boolean }>`
   color: #183573;
   font-size: 1.5vw;
   font-weight: 300;
+  opacity: ${({ show }) => (show ? 1 : 0)};
+  position: absolute;
 `;
 
-const Option = styled.div`
+const Option = styled.div<{ show: boolean; selected: boolean; index: number }>`
   width: 8.7vw;
   height: 16vh;
   background: linear-gradient(180deg, #37abb878 0%, #71fbffa6 100%);
@@ -89,7 +71,15 @@ const Option = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  opacity: ${({ show, selected }) => (show ? 1 : selected ? 1 : 0)};
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  transform: ${({ index, selected }) =>
+    selected ? "translateX(-30vw)" : `translateX(${-index * 10 - 30}vw)`};
 
+  z-index: ${({ show, selected }) => (show ? 25 : selected ? 25 : 0)};
   & > img {
     width: 55%;
     height: 55%;

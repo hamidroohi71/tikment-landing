@@ -3,19 +3,24 @@ import data from "./formData.json";
 import styled from "styled-components";
 
 export default function Number({
+  step,
   nextStep,
   addAnswer,
   answers,
 }: {
+  step: number;
   nextStep: (newStep: number) => void;
   addAnswer: (answer: any) => void;
   answers: any;
 }) {
-  const numberElements = data.number.map((number) => (
+  const numberElements = data.number.map((number, index) => (
     <Option
+      index={index}
+      show={step === 2}
+      selected={step > 2 && answers[1] === index}
       onClick={() => {
         nextStep(3);
-        addAnswer([number]);
+        addAnswer(index);
       }}
       key={number.number}
     >
@@ -26,19 +31,8 @@ export default function Number({
 
   return (
     <>
-      <Title>چند نفر در سازمان شما مشغول به کارند؟</Title>
-      <OptionBox>
-        <SelectedOption
-          onClick={() => {
-            nextStep(2);
-          }}
-        >
-          <img src={answers[0].logo} alt={answers[0].type} />
-          <p>{answers[0].type}</p>
-        </SelectedOption>
-        {numberElements}
-      </OptionBox>
-      ;
+      <Title show={step === 2}>چند نفر در سازمان شما مشغول به کارند؟</Title>
+      <OptionBox>{numberElements}</OptionBox>;
     </>
   );
 }
@@ -49,13 +43,15 @@ const OptionBox = styled.section`
   justify-content: space-between;
 `;
 
-const Title = styled.h3`
+const Title = styled.h3<{ show: boolean }>`
   color: #183573;
   font-size: 1.5vw;
   font-weight: 300;
+  opacity: ${({ show }) => (show ? 1 : 0)};
+  position: absolute;
 `;
 
-const Option = styled.div`
+const Option = styled.div<{ show: boolean; selected: boolean; index: number }>`
   width: 8.7vw;
   height: 16vh;
   background: linear-gradient(180deg, #37abb878 0%, #71fbffa6 100%);
@@ -67,7 +63,15 @@ const Option = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  opacity: ${({ show, selected }) => (show ? 1 : selected ? 1 : 0)};
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  transform: ${({ index, selected }) =>
+    selected ? "translateX(-10vw)" : `translateX(${-index * 10 - 10}vw)`};
 
+  z-index: ${({ show, selected }) => (show ? 25 : selected ? 25 : 0)};
   & > img {
     width: 55%;
     height: 55%;

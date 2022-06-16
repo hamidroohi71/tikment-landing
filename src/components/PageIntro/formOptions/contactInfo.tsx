@@ -2,41 +2,17 @@ import React from "react";
 import styled from "styled-components";
 
 export default function ContactInfo({
+  step,
   answers,
   nextStep,
 }: {
+  step: number;
   answers: any;
   nextStep: (newStep: number) => void;
 }) {
   return (
     <>
-      <OptionBox>
-        <SelectedOption
-          onClick={() => {
-            nextStep(2);
-          }}
-        >
-          <img src={answers[0].logo} alt={answers[0].type} />
-          <p>{answers[0].type}</p>
-        </SelectedOption>
-        <SelectedOption
-          onClick={() => {
-            nextStep(2);
-          }}
-        >
-          <img src={answers[1].logo} alt={answers[1].number} />
-          <p>{answers[1].number}</p>
-        </SelectedOption>
-        <SelectedOption
-          onClick={() => {
-            nextStep(2);
-          }}
-        >
-          <img src={answers[2].logo} alt={answers[2].method} />
-          <p>{answers[2].method}</p>
-        </SelectedOption>
-      </OptionBox>
-      <FormBox>
+      <FormBox show={step === 5}>
         <div>
           <p>
             برای مشاوره و راه‌اندازی نسخۀ رایگان تیکمنت، چه ساعتی با شما تماس
@@ -65,13 +41,15 @@ const OptionBox = styled.section`
   justify-content: space-between;
 `;
 
-const Title = styled.h3`
+const Title = styled.h3<{ show: boolean }>`
   color: #183573;
   font-size: 1.5vw;
   font-weight: 300;
+  opacity: ${({ show }) => (show ? 1 : 0)};
+  position: absolute;
 `;
 
-const Option = styled.div`
+const Option = styled.div<{ show: boolean; selected: boolean; index: number }>`
   width: 8.7vw;
   height: 16vh;
   background: linear-gradient(180deg, #37abb878 0%, #71fbffa6 100%);
@@ -83,7 +61,15 @@ const Option = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  opacity: ${({ show, selected }) => (show ? 1 : selected ? 1 : 0)};
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  transform: ${({ index, selected }) =>
+    selected ? "translateX(0vw)" : `translateX(${-index * 10}vw)`};
 
+  z-index: ${({ show, selected }) => (show ? 25 : selected ? 25 : 0)};
   & > img {
     width: 55%;
     height: 55%;
@@ -104,4 +90,6 @@ const SelectedOption = styled(Option)`
   border: 1px solid #ffffff99;
 `;
 
-const FormBox = styled.div``;
+const FormBox = styled.div<{ show: boolean }>`
+  opacity: ${({ show }) => (show ? 1 : 0)};
+`;

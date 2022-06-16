@@ -49,7 +49,8 @@ export default function StartForm() {
   };
 
   const addAnswer = (answer: any) => {
-    const newOne = [...answers, ...answer];
+    const newOne = [...answers];
+    newOne.push(answer);
     setAnswers([...newOne]);
   };
 
@@ -62,29 +63,36 @@ export default function StartForm() {
       </TitleBox>
       <FormBox style={styleProps2}>
         <FormContent style={styleProps3}>
-          {step === 1 ? (
-            <JobType nextStep={changeStep} addAnswer={addAnswer} />
-          ) : step === 2 ? (
-            <Number
-              answers={answers}
-              nextStep={changeStep}
-              addAnswer={addAnswer}
-            />
-          ) : step === 3 ? (
-            <Method
-              answers={answers}
-              nextStep={changeStep}
-              addAnswer={addAnswer}
-            />
-          ) : step === 4 ? (
-            <FreeTest
-              answers={answers}
-              nextStep={changeStep}
-              addAnswer={addAnswer}
-            />
-          ) : step === 5 ? (
-            <ContactInfo answers={answers} nextStep={changeStep} />
-          ) : null}
+          <JobType
+            step={step}
+            nextStep={changeStep}
+            addAnswer={addAnswer}
+            answers={answers}
+          />
+
+          <Number
+            step={step}
+            answers={answers}
+            nextStep={changeStep}
+            addAnswer={addAnswer}
+          />
+
+          <Method
+            step={step}
+            answers={answers}
+            nextStep={changeStep}
+            addAnswer={addAnswer}
+          />
+
+          <FreeTest
+            step={step}
+            answers={answers}
+            nextStep={changeStep}
+            addAnswer={addAnswer}
+          />
+
+          <ContactInfo step={step} answers={answers} nextStep={changeStep} />
+
           <ProgressBar percent={(step / 5) * 100} />
         </FormContent>
       </FormBox>
