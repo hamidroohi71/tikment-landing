@@ -21,7 +21,7 @@ export default function Customer() {
   const totalSentenceStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: activeSection === 2 ? 1 : 0 },
-    delay: activeSection === 2 ? 2000 : 0,
+    delay: activeSection === 2 ? 5500 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
@@ -44,8 +44,13 @@ export default function Customer() {
 
   const AnimatedTotalNum = animated(TotalNumber);
 
+  const num = useSpring({
+    num: active ? 34561 : 0,
+    config: { duration: active ? 5000 : 0, easing: easings.easeOutQuart },
+  });
+
   return (
-    <CustomerElement>
+    <CustomerElement active={active}>
       <Statistics style={styleProps2}>
         <UntilToday style={untilTodayStyle}>
           تا امروز
@@ -56,7 +61,9 @@ export default function Customer() {
         </MiddleText>
         <TotalCustomer>
           <animated.span style={untilTodayStyle}>در</animated.span>
-          <AnimatedTotalNum style={untilTodayStyle}>34561</AnimatedTotalNum>
+          <AnimatedTotalNum style={untilTodayStyle}>
+            {num.num.to((x) => x.toFixed(0))}
+          </AnimatedTotalNum>
           <TotalNumSentence style={totalSentenceStyle}>
             سازمان خصوصی و دولتی فعال بوده است.
           </TotalNumSentence>
@@ -72,7 +79,7 @@ export default function Customer() {
   );
 }
 
-const CustomerElement = styled.section`
+const CustomerElement = styled.section<{ active: boolean }>`
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -81,6 +88,7 @@ const CustomerElement = styled.section`
   justify-content: center;
   padding: 8vh 10vw;
   position: absolute;
+  z-index: ${({ active }) => (active ? 20 : 0)};
 `;
 
 const Statistics = styled(animated.div)`
@@ -97,6 +105,7 @@ const UntilToday = styled(animated.p)`
 
 const Date = styled.span`
   display: inline-block;
+  font-family: Digital-7;
   font-size: 5vw;
   padding: 0 18px;
   line-height: 128px;
@@ -119,6 +128,7 @@ const TotalCustomer = styled(UntilToday)``;
 
 const TotalNumber = styled(Date)`
   margin: 0 25px;
+  width: 19vw;
   color: #3b0002;
 `;
 
