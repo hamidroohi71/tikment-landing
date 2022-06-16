@@ -1,12 +1,23 @@
 import React from "react";
 import Phone from "./phone.svg";
 import styled from "styled-components";
+import { useSection } from "../../context/sectionStore";
+import { useSpring, animated, easings } from "react-spring";
 
 export default function ContactUs() {
+  const { activeSection } = useSection();
+
+  const styleProp = useSpring({
+    from: { opacity: 1 },
+    to: { opacity: activeSection === 1 ? 1 : 0 },
+    delay: activeSection === 1 ? 500 : 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+
   return (
     <ContactElement>
       <img src={Phone} alt="contact" />
-      <p>تماس با تیکمنت</p>
+      <animated.p style={styleProp}>تماس با تیکمنت</animated.p>
     </ContactElement>
   );
 }
