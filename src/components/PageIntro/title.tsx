@@ -4,7 +4,7 @@ import TikmentName from "./tikment.png";
 import { animated, useSpring, easings } from "react-spring";
 import { useSection } from "../../context/sectionStore";
 
-export default function Title() {
+export default function Title({ formOpen }: { formOpen: boolean }) {
   const { activeSection } = useSection();
   const styleProps1 = useSpring({
     from: { transform: "translateX(100%)", opacity: 0 },
@@ -25,8 +25,15 @@ export default function Title() {
     },
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
+
+  const styleProps4 = useSpring({
+    from: { opacity: 1 },
+    to: { opacity: formOpen ? 0 : 1 },
+    delay: 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
   return (
-    <TitleElement style={styleProps3}>
+    <TitleElement style={{ ...styleProps3, ...styleProps4 }}>
       <Title2 style={styleProps1}>سیستم‌های حضور و غیاب</Title2>
       <Title1 style={styleProps2} src={TikmentName} alt="تیکمنت" />
       <Title3 style={styleProps1}>انتخاب مدیران، شایستهٔ کارمندان</Title3>

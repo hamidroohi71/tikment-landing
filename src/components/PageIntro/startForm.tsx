@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ContactInfo from "./formOptions/contactInfo";
 import FreeTest from "./formOptions/freeTest";
 import JobType from "./formOptions/jobType";
@@ -9,7 +9,17 @@ import ProgressBar from "./formOptions/progressBar";
 import { useSpring, animated, easings } from "react-spring";
 import { useSection } from "../../context/sectionStore";
 
-export default function StartForm() {
+export default function StartForm({
+  handleFormOpen,
+}: {
+  handleFormOpen: (status: boolean) => void;
+}) {
+  const [done, setDone] = useState(false);
+  const [result, setResult] = useState(
+    "کارشناسان ما امروز با شما تماس خواهند گرفت"
+  );
+  const [step, setStep] = useState(1);
+  const [answers, setAnswers] = useState([] as any);
   const { activeSection } = useSection();
   const styleProps1 = useSpring({
     from: { transform: "scaleX(0)" },
@@ -32,17 +42,17 @@ export default function StartForm() {
 
   const styleProps4 = useSpring({
     to: {
-      transform: activeSection === 1 ? "translateX(0%)" : "translateX(100%)",
+      transform: activeSection === 1 ? "translateX(0vw)" : "translateX(100vw)",
     },
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
-  const [done, setDone] = useState(false);
-  const [result, setResult] = useState(
-    "کارشناسان ما امروز با شما تماس خواهند گرفت"
-  );
-  const [step, setStep] = useState(1);
-  const [answers, setAnswers] = useState([] as any);
+  const styleProps5 = useSpring({
+    to: {
+      top: step === 5 ? "20vh" : "57vh",
+    },
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
 
   const changeStep = (newStep: number) => {
     setStep(newStep);
@@ -54,9 +64,17 @@ export default function StartForm() {
     setAnswers([...newOne]);
   };
 
+  useEffect(() => {
+    if (step === 5) {
+      handleFormOpen(true);
+    } else {
+      handleFormOpen(false);
+    }
+  }, [step]);
+
   // console.log(answers);
   return (
-    <StartFormElement style={styleProps4}>
+    <StartFormElement style={{ ...styleProps4, ...styleProps5 }}>
       <TitleBox>
         <RingSign></RingSign>
         <Title style={styleProps1}>{done ? result : "برای انتخاب بهتر"}</Title>
@@ -97,7 +115,9 @@ export default function StartForm() {
 
 const StartFormElement = styled(animated.section)`
   z-index: 10;
-  position: relative;
+  position: absolute;
+  top: 57vh;
+  bottom: 6vh;
 `;
 
 const TitleBox = styled.div`
@@ -134,10 +154,9 @@ const RingSign = styled.span`
 const FormBox = styled(animated.div)`
   position: absolute;
   top: 32px;
+  bottom: 0;
   right: 32px;
   width: 53vw;
-  height: 36vh;
-
   box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
   border: 1px solid #75c9db4d;
   border-radius: 3vw;

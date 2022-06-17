@@ -39,13 +39,13 @@ export default function JobType({
   );
 }
 
-const OptionBox = styled.section`
+export const OptionBox = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
 `;
 
-const Title = styled.h3<{ show: boolean }>`
+export const Title = styled.h3<{ show: boolean }>`
   color: #183573;
   font-size: 1.5vw;
   font-weight: 300;
@@ -53,7 +53,11 @@ const Title = styled.h3<{ show: boolean }>`
   position: absolute;
 `;
 
-const Option = styled.div<{ show: boolean; selected: boolean; index: number }>`
+export const OptionBase = styled.div<{
+  show: boolean;
+  selected: boolean;
+  index: number;
+}>`
   width: 8.7vw;
   height: 16vh;
   background: linear-gradient(180deg, #37abb878 0%, #71fbffa6 100%);
@@ -67,11 +71,7 @@ const Option = styled.div<{ show: boolean; selected: boolean; index: number }>`
   cursor: pointer;
   opacity: ${({ show, selected }) => (show ? 1 : selected ? 1 : 0)};
   position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  transform: ${({ index, selected }) =>
-    selected ? "translateX(0vw)" : `translateX(${-index * 10}vw)`};
+  top: 9vh;
   transition: 0.5s ease-out;
   z-index: ${({ show, selected }) => (show ? 25 : selected ? 25 : 0)};
   & > img {
@@ -88,7 +88,12 @@ const Option = styled.div<{ show: boolean; selected: boolean; index: number }>`
   }
 `;
 
-const SelectedOption = styled(Option)`
+const Option = styled(OptionBase)`
+  transform: ${({ index, selected }) =>
+    selected ? "translateX(0vw)" : `translateX(${-index * 10}vw)`};
+`;
+
+export const SelectedOption = styled(Option)`
   background: linear-gradient(208deg, #05185e 0%, #4b86ac 100%);
   box-shadow: 7px 7px 20px #00000038;
   border: 1px solid #ffffff99;

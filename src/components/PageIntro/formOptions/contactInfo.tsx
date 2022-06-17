@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { useSpring, animated, easings } from "react-spring";
+import PersonIcon from "./person.svg";
+import PhoneIcon from "./phone.svg";
 
 export default function ContactInfo({
   step,
@@ -10,86 +13,258 @@ export default function ContactInfo({
   answers: any;
   nextStep: (newStep: number) => void;
 }) {
+  const [timeOption, setTimeOption] = useState(0);
   return (
     <>
       <FormBox show={step === 5}>
-        <div>
+        <TimeForm>
           <p>
             برای مشاوره و راه‌اندازی نسخۀ رایگان تیکمنت، چه ساعتی با شما تماس
             بگیریم؟
           </p>
           <div>
-            <span>همین امروز</span>
-            <span>روزهای زوج، از ساعت ۱۰ تا ۱۶</span>
-            <span>روزهای فرد، از ساعت ۱۰ تا ۱۶</span>
+            <TimeOption
+              selected={timeOption === 0}
+              onClick={() => {
+                setTimeOption(0);
+              }}
+            >
+              همین امروز
+            </TimeOption>
+            <TimeOption
+              selected={timeOption === 1}
+              onClick={() => {
+                setTimeOption(1);
+              }}
+            >
+              روزهای زوج، از ساعت ۱۰ تا ۱۶
+            </TimeOption>
+            <TimeOption
+              selected={timeOption === 2}
+              onClick={() => {
+                setTimeOption(2);
+              }}
+            >
+              روزهای فرد، از ساعت ۱۰ تا ۱۶
+            </TimeOption>
           </div>
-        </div>
-        <form>
-          <input type="text" placeholder="نام و نام خانوادگی" />
-          <input type="text" placeholder="نام شرکت" />
-          <input type="text" placeholder="شماره تماس" />
-          <input type="submit" value="ثبت" />
-        </form>
+        </TimeForm>
+        <ContactForm
+          onSubmit={(e) => {
+            e.preventDefault();
+            nextStep(6);
+          }}
+        >
+          <FormInput
+            type="text"
+            placeholder="نام و نام خانوادگی"
+            style={{ flexGrow: 1 }}
+          />
+          <FormInput
+            type="text"
+            placeholder="نام شرکت"
+            style={{
+              maxWidth: "40%",
+              marginRight: "21px",
+            }}
+          />
+          <FormInput
+            type="text"
+            placeholder="شماره تماس"
+            style={{ flexGrow: 1 }}
+          />
+          <SubmitButton type="submit" value="ثبت" />
+        </ContactForm>
       </FormBox>
     </>
   );
 }
 
-const OptionBox = styled.section`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const Title = styled.h3<{ show: boolean }>`
-  color: #183573;
-  font-size: 1.5vw;
-  font-weight: 300;
-  opacity: ${({ show }) => (show ? 1 : 0)};
-  position: absolute;
-`;
-
-const Option = styled.div<{ show: boolean; selected: boolean; index: number }>`
-  width: 8.7vw;
-  height: 16vh;
-  background: linear-gradient(180deg, #37abb878 0%, #71fbffa6 100%);
-  border: 2px solid #ffffff99;
-  border-radius: 2vw;
-  backdrop-filter: blur(0px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  opacity: ${({ show, selected }) => (show ? 1 : selected ? 1 : 0)};
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  transform: ${({ index, selected }) =>
-    selected ? "translateX(0vw)" : `translateX(${-index * 10}vw)`};
-
-  z-index: ${({ show, selected }) => (show ? 25 : selected ? 25 : 0)};
-  & > img {
-    width: 55%;
-    height: 55%;
-    object-fit: contain;
-  }
-
-  & > p {
-    margin: 5px 0 0;
-    font-size: 1vw;
-    font-weight: 500;
-    // color: #4af3f8;
-  }
-`;
-
-const SelectedOption = styled(Option)`
-  background: linear-gradient(208deg, #05185e 0%, #4b86ac 100%);
-  box-shadow: 7px 7px 20px #00000038;
-  border: 1px solid #ffffff99;
-`;
-
 const FormBox = styled.div<{ show: boolean }>`
   opacity: ${({ show }) => (show ? 1 : 0)};
 `;
+
+const TimeForm = styled(animated.div)`
+  position: absolute;
+  top: 27vh;
+  height: 20vh;
+  right: -2px;
+  left: -2px;
+  box-sizing: border-box;
+  padding: 39px 31px 39px 47px;
+  background: #f9f8f7;
+  border: 3px solid #75c9db4d;
+  opacity: 1;
+  backdrop-filter: blur(50px);
+
+  p {
+    font-size: 1.5vw;
+    color: #376796;
+    margin: 0 0 10px;
+  }
+
+  & > div {
+    display: flex;
+    align-items: cemter;
+    justify-content: space-between;
+  }
+`;
+
+const TimeOption = styled.span<{ selected: boolean }>`
+  background: ${({ selected }) =>
+    selected
+      ? "linear-gradient(241deg, #05185e 0%, #4b86ac 100%)"
+      : "linear-gradient(180deg, #37ABB878 0%, #71FBFFA6 100%)"};
+  box-shadow: ${({ selected }) =>
+    selected ? "7px 7px 20px #00000038" : "none"};
+  border: ${({ selected }) =>
+    selected ? "1px solid #ffffff99;" : "2px solid #FFFFFF"};
+  border-radius: 36px;
+  font-size: 1.5vw;
+  line-height: 6vh;
+  font-weight: 300;
+  color: ${({ selected }) => (selected ? "#fff" : "#00DDE3")};
+  padding: 0 24px;
+  cursor: pointer;
+`;
+
+const ContactForm = styled(animated.form)`
+  position: absolute;
+  top: 47.5vh;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 26px 44px 79px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
+const FormInput = styled.input`
+  background-color: #fff;
+  height: 5vh;
+  line-height: 5vh;
+  border-radius: 2.5vh;
+  box-shadow: inset 0px 1px 3px #00000029;
+  border: 0.5px solid #cbcbcb;
+  color: #9e9e9e;
+  padding: 0 80px;
+  background-position-x: 90%;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-size: 1.8vw;
+  margin-bottom: 20px;
+  font-size: 1.2vw;
+  position: relative;
+  background-image: url(${PersonIcon});
+
+  &:nth-child(1) {
+    background-position-x: 93%;
+  }
+
+  &:nth-child(3) {
+    background-image: url(${PhoneIcon});
+    background-position-x: 95%;
+  }
+
+  &:focus {
+    border: 0.5px solid #cbcbcb;
+    outline: none;
+  }
+
+  &:before {
+    content: none;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 18px;
+    margin: auto;
+    width: 1.8vw;
+    height: 1.8vw;
+    background-size: contain;
+    background-position: center;
+    background-image: url(${PersonIcon});
+    z-index: 50;
+
+    &:nth-child(3) {
+      background-image: url(${PhoneIcon});
+    }
+  }
+`;
+
+const SubmitButton = styled.input`
+  background: linear-gradient(120deg, #ff5151 0%, #ffd011 100%);
+  box-shadow: 0px 7px 15px #00000033;
+  height: 5vh;
+  line-height: 5vh;
+  border-radius: 2.5vh;
+  border: none;
+  outline: none;
+  font-size: 1.6vw;
+  padding: 0 63px;
+  margin-right: 21px;
+  cursor: pointer;
+  color: #fff;
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+`;
+
+// const OptionBox = styled.section`
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+// `;
+
+// const Title = styled.h3<{ show: boolean }>`
+//   color: #183573;
+//   font-size: 1.5vw;
+//   font-weight: 300;
+//   opacity: ${({ show }) => (show ? 1 : 0)};
+//   position: absolute;
+// `;
+
+// const Option = styled.div<{ show: boolean; selected: boolean; index: number }>`
+//   width: 8.7vw;
+//   height: 16vh;
+//   background: linear-gradient(180deg, #37abb878 0%, #71fbffa6 100%);
+//   border: 2px solid #ffffff99;
+//   border-radius: 2vw;
+//   backdrop-filter: blur(0px);
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   cursor: pointer;
+//   opacity: ${({ show, selected }) => (show ? 1 : selected ? 1 : 0)};
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   margin: auto;
+//   transform: ${({ index, selected }) =>
+//     selected ? "translateX(0vw)" : `translateX(${-index * 10}vw)`};
+
+//   z-index: ${({ show, selected }) => (show ? 25 : selected ? 25 : 0)};
+//   & > img {
+//     width: 55%;
+//     height: 55%;
+//     object-fit: contain;
+//   }
+
+//   & > p {
+//     margin: 5px 0 0;
+//     font-size: 1vw;
+//     font-weight: 500;
+//     // color: #4af3f8;
+//   }
+// `;
+
+// const SelectedOption = styled(Option)`
+//   background: linear-gradient(208deg, #05185e 0%, #4b86ac 100%);
+//   box-shadow: 7px 7px 20px #00000038;
+//   border: 1px solid #ffffff99;
+// `;

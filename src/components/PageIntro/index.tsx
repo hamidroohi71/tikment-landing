@@ -9,6 +9,7 @@ import Title from "./title";
 export default function PageIntro() {
   const { activeSection, nextSection, setActiveSection } = useSection();
   const [active, setActive] = useState(false);
+  const [formOpen, setFormOpen] = useState(false);
 
   useEffect(() => {
     if (active) {
@@ -26,12 +27,16 @@ export default function PageIntro() {
     }
   }, [activeSection]);
 
+  const handleFormOpen = (status: boolean) => {
+    setFormOpen(status);
+  };
+
   return (
     <PageIntroduction active={active}>
       <Background />
       <Mobile />
-      <Title />
-      <StartForm />
+      <Title formOpen={formOpen} />
+      <StartForm handleFormOpen={handleFormOpen} />
     </PageIntroduction>
   );
 }
