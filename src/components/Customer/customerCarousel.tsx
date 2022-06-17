@@ -18,7 +18,7 @@ export default function CustomerCarousel({
   const [currentIndex, setCurrentIndex] = useState(0);
   const customerData = data.customerData.map((customer, index) => (
     <Item
-      selected={currentIndex === index}
+      selected={showComment && currentIndex === index}
       key={customer.name}
       onClick={() => {
         setCurrentIndex(index);
@@ -75,8 +75,10 @@ const Item = styled.div<{ selected: boolean }>`
     width: 70%;
     height: 70%;
     object-fit: contain;
-    filter: ${({selected}) => (selected ? "brightness(0) saturate(100%) invert(11%) sepia(37%) saturate(4190%) hue-rotate(216deg) brightness(96%) contrast(110%)" : "contrast(100%)")};
-
+    filter: ${({ selected }) =>
+      selected
+        ? "brightness(0) saturate(100%) invert(11%) sepia(37%) saturate(4190%) hue-rotate(216deg) brightness(96%) contrast(110%)"
+        : "contrast(100%)"};
   }
 `;
 

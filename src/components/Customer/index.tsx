@@ -4,6 +4,8 @@ import CustomerCarousel from "./customerCarousel";
 import { useSpring, animated, easings } from "react-spring";
 import { useSection } from "../../context/sectionStore";
 
+let timeOut: NodeJS.Timeout;
+
 export default function Customer() {
   const { activeSection, nextSection, setActiveSection } = useSection();
   const [showComment, setShowComment] = useState(false);
@@ -21,7 +23,7 @@ export default function Customer() {
   const totalSentenceStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: activeSection === 2 ? 1 : 0 },
-    delay: activeSection === 2 ? 2500 : 0,
+    delay: activeSection === 2 ? 2000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
@@ -36,9 +38,13 @@ export default function Customer() {
   useEffect(() => {
     if (activeSection === 2) {
       setActive(true);
+      timeOut = setTimeout(() => {
+        setShowComment(true);
+      }, 6000);
     } else if (activeSection !== null) {
       setActive(false);
       setShowComment(false);
+      clearTimeout(timeOut);
     }
   }, [activeSection]);
 

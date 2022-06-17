@@ -40,6 +40,7 @@ export default function CommentSlider({
 
   return (
     <CommentSliderElement>
+      <BackgroundElement />
       <ProfilePicture>{avatarPart}</ProfilePicture>
       <CommentPart>
         <CommentTitle className="TitlePart">{namePart}</CommentTitle>
@@ -53,6 +54,20 @@ const CommentSliderElement = styled.section`
   display: flex;
   align-items: center;
   height: 100%;
+`;
+
+const BackgroundElement = styled.div`
+  width: 27vw;
+  height: 27vw;
+  position: absolute;
+  top: 5vh;
+  right: 5vw;
+  background: linear-gradient(5deg, #ff808036 0%, #ffd01136 100%);
+  box-shadow: inset 0px 0px 99px #80a5ac21;
+  border: 2px solid #ffd01140;
+  opacity: 0.5;
+  backdrop-filter: blur(19px);
+  border-radius: 50%;
 `;
 
 const ProfilePicture = styled.div`
@@ -95,12 +110,13 @@ const Avatar = styled.div<{ selected: boolean; preSelected: boolean }>`
     selected
       ? " translateX(200%)"
       : preSelected
-      ? "translateX(350%)"
+      ? "translateX(320%)"
       : " translateX(-100%)"};
 
   transform-origin: left;
   transition: 1s ease-out;
   transition-delay: 0s;
+  filter: ${({ selected }) => (selected ? " blur(0px)" : " blur(4px)")};
 
   & > img {
     width: 100%;
@@ -127,8 +143,8 @@ const Title = styled.div<{ selected: boolean }>`
 
     & > span {
       position: absolute;
-      right: -41px;
-      left: -41px;
+      right: -60px;
+      left: -60px;
       top: -4px;
       bottom: 0;
       background: linear-gradient(259deg, #37abb8 0%, #71fbff 100%);
@@ -156,7 +172,7 @@ const Title = styled.div<{ selected: boolean }>`
 const Comment = styled.div<{ selected: boolean }>`
   position: absolute;
   & > h2 {
-    font-size: 2.3vw;
+    font-size: 2vw;
     opacity: ${({ selected }) => (selected ? 1 : 0)};
     margin: 0 0 13px;
     color: #292929;
@@ -176,7 +192,7 @@ const Comment = styled.div<{ selected: boolean }>`
   }
 
   & > p {
-    font-size: 1.8vw;
+    font-size: 1.5vw;
     font-weight: 300;
     color: #666666;
     opacity: ${({ selected }) => (selected ? 1 : 0)};
