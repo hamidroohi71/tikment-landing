@@ -3,10 +3,12 @@ import data from "./data.json";
 import ProductSlide from "./ProductSlides";
 import styled from "styled-components";
 import RightArrow from "./rightArrow.svg";
+import { useSection } from "../../context/sectionStore";
 
 export default function ProductSlider() {
   const productsData = data.products;
   const [slideIndex, setSlideIndex] = useState(0);
+  const { activeSection } = useSection();
   // console.log(productsData);
 
   const productSlides = productsData.map((item, index) => (
@@ -32,6 +34,12 @@ export default function ProductSlider() {
       setSlideIndex(0);
     }
   };
+
+  useEffect(() => {
+    if (activeSection && activeSection === 3) {
+      setSlideIndex(0);
+    }
+  }, [activeSection]);
 
   return (
     <ProductSliderSection>

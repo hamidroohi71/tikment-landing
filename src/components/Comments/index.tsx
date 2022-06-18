@@ -27,18 +27,19 @@ export default function Comments() {
     <Comment key={item.id} comment={item} />
   ));
   return (
-    <CommentSection>
+    <CommentSection active={active}>
       <Title>نظرات مشتریان</Title>
       <div>{commentList}</div>
     </CommentSection>
   );
 }
 
-const CommentSection = styled.section`
+const CommentSection = styled.section<{ active: boolean }>`
   height: 100vh;
   overflow: hidden;
   position: absolute;
   transform: translateY(100vh);
+  z-index: ${({ active }) => (active ? 20 : 0)};
 `;
 
 const Title = styled.h2`

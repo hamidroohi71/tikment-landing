@@ -29,7 +29,7 @@ export default function Advantage() {
   const sectionStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : 0 },
-    config: { duration: 1000, easing: easings.easeOutQuart },
+    config: { duration: active ? 0 : 0, easing: easings.easeOutQuart },
   });
 
   const coverStyle = useSpring({
@@ -86,7 +86,7 @@ export default function Advantage() {
   }, [activeSection]);
 
   return (
-    <AdvantageSection style={sectionStyle}>
+    <AdvantageSection active={active} style={sectionStyle}>
       <Background style={maskStyle}>
         <Cover style={coverStyle} />
         <Image src={BackgroundImage} alt="tikment" />
@@ -105,12 +105,13 @@ export default function Advantage() {
   );
 }
 
-const AdvantageSection = styled(animated.section)`
+const AdvantageSection = styled(animated.section)<{ active: boolean }>`
   height: 100vh;
   padding-top: 292px;
   position: absolute;
   top: 0;
   width: 100vw;
+  z-index: ${({ active }) => (active ? 20 : 0)};
 `;
 
 const Background = styled(animated.div)`

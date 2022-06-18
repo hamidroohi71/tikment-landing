@@ -42,7 +42,7 @@ export default function SalesService() {
     </Service>
   ));
   return (
-    <ServicesSection style={sectionStyle}>
+    <ServicesSection active={active} style={sectionStyle}>
       <Title>در کنارتان هستیم</Title>
       <Subtitle>از نصب سخت‌افزار تا آموزش نرم‌افزار و راه‌اندازی</Subtitle>
       <ServicesContainer>{serviceCards}</ServicesContainer>
@@ -50,12 +50,13 @@ export default function SalesService() {
   );
 }
 
-const ServicesSection = styled(animated.section)`
+const ServicesSection = styled(animated.section)<{ active: boolean }>`
   height: 100vh;
   width: 100vw;
   overflow: hidden;
   padding: 13vh 12vw 0;
   position: absolute;
+  z-index: ${({ active }) => (active ? 20 : 0)};
 `;
 
 const Title = styled.h2`

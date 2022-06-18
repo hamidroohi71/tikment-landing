@@ -4,6 +4,8 @@ import ProductSlider from "./ProductSlider";
 import { useSection } from "../../context/sectionStore";
 import { useSpring, animated, easings } from "react-spring";
 
+let timeOut: NodeJS.Timeout;
+
 export default function Product() {
   const [titleOn, setTitleOn] = useState(true);
   const { activeSection, nextSection, setActiveSection } = useSection();
@@ -18,14 +20,14 @@ export default function Product() {
   const titleStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : 0 },
-    delay: 1000,
+    delay: active ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const subTitleStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : 0 },
-    delay: 2000,
+    delay: active ? 2000 : 0,
     config: { duration: 2000, easing: easings.easeOutQuart },
   });
 
@@ -45,17 +47,23 @@ export default function Product() {
 
   useEffect(() => {
     if (activeSection === 3) {
+      setTitleOn(true);
       setActive(true);
-      setTimeout(() => {
+      timeOut = setTimeout(() => {
         setTitleOn(false);
       }, 5000);
     } else if (activeSection !== null) {
       setActive(false);
       setTitleOn(true);
+      clearTimeout(timeOut);
     }
   }, [activeSection]);
+
   return (
-    <ProductSection show={activeSection === 3}>
+    <ProductSection
+      active={active}
+      status={nextSection === 3 ? "show" : nextSection < 3 ? "before" : "after"}
+    >
       <TitlePart style={titlePartStyle}>
         <MainTitle style={titleStyle}>تیکمنت چیست؟</MainTitle>
         <SubTitle style={subTitleStyle}>
@@ -72,7 +80,7 @@ export default function Product() {
   );
 }
 
-const ProductSection = styled.section<{ show: boolean }>`
+const ProductSection = styled.section<{ status: string; active: boolean }>`
   position: absolute;
   height: 100vh;
   width: 100vw;
@@ -85,8 +93,14 @@ const ProductSection = styled.section<{ show: boolean }>`
   border: 1px solid #75c9dbb0;
   backdrop-filter: blur(12px);
   top: 0;
-  transform: ${({ show }) => (show ? "translateY(0)" : "translateY(100vh)")};
+  transform: ${({ status }) =>
+    status === "show"
+      ? "translateY(0vh)"
+      : status === "before"
+      ? "translateY(100vh)"
+      : "translateY(-100vh)"};
   transition: 0.5s ease-in;
+  z-index: ${({ active }) => (active ? 20 : 0)};
 `;
 
 const TitlePart = styled(animated.div)`

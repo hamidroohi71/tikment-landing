@@ -22,7 +22,7 @@ export default function Contact() {
     }
   }, [activeSection]);
   return (
-    <ContactSection>
+    <ContactSection active={active}>
       <h2>برای مشاورهٔ رایگان در اولین فرصت با شما تماس می‌گیریم.</h2>
       <form>
         <p>چه ساعتی برای تماس راحت‌ترید؟</p>
@@ -41,11 +41,12 @@ export default function Contact() {
   );
 }
 
-const ContactSection = styled.section`
+const ContactSection = styled.section<{ active: boolean }>`
   height: 100vh;
   padding: 11vh 21vw;
   display: flex;
   justify-content: center;
   position: absolute;
   transform: translateY(100vh);
+  z-index: ${({ active }) => (active ? 20 : 0)};
 `;
