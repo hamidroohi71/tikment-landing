@@ -15,7 +15,7 @@ export default function CustomerCarousel({
   enterComment: () => void;
 }) {
   const { activeSection } = useSection();
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(2);
   const customerData = data.customerData.map((customer, index) => (
     <Item
       selected={currentIndex === index}
@@ -68,15 +68,23 @@ const Item = styled.div<{ selected: boolean }>`
   justify-content: center;
   margin: 0 2vw;
   cursor: pointer;
-  transform: ${({ selected }) => (selected ? "scale(1.4)" : "scale(1)")};
+  z-index:10000;
+  transform: ${({ selected }) => (!selected ? "scale(1.4)" : "scale(1)")};
   transition: 0.2s ease-out;
 
   & > img {
     width: 70%;
     height: 70%;
     object-fit: contain;
-    filter: ${({selected}) => (selected ? "brightness(0) saturate(100%) invert(11%) sepia(37%) saturate(4190%) hue-rotate(216deg) brightness(96%) contrast(110%)" : "contrast(100%)")};
-  }
+    filter: ${({selected}) => (!selected ? "brightness(0) saturate(100%) invert(11%) sepia(37%) saturate(4190%) hue-rotate(216deg) brightness(96%) contrast(110%)" : "contrast(100%)")};
+    // khode ina az koja avordi? :D
+    // hala egar csse inja khata dashta basha cheto maloom mesha?
+    // compile shodash koo?
+    // az ru compile shoda chetow befahmam sourcesh ku?! asan mesha mega?
+    // z-index chishi bud? ku?
+    // midunam ke hanu nazadam una, blura ra
+    // haaaaaaan, alan ina cheto bokonam too branch
+      }
 `;
 
 const CommentContainer = styled.div<{ show: boolean }>`
