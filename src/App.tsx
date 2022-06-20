@@ -15,9 +15,9 @@ import ScrollBody from "./components/ScrollBody";
 function App() {
   const [loaded, setLoaded] = useState(false);
 
-  setTimeout(() => {
+  const handleLoaded = () => {
     setLoaded(true);
-  }, 21000);
+  };
 
   return (
     <div>
@@ -39,7 +39,7 @@ function App() {
           </ScrollBody>
         </>
       ) : (
-        <InitialVideo />
+        <InitialVideo handleLoaded={handleLoaded} />
       )}
     </div>
   );
