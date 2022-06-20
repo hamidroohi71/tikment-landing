@@ -86,7 +86,7 @@ export default function Advantage() {
   }, [activeSection]);
 
   return (
-    <AdvantageSection style={sectionStyle}>
+    <AdvantageSection style={sectionStyle}> 
       <Background style={maskStyle}>
         <Cover style={coverStyle} />
         <Image src={BackgroundImage} alt="tikment" />
@@ -100,8 +100,8 @@ export default function Advantage() {
           کافیست این ۷ دلیل را تا انتها بخوانید:
         </SubTitle2>
       </TitlePart>
-      <AdvantagesList show={index > 0} index={index} />
-    </AdvantageSection>
+  <AdvantagesList show={index > 0} index={index} />  
+</AdvantageSection> 
   );
 }
 

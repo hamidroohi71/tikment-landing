@@ -69,14 +69,14 @@ const Item = styled.div<{ selected: boolean }>`
   margin: 0 2vw;
   cursor: pointer;
   z-index:10000;
-  transform: ${({ selected }) => (!selected ? "scale(1.4)" : "scale(1)")};
+  transform: ${({ selected }) => (selected ? "scale(1.4)" : "scale(1)")};
   transition: 0.2s ease-out;
 
   & > img {
     width: 70%;
     height: 70%;
     object-fit: contain;
-    filter: ${({selected}) => (!selected ? "brightness(0) saturate(100%) invert(11%) sepia(37%) saturate(4190%) hue-rotate(216deg) brightness(96%) contrast(110%)" : "contrast(100%)")};
+    filter: ${({selected}) => (selected ? "brightness(0) saturate(100%) invert(11%) sepia(37%) saturate(4190%) hue-rotate(216deg) brightness(96%) contrast(110%)" : "contrast(100%)")};
     // khode ina az koja avordi? :D
     // hala egar csse inja khata dashta basha cheto maloom mesha?
     // compile shodash koo?

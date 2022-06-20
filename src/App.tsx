@@ -29,7 +29,7 @@ function App() {
               <PageIntro />
               <Customer />
               <Product />
-              <Advantage />
+              <Advantage /> {/* selected problem is here */}
               <SalesService />
               <Comments />
               <Contact />
