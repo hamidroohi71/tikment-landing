@@ -65,7 +65,7 @@ export default function InitialVideo({
   return (
     <VideoSections>
       {/* <video src={Video} autoPlay={false} muted={true} width="100%" /> */}
-      <Video
+      <LoadingVideo
         show={playIndex === 0}
         src={LoadingGif}
         autoPlay={true}
@@ -157,4 +157,11 @@ const Video = styled.video<{ show: boolean }>`
   right: 0;
   left: 0;
   z-index: ${({ show }) => (show ? 10 : 0)};
+`;
+
+const LoadingVideo = styled(Video)`
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+  margin: auto;
 `;
