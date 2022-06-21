@@ -18,4 +18,9 @@ const MenuLink = styled.a`
   text-align: center;
   font-size: 1.4vw;
   color: #f5f5f5;
+
+  @media (max-width: 480px) {
+    font-size: 24px;
+    font-weight: 100;
+  }
 `;

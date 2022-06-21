@@ -29,4 +29,7 @@ const SocialMediaElement = styled.section`
     border-radius: 50%;
     margin: 0 11px;
   }
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;

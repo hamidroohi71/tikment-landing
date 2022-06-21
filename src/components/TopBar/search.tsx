@@ -32,4 +32,7 @@ const SearchElement = styled.section`
       font-weight: 300;
     }
   }
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;

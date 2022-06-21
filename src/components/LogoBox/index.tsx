@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "./Logo.svg";
+import MobileLogo from "./mobileLogo.svg";
 import styled from "styled-components";
 import { animated, useSpring, easings } from "react-spring";
 
@@ -12,7 +13,7 @@ export default function LogoBox() {
   });
   return (
     <LogoBoxElement style={styleProps}>
-      <img src={Logo} alt="Tikment" />
+      <img src={window.innerWidth > 480 ? Logo : MobileLogo} alt="Tikment" />
     </LogoBoxElement>
   );
 }
@@ -36,5 +37,19 @@ const LogoBoxElement = styled(animated.section)`
     width: 179px;
     height: 27px;
     object-fit: contain;
+  }
+
+  @media (max-width: 480px) {
+    width: 85px;
+    height: 51px;
+    padding-left: 21px;
+    top: 29px;
+
+
+    & > img {
+      width: 27px;
+      height: 29px;
+
+    }
   }
 `;

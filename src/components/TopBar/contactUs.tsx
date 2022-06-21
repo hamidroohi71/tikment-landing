@@ -17,7 +17,9 @@ export default function ContactUs() {
   return (
     <ContactElement>
       <img src={Phone} alt="contact" />
-      <animated.p style={styleProp}>تماس با تیکمنت</animated.p>
+      <animated.p style={styleProp}>
+        {window.innerWidth > 480 ? "تماس با تیکمنت" : "تماس"}
+      </animated.p>
     </ContactElement>
   );
 }
@@ -41,5 +43,18 @@ const ContactElement = styled.section`
     color: #f5f5f5;
     margin: 0;
     margin-right: 21px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 5px 5px 5px 21px;
+
+    & > img {
+      width: 41px;
+      height: 41px;
+    }
+
+    p {
+      font-size: 29px;
+    }
   }
 `;

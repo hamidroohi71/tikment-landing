@@ -41,4 +41,11 @@ const TopBarElement = styled(animated.section)`
   left: 0;
   height: 68px;
   box-shadow: 0px 10px 14px #033f7733;
+
+  @media (max-width: 480px) {
+    top: 29px;
+    width: 76vw;
+    height: 51px;
+    border-radius: 0 26px 26px 0;
+  }
 `;
