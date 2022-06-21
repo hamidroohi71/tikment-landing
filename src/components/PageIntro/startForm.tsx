@@ -15,6 +15,7 @@ export default function StartForm({
   handleFormOpen: (status: boolean) => void;
 }) {
   const [done, setDone] = useState(false);
+  const width = window.innerWidth;
   const [result, setResult] = useState(
     "کارشناسان ما امروز با شما تماس خواهند گرفت"
   );
@@ -42,14 +43,19 @@ export default function StartForm({
 
   const styleProps4 = useSpring({
     to: {
-      transform: activeSection === 1 ? "translateX(0vw)" : "translateX(100vw)",
+      transform:
+        activeSection === 1
+          ? "translateX(0vw)"
+          : width < 480
+          ? "translateX(0vw)"
+          : "translateX(100vw)",
     },
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const styleProps5 = useSpring({
     to: {
-      top: step === 5 ? "20vh" : "57vh",
+      top: step === 5 ? "20vh" : width < 480 ? "0" : "57vh",
     },
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
@@ -118,6 +124,13 @@ const StartFormElement = styled(animated.section)`
   position: absolute;
   top: 57vh;
   bottom: 6vh;
+
+  @media (max-width: 480px) {
+    position: relative;
+    top: 0;
+    margin-top: 596px;
+    right: -20px;
+  }
 `;
 
 const TitleBox = styled.div`
@@ -138,6 +151,12 @@ const Title = styled(animated.h2)`
   padding: 0 59px;
   margin: 0;
   transform-origin: right;
+  @media (max-width: 480px) {
+    font-size: 30px;
+    padding: 0 21px;
+    line-height: 45px;
+    font-weight: 500;
+  }
 `;
 
 const RingSign = styled.span`
@@ -146,9 +165,13 @@ const RingSign = styled.span`
   height: 64px;
   border-radius: 50%;
   background: #fff;
-  border: 19px solid #38acb9;
+  border: 13.5px solid #38acb9;
   margin-left: 13px;
   box-shadow: 0px 7px 15px #00000033;
+  @media (max-width: 480px) {
+    width: 45px;
+    height: 45px;
+  }
 `;
 
 const FormBox = styled(animated.div)`
@@ -163,6 +186,18 @@ const FormBox = styled(animated.div)`
   backdrop-filter: blur(13px);
   transform-origin: top;
   padding: 2.5vw 2vw;
+
+  @media (max-width: 480px) {
+    position: relative;
+    top: -20px;
+    right: 20px;
+    width: 330px;
+    padding: 25px;
+  }
 `;
 
-const FormContent = styled(animated.div)``;
+const FormContent = styled(animated.div)`
+  @media (max-width: 480px) {
+    height: 480px;
+  }
+`;

@@ -57,6 +57,12 @@ const ServicesSection = styled(animated.section)<{ active: boolean }>`
   padding: 13vh 12vw 0;
   position: absolute;
   z-index: ${({ active }) => (active ? 20 : 0)};
+
+  @media (max-width: 480px) {
+    position: static;
+    height: unset;
+    z-index: 20;
+  }
 `;
 
 const Title = styled.h2`

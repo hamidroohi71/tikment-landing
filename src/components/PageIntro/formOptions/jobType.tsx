@@ -43,6 +43,11 @@ export const OptionBox = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 480px) {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
 `;
 
 export const Title = styled.h3<{ show: boolean }>`
@@ -51,6 +56,14 @@ export const Title = styled.h3<{ show: boolean }>`
   font-weight: 300;
   opacity: ${({ show }) => (show ? 1 : 0)};
   position: absolute;
+
+  @media (max-width: 480px) {
+    position: static;
+    font-size: 20px;
+    font-weight: 300;
+    margin: 10px 0 0;
+    letter-spacing: -1px;
+  }
 `;
 
 export const OptionBase = styled.div<{
@@ -85,6 +98,14 @@ export const OptionBase = styled.div<{
     font-size: 1vw;
     font-weight: 500;
     // color: #4af3f8;
+  }
+
+  @media (max-width: 480px) {
+    width: 127px;
+    height: 127px;
+    position: static;
+    transform: translateX(0) !important;
+    margin: 5px;
   }
 `;
 

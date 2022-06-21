@@ -40,6 +40,12 @@ const CommentSection = styled.section<{ active: boolean }>`
   position: absolute;
   transform: translateY(100vh);
   z-index: ${({ active }) => (active ? 20 : 0)};
+
+  @media (max-width: 480px) {
+    position: static;
+    height: unset;
+    z-index: 20;
+  }
 `;
 
 const Title = styled.h2`

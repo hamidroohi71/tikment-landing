@@ -6,10 +6,10 @@ import { useSpring, animated, easings } from "react-spring";
 
 export default function ContactUs() {
   const { activeSection } = useSection();
-
+  const width = window.innerWidth;
   const styleProp = useSpring({
     from: { opacity: 1 },
-    to: { opacity: activeSection === 1 ? 1 : 0 },
+    to: { opacity: activeSection === 1 ? 1 : width < 480 ? 1 : 0 },
     delay: activeSection === 1 ? 500 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });

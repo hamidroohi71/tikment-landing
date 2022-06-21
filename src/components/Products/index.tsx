@@ -8,6 +8,7 @@ let timeOut: NodeJS.Timeout;
 
 export default function Product() {
   const [titleOn, setTitleOn] = useState(true);
+  const width = window.innerWidth;
   const { activeSection, nextSection, setActiveSection } = useSection();
   const [active, setActive] = useState(false);
 
@@ -101,6 +102,13 @@ const ProductSection = styled.section<{ status: string; active: boolean }>`
       : "translateY(-100vh)"};
   transition: 0.5s ease-in;
   z-index: ${({ active }) => (active ? 20 : 0)};
+
+  @media (max-width: 480px) {
+    position: static;
+    height: unset;
+    z-index: 20;
+    transform: translateY(0);
+  }
 `;
 
 const TitlePart = styled(animated.div)`

@@ -52,4 +52,11 @@ const PageIntroduction = styled.section<{ active: boolean }>`
   @media (max-width: 1200px) {
     padding: 19vh 8vw 0;
   }
+
+  @media (max-width: 480px) {
+    padding: 121px 40px;
+    position: static;
+    z-index: 20;
+    height: unset;
+  }
 `;

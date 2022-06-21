@@ -73,4 +73,8 @@ const NavigationBar = styled(animated.section)`
   bottom: 0;
   right: 3vw;
   margin: auto;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;

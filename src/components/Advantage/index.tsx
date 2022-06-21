@@ -112,6 +112,11 @@ const AdvantageSection = styled(animated.section)<{ active: boolean }>`
   top: 0;
   width: 100vw;
   z-index: ${({ active }) => (active ? 20 : 0)};
+  @media (max-width: 480px) {
+    position: static;
+    height: unset;
+    z-index: 20;
+  }
 `;
 
 const Background = styled(animated.div)`

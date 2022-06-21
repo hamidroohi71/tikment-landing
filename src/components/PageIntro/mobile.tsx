@@ -6,9 +6,15 @@ import { useSpring, animated } from "react-spring";
 
 export default function Mobile() {
   const { activeSection } = useSection();
+  const width = window.innerWidth;
   const styleProp = useSpring({
     to: {
-      transform: activeSection === 1 ? "translateX(0%)" : "translateX(-100%)",
+      transform:
+        activeSection === 1
+          ? "translateX(0%)"
+          : width < 480
+          ? "translateX(0%)"
+          : "translateX(-100%)",
     },
     config: { duration: 500 },
   });
@@ -31,5 +37,11 @@ const MobilePhoto = styled(animated.section)`
     width: 100%;
     height: 100%;
     object-fit: contain;
+  }
+
+  @media (max-width: 480px) {
+    width: 70vw;
+    height: 50vh;
+    top: 57vh;
   }
 `;

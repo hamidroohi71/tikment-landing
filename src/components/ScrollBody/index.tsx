@@ -6,6 +6,7 @@ import { useSection } from "../../context/sectionStore";
 const { Lethargy } = require("lethargy");
 
 export default function ScrollBody({ children }: { children: JSX.Element }) {
+  const width = window.innerWidth;
   const { activeSection, setActiveSection, nextSection, setNextSection } =
     useSection();
 
@@ -26,20 +27,22 @@ export default function ScrollBody({ children }: { children: JSX.Element }) {
   const lethargy = new Lethargy();
 
   const bind = useWheel(({ event, last, memo: wait = false }) => {
-    if (!last) {
-      const s = lethargy.check(event);
-      if (s) {
-        if (!wait) {
-          if (s < 0) {
-            nextSectionHnadler();
-          } else if (s > 0) {
-            prevSectionHandler();
+    if (width > 480) {
+      if (!last) {
+        const s = lethargy.check(event);
+        if (s) {
+          if (!wait) {
+            if (s < 0) {
+              nextSectionHnadler();
+            } else if (s > 0) {
+              prevSectionHandler();
+            }
+            return true;
           }
-          return true;
-        }
-      } else return false;
-    } else {
-      return false;
+        } else return false;
+      } else {
+        return false;
+      }
     }
   });
 
@@ -61,6 +64,10 @@ const Body = styled.div`
   height: 100vh;
   overflow: hidden;
   position: relative;
+
+  @media (max-width: 480px) {
+    height: unset;
+  }
 `;
 
 const Content = styled.div<{ section: number }>`
@@ -68,4 +75,9 @@ const Content = styled.div<{ section: number }>`
   height: 100vh;
   overflow: hidden;
   position: absolute;
+
+  @media (max-width: 480px) {
+    position: static;
+    height: unset;
+  }
 `;

@@ -7,6 +7,7 @@ import { useSection } from "../../context/sectionStore";
 let timeOut: NodeJS.Timeout;
 
 export default function Customer() {
+  const width = window.innerWidth;
   const { activeSection, nextSection, setActiveSection } = useSection();
   const [showComment, setShowComment] = useState(false);
   const [active, setActive] = useState(false);
@@ -17,12 +18,12 @@ export default function Customer() {
   });
   const untilTodayStyle = useSpring({
     from: { opacity: 0 },
-    to: { opacity: activeSection === 2 ? 1 : 0 },
+    to: { opacity: activeSection === 2 ? 1 : width < 480 ? 1 : 0 },
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
   const totalSentenceStyle = useSpring({
     from: { opacity: 0 },
-    to: { opacity: activeSection === 2 ? 1 : 0 },
+    to: { opacity: activeSection === 2 ? 1 : width < 480 ? 1 : 0 },
     delay: activeSection === 2 ? 2000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
@@ -95,6 +96,12 @@ const CustomerElement = styled.section<{ active: boolean }>`
   padding: 8vh 10vw;
   position: absolute;
   z-index: ${({ active }) => (active ? 20 : 0)};
+
+  @media (max-width: 480px) {
+    position: relative;
+    height: unset;
+    z-index: 20;
+  }
 `;
 
 const Statistics = styled(animated.div)`

@@ -4,12 +4,15 @@ import styled from "styled-components";
 import { useSection } from "../../context/sectionStore";
 import BackgroundImg from "./backgroundImage.webp";
 import Mask from "./Mask.webp";
+import MobileMask from "./MobileMask.webp";
 
 export default function Background() {
   const { activeSection } = useSection();
   const width = window.innerWidth;
   const maskStyle = useSpring({
-    to: { WebkitMaskSize: width < 1201 ? "120%" : "100%" },
+    to: {
+      WebkitMaskSize: width < 480 ? "200%" : width < 1201 ? "120%" : "100%",
+    },
     from: { WebkitMaskSize: "250%" },
     config: { duration: 2000, easing: easings.easeOutQuart },
   });
@@ -17,7 +20,11 @@ export default function Background() {
   const maskPositionStyle = useSpring({
     to: {
       transform:
-        activeSection === 1 ? "translate(0%, 0%)" : "translate(-100%, -100%)",
+        activeSection === 1
+          ? "translate(0%, 0%)"
+          : width < 480
+          ? "translate(0%, 0%)"
+          : "translate(-100%, -100%)",
     },
     config: { duration: 500 },
   });
@@ -43,5 +50,13 @@ const BackgroundImage = styled(animated.div)`
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  @media (max-width: 480px) {
+    mask-image: url(${MobileMask});
+    mask-position: 100%;
+    left: -10%;
+    height: 870px;
+    top: 389px;
   }
 `;

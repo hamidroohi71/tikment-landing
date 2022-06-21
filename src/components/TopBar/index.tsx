@@ -9,12 +9,23 @@ import { useSection } from "../../context/sectionStore";
 
 export default function TopBar() {
   const { activeSection } = useSection();
+  const width = window.innerWidth;
   const styleProps = useSpring({
     from: {
-      transform: activeSection !== 1 ? "translateX(0%)" : "translateX(-100%)",
+      transform:
+        activeSection !== 1
+          ? "translateX(0%)"
+          : width < 480
+          ? "translateX(0%)"
+          : "translateX(-100%)",
     },
     to: {
-      transform: activeSection === 1 ? "translateX(0%)" : "translateX(-85%)",
+      transform:
+        activeSection === 1
+          ? "translateX(0%)"
+          : width < 480
+          ? "translateX(0%)"
+          : "translateX(-85%)",
     },
     delay: activeSection === 1 ? 500 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
