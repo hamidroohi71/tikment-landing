@@ -21,9 +21,10 @@ export default function InitialVideo({
   const videoRef4 = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    console.log("load index: ", loadList);
-    if (loadList.includes(nextVideo)) {
-      setPlayIndex(nextVideo);
+    if (window.innerWidth > 480) {
+      if (loadList.includes(nextVideo)) {
+        setPlayIndex(nextVideo);
+      }
     }
   }, [nextVideo, loadList.length]);
 
@@ -71,7 +72,12 @@ export default function InitialVideo({
         autoPlay={true}
         muted={true}
         width="100%"
-        loop={true}
+        loop={window.innerWidth > 480 ? true : !domLoaded}
+        onEnded={() => {
+          if (window.innerWidth < 480) {
+            handleLoaded();
+          }
+        }}
       />
       <Video
         ref={videoRef1}
@@ -103,7 +109,7 @@ export default function InitialVideo({
           onLoad(2);
         }}
         onEnded={() => {
-          setNextVideo(3);
+          handleLoaded();
         }}
       />
       <Video
@@ -148,6 +154,10 @@ const VideoSections = styled.section`
   height: 100vh;
   overflow: hidden;
   z-index: 100;
+  background: #fff;
+  @media (max-width: 480px) {
+    background: #fff;
+  }
 `;
 
 const Video = styled.video<{ show: boolean }>`
@@ -156,7 +166,13 @@ const Video = styled.video<{ show: boolean }>`
   bottom: 0;
   right: 0;
   left: 0;
-  z-index: ${({ show }) => (show ? 10 : 0)};
+  margin: auto;
+  z-index: ${({ show }) => (show ? 10 : -1)};
+  opacity: ${({ show }) => (show ? 1 : 0)};
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const LoadingVideo = styled(Video)`
@@ -164,4 +180,8 @@ const LoadingVideo = styled(Video)`
   height: 50%;
   object-fit: contain;
   margin: auto;
+
+  @media (max-width: 480px) {
+    display: block;
+  }
 `;
