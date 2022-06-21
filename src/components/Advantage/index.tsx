@@ -87,10 +87,10 @@ export default function Advantage() {
 
   return (
     <AdvantageSection style={sectionStyle}> 
-      <Background style={maskStyle}>
+{/*      <Background style={maskStyle}>
         <Cover style={coverStyle} />
-        <Image src={BackgroundImage} alt="tikment" />
-      </Background>
+        <Image src={BackgroundImage} alt="tikment" /> 
+     </Background>
       <TitlePart>
         <MainTitle style={titleStyle}>چرا تیکمنت؟</MainTitle>
         <SubTitle style={subTitleStyle}>
@@ -100,8 +100,8 @@ export default function Advantage() {
           کافیست این ۷ دلیل را تا انتها بخوانید:
         </SubTitle2>
       </TitlePart>
-  <AdvantagesList show={index > 0} index={index} />  
-</AdvantageSection> 
+      <AdvantagesList show={index > 0} index={index} /> */}
+    </AdvantageSection> 
   );
 }
 
@@ -111,6 +111,8 @@ const AdvantageSection = styled(animated.section)`
   position: absolute;
   top: 0;
   width: 100vw;
+  color: red;
+  background-color: red;
 `;
 
 const Background = styled(animated.div)`
