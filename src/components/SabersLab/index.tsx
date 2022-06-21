@@ -16,7 +16,7 @@ export default function SabersLab() {
   }, [active, nextSection]);
 
   useEffect(() => {
-    if (activeSection === 100) {
+    if (activeSection === 1) {
       setActive(true);
     } else if (activeSection !== null) {
       setActive(false);

@@ -27,7 +27,7 @@ function App() {
           <ScrollBody>
             <>
               <Header />
-              <PageIntro />
+              {/*<PageIntro />*/}
               <Customer />
               <Product />
               <Advantage /> {/* selected problem is here */}

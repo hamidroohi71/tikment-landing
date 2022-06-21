@@ -19,7 +19,7 @@ export default function PageIntro() {
   }, [active, nextSection]);
 
   useEffect(() => {
-    if (activeSection === 1) {
+    if (activeSection === 100) {
       setActive(true);
     } else if (activeSection !== null) {
       setActive(false);
