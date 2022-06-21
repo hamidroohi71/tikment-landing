@@ -11,6 +11,7 @@ import PageIntro from "./components/PageIntro";
 import Product from "./components/Products";
 import SalesService from "./components/salesService";
 import ScrollBody from "./components/ScrollBody";
+import SabersLab from "./components/SabersLab";
 
 function App() {
   const [loaded, setLoaded] = useState(true);
@@ -30,6 +31,7 @@ function App() {
               <Customer />
               <Product />
               <Advantage /> {/* selected problem is here */}
+              <SabersLab />
               <SalesService />
               <Comments />
               <Contact />

@@ -31,6 +31,8 @@ export default function Navigation() {
   for (let i = 0; i < 7; i++) {
     elements.push(<NavigationDot key={i} selected={i === activeSection - 1} />);
   }
+
+  console.log('elements', {elements});
   return <NavigationBar style={styleProps}>{elements}</NavigationBar>;
 }
 
