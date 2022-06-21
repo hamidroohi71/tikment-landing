@@ -16,7 +16,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
 
   const handleLoaded = () => {
-    setLoaded(true);
+    setLoaded(false);
   };
 
   return (

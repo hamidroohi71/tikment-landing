@@ -149,7 +149,7 @@ export default function InitialVideo({
 }
 
 const VideoSections = styled.section`
-  position: fixed;
+  position: relative;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
