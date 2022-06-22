@@ -31,7 +31,8 @@ export default function InitialVideo({
   }, [nextVideo, loadList.length]);
 
   useEffect(() => {
-    window.addEventListener("load", () => {
+    console.log("here");
+    window.addEventListener("DOMContentLoaded", () => {
       setDomLoaded(true);
     });
   }, []);
@@ -64,6 +65,8 @@ export default function InitialVideo({
   console.log("next video: ", nextVideo);
 
   console.log(loadList.includes(2));
+
+  console.log("domLoaded", domLoaded);
 
   return (
     <VideoSections>
@@ -100,7 +103,6 @@ export default function InitialVideo({
         width="100%"
         loop={!loadList.includes(2)}
         onLoadedData={() => {
-          console.log("loaded");
           onLoad(1);
         }}
         onEnded={() => {
@@ -117,7 +119,6 @@ export default function InitialVideo({
         width="100%"
         loop={!loadList.includes(3)}
         onLoadedData={() => {
-          console.log("loaded");
           onLoad(2);
         }}
         onEnded={() => {
@@ -133,7 +134,6 @@ export default function InitialVideo({
         width="100%"
         loop={!loadList.includes(4)}
         onLoadedData={() => {
-          console.log("loaded");
           onLoad(3);
         }}
         onEnded={() => {
@@ -149,7 +149,6 @@ export default function InitialVideo({
         width="100%"
         loop={!domLoaded}
         onLoadedData={() => {
-          console.log("loaded");
           onLoad(4);
         }}
         onEnded={() => {
