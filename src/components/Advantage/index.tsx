@@ -106,9 +106,9 @@ export default function Advantage() {
 }
 
 const AdvantageSection = styled(animated.section)`
-  height: 80vh;
+  height: 90vh;
   padding-top: 292px;
-  position: absolute;
+  position: relative;
   top: 0;
   width: 100vw;
 //  color: red;

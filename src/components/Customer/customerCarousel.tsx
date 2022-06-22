@@ -70,13 +70,18 @@ const Item = styled.div<{ selected: boolean }>`
   cursor: pointer;
   transform: ${({ selected }) => (selected ? "scale(1.4)" : "scale(1)")};
   transition: 0.2s ease-out;
+  position: relative;
+  z-index: 1000000000002;
+
 
   & > img {
     width: 70%;
     height: 70%;
     object-fit: contain;
     filter: ${({selected}) => (selected ? "brightness(0) saturate(100%) invert(11%) sepia(37%) saturate(4190%) hue-rotate(216deg) brightness(96%) contrast(110%)" : "contrast(100%)")};
-    // khode ina az koja avordi? :D
+    position: relative;
+    z-index: 1000000000001;
+      // khode ina az koja avordi? :D
     // hala egar csse inja khata dashta basha cheto maloom mesha?
     // compile shodash koo?
     // az ru compile shoda chetow befahmam sourcesh ku?! asan mesha mega?
