@@ -6,6 +6,7 @@ import styled from "styled-components";
 import CommentSlider from "./CommentSlider";
 import { useSection } from "../../context/sectionStore";
 import { useSpring, animated, easings } from "react-spring";
+import useWidth from "../../hooks/useWidth";
 
 export default function CustomerCarousel({
   enterComment,
@@ -14,6 +15,7 @@ export default function CustomerCarousel({
   showComment: boolean;
   enterComment: () => void;
 }) {
+  const width = useWidth();
   const { activeSection } = useSection();
   const [currentIndex, setCurrentIndex] = useState(0);
   const customerData = data.customerData.map((customer, index) => (
@@ -31,7 +33,7 @@ export default function CustomerCarousel({
   const carouselStyle = useSpring({
     from: { opacity: 0, transform: "translateX(-10vw)" },
     to: {
-      opacity: activeSection === 2 ? 1 : 0,
+      opacity: activeSection === 2 ? 1 : width < 480 ? 1 : 0,
       transform: activeSection === 2 ? "translateX(0vw)" : "translateX(2vw)",
     },
     delay: activeSection === 2 ? 2000 : 0,
@@ -54,6 +56,11 @@ const CarouselSection = styled(animated.section)`
   display: flex;
   align-items: center;
   margin-top: 74px;
+
+  @media (max-width: 480px) {
+    height: 20vh;
+    width: 300vw;
+  }
 `;
 const Item = styled.div<{ selected: boolean }>`
   width: 9vw;
@@ -80,6 +87,13 @@ const Item = styled.div<{ selected: boolean }>`
         ? "brightness(0) saturate(100%) invert(11%) sepia(37%) saturate(4190%) hue-rotate(216deg) brightness(96%) contrast(110%)"
         : "contrast(100%)"};
   }
+
+  @media (max-width: 480px) {
+    width: 67px;
+    height: 67px;
+    transform: ${({ selected }) => (selected ? "scale(2)" : "scale(1)")};
+    margin: ${({ selected }) => (selected ? "0 10vw" : "0 2vw")};
+  }
 `;
 
 const CommentContainer = styled.div<{ show: boolean }>`
@@ -89,4 +103,10 @@ const CommentContainer = styled.div<{ show: boolean }>`
   left: 10vw;
   right: 10vw;
   bottom: 32vh;
+
+  @media (max-width: 480px) {
+    display: block;
+    position: static;
+    height: 80vh;
+  }
 `;

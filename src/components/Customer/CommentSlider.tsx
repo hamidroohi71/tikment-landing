@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import data from "./customerData.json";
-import BubbleBack from "../../assets/image/bubbleBack.svg";
 
 export default function CommentSlider({
   selectedIndex,
@@ -54,6 +53,11 @@ const CommentSliderElement = styled.section`
   display: flex;
   align-items: center;
   height: 100%;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    position: relative;
+  }
 `;
 
 const BackgroundElement = styled.div`
@@ -68,6 +72,10 @@ const BackgroundElement = styled.div`
   opacity: 0.5;
   backdrop-filter: blur(19px);
   border-radius: 50%;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const ProfilePicture = styled.div`
@@ -76,6 +84,9 @@ const ProfilePicture = styled.div`
   height: 100%;
   overflow: hidden;
   margin-left: 5%;
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 const CommentPart = styled.div`
@@ -84,6 +95,12 @@ const CommentPart = styled.div`
   height: 100%;
   flex-direction: column;
   padding: 0 56px 56px;
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 2vw;
+    text-align: center;
+    height: fit-content;
+  }
 `;
 
 const CommentTitle = styled.div`
@@ -95,6 +112,9 @@ const CommentTitle = styled.div`
 const CommentBox = styled.div`
   position: relative;
   height: 65%;
+  @media (max-width: 480px) {
+    position: static;
+  }
 `;
 
 const Avatar = styled.div<{ selected: boolean; preSelected: boolean }>`
@@ -127,6 +147,29 @@ const Avatar = styled.div<{ selected: boolean; preSelected: boolean }>`
     transform-origin: right;
     transition: 1s ease-out;
     transition-delay: 0s;
+  }
+
+  @media (max-width: 480px) {
+    width: 33px;
+    height: 33px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    top: 50%;
+    transform: ${({ selected, preSelected }) =>
+      selected
+        ? " translateX(0)"
+        : preSelected
+        ? "translateX(400%)"
+        : " translateX(-400%)"};
+    filter: none;
+
+    & > img {
+      overflow: hidden;
+      transform: ${({ selected, preSelected }) =>
+        selected ? "scale(8) " : "scale(1)"};
+      transform-origin: center;
+    }
   }
 `;
 
@@ -167,6 +210,30 @@ const Title = styled.div<{ selected: boolean }>`
     transition: 1s ease-out;
     transition-delay: ${({ selected }) => (selected ? "1.1s" : "0s")};
   }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    & > h2 {
+      font-size: 22px;
+      line-height: 35px;
+      letter-spacing: -1px;
+      text-align: center;
+
+      & > span {
+        right: -1vw;
+        left: -1vw;
+        top: -4px;
+        bottom: 0;
+        text-align: center;
+        border-radius: 18px;
+      }
+    }
+
+    & > h3 {
+      font-size: 22px;
+      line-height: 35px;
+    }
+  }
 `;
 
 const Comment = styled.div<{ selected: boolean }>`
@@ -201,6 +268,25 @@ const Comment = styled.div<{ selected: boolean }>`
     position: relative;
     transition: 1s ease-out;
     transition-delay: ${({ selected }) => (selected ? "1.1s" : "0s")};
+  }
+
+  @media (max-width: 480px) {
+    top: 100px;
+    padding: 25px;
+    box-sizing: border-box;
+    & > h2 {
+      font-size: 25px;
+      color: #183573;
+      font-weight: 500;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    & > p {
+      display: none;
+    }
   }
 `;
 
@@ -246,5 +332,44 @@ const CommentBubble = styled.div<{ selected: boolean }>`
     right: 0;
     background-color: #fff;
     z-index: 5;
+  }
+
+  @media (max-width: 480px) {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: 8px 8px 36px #a0bdc180;
+
+    &::after,
+    &::before {
+      width: 40px;
+      height: 40px;
+      transform: rotate(45deg);
+      position: absolute;
+      top: unset;
+      bottom: -20px;
+      right: 0;
+      left: 0;
+      margin: auto;
+      background-color: #fff;
+    }
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border: none;
+      position: absolute;
+      transform: scale(1.5);
+      transform-origin: center;
+      bottom: 10px;
+      right: 0;
+      left: 0;
+      margin: auto;
+      background-color: #fff;
+      z-index: 5;
+    }
   }
 `;

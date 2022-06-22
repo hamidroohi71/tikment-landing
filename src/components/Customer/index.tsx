@@ -207,6 +207,7 @@ const TotalNumSentence = styled(animated.span)`
 `;
 
 const MobileCircle = styled.div`
+  display: none;
   position: absolute;
   top: 0;
   width: 80vw;
@@ -218,4 +219,8 @@ const MobileCircle = styled.div`
   opacity: 0.5;
   backdrop-filter: blur(19px);
   z-index: -1;
+
+  @media (max-screen) {
+    display: block;
+  }
 `;
