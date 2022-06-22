@@ -68,19 +68,29 @@ export default function InitialVideo({
   return (
     <VideoSections>
       {/* <video src={Video} autoPlay={false} muted={true} width="100%" /> */}
-      <LoadingVideo
-        show={playIndex === 0}
-        src={LoadingGif}
-        autoPlay={true}
-        muted={true}
-        width="100%"
-        loop={width > 480 ? true : !domLoaded}
-        onEnded={() => {
-          if (width < 480) {
+      {width > 480 ? (
+        <LoadingVideo
+          show={playIndex === 0}
+          src={LoadingGif}
+          autoPlay={true}
+          muted={true}
+          width="100%"
+          loop={true}
+        />
+      ) : (
+        <LoadingVideo
+          show={playIndex === 0}
+          src={LoadingGif}
+          autoPlay={true}
+          muted={true}
+          width="100%"
+          loop={!domLoaded}
+          onEnded={() => {
             handleLoaded();
-          }
-        }}
-      />
+          }}
+        />
+      )}
+
       <Video
         ref={videoRef1}
         show={playIndex === 1}
