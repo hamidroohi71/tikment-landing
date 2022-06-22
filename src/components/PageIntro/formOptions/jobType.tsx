@@ -80,11 +80,10 @@ export const OptionBase = styled.div<{
 }>`
   width: 8.7vw;
   height: 16vh;
-  background: linear-gradient(180deg, #37abb878 0%, #71fbffa6 100%);
   background: ${({ selected }) =>
     selected
       ? "linear-gradient(208deg, #05185E 0%, #4B86AC 100%)"
-      : "linear-gradient(180deg, #37abb878 0%, #71fbffa6 100%)"};
+      : "linear-gradient(180deg,rgb(55 171 184 / 8%) 0%,#71fbff1f 100%)"};
   border: 2px solid #ffffff99;
   border-radius: 2vw;
   backdrop-filter: blur(0px);
