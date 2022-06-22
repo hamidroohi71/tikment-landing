@@ -3,12 +3,13 @@ import styled from "styled-components";
 import ProductSlider from "./ProductSlider";
 import { useSection } from "../../context/sectionStore";
 import { useSpring, animated, easings } from "react-spring";
+import useWidth from "../../hooks/useWidth";
 
 let timeOut: NodeJS.Timeout;
 
 export default function Product() {
   const [titleOn, setTitleOn] = useState(true);
-  const width = window.innerWidth;
+  const width = useWidth();
   const { activeSection, nextSection, setActiveSection } = useSection();
   const [active, setActive] = useState(false);
 

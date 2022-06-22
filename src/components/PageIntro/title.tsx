@@ -3,10 +3,11 @@ import styled from "styled-components";
 import TikmentName from "./tikment.png";
 import { animated, useSpring, easings } from "react-spring";
 import { useSection } from "../../context/sectionStore";
+import useWidth from "../../hooks/useWidth";
 
 export default function Title({ formOpen }: { formOpen: boolean }) {
   const { activeSection } = useSection();
-  const width = window.innerWidth;
+  const width = useWidth();
   const styleProps1 = useSpring({
     from: { transform: "translateX(100%)", opacity: 0 },
     to: { transform: "translateX(0%)", opacity: 1 },

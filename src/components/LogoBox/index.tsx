@@ -3,8 +3,10 @@ import Logo from "./Logo.svg";
 import MobileLogo from "./mobileLogo.svg";
 import styled from "styled-components";
 import { animated, useSpring, easings } from "react-spring";
+import useWidth from "../../hooks/useWidth";
 
 export default function LogoBox() {
+  const width = useWidth();
   const styleProps = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
@@ -13,7 +15,7 @@ export default function LogoBox() {
   });
   return (
     <LogoBoxElement style={styleProps}>
-      <img src={window.innerWidth > 480 ? Logo : MobileLogo} alt="Tikment" />
+      <img src={width > 480 ? Logo : MobileLogo} alt="Tikment" />
     </LogoBoxElement>
   );
 }

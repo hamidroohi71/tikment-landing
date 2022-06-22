@@ -6,10 +6,11 @@ import SocailMedia from "./socialMedia";
 import styled from "styled-components";
 import { animated, useSpring, easings } from "react-spring";
 import { useSection } from "../../context/sectionStore";
+import useWidth from "../../hooks/useWidth";
 
 export default function TopBar() {
   const { activeSection } = useSection();
-  const width = window.innerWidth;
+  const width = useWidth();
   const styleProps = useSpring({
     from: {
       transform:

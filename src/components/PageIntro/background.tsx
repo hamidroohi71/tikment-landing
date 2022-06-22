@@ -2,13 +2,14 @@ import React from "react";
 import { animated, useSpring, easings } from "react-spring";
 import styled from "styled-components";
 import { useSection } from "../../context/sectionStore";
+import useWidth from "../../hooks/useWidth";
 import BackgroundImg from "./backgroundImage.webp";
 import Mask from "./Mask.webp";
 import MobileMask from "./MobileMask.webp";
 
 export default function Background() {
   const { activeSection } = useSection();
-  const width = window.innerWidth;
+  const width = useWidth();
   const maskStyle = useSpring({
     to: {
       WebkitMaskSize: width < 480 ? "200%" : width < 1201 ? "120%" : "100%",

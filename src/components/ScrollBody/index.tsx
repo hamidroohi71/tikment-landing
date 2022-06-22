@@ -3,10 +3,11 @@ import styled from "styled-components";
 import { useWheel } from "react-use-gesture";
 import Navigation from "../navigation";
 import { useSection } from "../../context/sectionStore";
+import useWidth from "../../hooks/useWidth";
 const { Lethargy } = require("lethargy");
 
 export default function ScrollBody({ children }: { children: JSX.Element }) {
-  const width = window.innerWidth;
+  const width = useWidth();
   const { activeSection, setActiveSection, nextSection, setNextSection } =
     useSection();
 

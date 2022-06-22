@@ -3,10 +3,11 @@ import Phone from "./phone.svg";
 import styled from "styled-components";
 import { useSection } from "../../context/sectionStore";
 import { useSpring, animated, easings } from "react-spring";
+import useWidth from "../../hooks/useWidth";
 
 export default function ContactUs() {
   const { activeSection } = useSection();
-  const width = window.innerWidth;
+  const width = useWidth();
   const styleProp = useSpring({
     from: { opacity: 1 },
     to: { opacity: activeSection === 1 ? 1 : width < 480 ? 1 : 0 },
@@ -14,11 +15,13 @@ export default function ContactUs() {
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
+  console.log(width);
+
   return (
     <ContactElement>
       <img src={Phone} alt="contact" />
       <animated.p style={styleProp}>
-        {window.innerWidth > 480 ? "تماس با تیکمنت" : "تماس"}
+        {width > 480 ? "تماس با تیکمنت" : "تماس"}
       </animated.p>
     </ContactElement>
   );

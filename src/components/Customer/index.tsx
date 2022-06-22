@@ -3,11 +3,12 @@ import styled from "styled-components";
 import CustomerCarousel from "./customerCarousel";
 import { useSpring, animated, easings } from "react-spring";
 import { useSection } from "../../context/sectionStore";
+import useWidth from "../../hooks/useWidth";
 
 let timeOut: NodeJS.Timeout;
 
 export default function Customer() {
-  const width = window.innerWidth;
+  const width = useWidth();
   const { activeSection, nextSection, setActiveSection } = useSection();
   const [showComment, setShowComment] = useState(false);
   const [active, setActive] = useState(false);

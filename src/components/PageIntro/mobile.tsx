@@ -3,10 +3,11 @@ import MobileImage from "./mobile.webp";
 import styled from "styled-components";
 import { useSection } from "../../context/sectionStore";
 import { useSpring, animated } from "react-spring";
+import useWidth from "../../hooks/useWidth";
 
 export default function Mobile() {
   const { activeSection } = useSection();
-  const width = window.innerWidth;
+  const width = useWidth();
   const styleProp = useSpring({
     to: {
       transform:

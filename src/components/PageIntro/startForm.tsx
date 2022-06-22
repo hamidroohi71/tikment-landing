@@ -8,6 +8,7 @@ import styled from "styled-components";
 import ProgressBar from "./formOptions/progressBar";
 import { useSpring, animated, easings } from "react-spring";
 import { useSection } from "../../context/sectionStore";
+import useWidth from "../../hooks/useWidth";
 
 export default function StartForm({
   handleFormOpen,
@@ -15,7 +16,7 @@ export default function StartForm({
   handleFormOpen: (status: boolean) => void;
 }) {
   const [done, setDone] = useState(false);
-  const width = window.innerWidth;
+  const width = useWidth();
   const [result, setResult] = useState(
     "کارشناسان ما امروز با شما تماس خواهند گرفت"
   );

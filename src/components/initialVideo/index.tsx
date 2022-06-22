@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import useWidth from "../../hooks/useWidth";
 import Video1 from "./IntroVideo01.mp4";
 import Video2 from "./IntroVideo02.mp4";
 import Video3 from "./IntroVideo03.mp4";
@@ -19,9 +20,10 @@ export default function InitialVideo({
   const videoRef2 = useRef<HTMLVideoElement>(null);
   const videoRef3 = useRef<HTMLVideoElement>(null);
   const videoRef4 = useRef<HTMLVideoElement>(null);
+  const width = useWidth();
 
   useEffect(() => {
-    if (window.innerWidth > 480) {
+    if (width > 480) {
       if (loadList.includes(nextVideo)) {
         setPlayIndex(nextVideo);
       }
@@ -72,9 +74,9 @@ export default function InitialVideo({
         autoPlay={true}
         muted={true}
         width="100%"
-        loop={window.innerWidth > 480 ? true : !domLoaded}
+        loop={width > 480 ? true : !domLoaded}
         onEnded={() => {
-          if (window.innerWidth < 480) {
+          if (width < 480) {
             handleLoaded();
           }
         }}
