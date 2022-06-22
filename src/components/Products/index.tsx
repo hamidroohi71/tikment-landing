@@ -35,7 +35,7 @@ export default function Product() {
 
   const ProductStyle = useSpring({
     from: { opacity: 0 },
-    to: { opacity: titleOn ? 0 : 1 },
+    to: { opacity: titleOn ? (width < 480 ? 1 : 0) : 1 },
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
@@ -109,6 +109,7 @@ const ProductSection = styled.section<{ status: string; active: boolean }>`
     height: unset;
     z-index: 20;
     transform: translateY(0);
+    height: 120vh;
   }
 `;
 
@@ -119,6 +120,10 @@ const TitlePart = styled(animated.div)`
   justify-content: center;
   padding: 0 12.5vw;
   position: absolute;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const MainTitle = styled(animated.h2)`
@@ -153,4 +158,8 @@ const ProductPart = styled(animated.div)`
   flex-direction: column;
   justify-content: center;
   position: absolute;
+
+  @media (max-width: 480px) {
+    position: relative;
+  }
 `;

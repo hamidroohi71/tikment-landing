@@ -54,6 +54,10 @@ const ProductSliderSection = styled.section`
   position: absolute;
   width: 100vw;
   height: 100vh;
+  @media (max-width: 480px) {
+    height: 150vh;
+    top: 0;
+  }
 `;
 
 const PrevSlideBtn = styled.div`

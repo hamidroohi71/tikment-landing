@@ -41,6 +41,10 @@ const ProDuctSlideSection = styled(animated.section)`
   position: absolute;
   width: 100vw;
   height: 100vh;
+
+  @media (max-width: 480px) {
+    height: fit-content;
+  }
 `;
 
 const Image1 = styled.img`
@@ -98,6 +102,15 @@ const BenefitBox = styled.div<{ index: number }>`
       : index === 4
       ? "72.5vw"
       : "0"};
+
+  @media (max-width: 480px) {
+    position: static;
+    padding-right: 64px;
+
+    &:first-of-type {
+      margin-top: 484px;
+    }
+  }
 `;
 
 const BenefitIcon = styled.img`
@@ -109,6 +122,10 @@ const BenefitIcon = styled.img`
 const BenefitTitle = styled.p`
   font-size: 2.1vw;
   color: #183573;
+
+  &:first-of-type {
+    font-size: 23px;
+  }
 `;
 
 const ProductName = styled.h2`
@@ -120,6 +137,13 @@ const ProductName = styled.h2`
   left: 8vw;
   margin: auto;
   width: fit-content;
+
+  @media (max-width: 480px) {
+    top: 45px;
+    bottom: unset;
+    font-size: 35px;
+    left: 0;
+  }
 `;
 
 const NameIcon = styled.span`
@@ -133,4 +157,10 @@ const NameIcon = styled.span`
   top: 0;
   bottom: 0;
   margin: auto;
+  @media (max-width: 480px) {
+    width: 42px;
+    height: 42px;
+    left: unset;
+    right: -40px;
+  }
 `;
