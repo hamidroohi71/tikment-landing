@@ -14,7 +14,7 @@ export default function Customer() {
   const [active, setActive] = useState(false);
   const styleProps2 = useSpring({
     from: { opacity: 1 },
-    to: { opacity: showComment ? 0 : 1 },
+    to: { opacity: showComment ? (width > 480 ? 0 : 1) : 1 },
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
   const untilTodayStyle = useSpring({
@@ -53,19 +53,23 @@ export default function Customer() {
   const AnimatedTotalNum = animated(TotalNumber);
 
   const num = useSpring({
-    num: active ? 34561 : 0,
-    config: { duration: active ? 2000 : 0, easing: easings.easeOutQuart },
+    num: active ? 34561 : width < 480 ? 34561 : 0,
+    config: {
+      duration: active ? 2000 : 0,
+      easing: easings.easeOutQuart,
+    },
   });
 
   return (
     <CustomerElement active={active}>
+      <MobileCircle />
       <Statistics style={styleProps2}>
         <UntilToday style={untilTodayStyle}>
           تا امروز
           <Date>1401/03/03</Date>
         </UntilToday>
         <MiddleText style={untilTodayStyle}>
-          سیستم حضور و غیاب تیکمنت
+          سیستم حضور و غیاب تیکمنت <span>در</span>
         </MiddleText>
         <TotalCustomer>
           <animated.span style={untilTodayStyle}>در</animated.span>
@@ -102,6 +106,7 @@ const CustomerElement = styled.section<{ active: boolean }>`
     position: relative;
     height: unset;
     z-index: 20;
+    padding: 20px 10vw 0;
   }
 `;
 
@@ -115,6 +120,12 @@ const UntilToday = styled(animated.p)`
   color: #183573;
   display: flex;
   align-items: center;
+
+  @media (max-width: 480px) {
+    display: block;
+    font-size: 42px;
+    margin: 0;
+  }
 `;
 
 const Date = styled.span`
@@ -130,20 +141,81 @@ const Date = styled.span`
   opacity: 1;
   backdrop-filter: blur(2px);
   margin-right: 25px;
+
+  @media (max-width: 480px) {
+    display: block;
+    font-size: 65px;
+    line-height: 87px;
+    margin-right: 0;
+  }
 `;
 
 const MiddleText = styled(animated.p)`
   font-size: 4vw;
   color: #e67205;
   margin: 0;
+
+  span {
+    display: none;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 65px;
+    letter-spacing: -2px;
+
+    span {
+      color: #183573;
+      font-size: 50px;
+      display: inline-block;
+    }
+  }
 `;
 
-const TotalCustomer = styled(UntilToday)``;
+const TotalCustomer = styled(UntilToday)`
+  @media (max-width: 480px) {
+    margin: 0;
+    span {
+      display: none;
+    }
+  }
+`;
 
 const TotalNumber = styled(Date)`
   margin: 0 25px;
   width: 19vw;
   color: #3b0002;
+  @media (max-width: 480px) {
+    display: block !important;
+    width: 100%;
+    font-size: 127px;
+    padding: 5px 10px;
+    margin: 0;
+    text-align: center;
+    line-height: 150px;
+  }
 `;
 
-const TotalNumSentence = styled(animated.span)``;
+const TotalNumSentence = styled(animated.span)`
+  @media (max-width: 480px) {
+    display: block !important;
+    width: 100%;
+    font-size: 35px;
+    padding: 5px 10px;
+    margin: 0;
+    letter-spacing: -2px;
+  }
+`;
+
+const MobileCircle = styled.div`
+  position: absolute;
+  top: 0;
+  width: 80vw;
+  height: 80vw;
+  border-radius: 50%;
+  background: linear-gradient(5deg, #ff808036 0%, #ffd01136 100%);
+  box-shadow: inset 0px 0px 99px #80a5ac21;
+  border: 2px solid #ffd01140;
+  opacity: 0.5;
+  backdrop-filter: blur(19px);
+  z-index: -1;
+`;
