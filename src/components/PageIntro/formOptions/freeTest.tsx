@@ -38,7 +38,7 @@ export default function FreeTest({
             addAnswer(step > 3 && answers[3] === 0 ? null : 1, 3);
           }}
         >
-          <img src="/fastContactForm/freeTest/yes.svg" alt="No Tikment" />
+          <img src="/fastContactForm/freeTest/no.svg" alt="No Tikment" />
           <p>خیر</p>
         </Option>
       </OptionBox>
