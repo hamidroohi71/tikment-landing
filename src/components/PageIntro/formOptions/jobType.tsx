@@ -136,10 +136,11 @@ export const OptionBase = styled.div<{
   }
 
   & > p {
-    margin: 5px 0 0;
+    margin: 0 0 10px;
     font-size: 1vw;
     font-weight: 500;
     // color: #4af3f8;
+    color: ${({ selected }) => (selected ? "#fff" : "#2BE2F4")};
   }
 
   @media (max-width: 480px) {
