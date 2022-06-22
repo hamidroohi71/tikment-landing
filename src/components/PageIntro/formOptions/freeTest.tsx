@@ -56,8 +56,12 @@ const Option = styled(OptionBase)`
         : "translateX(-30vw)"
       : `translateX(${-index * 10 - 30}vw)`};
 
-  width: ${({ index, selected, lastStep }) =>
+  width: ${({ selected, lastStep }) =>
     selected ? (lastStep ? "18.4vw" : "8.7vw") : "8.7vw"};
+
+  @media (max-width: 480px) {
+    width: 127px;
+  }
 `;
 
 const Title = styled(TitleBase)`

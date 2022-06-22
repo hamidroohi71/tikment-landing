@@ -8,13 +8,13 @@ export default function useWidth() {
   };
 
   useEffect(() => {
-    console.log("width:", width);
+    // console.log("width:", width);
   }, [width]);
 
   useEffect(() => {
     window.addEventListener("resize", checkSize);
 
-    return window.removeEventListener("resize", checkSize);
+    // return window.removeEventListener("resize", checkSize);
   }, []);
 
   return width;

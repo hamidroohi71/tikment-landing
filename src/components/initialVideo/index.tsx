@@ -31,7 +31,6 @@ export default function InitialVideo({
   }, [nextVideo, loadList.length]);
 
   useEffect(() => {
-    console.log("here");
     window.addEventListener("DOMContentLoaded", () => {
       setDomLoaded(true);
     });
@@ -60,13 +59,13 @@ export default function InitialVideo({
     }
   }, [playIndex]);
 
-  console.log("load index: ", loadList);
-  console.log("play index: ", playIndex);
-  console.log("next video: ", nextVideo);
+  // console.log("load index: ", loadList);
+  // console.log("play index: ", playIndex);
+  // console.log("next video: ", nextVideo);
 
-  console.log(loadList.includes(2));
+  // console.log(loadList.includes(2));
 
-  console.log("domLoaded", domLoaded);
+  // console.log("domLoaded", domLoaded);
 
   return (
     <VideoSections>

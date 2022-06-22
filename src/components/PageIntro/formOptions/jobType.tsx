@@ -50,6 +50,8 @@ export const OptionBox = styled.section`
   @media (max-width: 480px) {
     flex-wrap: wrap;
     justify-content: flex-start;
+    position: absolute;
+    top: 80px;
   }
 `;
 
@@ -62,11 +64,11 @@ export const TitleBase = styled.h3<{ show: boolean }>`
   margin: 0;
 
   @media (max-width: 480px) {
-    position: static;
     font-size: 20px;
     font-weight: 300;
     margin: 10px 0 0;
     letter-spacing: -1px;
+    transform: translateX(0) !important;
   }
 `;
 
@@ -112,12 +114,6 @@ export const OptionBase = styled.div<{
     opacity: ${({ selected }) => (selected ? 1 : 0)};
   }
 
-  & > img {
-    width: 55%;
-    height: 55%;
-    object-fit: contain;
-  }
-
   & > svg {
     display: block;
     width: 4vw;
@@ -149,6 +145,21 @@ export const OptionBase = styled.div<{
     position: static;
     transform: translateX(0) !important;
     margin: 5px;
+    opacity: ${({ show }) => (show ? 1 : 0)} !important;
+
+    & > svg {
+      width: 50px;
+      height: 50px;
+
+      & > use {
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    & > p {
+      font-size: 15px;
+    }
   }
 `;
 

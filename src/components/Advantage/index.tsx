@@ -24,7 +24,7 @@ export default function Advantage() {
     }
   }, [activeSection]);
 
-  console.log("index:", index, "activeSection:", activeSection);
+  // console.log("index:", index, "activeSection:", activeSection);
 
   const sectionStyle = useSpring({
     from: { opacity: 0 },
