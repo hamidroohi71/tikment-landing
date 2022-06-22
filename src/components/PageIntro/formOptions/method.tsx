@@ -11,7 +11,7 @@ export default function Method({
 }: {
   step: number;
   nextStep: (newStep: number) => void;
-  addAnswer: (answer: any) => void;
+  addAnswer: (answer: any, index: number) => void;
   answers: any;
 }) {
   const methodElements = data.method.map((method, index) => (
@@ -20,12 +20,14 @@ export default function Method({
       show={step === 3}
       selected={step > 3 && answers[2] === index}
       onClick={() => {
-        nextStep(4);
-        addAnswer(index);
+        nextStep(step > 3 && answers[2] === index ? 3 : 4);
+        addAnswer(index, 2);
       }}
       key={method.method}
     >
-      <img src={method.logo} alt={method.method} />
+      <svg>
+        <use width="100%" height="100%" href={method.logo} />
+      </svg>
       <p>{method.method}</p>
     </Option>
   ));

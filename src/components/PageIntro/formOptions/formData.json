@@ -2,55 +2,55 @@
   "jobType": [
     {
       "type": "درمانی",
-      "logo": "/fastContactForm/jobType/medical.svg"
+      "logo": "/fastContactForm/jobType/medical.svg#medical"
     },
     {
       "type": "خدماتی",
-      "logo": "/fastContactForm/jobType/service.svg"
+      "logo": "/fastContactForm/jobType/service.svg#service"
     },
     {
       "type": "صنعتی",
-      "logo": "/fastContactForm/jobType/industrial.svg"
+      "logo": "/fastContactForm/jobType/industrial.svg#industrial"
     },
     {
       "type": "آموزشی",
-      "logo": "/fastContactForm/jobType/educational.svg"
+      "logo": "/fastContactForm/jobType/educational.svg#educational"
     },
     {
       "type": "تجاری",
-      "logo": "/fastContactForm/jobType/commercial.svg"
+      "logo": "/fastContactForm/jobType/commercial.svg#commercial"
     }
   ],
   "number": [
     {
       "number": "1-50",
-      "logo": "/fastContactForm/number/person.svg"
+      "logo": "/fastContactForm/number/person.svg#person"
     },
     {
       "number": "50-100",
-      "logo": "/fastContactForm/number/person.svg"
+      "logo": "/fastContactForm/number/person.svg#person"
     },
     {
       "number": "100-500",
-      "logo": "/fastContactForm/number/person.svg"
+      "logo": "/fastContactForm/number/person.svg#person"
     },
     {
       "number": "+500",
-      "logo": "/fastContactForm/number/person.svg"
+      "logo": "/fastContactForm/number/person.svg#person"
     }
   ],
   "method": [
     {
       "method": "تشخیص چهره",
-      "logo": "/fastContactForm/method/faceDetection.svg"
+      "logo": "/fastContactForm/method/faceDetection.svg#faceDetection"
     },
     {
       "method": "اپلیکیشن موبایل",
-      "logo": "/fastContactForm/method/mobileApp.svg"
+      "logo": "/fastContactForm/method/mobileApp.svg#mobileApp"
     },
     {
       "method": "اثر انگشت",
-      "logo": "/fastContactForm/method/fingerPrint.svg"
+      "logo": "/fastContactForm/method/fingerPrint.svg#fingerPrint"
     }
   ]
 }

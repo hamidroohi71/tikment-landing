@@ -11,7 +11,7 @@ export default function Number({
 }: {
   step: number;
   nextStep: (newStep: number) => void;
-  addAnswer: (answer: any) => void;
+  addAnswer: (answer: any, index: number) => void;
   answers: any;
 }) {
   const numberElements = data.number.map((number, index) => (
@@ -20,12 +20,14 @@ export default function Number({
       show={step === 2}
       selected={step > 2 && answers[1] === index}
       onClick={() => {
-        nextStep(3);
-        addAnswer(index);
+        nextStep(step > 2 && answers[1] === index ? 2 : 3);
+        addAnswer(index, 1);
       }}
       key={number.number}
     >
-      <img src={number.logo} alt={number.number} />
+      <svg>
+        <use width="100%" height="100%" href={number.logo} />
+      </svg>
       <p>{number.number}</p>
     </Option>
   ));

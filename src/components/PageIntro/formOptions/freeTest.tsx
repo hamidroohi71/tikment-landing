@@ -10,7 +10,7 @@ export default function FreeTest({
 }: {
   step: number;
   nextStep: (newStep: number) => void;
-  addAnswer: (answer: any) => void;
+  addAnswer: (answer: any, index: number) => void;
   answers: any;
 }) {
   return (
@@ -22,8 +22,8 @@ export default function FreeTest({
           show={step === 4}
           selected={step > 3 && answers[3] === 0}
           onClick={() => {
-            nextStep(5);
-            addAnswer(0);
+            nextStep(step > 3 && answers[3] === 0 ? 4 : 5);
+            addAnswer(0, 3);
           }}
         >
           <img src="/fastContactForm/freeTest/yes.svg" alt="Yes Tikment" />
@@ -34,8 +34,8 @@ export default function FreeTest({
           show={step === 4}
           selected={step > 4 && answers[3] === 1}
           onClick={() => {
-            nextStep(5);
-            addAnswer(1);
+            nextStep(step > 3 && answers[3] === 1 ? 4 : 5);
+            addAnswer(1, 3);
           }}
         >
           <img src="/fastContactForm/freeTest/yes.svg" alt="No Tikment" />

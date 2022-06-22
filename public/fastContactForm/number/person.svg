@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="66.437" height="66.437" viewBox="0 0 66.437 66.437">
+<svg xmlns="http://www.w3.org/2000/svg" width="66.437" height="66.437" viewBox="0 0 66.437 66.437" id="person">
   <g id="Group_1394" data-name="Group 1394" transform="translate(2 2)">
     <g id="Group_1394-2" data-name="Group 1394" transform="translate(10.619 6.193)" style="mix-blend-mode: color-burn;isolation: isolate">
-      <path id="Path_1242" data-name="Path 1242" d="M283.336,709.93c-5.361-6.562-12.216-10.05-20.638-10.053s-15.253,3.549-20.56,10.061h0c4.833,6.619,11.74,9.837,20.562,9.837a25.852,25.852,0,0,0,20.635-9.846Z" transform="translate(-242.138 -669.725)" fill="#183573" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
-      <path id="Path_1243" data-name="Path 1243" d="M303.689,568.837a13.357,13.357,0,1,1-13.39-13.325A13.369,13.369,0,0,1,303.689,568.837Z" transform="translate(-269.699 -555.511)" fill="#183573" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+      <path id="Path_1242" data-name="Path 1242" d="M283.336,709.93c-5.361-6.562-12.216-10.05-20.638-10.053s-15.253,3.549-20.56,10.061h0c4.833,6.619,11.74,9.837,20.562,9.837a25.852,25.852,0,0,0,20.635-9.846Z" transform="translate(-242.138 -669.725)"  stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+      <path id="Path_1243" data-name="Path 1243" d="M303.689,568.837a13.357,13.357,0,1,1-13.39-13.325A13.369,13.369,0,0,1,303.689,568.837Z" transform="translate(-269.699 -555.511)"  stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
     </g>
-    <circle id="Ellipse_70" data-name="Ellipse 70" cx="31.218" cy="31.218" r="31.218" fill="none" stroke="#2be2f4" stroke-width="4"/>
+    <circle id="Ellipse_70" data-name="Ellipse 70" cx="31.218" cy="31.218" r="31.218" fill="none"  stroke-width="4"/>
   </g>
 </svg>

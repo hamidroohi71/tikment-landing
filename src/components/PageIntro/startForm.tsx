@@ -64,9 +64,9 @@ export default function StartForm({
     setStep(newStep);
   };
 
-  const addAnswer = (answer: any) => {
+  const addAnswer = (answer: any, index: number) => {
     const newOne = [...answers];
-    newOne.push(answer);
+    newOne[index] = answer;
     setAnswers([...newOne]);
   };
 
@@ -141,8 +141,7 @@ const TitleBox = styled.div`
 `;
 
 const Title = styled(animated.h2)`
-  background: transparent linear-gradient(252deg, #37abb8 0%, #71fbff 100%) 0%
-    0% no-repeat padding-box;
+  background: linear-gradient(252deg, #37abb8 0%, #71fbff 100%);
   line-height: 64px;
   border-radius: 32px;
   box-shadow: 0px 7px 15px #00000033;
@@ -181,6 +180,7 @@ const FormBox = styled(animated.div)`
   right: 32px;
   width: 53vw;
   box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
+  background: linear-gradient(180deg, #75c9db1a 0%, #4af3f81a 100%);
   border: 1px solid #75c9db4d;
   border-radius: 3vw;
   backdrop-filter: blur(13px);

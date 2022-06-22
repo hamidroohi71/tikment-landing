@@ -10,7 +10,7 @@ export default function JobType({
 }: {
   step: number;
   nextStep: (newStep: number) => void;
-  addAnswer: (answer: any) => void;
+  addAnswer: (answer: any, index: number) => void;
   answers: any;
 }) {
   const typeElements = data.jobType.map((type, index) => (
@@ -19,12 +19,14 @@ export default function JobType({
       selected={step > 1 && answers[0] === index}
       index={index}
       onClick={() => {
-        nextStep(2);
-        addAnswer(index);
+        nextStep(step > 1 && answers[0] === index ? 1 : 2);
+        addAnswer(index, 0);
       }}
       key={type.type}
     >
-      <img src={type.logo} alt={type.type} />
+      <svg>
+        <use width="100%" height="100%" href={type.logo} />
+      </svg>
       <p>{type.type}</p>
     </Option>
   ));
@@ -56,6 +58,7 @@ export const Title = styled.h3<{ show: boolean }>`
   font-weight: 300;
   opacity: ${({ show }) => (show ? 1 : 0)};
   position: absolute;
+  margin: 0;
 
   @media (max-width: 480px) {
     position: static;
@@ -74,6 +77,10 @@ export const OptionBase = styled.div<{
   width: 8.7vw;
   height: 16vh;
   background: linear-gradient(180deg, #37abb878 0%, #71fbffa6 100%);
+  background: ${({ selected }) =>
+    selected
+      ? "linear-gradient(208deg, #05185E 0%, #4B86AC 100%)"
+      : "linear-gradient(180deg, #37abb878 0%, #71fbffa6 100%)"};
   border: 2px solid #ffffff99;
   border-radius: 2vw;
   backdrop-filter: blur(0px);
@@ -84,13 +91,43 @@ export const OptionBase = styled.div<{
   cursor: pointer;
   opacity: ${({ show, selected }) => (show ? 1 : selected ? 1 : 0)};
   position: absolute;
-  top: 9vh;
+  top: 10vh;
   transition: 0.5s ease-out;
   z-index: ${({ show, selected }) => (show ? 25 : selected ? 25 : 0)};
+
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 2px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -12px;
+    background: #fff;
+    opacity: ${({ selected }) => (selected ? 1 : 0)};
+  }
+
   & > img {
     width: 55%;
     height: 55%;
     object-fit: contain;
+  }
+
+  & > svg {
+    display: block;
+    width: 4vw;
+    height: 4vw;
+    margin: auto;
+    z-index: 20;
+
+    & > use {
+      display: flex;
+      margin: auto;
+      width: 4vw;
+      height: 4vw;
+      fill: ${({ selected }) => (selected ? "#fff" : "#2BE2F4")};
+      stroke: ${({ selected }) => (selected ? "#fff" : "#2BE2F4")};
+    }
   }
 
   & > p {
