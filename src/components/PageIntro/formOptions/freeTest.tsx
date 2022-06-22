@@ -18,6 +18,7 @@ export default function FreeTest({
       <Title show={step === 4}>مایل به تست رایگان تیکمنت هستید؟</Title>
       <OptionBox>
         <Option
+          lastStep={step === 5}
           index={0}
           show={step === 4}
           selected={step > 3 && answers[3] === 0}
@@ -30,6 +31,7 @@ export default function FreeTest({
           <p>بله</p>
         </Option>
         <Option
+          lastStep={step === 5}
           index={1}
           show={step === 4}
           selected={step > 4 && answers[3] === 1}
@@ -47,8 +49,15 @@ export default function FreeTest({
 }
 
 const Option = styled(OptionBase)`
-  transform: ${({ index, selected }) =>
-    selected ? "translateX(-30vw)" : `translateX(${-index * 10 - 30}vw)`};
+  transform: ${({ index, selected, lastStep }) =>
+    selected
+      ? lastStep
+        ? "translateX(0vw)"
+        : "translateX(-30vw)"
+      : `translateX(${-index * 10 - 30}vw)`};
+
+  width: ${({ index, selected, lastStep }) =>
+    selected ? (lastStep ? "18.4vw" : "8.7vw") : "8.7vw"};
 `;
 
 const Title = styled(TitleBase)`

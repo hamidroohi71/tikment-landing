@@ -16,6 +16,7 @@ export default function Number({
 }) {
   const numberElements = data.number.map((number, index) => (
     <Option
+      lastStep={step === 5}
       index={index}
       show={step === 2}
       selected={step > 2 && answers[1] === index}
@@ -41,8 +42,12 @@ export default function Number({
 }
 
 const Option = styled(OptionBase)`
-  transform: ${({ index, selected }) =>
-    selected ? "translateX(-10vw)" : `translateX(${-index * 10 - 10}vw)`};
+  transform: ${({ index, selected, lastStep }) =>
+    selected
+      ? lastStep
+        ? "translateX(-30vw)"
+        : "translateX(-10vw)"
+      : `translateX(${-index * 10 - 10}vw)`};
 `;
 
 const Title = styled(TitleBase)`

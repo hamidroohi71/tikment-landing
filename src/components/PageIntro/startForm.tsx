@@ -34,6 +34,7 @@ export default function StartForm({
     delay: 2000,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
+
   const styleProps3 = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
@@ -60,6 +61,19 @@ export default function StartForm({
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
+  const styleProps6 = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: step === 6 ? 0 : 1 },
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+
+  const styleProps7 = useSpring({
+    from: { transform: "scaleX(0)" },
+    to: { transform: step === 6 ? "scaleX(1)" : "scaleX(0)" },
+    delay: 5000,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+
   const changeStep = (newStep: number) => {
     setStep(newStep);
   };
@@ -83,10 +97,13 @@ export default function StartForm({
     <StartFormElement style={{ ...styleProps4, ...styleProps5 }}>
       <TitleBox>
         <RingSign></RingSign>
-        <Title style={styleProps1}>{done ? result : "برای انتخاب بهتر"}</Title>
+        <Title style={{ ...styleProps1, ...styleProps6 }}>
+          {"برای انتخاب بهتر"}
+        </Title>
+        <Result style={styleProps7}>{result}</Result>
       </TitleBox>
-      <FormBox style={styleProps2}>
-        <FormContent style={styleProps3}>
+      <FormBox end={step === 6} style={styleProps2}>
+        <FormContent style={{ ...styleProps3, ...styleProps6 }}>
           <JobType
             step={step}
             nextStep={changeStep}
@@ -133,7 +150,7 @@ const StartFormElement = styled(animated.section)`
   }
 `;
 
-const TitleBox = styled.div`
+const TitleBox = styled(animated.div)`
   display: flex;
   align-items: center;
   z-index: 10;
@@ -158,34 +175,44 @@ const Title = styled(animated.h2)`
   }
 `;
 
+const Result = styled(Title)`
+  position: absolute;
+  top: 0;
+  right: 5vw;
+  height: 64px;
+  left: -20vw;
+`;
+
 const RingSign = styled.span`
   display: block;
   width: 64px;
   height: 64px;
   border-radius: 50%;
   background: #fff;
-  border: 13.5px solid #38acb9;
+  border: 19px solid #38acb9;
   margin-left: 13px;
   box-shadow: 0px 7px 15px #00000033;
   @media (max-width: 480px) {
     width: 45px;
     height: 45px;
+    border: 13.5px solid #38acb9;
   }
 `;
 
-const FormBox = styled(animated.div)`
+const FormBox = styled(animated.div)<{ end: boolean }>`
   position: absolute;
   top: 32px;
-  bottom: 0;
+  bottom: ${({ end }) => (end ? "calc(100% - 32px)" : "0")};
   right: 32px;
   width: 53vw;
   box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
   background: linear-gradient(180deg, #75c9db1a 0%, #4af3f81a 100%);
-  border: 1px solid #75c9db4d;
+  border: ${({ end }) => (end ? "none" : "1px solid #75c9db4d")};
   border-radius: 3vw;
   backdrop-filter: blur(13px);
   transform-origin: top;
-  padding: 2.5vw 2vw;
+  padding: ${({ end }) => (end ? "0" : "2.5vw 2vw")};
+  transition: 0.5s ease-out;
 
   @media (max-width: 480px) {
     position: relative;

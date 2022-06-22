@@ -18,6 +18,7 @@ export default function JobType({
       show={step === 1}
       selected={step > 1 && answers[0] === index}
       index={index}
+      lastStep={step === 5}
       onClick={() => {
         nextStep(step > 1 && answers[0] === index ? 1 : 2);
         addAnswer(step > 1 && answers[0] === index ? null : index, 0);
@@ -77,6 +78,7 @@ export const OptionBase = styled.div<{
   show: boolean;
   selected: boolean;
   index: number;
+  lastStep: boolean;
 }>`
   width: 8.7vw;
   height: 16vh;
@@ -94,7 +96,7 @@ export const OptionBase = styled.div<{
   cursor: pointer;
   opacity: ${({ show, selected }) => (show ? 1 : selected ? 1 : 0)};
   position: absolute;
-  top: 10vh;
+  top: 9vh;
   transition: 0.5s ease-out;
   z-index: ${({ show, selected }) => (show ? 25 : selected ? 25 : 0)};
 
@@ -150,8 +152,12 @@ export const OptionBase = styled.div<{
 `;
 
 const Option = styled(OptionBase)`
-  transform: ${({ index, selected }) =>
-    selected ? "translateX(0vw)" : `translateX(${-index * 10}vw)`};
+  transform: ${({ index, selected, lastStep }) =>
+    selected
+      ? lastStep
+        ? "translateX(-20vw)"
+        : "translateX(0vw)"
+      : `translateX(${-index * 10}vw)`};
 `;
 
 export const SelectedOption = styled(Option)`

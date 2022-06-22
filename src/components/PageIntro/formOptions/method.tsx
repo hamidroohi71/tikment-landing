@@ -16,6 +16,7 @@ export default function Method({
 }) {
   const methodElements = data.method.map((method, index) => (
     <Option
+      lastStep={step === 5}
       index={index}
       show={step === 3}
       selected={step > 3 && answers[2] === index}
@@ -41,8 +42,12 @@ export default function Method({
 }
 
 const Option = styled(OptionBase)`
-  transform: ${({ index, selected }) =>
-    selected ? "translateX(-20vw)" : `translateX(${-index * 10 - 20}vw)`};
+  transform: ${({ index, selected, lastStep }) =>
+    selected
+      ? lastStep
+        ? "translateX(-40vw)"
+        : "translateX(-20vw)"
+      : `translateX(${-index * 10 - 20}vw)`};
 `;
 
 const Title = styled(TitleBase)`

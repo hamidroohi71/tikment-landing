@@ -14,9 +14,14 @@ export default function ContactInfo({
   nextStep: (newStep: number) => void;
 }) {
   const [timeOption, setTimeOption] = useState(0);
+  const styleProps1 = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: step === 5 ? 1 : 0 },
+    config: { duration: 500, easing: easings.easeOutQuart },
+  });
   return (
     <>
-      <FormBox show={step === 5}>
+      <FormBox style={styleProps1} show={step === 5}>
         <TimeForm>
           <p>
             برای مشاوره و راه‌اندازی نسخۀ رایگان تیکمنت، چه ساعتی با شما تماس
@@ -80,7 +85,7 @@ export default function ContactInfo({
   );
 }
 
-const FormBox = styled.div<{ show: boolean }>`
+const FormBox = styled(animated.div)<{ show: boolean }>`
   opacity: ${({ show }) => (show ? 1 : 0)};
 `;
 
