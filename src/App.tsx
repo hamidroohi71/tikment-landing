@@ -27,11 +27,11 @@ function App() {
           <ScrollBody>
             <>
               <Header />
-              {/*<PageIntro />*/}
+              <SabersLab />
+        {/*  <PageIntro /> */}
               <Customer />
               <Product />
               <Advantage /> {/* selected problem is here */}
-              <SabersLab />
               <SalesService />
               <Comments />
               <Contact />

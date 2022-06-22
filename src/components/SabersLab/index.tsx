@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSection } from "../../context/sectionStore";
+import Background from "../PageIntro/background";
+import Mobile from "../PageIntro/mobile";
+import StartForm from "../PageIntro/startForm";
+import Title from "../PageIntro/title";
 
 
 export default function SabersLab() {
@@ -25,11 +29,13 @@ export default function SabersLab() {
 
   return (
     <PageIntroduction>
-{/*}      <Background />
+{/*      <Background />
       <Mobile />
       <Title />
-      <StartForm />*/}
-  </PageIntroduction> 
+     <StartForm /> */}
+     SabersLab
+
+    </PageIntroduction>
   );
 }
 

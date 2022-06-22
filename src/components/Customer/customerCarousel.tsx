@@ -68,7 +68,6 @@ const Item = styled.div<{ selected: boolean }>`
   justify-content: center;
   margin: 0 2vw;
   cursor: pointer;
-  z-index:10000;
   transform: ${({ selected }) => (selected ? "scale(1.4)" : "scale(1)")};
   transition: 0.2s ease-out;
 

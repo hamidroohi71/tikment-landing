@@ -19,7 +19,7 @@ export default function PageIntro() {
   }, [active, nextSection]);
 
   useEffect(() => {
-    if (activeSection === 100) {
+    if (activeSection === 100) { 
       setActive(true);
     } else if (activeSection !== null) {
       setActive(false);
@@ -31,6 +31,7 @@ export default function PageIntro() {
       <Background />
       <Mobile />
       <Title />
+      PageIntro
       <StartForm />
     </PageIntroduction>
   );
