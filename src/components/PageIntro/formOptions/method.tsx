@@ -1,7 +1,7 @@
 import React from "react";
 import data from "./formData.json";
 import styled from "styled-components";
-import { OptionBase, Title, OptionBox } from "./jobType";
+import { OptionBase, TitleBase, OptionBox } from "./jobType";
 
 export default function Method({
   step,
@@ -21,7 +21,7 @@ export default function Method({
       selected={step > 3 && answers[2] === index}
       onClick={() => {
         nextStep(step > 3 && answers[2] === index ? 3 : 4);
-        addAnswer(index, 2);
+        addAnswer(step > 3 && answers[2] === index ? null : index, 2);
       }}
       key={method.method}
     >
@@ -43,6 +43,10 @@ export default function Method({
 const Option = styled(OptionBase)`
   transform: ${({ index, selected }) =>
     selected ? "translateX(-20vw)" : `translateX(${-index * 10 - 20}vw)`};
+`;
+
+const Title = styled(TitleBase)`
+  transform: translateX(-20vw);
 `;
 
 // const OptionBox = styled.section`

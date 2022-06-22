@@ -20,7 +20,7 @@ export default function JobType({
       index={index}
       onClick={() => {
         nextStep(step > 1 && answers[0] === index ? 1 : 2);
-        addAnswer(index, 0);
+        addAnswer(step > 1 && answers[0] === index ? null : index, 0);
       }}
       key={type.type}
     >
@@ -52,7 +52,7 @@ export const OptionBox = styled.section`
   }
 `;
 
-export const Title = styled.h3<{ show: boolean }>`
+export const TitleBase = styled.h3<{ show: boolean }>`
   color: #183573;
   font-size: 1.5vw;
   font-weight: 300;
@@ -67,6 +67,10 @@ export const Title = styled.h3<{ show: boolean }>`
     margin: 10px 0 0;
     letter-spacing: -1px;
   }
+`;
+
+const Title = styled(TitleBase)`
+  transform: translateX(0);
 `;
 
 export const OptionBase = styled.div<{

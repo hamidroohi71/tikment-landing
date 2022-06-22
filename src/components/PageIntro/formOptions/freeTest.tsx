@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { OptionBase, Title, OptionBox } from "./jobType";
+import { OptionBase, TitleBase, OptionBox } from "./jobType";
 
 export default function FreeTest({
   step,
@@ -23,7 +23,7 @@ export default function FreeTest({
           selected={step > 3 && answers[3] === 0}
           onClick={() => {
             nextStep(step > 3 && answers[3] === 0 ? 4 : 5);
-            addAnswer(0, 3);
+            addAnswer(step > 3 && answers[3] === 0 ? null : 0, 3);
           }}
         >
           <img src="/fastContactForm/freeTest/yes.svg" alt="Yes Tikment" />
@@ -35,7 +35,7 @@ export default function FreeTest({
           selected={step > 4 && answers[3] === 1}
           onClick={() => {
             nextStep(step > 3 && answers[3] === 1 ? 4 : 5);
-            addAnswer(1, 3);
+            addAnswer(step > 3 && answers[3] === 0 ? null : 1, 3);
           }}
         >
           <img src="/fastContactForm/freeTest/yes.svg" alt="No Tikment" />
@@ -49,6 +49,10 @@ export default function FreeTest({
 const Option = styled(OptionBase)`
   transform: ${({ index, selected }) =>
     selected ? "translateX(-30vw)" : `translateX(${-index * 10 - 30}vw)`};
+`;
+
+const Title = styled(TitleBase)`
+  transform: translateX(-30vw);
 `;
 
 // const OptionBox = styled.section`
