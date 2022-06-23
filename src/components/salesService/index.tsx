@@ -32,12 +32,16 @@ export default function SalesService() {
   });
 
   const serviceCards = data.serviceData.map((service, index) => (
-    <Service key={service.name}>
-      <span>{index + 1}</span>
+    <Service key={service.name} index={index}>
+      <CardNum>{index === 0 ? "۱" : index === 1 ? "۲" : "۳"}</CardNum>
       <ServiceCard>
         <p>خدمات</p>
         <p>{service.name}</p>
-        <img src={service.logo} alt={service.name} />
+        <div>
+          <svg>
+            <use width="100%" height="100%" href={service.logo} />
+          </svg>
+        </div>
       </ServiceCard>
     </Service>
   ));
@@ -77,7 +81,7 @@ const Subtitle = styled.h3`
   font-size: 2.3vw;
   color: #183573;
   text-align: center;
-  margin: 0 0 0;
+  margin: 0 0 17px;
   font-weight: 500;
 `;
 
@@ -86,13 +90,67 @@ const ServicesContainer = styled.div`
   justify-content: space-between;
 `;
 
-const Service = styled.div`
+const Service = styled.div<{ index: number }>`
   width: 20vw;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
+const CardNum = styled.span`
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #37abb8 0%, #71fbff 100%);
+  color: #fff;
+  font-size: 40px;
+  text-align: center;
+  line-height: 54px;
+`;
+
 const ServiceCard = styled.div`
   text-align: center;
+  border-radius: 3vw;
+  background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 100%);
+  border: 1px solid #e4e4e4;
+  box-sizing: border-box;
+  padding: 1vw 3vw 4.8vw;
+  margin-top: 50px;
+
+  & > p {
+    color: #183573;
+    font-size: 2.7vw;
+    text-align-center;
+    margin: 0;
+    &:first-of-type{
+      font-size: 1.6vw;
+      margin: 5px 0;
+    }
+  }
+
+  & > div {
+    width: 13vw;
+    height: 13vw;
+    border-radius: 50%;
+    margin-top: 2vw;
+    background:  linear-gradient(180deg,#00e5ff14 0%,#b7fdff14 100%);
+    box-shadow: inset 0px 0px 99px #80A5AC21;
+    border: 1px solid #B8E2EB;
+    backdrop-filter: blur(28px);
+    display: flex;
+    
+
+    & > svg {
+      width: 7vw;
+      height: 7vw;
+      margin: auto;
+
+      & > use {
+        width: 7vw;
+        height: 7vw;
+        fill: #75c9db;
+
+      }
+    }
+  }
 `;

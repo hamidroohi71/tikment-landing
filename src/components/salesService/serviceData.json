@@ -2,15 +2,15 @@
   "serviceData": [
     {
       "name": "پیش از فروش",
-      "logo": "/services/beforeSale.svg"
+      "logo": "/services/beforeSale.svg#beforeSale"
     },
     {
       "name": "حین فروش",
-      "logo": "/services/duringSale.svg"
+      "logo": "/services/duringSale.svg#duringSale"
     },
     {
       "name": "پس از فروش",
-      "logo": "/services/afterSale.svg"
+      "logo": "/services/afterSale.svg#afterSale"
     }
   ]
 }
