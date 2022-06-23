@@ -3,10 +3,12 @@ import styled from "styled-components";
 import data from "./serviceData.json";
 import { useSection } from "../../context/sectionStore";
 import { useSpring, easings, animated } from "react-spring";
+import useWidth from "../../hooks/useWidth";
 
 export default function SalesService() {
   const { activeSection, nextSection, setActiveSection } = useSection();
   const [active, setActive] = useState(false);
+  const width = useWidth();
 
   useEffect(() => {
     if (active) {
@@ -26,7 +28,7 @@ export default function SalesService() {
 
   const sectionStyle = useSpring({
     from: { opacity: 0 },
-    to: { opacity: active ? 1 : 0 },
+    to: { opacity: active ? 1 : width < 480 ? 1 : 0 },
     delay: active ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
