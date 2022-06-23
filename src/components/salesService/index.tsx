@@ -48,7 +48,10 @@ export default function SalesService() {
   return (
     <ServicesSection active={active} style={sectionStyle}>
       <Title>در کنارتان هستیم</Title>
-      <Subtitle>از نصب سخت‌افزار تا آموزش نرم‌افزار و راه‌اندازی</Subtitle>
+      <Subtitle>
+        از نصب سخت‌افزار
+        <br /> تا آموزش نرم‌افزار و راه‌اندازی
+      </Subtitle>
       <ServicesContainer>{serviceCards}</ServicesContainer>
     </ServicesSection>
   );
@@ -75,6 +78,12 @@ const Title = styled.h2`
   text-align: center;
   margin: 0;
   font-weight: 500;
+
+  @media (max-width: 480px) {
+    font-size: 40px;
+    font-weight: 500;
+    letter-spacing: -1px;
+  }
 `;
 
 const Subtitle = styled.h3`
@@ -83,11 +92,26 @@ const Subtitle = styled.h3`
   text-align: center;
   margin: 0 0 17px;
   font-weight: 500;
+  br {
+    display: none;
+  }
+  @media (max-width: 480px) {
+    font-size: 29px;
+    font-weight: 500;
+    letter-spacing: -1px;
+    br {
+      display: inline-block;
+    }
+  }
 `;
 
 const ServicesContainer = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 480px) {
+    justify-content: center;
+  }
 `;
 
 const Service = styled.div<{ index: number }>`
@@ -95,6 +119,14 @@ const Service = styled.div<{ index: number }>`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 480px) {
+    width: 200px;
+    &:first-child,
+    &:last-child {
+      display: none;
+    }
+  }
 `;
 
 const CardNum = styled.span`
@@ -150,6 +182,41 @@ const ServiceCard = styled.div`
         height: 7vw;
         fill: #75c9db;
 
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 25px 57px 78px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 64px;
+
+    & > p {
+      font-size: 42px;
+      letter-spacing: -1px;
+      &:first-of-type{
+        font-size: 26px;
+      }
+    }
+
+    & > div {
+      width: 205px;
+      height: 205px;
+      
+  
+      & > svg {
+        width: 128px;
+        height: 128px;
+        margin: auto;
+  
+        & > use {
+          width: 128px;
+          height: 128px;
+          fill: #75c9db;
+  
+        }
       }
     }
   }
