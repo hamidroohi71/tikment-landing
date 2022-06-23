@@ -5,6 +5,7 @@ import BackgroundImage from "./background.png";
 import { useSection } from "../../context/sectionStore";
 import { useSpring, easings, animated } from "react-spring";
 import MaskImage from "./mask.webp";
+import useWidth from "../../hooks/useWidth";
 
 let listInterval: any;
 
@@ -12,6 +13,7 @@ export default function Advantage() {
   const { activeSection, nextSection, setActiveSection } = useSection();
   const [active, setActive] = useState(false);
   const [index, setIndex] = useState(0);
+  const width = useWidth();
 
   useEffect(() => {
     if (activeSection === 4) {
@@ -28,20 +30,20 @@ export default function Advantage() {
 
   const sectionStyle = useSpring({
     from: { opacity: 0 },
-    to: { opacity: active ? 1 : 0 },
+    to: { opacity: active ? 1 : width < 480 ? 1 : 0 },
     config: { duration: active ? 0 : 0, easing: easings.easeOutQuart },
   });
 
   const coverStyle = useSpring({
     from: { opacity: 0 },
-    to: { opacity: active ? 1 : 0 },
+    to: { opacity: active ? 1 : width < 480 ? 1 : 0 },
     delay: active ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const titleStyle = useSpring({
     from: { opacity: 0 },
-    to: { opacity: active && index === 0 ? 1 : 0 },
+    to: { opacity: active && index === 0 ? (width < 480 ? 0 : 1) : 0 },
     delay: active && index === 0 ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
@@ -85,6 +87,17 @@ export default function Advantage() {
     }
   }, [activeSection]);
 
+  useEffect(() => {
+    if (width < 480) {
+      listInterval = setInterval(() => {
+        setIndex((index) => index + 1);
+      }, 10000);
+    } else {
+      setIndex(0);
+      clearInterval(listInterval);
+    }
+  }, [width]);
+
   return (
     <AdvantageSection active={active} style={sectionStyle}>
       <Background style={maskStyle}>
@@ -113,8 +126,7 @@ const AdvantageSection = styled(animated.section)<{ active: boolean }>`
   width: 100vw;
   z-index: ${({ active }) => (active ? 20 : 0)};
   @media (max-width: 480px) {
-    position: static;
-    height: unset;
+    position: relative;
     z-index: 20;
   }
 `;
@@ -158,6 +170,10 @@ const TitlePart = styled.div`
   padding: 0 12.5vw;
   position: relative;
   z-index: 20;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const MainTitle = styled(animated.h2)`
