@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import LogoBox from "../LogoBox";
+import LogoBox from "../../LogoBox";
 
 export default function Footer() {
   return (

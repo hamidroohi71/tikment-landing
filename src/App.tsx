@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import Advantage from "./components/Advantage";
 import Comments from "./components/Comments";
-import Contact from "./components/Contact";
+import LastSec from "./components/LastSec";
 import Customer from "./components/Customer";
-import FAQ from "./components/FAQ";
-import Footer from "./components/Footer";
 import Header from "./components/Header";
 import InitialVideo from "./components/initialVideo";
 import PageIntro from "./components/PageIntro";
@@ -32,9 +30,7 @@ function App() {
               <Advantage />
               <SalesService />
               <Comments />
-              <Contact />
-              <FAQ />
-              <Footer />
+              <LastSec />
             </>
           </ScrollBody>
         </>

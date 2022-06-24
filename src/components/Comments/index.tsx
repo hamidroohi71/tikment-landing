@@ -39,7 +39,7 @@ const CommentSection = styled.section<{ active: boolean }>`
   overflow: hidden;
   position: absolute;
   transform: ${({ active }) =>
-    active ? "trsnalateY(0)" : "translateY(100vh)"};
+    active ? "translateY(0)" : "translateY(100vh)"};
   z-index: ${({ active }) => (active ? 20 : 0)};
   transition: 0.5s ease-out;
 
