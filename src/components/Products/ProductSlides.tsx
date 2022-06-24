@@ -55,9 +55,10 @@ export default function ProductSlide({
   ));
   return (
     <ProDuctSlideSection style={slideStyle}>
-      <Image1 src={product.pics[0]} alt={product.name} />
+      <Image1 src={product.pics[0]} alt={product.name} big={product.id === 2} />
       <Image2 src={product.pics[1]} alt={product.name} />
-      <Image3 src={product.pics[2]} alt={product.name} />
+      {product.id !== 2 && <Image3 src={product.pics[2]} alt={product.name} />}
+
       {benefitsElement}
       <ProductName benefitIndex={benefitIndex}>
         {product.name}
@@ -77,13 +78,16 @@ const ProDuctSlideSection = styled(animated.section)`
   }
 `;
 
-const Image1 = styled.img`
+const Image1 = styled.img<{ big: boolean }>`
   position: absolute;
-  width: 19vw;
-  height: 18vw;
+  width: ${({ big }) => (big ? "45vw" : "19vw")};
+  height: ${({ big }) => (big ? "23.6vw" : "18vw")};
   object-fit: contain;
-  top: 25vh;
-  left: 30vw;
+  top: ${({ big }) => (big ? "0" : "25vh")};
+  bottom: ${({ big }) => (big ? "0" : "25vh")};
+  margin: auto;
+  left: ${({ big }) => (big ? "0" : "30vw")};
+  right: ${({ big }) => (big ? "0" : "unset")};
 `;
 
 const Image2 = styled.img`

@@ -43,6 +43,7 @@ export default function ProductSlider() {
 
   return (
     <ProductSliderSection>
+      <BackgroundElement />
       <PrevSlideBtn onClick={prevSlide}></PrevSlideBtn>
       <NextSlideBtn onClick={nextSlide}></NextSlideBtn>
       {productSlides}
@@ -58,6 +59,20 @@ const ProductSliderSection = styled.section`
     height: 150vh;
     top: 0;
   }
+`;
+
+const BackgroundElement = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  width: 33vw;
+  height: 33vw;
+  border-radius: 50%;
+  border: 2px solid #e4e4e4;
+  background: linear-gradient(to bottom, #37abb81f, #71fbff1f);
 `;
 
 const PrevSlideBtn = styled.div`
