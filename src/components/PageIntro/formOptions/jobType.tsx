@@ -127,6 +127,7 @@ export const OptionBase = styled.div<{
     left: -12px;
     background: #fff;
     opacity: ${({ selected }) => (selected ? 1 : 0)};
+    transition: 0.5s ease-out;
   }
 
   & > svg {

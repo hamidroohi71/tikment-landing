@@ -38,7 +38,7 @@ const ProgressDegree = styled.div<{ percent: number }>`
     #4b86ac 6px,
     #4b86ac 10px
   );
-  border-radius: 0 8px 8px 0;
+  border-radius: ${({ percent }) => (percent === 100 ? "8px" : "0 8px 8px 0")};
   right: 2px;
   top: 2px;
   transition: 0.5s ease-out;

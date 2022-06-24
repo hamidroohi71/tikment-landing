@@ -71,6 +71,14 @@ const Option = styled(OptionBase)`
   width: ${({ selected, lastStep }) =>
     selected ? (lastStep ? "18.4vw" : "8.7vw") : "8.7vw"};
 
+  background: ${({ selected }) =>
+    selected
+      ? "linear-gradient(231deg, #37ABB8 0%, #71FBFF 100%)"
+      : "linear-gradient(180deg,rgb(55 171 184 / 8%) 0%,#71fbff1f 100%)"};
+
+  box-shadow: 7px 7px 20px #00000038;
+  border: 1px solid #ffffff99;
+
   @media (max-width: 480px) {
     width: 127px;
   }

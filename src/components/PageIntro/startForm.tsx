@@ -179,7 +179,7 @@ const Title = styled(animated.h2)`
 const Result = styled(Title)`
   position: absolute;
   top: 0;
-  right: 5vw;
+  right: 5.5vw;
   height: 64px;
   left: -20vw;
 `;
