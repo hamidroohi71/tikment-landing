@@ -21,10 +21,8 @@ export default function LogoBox() {
 }
 
 const LogoBoxElement = styled(animated.section)`
-  z-index: 30;  
+  z-index: 30;
   background: #f9f8f7;
-  box-shadow: inset 0px 0px 80px #75C9DB80, 0px 3px 3px #8125254D;
-  blur(2px);
   width: 19vw;
   height: 69px;
   border-radius: 35px 0 0 35px;
@@ -35,6 +33,11 @@ const LogoBoxElement = styled(animated.section)`
   align-items: center;
   padding-left: 37.5px;
   justify-content: flex-end;
+  background: #f9f8f7;
+  box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
+  border: 1px solid #75c9db4d;
+  border-radius: 35px 0px 0px 35px;
+  backdrop-filter: blur(2px);
   & > img {
     width: 179px;
     height: 27px;
@@ -47,11 +50,9 @@ const LogoBoxElement = styled(animated.section)`
     padding-left: 21px;
     top: 29px;
 
-
     & > img {
       width: 27px;
       height: 29px;
-
     }
   }
 `;

@@ -87,6 +87,7 @@ const Title2 = styled(animated.h2)`
 const Title3 = styled(animated.h3)`
   font-size: 3.6vw;
   color: #183573;
+  font-weight: 500;
   margin: 0 0 10px;
   @media (max-width: 1200px) {
     font-size: 3vw;

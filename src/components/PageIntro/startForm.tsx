@@ -9,6 +9,7 @@ import ProgressBar from "./formOptions/progressBar";
 import { useSpring, animated, easings } from "react-spring";
 import { useSection } from "../../context/sectionStore";
 import useWidth from "../../hooks/useWidth";
+import TickVideo from "../../assets/video/Tick01.webm";
 
 export default function StartForm({
   handleFormOpen,
@@ -97,7 +98,12 @@ export default function StartForm({
   return (
     <StartFormElement style={{ ...styleProps4, ...styleProps5 }}>
       <TitleBox>
-        <RingSign></RingSign>
+        {step === 6 && (
+          <Tick src={TickVideo} loop={false} muted autoPlay={true} />
+        )}
+
+        {step !== 6 && <RingSign></RingSign>}
+
         <Title style={{ ...styleProps1, ...styleProps6 }}>
           {"برای انتخاب بهتر"}
         </Title>
@@ -164,6 +170,7 @@ const Title = styled(animated.h2)`
   border-radius: 32px;
   box-shadow: 0px 7px 15px #00000033;
   font-size: 1.8vw;
+  font-weight: 500;
   color: #fff;
   padding: 0 59px;
   margin: 0;
@@ -182,6 +189,14 @@ const Result = styled(Title)`
   right: 5.5vw;
   height: 64px;
   left: -20vw;
+`;
+
+const Tick = styled.video`
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  right: -7px;
+  opacity: 0;
 `;
 
 const RingSign = styled.span`
