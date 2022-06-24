@@ -2,6 +2,7 @@ import React from "react";
 import laughingManImage from "./assets/laughingMan.webp";
 import { useSpring, easings, animated } from "react-spring";
 import styled from "styled-components";
+import TickIconVideo from "./TickIconVideo";
 
 export default function Rules({ active }: { active: boolean }) {
   const sectionStyle = useSpring({
@@ -17,6 +18,14 @@ export default function Rules({ active }: { active: boolean }) {
     delay: active ? 3000 : 0,
     config: { duration: 2000, easing: easings.easeOutQuart },
   });
+
+  const videoStyle = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: active ? 1 : 0 },
+    delay: active ? 2000 : 0,
+    config: { duration: 2000, easing: easings.easeOutQuart },
+  });
+
   return (
     <>
       <Image
@@ -25,6 +34,7 @@ export default function Rules({ active }: { active: boolean }) {
         alt="تنظیم قوانین و مقررات"
       />
       <TextBox>
+        <TickIconVideo styleProps={videoStyle} play={active} />
         <MainTitle style={sectionStyle}>
           تنظیم قوانین
           <br />

@@ -2,6 +2,7 @@ import React from "react";
 import LaptopImage from "./assets/laptop.webp";
 import { useSpring, easings, animated } from "react-spring";
 import styled from "styled-components";
+import TickIconVideo from "./TickIconVideo";
 
 export default function Report({ active }: { active: boolean }) {
   const sectionStyle = useSpring({
@@ -17,10 +18,17 @@ export default function Report({ active }: { active: boolean }) {
     delay: active ? 3000 : 0,
     config: { duration: 2000, easing: easings.easeOutQuart },
   });
+  const videoStyle = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: active ? 1 : 0 },
+    delay: active ? 2000 : 0,
+    config: { duration: 2000, easing: easings.easeOutQuart },
+  });
   return (
     <>
       <Image style={sectionStyle} src={LaptopImage} alt="گزارش‌های هوش تجاری" />
       <TextBox>
+        <TickIconVideo styleProps={videoStyle} play={active} />
         <MainTitle style={sectionStyle}>گزارش‌های هوش تجاری</MainTitle>
         <Text style={textStyle}>
           در سال‌های اخیر از دلایل محبوبیت تیکمنت ارائۀ گزارش‌هایی توسط این نرم

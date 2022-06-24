@@ -3,6 +3,7 @@ import DeviceImage from "./assets/device.webp";
 import Badge from "./assets/freeTest.webp";
 import { useSpring, easings, animated } from "react-spring";
 import styled from "styled-components";
+import TickIconVideo from "./TickIconVideo";
 
 export default function FreeTest({ active }: { active: boolean }) {
   const sectionStyle = useSpring({
@@ -18,9 +19,18 @@ export default function FreeTest({ active }: { active: boolean }) {
     delay: active ? 3000 : 0,
     config: { duration: 2000, easing: easings.easeOutQuart },
   });
+
+  const videoStyle = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: active ? 1 : 0 },
+    delay: active ? 2000 : 0,
+    config: { duration: 2000, easing: easings.easeOutQuart },
+  });
+
   return (
     <>
       <TextBox>
+        <TickIconVideo styleProps={videoStyle} play={active} />
         <MainTitle style={sectionStyle}>۳۰ روز تست رایگان</MainTitle>
         <Text style={textStyle}>
           آرمان ما ارائۀ بهترین انتخاب به شماست بنابر این فرصتی ۳۰ روزه در

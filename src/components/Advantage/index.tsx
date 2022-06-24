@@ -6,6 +6,8 @@ import { useSection } from "../../context/sectionStore";
 import { useSpring, easings, animated } from "react-spring";
 import MaskImage from "./mask.webp";
 import useWidth from "../../hooks/useWidth";
+import { useWheel } from "react-use-gesture";
+const { Lethargy } = require("lethargy");
 
 let listInterval: any;
 
@@ -17,12 +19,12 @@ export default function Advantage() {
 
   useEffect(() => {
     if (activeSection === 4) {
-      listInterval = setInterval(() => {
-        setIndex((index) => index + 1);
-      }, 10000);
+      // listInterval = setInterval(() => {
+      //   setIndex((index) => index + 1);
+      // }, 10000);
     } else {
       setIndex(0);
-      clearInterval(listInterval);
+      // clearInterval(listInterval);
     }
   }, [activeSection]);
 
@@ -59,9 +61,16 @@ export default function Advantage() {
     from: { WebkitMaskSize: "400%", WebkitMaskPosition: "88%" },
     to: {
       WebkitMaskSize: index > 0 ? "100%" : "400%",
-      WebkitMaskPosition: index > 0 ? "100% bottom" : "88% bottom",
+      WebkitMaskPosition: index > 0 ? "100% bottom" : "100% bottom",
     },
     config: { duration: 2000, easing: easings.easeOutQuart },
+  });
+
+  const backgroundImageStyle = useSpring({
+    from: { opacity: 1 },
+    to: { opacity: index > 2 ? 0 : 1 },
+    delay: 2000,
+    config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   // const maskPositionStyle = useSpring({
@@ -98,11 +107,55 @@ export default function Advantage() {
     }
   }, [width]);
 
+  const nextSectionHnadler = () => {
+    if (index < 7) {
+      setIndex(index + 1);
+    }
+  };
+
+  const prevSectionHandler = () => {
+    if (index > 0) {
+      setIndex(index - 1);
+    }
+  };
+
+  const lethargy = new Lethargy();
+
+  const bind = useWheel(({ event, last, memo: wait = false }) => {
+    event.stopPropagation();
+    if (width > 480) {
+      if (!last) {
+        const s = lethargy.check(event);
+        if (s) {
+          if (!wait) {
+            if (s < 0) {
+              nextSectionHnadler();
+            } else if (s > 0) {
+              prevSectionHandler();
+            }
+            return true;
+          }
+        } else return false;
+      } else {
+        return false;
+      }
+    }
+  });
+
   return (
-    <AdvantageSection active={active} style={sectionStyle}>
+    <AdvantageSection
+      // onWheel={(e) => e.stopPropagation()}
+      {...bind()}
+      active={active}
+      style={sectionStyle}
+    >
       <Background style={maskStyle}>
         <Cover style={coverStyle} />
-        <Image src={BackgroundImage} alt="tikment" />
+        <Image
+          style={backgroundImageStyle}
+          src={BackgroundImage}
+          alt="tikment"
+        />
       </Background>
       <TitlePart>
         <MainTitle style={titleStyle}>چرا تیکمنت؟</MainTitle>
@@ -142,7 +195,7 @@ const Background = styled(animated.div)`
   top: 0;
 `;
 
-const Image = styled.img`
+const Image = styled(animated.img)`
   width: 100%;
   height: 100%;
   object-fit: cover;

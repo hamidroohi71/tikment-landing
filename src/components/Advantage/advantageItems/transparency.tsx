@@ -2,6 +2,7 @@ import React from "react";
 import ManImage from "./assets/man.webp";
 import { useSpring, easings, animated } from "react-spring";
 import styled from "styled-components";
+import TickIconVideo from "./TickIconVideo";
 
 export default function Transparency({ active }: { active: boolean }) {
   const sectionStyle = useSpring({
@@ -14,7 +15,14 @@ export default function Transparency({ active }: { active: boolean }) {
   const textStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : 0 },
-    delay: active ? 3000 : 0,
+    delay: active ? 4000 : 0,
+    config: { duration: 2000, easing: easings.easeOutQuart },
+  });
+
+  const videoStyle = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: active ? 1 : 0 },
+    delay: active ? 2000 : 0,
     config: { duration: 2000, easing: easings.easeOutQuart },
   });
 
@@ -22,6 +30,7 @@ export default function Transparency({ active }: { active: boolean }) {
     <>
       <Image style={sectionStyle} src={ManImage} alt="شفافیت حقوق و مزایا" />
       <TextBox>
+        <TickIconVideo styleProps={videoStyle} play={active} />
         <SubTitle style={sectionStyle}>حقوق و مزایا،</SubTitle>
         <MainTitle style={sectionStyle}>شفاف‌تر از همیشه</MainTitle>
         <Text style={textStyle}>
@@ -50,6 +59,15 @@ const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: 8vw;
+`;
+
+const Tick = styled(animated.video)`
+  position: absolute;
+  width: 6.3vw;
+  height: 6.3vw;
+  object-fit: contain;
+  top: 3vw;
+  right: -8vw;
 `;
 
 const MainTitle = styled(animated.h2)`
