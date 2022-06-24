@@ -21,6 +21,7 @@ export default function StartForm({
   const [result, setResult] = useState(
     "کارشناسان ما امروز با شما تماس خواهند گرفت"
   );
+  const [tick, setTick] = useState(false);
   const [step, setStep] = useState(1);
   const [answers, setAnswers] = useState([] as any);
   const { activeSection } = useSection();
@@ -72,7 +73,7 @@ export default function StartForm({
   const styleProps7 = useSpring({
     from: { transform: "scaleX(0)" },
     to: { transform: step === 6 ? "scaleX(1)" : "scaleX(0)" },
-    delay: 5000,
+    delay: 4000,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
@@ -92,17 +93,22 @@ export default function StartForm({
     } else {
       handleFormOpen(false);
     }
+    if (step === 6) {
+      setTimeout(() => {
+        setTick(true);
+      }, 2000);
+    } else {
+      setTick(false);
+    }
   }, [step]);
 
   // console.log(answers);
   return (
     <StartFormElement style={{ ...styleProps4, ...styleProps5 }}>
       <TitleBox>
-        {step === 6 && (
-          <Tick src={TickVideo} loop={false} muted autoPlay={true} />
-        )}
+        {tick && <Tick src={TickVideo} loop={false} muted autoPlay={tick} />}
 
-        {step !== 6 && <RingSign></RingSign>}
+        {!tick && <RingSign></RingSign>}
 
         <Title style={{ ...styleProps1, ...styleProps6 }}>
           {"برای انتخاب بهتر"}
@@ -196,7 +202,6 @@ const Tick = styled.video`
   height: 90px;
   position: absolute;
   right: -7px;
-  opacity: 0;
 `;
 
 const RingSign = styled.span`
