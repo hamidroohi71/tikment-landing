@@ -28,7 +28,7 @@ export default function TopBar() {
           ? "translateX(0%)"
           : "translateX(-85%)",
     },
-    delay: activeSection === 1 ? 500 : 0,
+    delay: 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
   return (

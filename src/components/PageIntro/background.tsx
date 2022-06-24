@@ -6,6 +6,7 @@ import useWidth from "../../hooks/useWidth";
 import BackgroundImg from "./backgroundImage.webp";
 import Mask from "./Mask.webp";
 import MobileMask from "./MobileMask.webp";
+import YellowBack from "./yellowBackground.webp";
 
 export default function Background() {
   const { activeSection } = useSection();
@@ -15,7 +16,7 @@ export default function Background() {
       WebkitMaskSize: width < 480 ? "200%" : width < 1201 ? "120%" : "100%",
     },
     from: { WebkitMaskSize: "250%" },
-    config: { duration: 2000, easing: easings.easeOutQuart },
+    config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const maskPositionStyle = useSpring({
@@ -30,8 +31,17 @@ export default function Background() {
     config: { duration: 500 },
   });
 
+  const CoverStyle = useSpring({
+    to: {
+      opacity: 1,
+    },
+    from: { opacity: 0 },
+    delay: 1000,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
   return (
     <BackgroundImage style={{ ...maskPositionStyle, ...maskStyle }}>
+      <BackCover style={CoverStyle} src={YellowBack} alt="tikment" />
       <img src={BackgroundImg} alt="tikment-station" />
     </BackgroundImage>
   );
@@ -60,4 +70,10 @@ const BackgroundImage = styled(animated.div)`
     height: 870px;
     top: 389px;
   }
+`;
+
+const BackCover = styled(animated.img)`
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
