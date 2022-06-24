@@ -38,8 +38,10 @@ const CommentSection = styled.section<{ active: boolean }>`
   height: 100vh;
   overflow: hidden;
   position: absolute;
-  transform: translateY(100vh);
+  transform: ${({ active }) =>
+    active ? "trsnalateY(0)" : "translateY(100vh)"};
   z-index: ${({ active }) => (active ? 20 : 0)};
+  transition: 0.5s ease-out;
 
   @media (max-width: 480px) {
     position: static;
