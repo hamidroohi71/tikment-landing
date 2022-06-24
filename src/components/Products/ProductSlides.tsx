@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSpring, animated, easings } from "react-spring";
 import NameIconImage from "./nameIcon.svg";
+import { useSection } from "../../context/sectionStore";
 
 export default function ProductSlide({
   product,
@@ -10,17 +11,46 @@ export default function ProductSlide({
   product: any;
   current: boolean;
 }) {
+  const { activeSection } = useSection();
+  const [myInterval, setMyInterval] = useState<any>();
+  const [benefitIndex, setBenefitIndex] = useState(0);
   const slideStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: current ? 1 : 0 },
-    config: { duration: 2000, easing: easings.easeOutQuart },
+    config: { duration: 500, easing: easings.easeOutQuart },
   });
+
+  useEffect(() => {
+    clearInterval(myInterval);
+    setMyInterval(0);
+    if (current) {
+      setBenefitIndex(0);
+    }
+  }, [current]);
+
+  useEffect(() => {
+    if (benefitIndex === 0 && current && activeSection === 3) {
+      console.log("here");
+      const newInterval = setInterval(() => {
+        setBenefitIndex((prevBenefitIndex) => prevBenefitIndex + 1);
+      }, 1000);
+      setMyInterval(newInterval);
+    }
+    console.log(benefitIndex);
+  }, [benefitIndex, current]);
 
   const benefits = product.benefits;
   const benefitsElement = benefits.map((item: any, index: number) => (
-    <BenefitBox key={item.name} index={index}>
-      <BenefitIcon src={item.logo} alt={item.name} />
-      <BenefitTitle>{item.name}</BenefitTitle>
+    <BenefitBox key={item.name} index={index} benefitIndex={benefitIndex}>
+      <BenefitIcon
+        src={item.logo}
+        alt={item.name}
+        benefitIndex={benefitIndex}
+      />
+      <BenefitTitle index={index} benefitIndex={benefitIndex}>
+        {item.name}
+      </BenefitTitle>
+      <BenefitBorder index={index} benefitIndex={benefitIndex}></BenefitBorder>
     </BenefitBox>
   ));
   return (
@@ -29,7 +59,7 @@ export default function ProductSlide({
       <Image2 src={product.pics[1]} alt={product.name} />
       <Image3 src={product.pics[2]} alt={product.name} />
       {benefitsElement}
-      <ProductName>
+      <ProductName benefitIndex={benefitIndex}>
         {product.name}
         <NameIcon />
       </ProductName>
@@ -74,10 +104,13 @@ const Image3 = styled.img`
   right: 29.6vw;
 `;
 
-const BenefitBox = styled.div<{ index: number }>`
+const BenefitBox = styled.div<{ index: number; benefitIndex: number }>`
+  opacity: ${({ index, benefitIndex }) => (index <= benefitIndex ? 1 : 0)};
+  transition: 1s ease-out;
   display: flex;
   align-items: center;
   position: absolute;
+  height: 4.4vw;
   top: ${({ index }) =>
     index === 0
       ? "15vh"
@@ -113,22 +146,39 @@ const BenefitBox = styled.div<{ index: number }>`
   }
 `;
 
-const BenefitIcon = styled.img`
-  width: 4.7vw;
-  height: 4.7vw;
+const BenefitIcon = styled.img<{ benefitIndex: number }>`
+  width: 3.7vw;
+  height: 3.7vw;
   border-radius: 50%;
 `;
 
-const BenefitTitle = styled.p`
+const BenefitTitle = styled.p<{ index: number; benefitIndex: number }>`
   font-size: 2.1vw;
   color: #183573;
+  line-height: 4.4vw;
+  margin: 0 1vw 0 0;
+  opacity: ${({ index, benefitIndex }) => (index <= benefitIndex - 1 ? 1 : 0)};
+  transition: 1s ease-out;
+  transition-delay: 0.25s;
 
   &:first-of-type {
     font-size: 23px;
   }
 `;
 
-const ProductName = styled.h2`
+const BenefitBorder = styled.div<{ index: number; benefitIndex: number }>`
+  position: absolute;
+  top: 0;
+  right: -0.35vw;
+  left: ${({ index, benefitIndex }) =>
+    index <= benefitIndex - 1 ? "-3.5vw" : "calc(100% - 4.2vw);"};
+  bottom: 0;
+  border-radius: 2.2vw;
+  border: 1px solid #183573;
+  transition: 1s ease-out;
+`;
+
+const ProductName = styled.h2<{ benefitIndex: number }>`
   font-size: 4vw;
   color: #ff4d4d;
   position: absolute;
@@ -137,7 +187,8 @@ const ProductName = styled.h2`
   left: 8vw;
   margin: auto;
   width: fit-content;
-
+  opacity: ${({ benefitIndex }) => (benefitIndex > 4 ? 1 : 0)};
+  transition: 1s ease-out;
   @media (max-width: 480px) {
     top: 45px;
     bottom: unset;

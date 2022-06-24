@@ -90,7 +90,7 @@ const ProductSection = styled.section<{ status: string; active: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  // background: linear-gradient(0deg, #75c9db99 0%, #c58646 100%);
+  background: linear-gradient(180deg, #75c9db1a 0%, #4af3f81a 100%);
   box-shadow: inset 0px 0px 99px #80a5ac21;
   border: 1px solid #75c9dbb0;
   backdrop-filter: blur(12px);
