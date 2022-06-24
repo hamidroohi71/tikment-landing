@@ -62,7 +62,7 @@ export const TitleBase = styled.h3<{ show: boolean }>`
   opacity: ${({ show }) => (show ? 1 : 0)};
   position: absolute;
   margin: 0;
-
+  top: 4.5vh;
   @media (max-width: 480px) {
     font-size: 20px;
     font-weight: 300;
@@ -101,6 +101,21 @@ export const OptionBase = styled.div<{
   top: 9vh;
   transition: 0.5s ease-out;
   z-index: ${({ show, selected }) => (show ? 25 : selected ? 25 : 0)};
+
+  &:hover {
+    background: linear-gradient(208deg, #05185e 0%, #4b86ac 100%);
+
+    & > svg {
+      & > use {
+        fill: #fff;
+        stroke: #fff;
+      }
+    }
+
+    & > p {
+      color: #fff;
+    }
+  }
 
   &::after {
     content: "";

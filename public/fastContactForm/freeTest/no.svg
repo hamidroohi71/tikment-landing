@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="142.228" height="147.003" viewBox="0 0 142.228 147.003">
+<svg xmlns="http://www.w3.org/2000/svg" width="142.228" height="147.003" viewBox="0 0 142.228 147.003" id="no">
   <g id="Group_1775" data-name="Group 1775" transform="translate(-20 20)">
     <g id="Group_1394" data-name="Group 1394" transform="translate(59.575 34.248)">
-      <circle id="Ellipse_70" data-name="Ellipse 70" cx="31.218" cy="31.218" r="31.218" fill="none" stroke="#2be2f4" stroke-width="4"/>
+      <circle id="Ellipse_70" data-name="Ellipse 70" cx="31.218" cy="31.218" r="31.218" fill="none"  stroke-width="4"/>
     </g>
     <g id="Group_1581" data-name="Group 1581" transform="translate(77.144 51.875)">
-      <line id="Line_200" data-name="Line 200" x1="27.184" y2="27.184" transform="translate(0.113)" fill="none" stroke="#4af3f8" stroke-linecap="round" stroke-width="9"/>
-      <line id="Line_201" data-name="Line 201" x2="27.184" y2="27.184" fill="none" stroke="#4af3f8" stroke-linecap="round" stroke-width="9"/>
+      <line id="Line_200" data-name="Line 200" x1="27.184" y2="27.184" transform="translate(0.113)" fill="none"  stroke-linecap="round" stroke-width="9"/>
+      <line id="Line_201" data-name="Line 201" x2="27.184" y2="27.184" fill="none"  stroke-linecap="round" stroke-width="9"/>
     </g>
   </g>
 </svg>

@@ -56,8 +56,10 @@ const TitleElement = styled(animated.section)`
 
 const Title1 = styled(animated.img)`
   width: 22vw;
-  height: auto;
-  margin-bottom: 3.4vw;
+  height: 12vh;
+  object-fit: contain;
+  object-position: right;
+  margin-bottom: 4vh;
   transform-origin: right;
   @media (max-width: 1200px) {
     width: 16vw;
