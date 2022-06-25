@@ -10,6 +10,8 @@ import Title from "../PageIntro/title";
 export default function SabersLab() {
   const { activeSection, nextSection, setActiveSection } = useSection();
   const [active, setActive] = useState(false);
+  console.log('activeSection', {activeSection}, 'nextSection', {nextSection});
+ 
 
   useEffect(() => {
     if (active) {

@@ -9,7 +9,7 @@ import Title from "./title";
 export default function PageIntro() {
   const { activeSection, nextSection, setActiveSection } = useSection();
   const [active, setActive] = useState(false);
-
+ 
   useEffect(() => {
     if (active) {
       setTimeout(() => {

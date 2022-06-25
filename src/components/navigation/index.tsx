@@ -32,7 +32,6 @@ export default function Navigation() {
     elements.push(<NavigationDot key={i} selected={i === activeSection - 1} />);
   }
 
-  console.log('elements', {elements});
   return <NavigationBar style={styleProps}>{elements}</NavigationBar>;
 }
 

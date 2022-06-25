@@ -24,7 +24,7 @@ export default function Advantage() {
     }
   }, [activeSection]);
 
-  console.log("index:", index, "activeSection:", activeSection);
+  {/*  console.log("index:", index, "activeSection:", activeSection); */}
 
   const sectionStyle = useSpring({
     from: { opacity: 0 },
@@ -108,7 +108,8 @@ export default function Advantage() {
 const AdvantageSection = styled(animated.section)`
   height: 90vh;
   padding-top: 292px;
-  position: relative;
+//  position: relative; // absolute
+  z-index: 10
   top: 0;
   width: 100vw;
 //  color: red;
