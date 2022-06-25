@@ -40,6 +40,9 @@ const FooterSection = styled.section`
   display: flex;
   flex-direction: column;
   position: relative;
+  @media (max-width: 480px) {
+    order: 2;
+  }
 `;
 
 const FooterTop = styled.section`

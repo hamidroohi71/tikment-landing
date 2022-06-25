@@ -25,4 +25,8 @@ const FAQSection = styled.section`
   justify-content: center;
   align-items: center;
   padding: 10vh 12vw;
+
+  @media (max-width: 480px) {
+    order: 0;
+  }
 `;

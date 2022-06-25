@@ -45,9 +45,7 @@ const CommentSection = styled.section<{ active: boolean }>`
   padding: 13.6vh 17vw 7vh;
 
   @media (max-width: 480px) {
-    position: static;
-    height: unset;
-    z-index: 20;
+    display: none;
   }
 
   & > div {

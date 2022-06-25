@@ -51,4 +51,12 @@ const LastSection = styled.section<{ active: boolean }>`
   z-index: ${({ active }) => (active ? 20 : 0)};
   transition: 0.5s ease-out;
   transition-delay: ${({ active }) => (active ? "0.5s" : "0s")};
+
+  @media (max-width: 480px) {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    height: unset;
+  }
 `;

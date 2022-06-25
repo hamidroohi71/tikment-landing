@@ -76,6 +76,10 @@ export default function Contact() {
 
 const ContactSection = styled.section`
   padding: 11vh 21vw 0;
+
+  @media (max-width: 480px) {
+    order: 1;
+  }
 `;
 
 const FormBox = styled(animated.div)`
