@@ -23,12 +23,12 @@ export default function Comments() {
       setActive(false);
     }
   }, [activeSection]);
-  const commentList = data.comments.map((item) => (
-    <Comment key={item.id} comment={item} />
+  const commentList = data.comments.map((item, index) => (
+    <Comment key={item.id} comment={item} index={index} />
   ));
   return (
     <CommentSection active={active}>
-      <Title>نظرات مشتریان</Title>
+      <Title>نظرات مشتریان تیکمنت</Title>
       <div>{commentList}</div>
     </CommentSection>
   );
@@ -42,16 +42,22 @@ const CommentSection = styled.section<{ active: boolean }>`
     active ? "translateY(0)" : "translateY(100vh)"};
   z-index: ${({ active }) => (active ? 20 : 0)};
   transition: 0.5s ease-out;
+  padding: 13.6vh 17vw 7vh;
 
   @media (max-width: 480px) {
     position: static;
     height: unset;
     z-index: 20;
   }
+
+  & > div {
+    height: 65vh;
+    overflow: hidden;
+  }
 `;
 
 const Title = styled.h2`
-  font-size: 90px;
+  font-size: 4.6vw;
   color: #e67205;
   margin: 0;
   text-align: center;

@@ -28,7 +28,12 @@ export default function LastSec() {
   const [timeOption, setTimeOption] = useState(0);
 
   return (
-    <LastSection active={active}>
+    <LastSection
+      onWheel={(e) => {
+        e.stopPropagation();
+      }}
+      active={active}
+    >
       <Contact />
       <FAQ />
       <Footer />

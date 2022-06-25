@@ -3,14 +3,16 @@ import styled from "styled-components";
 
 interface Props {
   comment: any;
+  index: number;
 }
 
 export default function Comment(props: Props) {
-  const { comment } = props;
+  const { comment, index } = props;
+
   return (
     <CommentElement>
-      <CommentTitle>
-        <Avatar>
+      <CommentTitle even={index % 2 === 0}>
+        <Avatar orange={index % 2 === 0}>
           <img src={comment.photo} alt={comment.author} />
         </Avatar>
         <Position>
@@ -18,9 +20,9 @@ export default function Comment(props: Props) {
           <PositionBox />
         </Position>
       </CommentTitle>
-      <CommentText>
+      <CommentText even={index % 2 === 0}>
         {comment.comment}
-        <CommentBox />
+        <CommentBox even={index % 2 === 0} />
       </CommentText>
     </CommentElement>
   );
@@ -28,20 +30,24 @@ export default function Comment(props: Props) {
 
 const CommentElement = styled.section`
   position: relative;
-  width: 91vw;
+  width: 68vw;
   padding: 0 80px;
 `;
 
-const CommentTitle = styled.section`
+const CommentTitle = styled.section<{ even: boolean }>`
   display: flex;
   align-items: center;
+  flex-direction: ${({ even }) => (even ? "row" : "row-reverse")};
 `;
 
-const Avatar = styled.div`
+const Avatar = styled.div<{ orange: boolean }>`
   width: 8vw;
   height: 8vw;
   border-radius: 50%;
-  background: linear-gradient(180deg, #ff8080 0%, #ffd011 100%);
+  background: ${({ orange }) =>
+    orange
+      ? "linear-gradient(180deg, #ff8080 0%, #ffd011 100%)"
+      : "linear-gradient(180deg, #37abb8 0%, #71fbff 100%)"};
   box-shadow: 0px 7px 15px #00000033;
   display: flex;
   z-index: 5;
@@ -69,15 +75,16 @@ const PositionBox = styled.span`
   right: -30px;
   bottom: 0;
   border: 1px solid #e67205;
-  border-radius: 27px 0 0 27px;
+  border-radius: 27px;
 `;
 
-const CommentText = styled.p`
+const CommentText = styled.p<{ even: boolean }>`
   font-size: 1.8vw;
   color: #666666;
   font-weight: 300;
   position: relative;
   margin: 40px 127px 70px 0;
+  margin: ${({ even }) => (even ? "40px 127px 70px 0" : "40px 0 70px 127px")};
 
   & > b {
     color: #e67205;
@@ -85,7 +92,7 @@ const CommentText = styled.p`
   }
 `;
 
-const CommentBox = styled.span`
+const CommentBox = styled.span<{ even: boolean }>`
   position: absolute;
   top: -52px;
   right: -85px;
@@ -93,6 +100,7 @@ const CommentBox = styled.span`
   left: -70px;
   background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 100%);
   border: 1px solid #e4e4e4;
-  border-radius: 64px 0px 64px 64px;
+  border-radius: ${({ even }) =>
+    even ? "64px 0 64px 64px" : "0 64px 64px 64px"};
   z-index: -1;
 `;
