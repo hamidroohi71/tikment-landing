@@ -43,6 +43,7 @@ export default function LastSec() {
 
 const LastSection = styled.section<{ active: boolean }>`
   width: 100vw;
+  height: 100vh;
   overflow: scroll;
   position: absolute;
   transform: ${({ active }) =>

@@ -1,7 +1,28 @@
 {
   "footerSocial": [
     {
-      "name": "twitter"
+      "name": "twitter",
+      "icon": "/social/footer/twitter.svg"
+    },
+    {
+      "name": "website",
+      "icon": "/social/footer/web.svg"
+    },
+    {
+      "name": "instagram",
+      "icon": "/social/footer/instagram.svg"
+    },
+    {
+      "name": "facebook",
+      "icon": "/social/footer/facebook.svg"
+    },
+    {
+      "name": "aparat",
+      "icon": "/social/footer/aparat.svg"
+    },
+    {
+      "name": "telegram",
+      "icon": "/social/footer/telegram.svg"
     }
   ]
 }
