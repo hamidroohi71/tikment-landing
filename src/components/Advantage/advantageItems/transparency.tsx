@@ -50,6 +50,10 @@ const Image = styled(animated.img)`
   width: 100vw;
   height: 100vh;
   position: absolute;
+
+  @media (max-width: 480px) {
+    height: auto;
+  }
 `;
 
 const TextBox = styled.div`
@@ -59,31 +63,40 @@ const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: 8vw;
-`;
 
-const Tick = styled(animated.video)`
-  position: absolute;
-  width: 6.3vw;
-  height: 6.3vw;
-  object-fit: contain;
-  top: 3vw;
-  right: -8vw;
+  @media (max-width: 480px) {
+    height: auto;
+    right: 46px;
+    left: 46px;
+    text-align: center;
+    padding-left: 0;
+    top: 30vh;
+  }
 `;
 
 const MainTitle = styled(animated.h2)`
   font-size: 4.6vw;
   color: #183573;
   margin: 0;
+  @media (max-width: 480px) {
+    font-size: 42px;
+  }
 `;
 
 const SubTitle = styled(MainTitle)`
   font-size: 3.9vw;
   font-weight: 500;
   margin: 0;
+  @media (max-width: 480px) {
+    font-size: 36px;
+  }
 `;
 
 const Text = styled(animated.p)`
   font-size: 1.6vw;
   color: #292929;
   font-weight: 300;
+  @media (max-width: 480px) {
+    font-size: 24px;
+  }
 `;

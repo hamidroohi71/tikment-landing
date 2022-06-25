@@ -14,7 +14,7 @@ let listInterval: any;
 export default function Advantage() {
   const { activeSection, nextSection, setActiveSection } = useSection();
   const [active, setActive] = useState(false);
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(1);
   const width = useWidth();
 
   useEffect(() => {
@@ -23,7 +23,9 @@ export default function Advantage() {
       //   setIndex((index) => index + 1);
       // }, 10000);
     } else {
-      setIndex(0);
+      if (width > 480) {
+        setIndex(0);
+      }
       // clearInterval(listInterval);
     }
   }, [activeSection]);
@@ -96,16 +98,16 @@ export default function Advantage() {
     }
   }, [activeSection]);
 
-  useEffect(() => {
-    if (width < 480) {
-      listInterval = setInterval(() => {
-        setIndex((index) => index + 1);
-      }, 10000);
-    } else {
-      setIndex(0);
-      clearInterval(listInterval);
-    }
-  }, [width]);
+  // useEffect(() => {
+  //   if (width < 480) {
+  //     listInterval = setInterval(() => {
+  //       setIndex((index) => index + 1);
+  //     }, 10000);
+  //   } else {
+  //     setIndex(0);
+  //     clearInterval(listInterval);
+  //   }
+  // }, [width]);
 
   const nextSectionHnadler = () => {
     if (index < 7) {
@@ -118,6 +120,10 @@ export default function Advantage() {
       setIndex(index - 1);
     }
   };
+
+  useEffect(() => {
+    console.log(index);
+  }, [index]);
 
   const lethargy = new Lethargy();
 
@@ -193,6 +199,10 @@ const Background = styled(animated.div)`
   width: 100vw;
   height: 100vh;
   top: 0;
+
+  @media (max-width: 480px) {
+    mask-image: none;
+  }
 `;
 
 const Image = styled(animated.img)`
@@ -201,6 +211,10 @@ const Image = styled(animated.img)`
   object-fit: cover;
   position: absolute;
   top: 0;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const Cover = styled(animated.div)`

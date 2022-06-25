@@ -36,4 +36,11 @@ const Tick = styled(animated.video)`
   object-fit: contain;
   top: 3vw;
   right: -8vw;
+
+  @media (max-width: 480px) {
+    right: 0;
+    left: 0;
+    margin: auto;
+    top: -20px;
+  }
 `;
