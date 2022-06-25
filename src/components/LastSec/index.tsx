@@ -58,5 +58,6 @@ const LastSection = styled.section<{ active: boolean }>`
     flex-direction: column;
     overflow: visible;
     height: unset;
+    transform: none;
   }
 `;

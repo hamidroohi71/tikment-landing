@@ -67,7 +67,7 @@ export default function Contact() {
             placeholder="شماره تماس"
             style={{ flexGrow: 1 }}
           />
-          <SubmitButton type="submit" value="ثبت" />
+          <SubmitButton type="submit" value="درخواست مشاوره" />
         </ContactForm>
       </FormBox>
     </ContactSection>
@@ -79,6 +79,7 @@ const ContactSection = styled.section`
 
   @media (max-width: 480px) {
     order: 1;
+    padding: 37px;
   }
 `;
 
@@ -110,6 +111,12 @@ const TimeForm = styled(animated.div)`
     align-items: cemter;
     justify-content: space-between;
   }
+
+  @media (max-width: 480px) {
+    & > div {
+      flex-direction: column;
+    }
+  }
 `;
 
 const TimeOption = styled.span<{ selected: boolean }>`
@@ -128,6 +135,13 @@ const TimeOption = styled.span<{ selected: boolean }>`
   color: ${({ selected }) => (selected ? "#fff" : "#00DDE3")};
   padding: 0 24px;
   cursor: pointer;
+
+  @media (max-width: 480px) {
+    line-height: 51px;
+    margin: 10px 0;
+    font-size: 20px;
+    letter-spacing: -1px;
+  }
 `;
 
 const ContactForm = styled(animated.form)`
@@ -154,24 +168,24 @@ const FormInput = styled.input`
   margin-bottom: 20px;
   font-size: 1.2vw;
   position: relative;
-  background-image: url(${PersonIcon});
+  // background-image: url(${PersonIcon});
 
   &:nth-child(1) {
     background-position-x: 93%;
   }
 
-  &:nth-child(3) {
-    background-image: url(${PhoneIcon});
-    background-position-x: 95%;
-  }
+  // &:nth-child(3) {
+  //   background-image: url(${PhoneIcon});
+  //   background-position-x: 95%;
+  // }
 
   &:focus {
     border: 0.5px solid #cbcbcb;
     outline: none;
   }
 
-  &:before {
-    content: none;
+  &::before {
+    content: "";
     display: inline-block;
     position: absolute;
     top: 0;
@@ -188,6 +202,14 @@ const FormInput = styled.input`
     &:nth-child(3) {
       background-image: url(${PhoneIcon});
     }
+  }
+
+  @media (max-width: 480px) {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 10px 0 !important;
+    font-size: 18px;
+    padding: 0 40px 0 20px;
   }
 `;
 
@@ -208,5 +230,12 @@ const SubmitButton = styled.input`
   &:focus {
     border: none;
     outline: none;
+  }
+
+  @media (max-width: 480px) {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 10px 0 !important;
+    font-size: 18px;
   }
 `;

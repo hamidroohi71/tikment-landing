@@ -33,14 +33,21 @@ export default function FAQBlock({
 const FaqBlock = styled.div`
   width: 100%;
   margin: 3.5vh;
+
+  @media (max-width: 480px) {
+    margin: 25px 0;
+  }
 `;
 
 const TitlePart = styled.div<{ even: boolean }>`
   display: flex;
-  aling-items: center;
+  align-items: center;
   z-index: 5;
   position: relative;
   flex-direction: ${({ even }) => (even ? "row" : "row-reverse")};
+  @media (max-width: 480px) {
+    padding: 0 25px;
+  }
 `;
 
 const Title = styled.h2<{ open: boolean }>`
@@ -54,6 +61,14 @@ const Title = styled.h2<{ open: boolean }>`
   padding: 0 43px;
   width: fit-content;
   margin: 0;
+
+  @media (max-width: 480px) {
+    font-size: 24px;
+    line-height: 1.5;
+    padding: 17px 35px;
+    letter-spacing: -1px;
+    border-radius: 32px;
+  }
 `;
 
 const Sign = styled.div<{ open: boolean; even: boolean }>`
@@ -82,6 +97,19 @@ const Sign = styled.div<{ open: boolean; even: boolean }>`
       display: ${({ open }) => (open ? "none" : "block")};
     }
   }
+
+  @media (max-width: 480px) {
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+    margin-left: ${({ even }) => (even ? "9px" : "0")};
+    margin-right: ${({ even }) => (even ? "0" : "9px")};
+
+    & > span {
+      width: 23px;
+      height: 4px;
+    }
+  }
 `;
 const Answer = styled.p<{ open: boolean; even: boolean }>`
   display: ${({ open }) => (open ? "block" : "none")};
@@ -95,4 +123,13 @@ const Answer = styled.p<{ open: boolean; even: boolean }>`
   color: #6e6d6d;
   margin-left: ${({ even }) => (even ? "auto" : "0")};
   margin-right: ${({ even }) => (even ? "0" : "auto")};
+
+  @media (max-width: 480px) {
+    font-size: 27px;
+    line-height: 1.5;
+    padding: 72px 36px 30px;
+    width: 100%;
+    margin: 0;
+    top: -60px;
+  }
 `;

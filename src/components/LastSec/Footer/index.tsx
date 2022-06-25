@@ -47,8 +47,13 @@ const FooterSection = styled.section`
 
 const FooterTop = styled.section`
   display: flex;
-  aling-items: flex-start;
+  align-items: flex-start;
   justify-content: space-between;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-end;
+  }
 `;
 
 const FooterRight = styled.div`
@@ -56,6 +61,10 @@ const FooterRight = styled.div`
   flex-direction: column;
   width: 22%;
   flex-shrink: 0;
+
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 const FooterLeft = styled.div`
@@ -68,6 +77,9 @@ const FooterLeft = styled.div`
   background: linear-gradient(92deg, #0089a7 0%, #04165d 100%);
   box-shadow: 0px 10px 14px #033f7733;
   flex-shrink: 0;
+  @media (max-width: 480px) {
+    font-size: 20px;
+  }
 `;
 
 const CopyRight = styled.div`
@@ -77,6 +89,12 @@ const CopyRight = styled.div`
   height: 7vh;
   line-height: 7vh;
   margin: 0;
+  @media (max-width: 480px) {
+    font-size: 20px;
+    line-height: 1.5;
+    height: unset;
+    padding: 0 30px;
+  }
 `;
 
 const SocialBox = styled.div`
@@ -101,6 +119,20 @@ const SocialBox = styled.div`
       height: 50%;
       object-fit: contain;
       margin: auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 110px 20px 50px;
+
+    & > div {
+      width: 52px;
+      height: 52px;
+
+      & > img {
+        width: 50%;
+        height: 50%;
+      }
     }
   }
 `;

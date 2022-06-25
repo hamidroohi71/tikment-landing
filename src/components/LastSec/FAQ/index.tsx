@@ -28,5 +28,6 @@ const FAQSection = styled.section`
 
   @media (max-width: 480px) {
     order: 0;
+    padding: 10vh 28px;
   }
 `;
