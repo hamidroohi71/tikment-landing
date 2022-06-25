@@ -75,7 +75,7 @@ export default function Contact() {
 }
 
 const ContactSection = styled.section`
-  height: 100vh;
+  padding: 11vh 21vw 0;
 `;
 
 const FormBox = styled(animated.div)`
