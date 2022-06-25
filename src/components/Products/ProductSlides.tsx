@@ -84,10 +84,19 @@ const Image1 = styled.img<{ big: boolean }>`
   height: ${({ big }) => (big ? "23.6vw" : "18vw")};
   object-fit: contain;
   top: ${({ big }) => (big ? "0" : "25vh")};
-  bottom: ${({ big }) => (big ? "0" : "25vh")};
+  bottom: ${({ big }) => (big ? "0" : "unset")};
   margin: auto;
   left: ${({ big }) => (big ? "0" : "30vw")};
   right: ${({ big }) => (big ? "0" : "unset")};
+
+  @media (max-width: 480px) {
+    width: ${({ big }) => (big ? "70vw" : "40vw")};
+    height: ${({ big }) => (big ? "50vw" : "50vw")};
+    left: ${({ big }) => (big ? "0" : "5vw")};
+    right: ${({ big }) => (big ? "0" : "unset")};
+    top: 25vh;
+    bottom: unset;
+  }
 `;
 
 const Image2 = styled.img`
@@ -97,6 +106,10 @@ const Image2 = styled.img`
   object-fit: contain;
   top: 34vh;
   right: 11vw;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const Image3 = styled.img`
@@ -106,6 +119,13 @@ const Image3 = styled.img`
   object-fit: contain;
   top: 33.4vh;
   right: 29.6vw;
+
+  @media (max-width: 480px) {
+    width: 60vw;
+    height: 50vw;
+    right: 10vw;
+    top: 30vh;
+  }
 `;
 
 const BenefitBox = styled.div<{ index: number; benefitIndex: number }>`
@@ -141,11 +161,16 @@ const BenefitBox = styled.div<{ index: number; benefitIndex: number }>`
       : "0"};
 
   @media (max-width: 480px) {
-    position: static;
-    padding-right: 64px;
+    position: relative;
+    opacity: 1;
+    right: 0;
+    top: 0;
+    margin: 35px 64px 35px 0;
+    height: 40px;
+    width: fit-content;
 
     &:first-of-type {
-      margin-top: 484px;
+      margin-top: 500px;
     }
   }
 `;
@@ -154,6 +179,11 @@ const BenefitIcon = styled.img<{ benefitIndex: number }>`
   width: 3.7vw;
   height: 3.7vw;
   border-radius: 50%;
+
+  @media (max-width: 480px) {
+    width: 41px;
+    height: 41px;
+  }
 `;
 
 const BenefitTitle = styled.p<{ index: number; benefitIndex: number }>`
@@ -168,6 +198,11 @@ const BenefitTitle = styled.p<{ index: number; benefitIndex: number }>`
   &:first-of-type {
     font-size: 23px;
   }
+
+  @media (max-width: 480px) {
+    opacity: 1;
+    padding-left: 10px;
+  }
 `;
 
 const BenefitBorder = styled.div<{ index: number; benefitIndex: number }>`
@@ -180,6 +215,14 @@ const BenefitBorder = styled.div<{ index: number; benefitIndex: number }>`
   border-radius: 2.2vw;
   border: 1px solid #183573;
   transition: 1s ease-out;
+  @media (max-width: 480px) {
+    opacity: 1;
+    top: -4.5px;
+    right: -4.5px;
+    left: -4.5px;
+    bottom: -4.5px;
+    border-radius: 25px;
+  }
 `;
 
 const ProductName = styled.h2<{ benefitIndex: number }>`
@@ -198,6 +241,7 @@ const ProductName = styled.h2<{ benefitIndex: number }>`
     bottom: unset;
     font-size: 35px;
     left: 0;
+    opacity: 1;
   }
 `;
 

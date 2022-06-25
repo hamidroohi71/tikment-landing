@@ -160,6 +160,6 @@ const ProductPart = styled(animated.div)`
   position: absolute;
 
   @media (max-width: 480px) {
-    position: relative;
+    top: 0;
   }
 `;

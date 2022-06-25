@@ -56,7 +56,6 @@ const ProductSliderSection = styled.section`
   width: 100vw;
   height: 100vh;
   @media (max-width: 480px) {
-    height: 150vh;
     top: 0;
   }
 `;
@@ -66,13 +65,17 @@ const BackgroundElement = styled.div`
   top: 0;
   right: 0;
   left: 0;
-  bottom: 0;
+  bottom: 20%;
   margin: auto;
   width: 33vw;
   height: 33vw;
   border-radius: 50%;
   border: 2px solid #e4e4e4;
   background: linear-gradient(to bottom, #37abb81f, #71fbff1f);
+  @media (max-width: 480px) {
+    width: 73vw;
+    height: 73vw;
+  }
 `;
 
 const PrevSlideBtn = styled.div`
@@ -88,10 +91,21 @@ const PrevSlideBtn = styled.div`
   height: 5.4vw;
   cursor: pointer;
   z-index: 100;
+  @media (max-width: 480px) {
+    width: 20px;
+    height: 40px;
+    bottom: unset;
+    top: 50%;
+    right: 10%;
+  }
 `;
 
 const NextSlideBtn = styled(PrevSlideBtn)`
   transform: scaleX(-1);
   right: unset;
   left: 26vw;
+  @media (max-width: 480px) {
+    right: unset;
+    left: 10%;
+  }
 `;
