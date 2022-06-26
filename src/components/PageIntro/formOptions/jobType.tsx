@@ -21,6 +21,7 @@ export default function JobType({
       lastStep={step === 5}
       onClick={() => {
         nextStep(step > 1 && answers[0] === index ? 1 : 2);
+      //  console.log('clicked');
         addAnswer(step > 1 && answers[0] === index ? null : index, 0);
       }}
       key={type.type}
@@ -88,6 +89,10 @@ export const OptionBase = styled.div<{
     selected
       ? "linear-gradient(208deg, #05185E 0%, #4B86AC 100%)"
       : "linear-gradient(180deg,rgb(55 171 184 / 8%) 0%,#71fbff1f 100%)"};
+  background: ${({ index }) =>
+    (index === 1)
+      ? "linear-gradient(208deg, #05185E 0%, #4B86AC 100%)"
+      : "default"};
   border: 2px solid #ffffff99;
   border-radius: 2vw;
   backdrop-filter: blur(0px);
@@ -103,7 +108,7 @@ export const OptionBase = styled.div<{
   z-index: ${({ show, selected }) => (show ? 25 : selected ? 25 : 0)};
 
   &:hover {
-    background: linear-gradient(208deg, #05185e 0%, #4b86ac 100%);
+//    background: linear-gradient(208deg, #05185e 0%, #4b86ac 100%);
 
     & > svg {
       & > use {
