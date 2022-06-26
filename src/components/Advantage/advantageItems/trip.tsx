@@ -3,12 +3,20 @@ import MobileImage from "./assets/mobile2.webp";
 import { useSpring, easings, animated } from "react-spring";
 import styled from "styled-components";
 import TickIconVideo from "./TickIconVideo";
+import TripImage from "./assets/trip.webp";
 
 export default function Trip({ active }: { active: boolean }) {
   const sectionStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : 0 },
     delay: active ? 2000 : 0,
+    config: { duration: active ? 2000 : 500, easing: easings.easeOutQuart },
+  });
+
+  const mobileContentStyle = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: active ? 1 : 0 },
+    delay: active ? 3000 : 0,
     config: { duration: 2000, easing: easings.easeOutQuart },
   });
 
@@ -16,7 +24,7 @@ export default function Trip({ active }: { active: boolean }) {
     from: { opacity: 0 },
     to: { opacity: active ? 1 : 0 },
     delay: active ? 3000 : 0,
-    config: { duration: 2000, easing: easings.easeOutQuart },
+    config: { duration: active ? 2000 : 500, easing: easings.easeOutQuart },
   });
 
   const videoStyle = useSpring({
@@ -28,6 +36,7 @@ export default function Trip({ active }: { active: boolean }) {
 
   return (
     <>
+      <ImageContent style={mobileContentStyle} src={TripImage} alt="trip" />
       <Image style={sectionStyle} src={MobileImage} alt="سفر" />
       <TextBox>
         <TickIconVideo styleProps={videoStyle} play={active} />
@@ -50,10 +59,14 @@ const Image = styled(animated.img)`
   position: absolute;
 `;
 
+const ImageContent = styled(Image)`
+  z-index: 20;
+`;
+
 const TextBox = styled.div`
   position: absolute;
   top: 26vh;
-  right: 57vw;
+  right: 59vw;
   display: flex;
   flex-direction: column;
   padding-left: 8vw;

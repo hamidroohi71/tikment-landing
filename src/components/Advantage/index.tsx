@@ -75,6 +75,24 @@ export default function Advantage() {
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
+  const CircleStyle = useSpring({
+    from: { opacity: 0, transform: "scale(0)", transformOrigin: "center" },
+    to: {
+      opacity: index > 2 ? 1 : 0,
+      transform:
+        index === 3
+          ? "scale(1) translateX(0%)"
+          : index === 4 || index === 5
+          ? "scale(1) translateX(-90%)"
+          : index > 5
+          ? "scale(0.8) translateX(-109%)"
+          : "scale(0.8) translateX(-109%)",
+      transformOrigin: index > 5 ? "left top" : "center",
+    },
+    delay: index === 3 ? 3000 : 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+
   // const maskPositionStyle = useSpring({
   //   to: {
   //     transform:
@@ -163,6 +181,7 @@ export default function Advantage() {
           alt="tikment"
         />
       </Background>
+      <CircleBack style={CircleStyle} />
       <TitlePart>
         <MainTitle style={titleStyle}>چرا تیکمنت؟</MainTitle>
         <SubTitle style={subTitleStyle}>
@@ -203,6 +222,22 @@ const Background = styled(animated.div)`
   @media (max-width: 480px) {
     mask-image: none;
   }
+`;
+
+const CircleBack = styled(animated.div)`
+  width: 46vw;
+  height: 46vw;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 208, 17, 0.25);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 128, 128, 0.12),
+    rgba(255, 208, 17, 0.12)
+  );
+  position: absolute;
+  top: 15vh;
+  right: 5.6vw;
+  z-index: 20;
 `;
 
 const Image = styled(animated.img)`

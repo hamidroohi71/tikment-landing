@@ -31,7 +31,7 @@ export default function InitialVideo({
   }, [nextVideo, loadList.length]);
 
   useEffect(() => {
-    window.addEventListener("DOMContentLoaded", () => {
+    window.addEventListener("load", () => {
       setDomLoaded(true);
     });
   }, []);

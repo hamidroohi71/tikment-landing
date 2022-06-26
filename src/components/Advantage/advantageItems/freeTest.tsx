@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import DeviceImage from "./assets/device.webp";
 import Badge from "./assets/freeTest.webp";
 import { useSpring, easings, animated } from "react-spring";
 import styled from "styled-components";
 import TickIconVideo from "./TickIconVideo";
+import FreeTestModule from "./freeTestModule";
+import StartForm from "../../PageIntro/startForm";
 
 export default function FreeTest({ active }: { active: boolean }) {
+  const [open, setOpen] = useState(false);
   const sectionStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : 0 },
@@ -40,6 +43,13 @@ export default function FreeTest({ active }: { active: boolean }) {
       </TextBox>
       <Image style={sectionStyle} src={DeviceImage} alt="۳۰ روز تست رایگان" />
       <Image style={sectionStyle} src={Badge} alt="نشان رایگان" />
+      <FreeTestModule
+        handleClick={() => {
+          setOpen(true);
+        }}
+        style={sectionStyle}
+      />
+      <StartForm handleFormOpen={setOpen} />
     </>
   );
 }

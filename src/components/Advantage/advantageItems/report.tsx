@@ -3,6 +3,7 @@ import LaptopImage from "./assets/laptop.webp";
 import { useSpring, easings, animated } from "react-spring";
 import styled from "styled-components";
 import TickIconVideo from "./TickIconVideo";
+import ReportImage from "./assets/report.webp";
 
 export default function Report({ active }: { active: boolean }) {
   const sectionStyle = useSpring({
@@ -10,6 +11,20 @@ export default function Report({ active }: { active: boolean }) {
     to: { opacity: active ? 1 : 0 },
     delay: active ? 2000 : 0,
     config: { duration: 2000, easing: easings.easeOutQuart },
+  });
+
+  const imageStyle = useSpring({
+    from: { transform: "translateX(-150%)" },
+    to: { transform: active ? "translateX(0%)" : "translateX(-150%)" },
+    delay: 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+
+  const titleStyle = useSpring({
+    from: { transform: "translateX(150%)" },
+    to: { transform: active ? "translateX(0%)" : "translateX(150%)" },
+    delay: 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const textStyle = useSpring({
@@ -24,12 +39,25 @@ export default function Report({ active }: { active: boolean }) {
     delay: active ? 2000 : 0,
     config: { duration: 2000, easing: easings.easeOutQuart },
   });
+
+  const mobileContentStyle = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: active ? 1 : 0 },
+    delay: active ? 3000 : 0,
+    config: { duration: 2000, easing: easings.easeOutQuart },
+  });
+
   return (
     <>
-      <Image style={sectionStyle} src={LaptopImage} alt="گزارش‌های هوش تجاری" />
+      <ImageContent
+        style={mobileContentStyle}
+        src={ReportImage}
+        alt="geo-fence"
+      />
+      <Image style={imageStyle} src={LaptopImage} alt="گزارش‌های هوش تجاری" />
       <TextBox>
         <TickIconVideo styleProps={videoStyle} play={active} />
-        <MainTitle style={sectionStyle}>گزارش‌های هوش تجاری</MainTitle>
+        <MainTitle style={titleStyle}>گزارش‌های هوش تجاری</MainTitle>
         <Text style={textStyle}>
           در سال‌های اخیر از دلایل محبوبیت تیکمنت ارائۀ گزارش‌هایی توسط این نرم
           افزار با عنوان<b>گزارش‌های هوش تجاری</b> بوده است. گزارش‌هایی که با
@@ -45,6 +73,10 @@ const Image = styled(animated.img)`
   width: 100vw;
   height: 100vh;
   position: absolute;
+`;
+
+const ImageContent = styled(Image)`
+  z-index: 25;
 `;
 
 const TextBox = styled.div`

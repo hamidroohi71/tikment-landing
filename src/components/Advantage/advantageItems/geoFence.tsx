@@ -3,12 +3,30 @@ import MobileImage from "./assets/mobile.webp";
 import { useSpring, easings, animated } from "react-spring";
 import styled from "styled-components";
 import TickIconVideo from "./TickIconVideo";
+import GeoFenceImage from "./assets/geoFence.webp";
 
 export default function GEOFence({ active }: { active: boolean }) {
   const sectionStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : 0 },
     delay: 2000,
+    config: { duration: 2000, easing: easings.easeOutQuart },
+  });
+
+  const imageStyle = useSpring({
+    from: { opacity: 0, transform: "translateX(10%)" },
+    to: {
+      opacity: active ? 1 : 0,
+      transform: active ? "translateX(0%)" : "translateX(10%)",
+    },
+    delay: active ? 2000 : 0,
+    config: { duration: 2000, easing: easings.easeOutQuart },
+  });
+
+  const mobileContentStyle = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: active ? 1 : 0 },
+    delay: active ? 4000 : 0,
     config: { duration: 2000, easing: easings.easeOutQuart },
   });
 
@@ -28,7 +46,12 @@ export default function GEOFence({ active }: { active: boolean }) {
 
   return (
     <>
-      <Image style={sectionStyle} src={MobileImage} alt="geo-fence" />
+      <ImageContent
+        style={mobileContentStyle}
+        src={GeoFenceImage}
+        alt="geo-fence"
+      />
+      <Image style={imageStyle} src={MobileImage} alt="geo-fence" />
       <TextBox>
         <TickIconVideo styleProps={videoStyle} play={active} />
         <SubTitle style={sectionStyle}>ثبت آسان تردد</SubTitle>
@@ -47,6 +70,10 @@ const Image = styled(animated.img)`
   width: 100vw;
   height: 100vh;
   position: absolute;
+`;
+
+const ImageContent = styled(Image)`
+  z-index: 25;
 `;
 
 const TextBox = styled.div`

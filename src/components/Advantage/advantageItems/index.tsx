@@ -38,6 +38,6 @@ const Advantages = styled(animated.div)`
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 15;
+  z-index: 20;
   top: 0;
 `;
