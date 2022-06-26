@@ -1,4 +1,5 @@
-import React, {ReactDOM} from 'react';
+import React from 'react';
+import ReactDOM from "react-dom/client";
 import {ThemeContext, themes} from './theme-context';
 import ThemeTogglerButton from './theme-toggler-button';
 import ThemedButton from './themed-button';
@@ -38,8 +39,11 @@ class Appp extends React.Component {
         <ThemeContext.Provider value={this.state.theme}>
           <Toolbar changeTheme={this.toggleTheme} />
         </ThemeContext.Provider>
+
         <div>{/*section*/}
-          <ThemedButton />
+{/*}          <ThemedButton changeTheme={this.toggleTheme}/>
+          fdfd
+    */}       fdfds
         </div>
       </div>
     );

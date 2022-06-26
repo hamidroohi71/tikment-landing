@@ -5,7 +5,7 @@ import Navigation from "../navigation";
 import { useSection } from "../../context/sectionStore";
 const { Lethargy } = require("lethargy");
 
-export default function ScrollBody({ children }: { children: JSX.Element }) {
+export default function ScrollBody({ children }: { children: JSX.Element }) { 
   const { activeSection, setActiveSection, nextSection, setNextSection } =
     useSection();
 

@@ -8,19 +8,20 @@ import SectionContext from "./context/sectionStore";
 // import { useState } from "react"; //saber added
 //import SabersMainLab from "./sabersMainLab/SabersMainLab"
 import Appp from "./sabersMainLab/Appp"
+import Simple from "./sabersMainLab/gestureEx";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
 // const [learning, setLearning] = useState(true);
-const learning = true;
+const learning = !true;
 
 root.render(
   <div>
     {learning ? (
-    <React.StrictMode>
-      <SectionContext>
+    <React.StrictMode>{/**TA payini nafahmidad sectionContext chie vali fahmidam -/set active/next ection globalan*/}
+      <SectionContext> 
         <App />
       </SectionContext>
     </React.StrictMode>)
