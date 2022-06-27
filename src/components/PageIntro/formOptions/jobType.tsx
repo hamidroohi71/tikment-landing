@@ -85,14 +85,25 @@ export const OptionBase = styled.div<{
 }>`
   width: 8.7vw;
   height: 16vh;
+
   background: ${({ selected }) =>
     selected
       ? "linear-gradient(208deg, #05185E 0%, #4B86AC 100%)"
+//      ? "black"
       : "linear-gradient(180deg,rgb(55 171 184 / 8%) 0%,#71fbff1f 100%)"};
-  background: ${({ index }) =>
-    (index === 1)
-      ? "linear-gradient(208deg, #05185E 0%, #4B86AC 100%)"
-      : "default"};
+    
+  & > svg {
+    & > use {
+      fill: ${({selected}) => selected ? "black" : "black"};
+      stroke: ${({selected}) => selected ? "black" : "black"};
+    }
+  }
+        
+  background: ${({ index, selected }) => ( //default added
+    (!(index===2)) ? "linear-gradient(208deg, #05185E 0%, #4B86AC 100%)" //linear-gradient(180deg,rgb(55 171 184 / 8%) 0%,#71fbff1f 100%)" 
+    : (!selected) ? "linear-gradient(208deg, #05185E 0%, #4B86AC 100%)" //linear-gradient(180deg,rgb(55 171 184 / 8%) 0%,#71fbff1f 100%)"
+    : "linear-gradient(208deg, #05185E 0%, #4B86AC 100%)")};
+
   border: 2px solid #ffffff99;
   border-radius: 2vw;
   backdrop-filter: blur(0px);
@@ -107,20 +118,20 @@ export const OptionBase = styled.div<{
   transition: 0.5s ease-out;
   z-index: ${({ show, selected }) => (show ? 25 : selected ? 25 : 0)};
 
-  &:hover {
+//  &:hover {
 //    background: linear-gradient(208deg, #05185e 0%, #4b86ac 100%);
 
-    & > svg {
-      & > use {
-        fill: #fff;
-        stroke: #fff;
-      }
-    }
+//    & > svg {
+  //    & > use {
+    //    fill: #fff;
+       // stroke: #fff;
+//      }
+  //  }
 
-    & > p {
-      color: #fff;
-    }
-  }
+//    & > p {
+//      color: #fff;
+//    }
+//  }
 
   &::after {
     content: "";
