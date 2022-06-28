@@ -20,6 +20,7 @@ export default function FreeTest({
         <Option
           lastStep={step === 5}
           index={0}
+          step={step} //saber
           show={step === 4}
           selected={step > 3 && answers[3] === 0}
           onClick={() => {
@@ -39,6 +40,7 @@ export default function FreeTest({
         <Option
           lastStep={step === 5}
           index={1}
+          step={step}//saber
           show={step === 4}
           selected={step > 4 && answers[3] === 1}
           onClick={() => {
