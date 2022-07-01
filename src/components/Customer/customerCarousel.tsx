@@ -55,16 +55,17 @@ export default function CustomerCarousel({
 const CarouselSection = styled(animated.section)`
   display: flex;
   align-items: center;
-  margin-top: 74px;
-
+  margin-top: 0px; //74px saber
+  height:10vh; // saber
+  
   @media (max-width: 480px) {
     height: 20vh;
     width: 300vw;
   }
 `;
 const Item = styled.div<{ selected: boolean }>`
-  width: 9vw;
-  height: 9vw;
+  width: 9vw; //7vw not a good solution
+  height: 9vw; // 7vw not a good solution
   border-radius: 50%;
   // background: linear-gradient(180deg, #75c9db 0%, #4af3f8 100%);
   box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;

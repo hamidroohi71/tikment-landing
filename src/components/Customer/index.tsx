@@ -14,7 +14,7 @@ export default function Customer() {
   const [active, setActive] = useState(false);
   const styleProps2 = useSpring({
     from: { opacity: 1 },
-    to: { opacity: showComment ? (width > 480 ? 0 : 1) : 1 },
+    to: { opacity: showComment ? (width > 480 ? 0 : 1) : 1 },//{opacity: 1},//
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
   const untilTodayStyle = useSpring({
@@ -80,7 +80,7 @@ export default function Customer() {
             سازمان خصوصی و دولتی فعال بوده است.
           </TotalNumSentence>
         </TotalCustomer>
-      </Statistics>
+      </Statistics>{/*} customerCarousel is our css problem*/}
       <CustomerCarousel
         showComment={showComment}
         enterComment={() => {
