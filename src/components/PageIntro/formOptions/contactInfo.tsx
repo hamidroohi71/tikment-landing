@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useSpring, animated, easings } from "react-spring";
 import PersonIcon from "./person.svg";
 import PhoneIcon from "./phone.svg";
+import useWidth from "../../../hooks/useWidth";
 
 export default function ContactInfo({
   step,
@@ -13,6 +14,7 @@ export default function ContactInfo({
   answers: any;
   nextStep: (newStep: number) => void;
 }) {
+  const width = useWidth();
   const [timeOption, setTimeOption] = useState(0);
   const styleProps1 = useSpring({
     from: { opacity: 0 },
@@ -28,7 +30,7 @@ export default function ContactInfo({
             بگیریم؟
           </p>
           <div>
-            <TimeOption
+            <TimeOption smlWidth={width < 1290}
               selected={timeOption === 0}
               onClick={() => {
                 setTimeOption(0);
@@ -36,7 +38,7 @@ export default function ContactInfo({
             >
               همین امروز
             </TimeOption>
-            <TimeOption
+            <TimeOption smlWidth={width < 1290}
               selected={timeOption === 1}
               onClick={() => {
                 setTimeOption(1);
@@ -44,7 +46,7 @@ export default function ContactInfo({
             >
               روزهای زوج، از ساعت ۱۰ تا ۱۶
             </TimeOption>
-            <TimeOption
+            <TimeOption smlWidth={width < 1290}
               selected={timeOption === 2}
               onClick={() => {
                 setTimeOption(2);
@@ -115,7 +117,7 @@ const TimeForm = styled(animated.div)`
   }
 `;
 
-const TimeOption = styled.span<{ selected: boolean }>`
+const TimeOption = styled.span<{ selected: boolean, smlWidth: boolean }>`
   background: ${({ selected }) =>
     selected
       ? "linear-gradient(241deg, #05185e 0%, #4b86ac 100%)"
@@ -126,7 +128,8 @@ const TimeOption = styled.span<{ selected: boolean }>`
     selected ? "1px solid #ffffff99;" : "2px solid #FFFFFF"};
   border-radius: 36px;
   font-size: 1.5vw;
-  line-height: 6vh;
+  line-height: ${({smlWidth}) =>( 
+    (smlWidth) ? "3.5vh" : "6vh")};
   font-weight: 300;
   color: ${({ selected }) => (selected ? "#fff" : "#00DDE3")};
   padding: 0 24px;
@@ -154,7 +157,7 @@ const FormInput = styled.input`
   box-shadow: inset 0px 1px 3px #00000029;
   border: 0.5px solid #cbcbcb;
   color: #9e9e9e;
-  padding: 0 80px;
+  padding: 0 80px 0 0;
   background-position-x: 90%;
   background-position-y: center;
   background-repeat: no-repeat;
