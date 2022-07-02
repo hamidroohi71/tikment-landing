@@ -18,9 +18,11 @@ export default function JobType({
       show={step === 1}
       selected={step > 1 && answers[0] === index}
       index={index}
+      step={step} // saber added
       lastStep={step === 5}
       onClick={() => {
         nextStep(step > 1 && answers[0] === index ? 1 : 2);
+      //  console.log('clicked');
         addAnswer(step > 1 && answers[0] === index ? null : index, 0);
       }}
       key={type.type}
@@ -80,14 +82,23 @@ export const OptionBase = styled.div<{
   show: boolean;
   selected: boolean;
   index: number;
+  step: number; //saber
   lastStep: boolean;
 }>`
   width: 8.7vw;
   height: 16vh;
+
   background: ${({ selected }) =>
     selected
       ? "linear-gradient(208deg, #05185E 0%, #4B86AC 100%)"
       : "linear-gradient(180deg,rgb(55 171 184 / 8%) 0%,#71fbff1f 100%)"};
+
+
+  background: ${({step, index, selected}) => ( //default added
+    ((step===1) && (index===2) && (!selected) ) 
+      ? "linear-gradient(208deg, #05185E 0%, #4B86AC 100%)" 
+      : "default")}; 
+    
   border: 2px solid #ffffff99;
   border-radius: 2vw;
   backdrop-filter: blur(0px);
@@ -102,20 +113,20 @@ export const OptionBase = styled.div<{
   transition: 0.5s ease-out;
   z-index: ${({ show, selected }) => (show ? 25 : selected ? 25 : 0)};
 
-  &:hover {
-    background: linear-gradient(208deg, #05185e 0%, #4b86ac 100%);
+//  &:hover {
+//    background: linear-gradient(208deg, #05185e 0%, #4b86ac 100%);
 
-    & > svg {
-      & > use {
-        fill: #fff;
-        stroke: #fff;
-      }
-    }
+//    & > svg {
+  //    & > use {
+    //    fill: #fff;
+       // stroke: #fff;
+//      }
+  //  }
 
-    & > p {
-      color: #fff;
-    }
-  }
+//    & > p {
+//      color: #fff;
+//    }
+//  }
 
   &::after {
     content: "";
@@ -142,8 +153,10 @@ export const OptionBase = styled.div<{
       margin: auto;
       width: 4vw;
       height: 4vw;
-      fill: ${({ selected }) => (selected ? "#fff" : "#2BE2F4")};
+      fill: ${({ selected }) => (selected ? "#fff" :  "#2BE2F4")};
+      fill: ${({step, index, selected }) => ((step===1 && index===2 && !selected) ? "#fff" :  "default")}; // saber
       stroke: ${({ selected }) => (selected ? "#fff" : "#2BE2F4")};
+      stroke: ${({step, index, selected }) => ((step===1 && index===2 && !selected) ? "#fff" : "default")}; // saber
     }
   }
 
@@ -153,6 +166,7 @@ export const OptionBase = styled.div<{
     font-weight: 500;
     // color: #4af3f8;
     color: ${({ selected }) => (selected ? "#fff" : "#2BE2F4")};
+    color: ${({step, index, selected }) => (step===1 && (index===2 && !selected) ? "#fff" : "default")}; // saber
   }
 
   @media (max-width: 480px) {

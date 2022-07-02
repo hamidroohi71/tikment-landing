@@ -19,6 +19,7 @@ export default function Number({
       lastStep={step === 5}
       index={index}
       show={step === 2}
+      step={step}//saber
       selected={step > 2 && answers[1] === index}
       onClick={() => {
         nextStep(step > 2 && answers[1] === index ? 2 : 3);
