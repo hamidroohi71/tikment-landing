@@ -101,7 +101,7 @@ export default function InitialVideo({
         muted={true}
         width="100%"
         loop={!loadList.includes(2)}
-        onLoadedData={() => {
+        onCanPlayThrough={() => {
           onLoad(1);
         }}
         onEnded={() => {
@@ -117,7 +117,7 @@ export default function InitialVideo({
         muted={true}
         width="100%"
         loop={!loadList.includes(3)}
-        onLoadedData={() => {
+        onCanPlayThrough={() => {
           onLoad(2);
         }}
         onEnded={() => {
@@ -132,7 +132,7 @@ export default function InitialVideo({
         muted={true}
         width="100%"
         loop={!loadList.includes(4)}
-        onLoadedData={() => {
+        onCanPlayThrough={() => {
           onLoad(3);
         }}
         onEnded={() => {
@@ -147,7 +147,7 @@ export default function InitialVideo({
         muted={true}
         width="100%"
         loop={!domLoaded}
-        onLoadedData={() => {
+        onCanPlayThrough={() => {
           onLoad(4);
         }}
         onEnded={() => {
