@@ -42,7 +42,6 @@ const LogoBoxElement = styled(animated.section)`
   top: 40px;
   right: 0;
   display: flex;
-  align-items: center;
   padding-left: 37.5px;
   justify-content: flex-end;
   background: #f9f8f7;
@@ -52,9 +51,10 @@ const LogoBoxElement = styled(animated.section)`
   border-radius: 35px 0px 0px 35px;
   backdrop-filter: blur(2px);
   & > img {
-    width: 49%;
-    height: 27px;
+    width: 69%;
+    height: 34px;
     object-fit: contain;
+    margin-top: 4%;
   }
 
   @media (max-width: 480px) {

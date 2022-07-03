@@ -19,12 +19,14 @@ const SearchElement = styled.section`
   padding: 9px 75px 9px 14px;
   margin-left: 25px;
   height: 40px;
+  width: 22vw;
 
   & > input {
     background: transparent;
     border: none;
     outline: none;
     font-size: 1.2vw;
+    flex-grow: 1;
 
     &::placeholder {
       color: #cbcbcb;
