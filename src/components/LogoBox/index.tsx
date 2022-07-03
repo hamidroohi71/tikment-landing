@@ -4,8 +4,11 @@ import MobileLogo from "./mobileLogo.svg";
 import styled from "styled-components";
 import { animated, useSpring, easings } from "react-spring";
 import useWidth from "../../hooks/useWidth";
+import { useSection } from "../../context/sectionStore";
 
 export default function LogoBox() {
+  const { activeSection, nextSection, setActiveSection } = useSection();
+
   const width = useWidth();
   const styleProps = useSpring({
     from: { opacity: 0 },
@@ -36,7 +39,7 @@ const LogoBoxElement = styled(animated.section)`
   background: #f9f8f7;
   // box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
   box-shadow: inset 0px 0px 80px #75c9db80;
-  border: 1px solid #75c9db4d;
+  border: 1px solid #b9e4ed;
   border-radius: 35px 0px 0px 35px;
   backdrop-filter: blur(2px);
   & > img {
