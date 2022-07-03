@@ -1,28 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 interface Props {
   comment: any;
   index: number;
+  commentIndex: number;
 }
 
 export default function Comment(props: Props) {
-  const { comment, index } = props;
+  const { comment, index, commentIndex } = props;
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (commentIndex > index) {
+      setShow(true);
+    }
+  }, [index, commentIndex]);
 
   return (
     <CommentElement>
       <CommentTitle even={index % 2 === 0}>
-        <Avatar orange={index % 2 === 0}>
+        <Avatar show={show} orange={index % 2 === 0}>
           <img src={comment.photo} alt={comment.author} />
         </Avatar>
-        <Position>
+        <Position show={show}>
           {comment.author}
-          <PositionBox />
+          <PositionBox even={index % 2 === 0} show={show} />
         </Position>
       </CommentTitle>
-      <CommentText even={index % 2 === 0}>
+      <CommentText show={show} even={index % 2 === 0}>
         {comment.comment}
-        <CommentBox even={index % 2 === 0} />
+        <CommentBox show={show} even={index % 2 === 0} />
       </CommentText>
     </CommentElement>
   );
@@ -40,7 +48,7 @@ const CommentTitle = styled.section<{ even: boolean }>`
   flex-direction: ${({ even }) => (even ? "row" : "row-reverse")};
 `;
 
-const Avatar = styled.div<{ orange: boolean }>`
+const Avatar = styled.div<{ orange: boolean; show: boolean }>`
   width: 8vw;
   height: 8vw;
   border-radius: 50%;
@@ -51,6 +59,9 @@ const Avatar = styled.div<{ orange: boolean }>`
   box-shadow: 0px 7px 15px #00000033;
   display: flex;
   z-index: 5;
+  transform: ${({ show }) => (show ? "scale(1)" : "scale(0)")};
+  transform-origin: center;
+  transition: 1s 0.5s ease-out;
 
   & > img {
     width: 6.7vw;
@@ -60,15 +71,19 @@ const Avatar = styled.div<{ orange: boolean }>`
   }
 `;
 
-const Position = styled.p`
+const Position = styled.p<{ show: boolean }>`
   font-size: 1.6vw;
   color: #e67205;
   font-weight: 100;
   position: relative;
   line-height: 53px;
+  opacity: ${({ show }) => (show ? 1 : 0)};
+  transform: ${({ show }) => (show ? "transformY(0%)" : "transformY(100%)")};
+  transform-origin: center;
+  transition: 1s 0.5s ease-out;
 `;
 
-const PositionBox = styled.span`
+const PositionBox = styled.span<{ show: boolean; even: boolean }>`
   position: absolute;
   top: 0;
   left: -40px;
@@ -76,15 +91,20 @@ const PositionBox = styled.span`
   bottom: 0;
   border: 1px solid #e67205;
   border-radius: 27px;
+  transform: ${({ show }) => (show ? "scale(1)" : "scale(0)")};
+  transform-origin: ${({ even }) => (even ? "right" : "left")};
+  transition: 1s 0.5s ease-out;
 `;
 
-const CommentText = styled.p<{ even: boolean }>`
+const CommentText = styled.p<{ even: boolean; show: boolean }>`
   font-size: 1.8vw;
   color: #666666;
   font-weight: 300;
   position: relative;
   margin: 40px 127px 70px 0;
   margin: ${({ even }) => (even ? "40px 127px 70px 0" : "40px 0 70px 127px")};
+  opacity: ${({ show }) => (show ? 1 : 0)};
+  transition: 1s 1.5s ease-out;
 
   & > b {
     color: #e67205;
@@ -92,7 +112,7 @@ const CommentText = styled.p<{ even: boolean }>`
   }
 `;
 
-const CommentBox = styled.span<{ even: boolean }>`
+const CommentBox = styled.span<{ even: boolean; show: boolean }>`
   position: absolute;
   top: -52px;
   right: -85px;
@@ -103,4 +123,7 @@ const CommentBox = styled.span<{ even: boolean }>`
   border-radius: ${({ even }) =>
     even ? "64px 0 64px 64px" : "0 64px 64px 64px"};
   z-index: -1;
+  transform: ${({ show }) => (show ? "scaleY(1)" : "scaleY(0)")};
+  transform-origin: top;
+  transition: 1s 1s ease-out;
 `;
