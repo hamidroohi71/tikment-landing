@@ -121,7 +121,7 @@ export default function InitialVideo({
           onLoad(2);
         }}
         onEnded={() => {
-          handleLoaded();
+          setNextVideo(3);
         }}
       />
       <Video

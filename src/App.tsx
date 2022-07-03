@@ -11,9 +11,10 @@ import SalesService from "./components/salesService";
 import ScrollBody from "./components/ScrollBody";
 
 function App() {
-  const [loaded, setLoaded] = useState(true);
+  const [loaded, setLoaded] = useState(false);
 
   const handleLoaded = () => {
+    console.log("loaded");
     setLoaded(true);
   };
 
