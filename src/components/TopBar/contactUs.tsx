@@ -31,7 +31,7 @@ const ContactElement = styled.section`
   display: flex;
   align-items: center;
   padding: 10px 13px 10px 17px;
-  border-left: 2px solid #e4e4e4;
+  border-left: 2px solid #7197b2;
   height: 100%;
 
   & > img {

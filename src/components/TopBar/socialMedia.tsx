@@ -18,7 +18,7 @@ const SocialMediaElement = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 2px solid #e4e4e4;
+  border-right: 2px solid #7197b2;
   padding-right: 11px;
   height: 100%;
 
