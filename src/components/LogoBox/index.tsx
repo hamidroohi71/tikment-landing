@@ -7,7 +7,7 @@ import useWidth from "../../hooks/useWidth";
 import { useSection } from "../../context/sectionStore";
 
 export default function LogoBox() {
-  const { activeSection, nextSection, setActiveSection } = useSection();
+  const { setNextSection, setActiveSection, activeSection } = useSection();
 
   const width = useWidth();
   const styleProps = useSpring({
@@ -17,13 +17,22 @@ export default function LogoBox() {
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
   return (
-    <LogoBoxElement style={styleProps}>
+    <LogoBoxElement
+      onClick={() => {
+        if (activeSection !== 1) {
+          setNextSection(1);
+          setActiveSection(null);
+        }
+      }}
+      style={styleProps}
+    >
       <img src={width > 480 ? Logo : MobileLogo} alt="Tikment" />
     </LogoBoxElement>
   );
 }
 
 const LogoBoxElement = styled(animated.section)`
+  cursor: pointer;
   z-index: 30;
   background: #f9f8f7;
   width: 19vw;
