@@ -2,15 +2,25 @@
   "serviceData": [
     {
       "name": "پیش از فروش",
-      "logo": "/services/beforeSale.svg#beforeSale"
+      "logo": "/services/beforeSale.svg#beforeSale",
+      "det1": "bil",
+      "det2": "daste bil",
+      "det3": "daste bil&kol"
+      
     },
     {
       "name": "حین فروش",
-      "logo": "/services/duringSale.svg#duringSale"
+      "logo": "/services/duringSale.svg#duringSale",
+      "det1": "bil",
+      "det2": "daste bil",
+      "det3": "daste bil&kol"
     },
     {
       "name": "پس از فروش",
-      "logo": "/services/afterSale.svg#afterSale"
+      "logo": "/services/afterSale.svg#afterSale",
+      "det1": "bil",
+      "det2": "daste bil",
+      "det3": "daste bil&kol"
     }
   ]
 }
