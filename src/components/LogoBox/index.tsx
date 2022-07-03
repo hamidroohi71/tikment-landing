@@ -43,7 +43,7 @@ const LogoBoxElement = styled(animated.section)`
   border-radius: 35px 0px 0px 35px;
   backdrop-filter: blur(2px);
   & > img {
-    width: 179px;
+    width: 49%;
     height: 27px;
     object-fit: contain;
   }
