@@ -73,7 +73,7 @@ export default function StartForm({
   const styleProps7 = useSpring({
     from: { transform: "scaleX(0)" },
     to: { transform: step === 6 ? "scaleX(1)" : "scaleX(0)" },
-    delay: 4000,
+    delay: 2000,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
@@ -96,7 +96,7 @@ export default function StartForm({
     if (step === 6) {
       setTimeout(() => {
         setTick(true);
-      }, 2000);
+      }, 100);
     } else {
       setTick(false);
     }
@@ -194,7 +194,7 @@ const Result = styled(Title)`
   top: 0;
   right: 5.5vw;
   height: 64px;
-  left: -20vw;
+  width: 39vw;
 `;
 
 const Tick = styled.video`

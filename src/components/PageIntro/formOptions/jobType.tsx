@@ -168,7 +168,7 @@ export const OptionBase = styled.div<{
     font-size: 1vw;
     font-weight: 500;
     // color: #4af3f8;
-    color: ${({ selected }) => (selected ? "#fff" : "#2BE2F4")};
+    color: ${({ selected }) => (selected ? "#fff" : "#4AF3F8")};
     color: ${({ step, index, selected }) =>
       step === 1 && index === 2 && !selected ? "#fff" : "default"}; // saber
   }

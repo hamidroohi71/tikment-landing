@@ -19,7 +19,7 @@ export default function Number({
       lastStep={step === 5}
       index={index}
       show={step === 2}
-      step={step}//saber
+      step={step} //saber
       selected={step > 2 && answers[1] === index}
       onClick={() => {
         nextStep(step > 2 && answers[1] === index ? 2 : 3);
@@ -43,6 +43,22 @@ export default function Number({
 }
 
 const Option = styled(OptionBase)`
+  & > p {
+    color: ${({ selected }) => (selected ? "#2d578b" : "#fff")};
+    background: ${({ selected }) => (selected ? "#fff" : "#4af3f8")};
+    line-height: 43px;
+    border-radius: 22px;
+    padding: 0 7px;
+    font-size: 1.9vw;
+  }
+
+  &:hover {
+    & > p {
+      background: #fff;
+      color: #2d578b;
+    }
+  }
+
   transform: ${({ index, selected, lastStep }) =>
     selected
       ? lastStep
