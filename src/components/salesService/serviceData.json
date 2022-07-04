@@ -3,24 +3,24 @@
     {
       "name": "پیش از فروش",
       "logo": "/services/beforeSale.svg#beforeSale",
-      "det1": "bil",
-      "det2": "daste bil",
-      "det3": "daste bil&kol"
+      "det1": "۳۰ روز  تست رایگان",
+      "det2": "بازدید و امکان‌سنجی ",
+      "det3": "مشاورۀ رایگان حضوری و غیرحضوری"
       
     },
     {
       "name": "حین فروش",
       "logo": "/services/duringSale.svg#duringSale",
-      "det1": "bil",
-      "det2": "daste bil",
-      "det3": "daste bil&kol"
+      "det1": "تعریف دقیق اثر انگشت و چهره پرسنل",
+      "det2": "آموزش کامل استفاده از سیستم",
+      "det3": "امکان عودت محصول بدون کسر وجه "
     },
     {
       "name": "پس از فروش",
       "logo": "/services/afterSale.svg#afterSale",
-      "det1": "bil",
-      "det2": "daste bil",
-      "det3": "daste bil&kol"
+      "det1": "ارتباط با سایر نرم افزارهای شرکت برای تبادل داده",
+      "det2": "گارانتی و بیمۀ محصولات",
+      "det3": "آپدیت‌ها و آموزش‌های جدید"
     }
   ]
 }

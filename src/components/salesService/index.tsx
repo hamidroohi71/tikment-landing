@@ -36,7 +36,7 @@ export default function SalesService() {
 
   const ifShowBack = useSpring({
     from: { opacity: 0 },
-    to: { opacity: ifBack ? 1 :0 },
+    to: { opacity: ifBack ? 1 : 0 },
     delay: active ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
@@ -47,43 +47,60 @@ export default function SalesService() {
     delay: active ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
+// service cards start:
+const serviceCards = data.serviceData.map((service, index) => (
+  <Service 
+    key={service.name} 
+    index={index}
+      >
+    <CardNum>{index === 0 ? "۱" : index === 1 ? "۲" : "۳"}</CardNum>
 
-  const serviceCards = data.serviceData.map((service, index) => (
+    <ServiceCard onClick={() => {
+      turnOver(!ifBack);
+    }}    
+  >
+      <p>خدمات</p>
+      <p>{service.name}</p>
+      <div>
+        <svg>
+          <use width="100%" height="100%" href={service.logo} />
+        </svg>
+      </div>
+    </ServiceCard>
+
+  </Service>
+  ));
+
+  // service card back start:
+  const serviceCardsBack = data.serviceData.map((service, index) => (
     <Service 
       key={service.name} 
       index={index}
         >
       <CardNum>{index === 0 ? "۱" : index === 1 ? "۲" : "۳"}</CardNum>
 
-      <ServiceCard onClick={() => {
+      <ServiceCardBack onClick={() => {
         turnOver(!ifBack);
-        console.log(ifBack);
       }}    
-> 
-        <p>خدمات</p>
-        <p>{service.name}</p>
-        <p>{service.det1}</p>
-        <p>{service.det2}</p>
-        <p>{service.det3}</p>
-      </ServiceCard>
-
-
-      <ServiceCard onClick={() => {
-        turnOver(!ifBack);
-        console.log(ifBack);
-      }}    
->
-        <p>خدمات</p>
-        <p>{service.name}</p>
+      > 
         <div>
           <svg>
-            <use width="100%" height="100%" href={service.logo} />
+            <use 
+              width="100%" 
+              height="100%" 
+              href="/fastContactForm/freeTest/saber/tik.svg#tik"
+            />
           </svg>
         </div>
-      </ServiceCard>
-
+        <p>{service.name}</p>
+        <div>{service.det1}</div>
+        <div>{service.det2}</div>
+        <div>{service.det3}</div>
+      </ServiceCardBack>
     </Service>
-  ));
+    ));
+    //service card finished
+
   return (
     <ServicesSection active={active} style={sectionStyle}>
       <Title>در کنارتان هستیم</Title>
@@ -91,8 +108,8 @@ export default function SalesService() {
         از نصب سخت‌افزار
         <br /> تا آموزش نرم‌افزار و راه‌اندازی
       </Subtitle>
+      <ServicesContainer style={ifShowBack} >{serviceCardsBack}</ServicesContainer>
       <ServicesContainer style={ifShowFront}>{serviceCards}</ServicesContainer>
-      <ServicesContainer style={ifShowBack}>{serviceCards}</ServicesContainer>
     </ServicesSection>
   );
 }
@@ -170,6 +187,8 @@ const Service = styled.div<{ index: number }>`
 `;
 
 const CardNum = styled.span`
+  position: absolute;
+  top: 15.3vw;
   width: 54px;
   height: 54px;
   border-radius: 50%;
@@ -182,14 +201,9 @@ const CardNum = styled.span`
 
 
 // dadash ma inja kar daim, besmeLLAAAAAAAAAAAAAAAAAAAAAHHH
-const ServiceCard = styled.div` <{ ifBack: boolean }> 
-  // background: ------------{({ selected }) =>
-  // selected
-  //   ? "linear-gradient(208deg, #05185E 0%, #4B86AC 100%)"
-  //   : "linear-gradient(180deg,rgb(55 171 184 / 8%) 0%,#71fbff1f 100%)"};
-
-//  opacity: ?!?!{({ifBack }) => (ifBack ? 1 : 0)};
-
+const ServiceCard = styled.div`
+  position: absolute;
+  top: 35.5vh;
 
   text-align: center;
   border-radius: 3vw;
@@ -220,20 +234,11 @@ const ServiceCard = styled.div` <{ ifBack: boolean }>
     border: 1px solid #B8E2EB;
     backdrop-filter: blur(28px);
     display: flex;
-    // background: ?!?!?!?!{({ selected }) =>
-    //   selected
-    //   ? "linear-gradient(208deg, #05185E 0%, #4B86AC 100%)"
-    //   : "linear-gradient(180deg,rgb(55 171 184 / 8%) 0%,#71fbff1f 100%)"};
-
-    
 
     & > svg {
       width: 7vw;
       height: 7vw;
       margin: auto;
-//      fill: ====={({ selected }) => (selected ? "#fff" :  "#2BE2F4")};
-//      stroke: "black"; //{({ selected }) => (selected ? "#fff" : "#2BE2F4")};
-//      z-index: 20;
 
       & > use {
         width: 7vw;
@@ -261,7 +266,6 @@ const ServiceCard = styled.div` <{ ifBack: boolean }>
     & > div {
       width: 205px;
       height: 205px;
-      
   
       & > svg {
         width: 128px;
@@ -279,31 +283,24 @@ const ServiceCard = styled.div` <{ ifBack: boolean }>
   }
 `;
 
-
-// const ServiceCardBack = styled.div<{ ifBack: boolean }>`  //(ServiceCard)
-//   opacity: ${({ifBack }) => (ifBack ? 1 : 0)};
-//   z-index: 25;
-//   `;
-  
-  
   
 const ServiceCardBack = styled.div`  //same as serviceCard <{ ifBack: boolean }>
-//  opacity:?!?!?!?!{({ifBack }) => (ifBack ? 1 : 0)};
-
-
+  position: absolute;
+  top: 35.5vh;
+  width: 20vw;
   text-align: center;
   border-radius: 3vw;
   background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 100%);
-  border: 1px solid #e4e4e4;
+  border: 1px solid #183573;
   box-sizing: border-box;
-  padding: 1vw 3vw 4.8vw;
   margin-top: 50px;
-
+  
   & > p {
     color: #183573;
-    font-size: 2.7vw;
     text-align-center;
+    font-size: 2.7vw;
     margin: 0;
+
     &:first-of-type{
       font-size: 1.6vw;
       margin: 5px 0;
@@ -311,29 +308,36 @@ const ServiceCardBack = styled.div`  //same as serviceCard <{ ifBack: boolean }>
   }
 
   & > div {
-    width: 13vw;
-    height: 13vw;
-    border-radius: 50%;
-    margin-top: 2vw;
-    background:  linear-gradient(180deg,#00e5ff14 0%,#b7fdff14 100%);
-    box-shadow: inset 0px 0px 99px #80A5AC21;
     border: 1px solid #B8E2EB;
-    backdrop-filter: blur(28px);
-    display: flex;
+    padding: 0.7vw 0.7vw 0.7vw;
+    font-size: 1.6vw;
+    font-weight: lighter; 
+    border-style: solid none none;
+    
+    &:first-of-type { 
+      border: 10;
+      border-style: none  ;
 
-    & > svg {
-      width: 7vw;
-      height: 7vw;
-      margin: auto;
-
-      & > use {
-        width: 7vw;
-        height: 7vw;
-        fill: #75c9db;
-      }
     }
+  
+    & > svg {
+      display: block;
+      width: 4vw;
+      height: 4vw;
+      margin: auto;
+      z-index: 20;
+  
+      & > use {
+        display: flex;
+        margin: auto;
+        width: 4vw;
+        height: 4vw;
+        transform: scale(1.4);
+      }
+  
+    
   }
-
+  
   @media (max-width: 480px) {
     padding: 25px 57px 78px;
     display: flex;
