@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { StyledComponent } from "styled-components";
 import { OptionBase, TitleBase, OptionBox } from "./jobType";
 
 export default function FreeTest({
@@ -17,7 +17,7 @@ export default function FreeTest({
     <>
       <Title show={step === 4}>مایل به تست رایگان تیکمنت هستید؟</Title>
       <OptionBox>
-        <Option
+        <YesOption
           lastStep={step === 5}
           index={0}
           step={step} //saber
@@ -36,11 +36,11 @@ export default function FreeTest({
             />
           </svg>
           <p>بله</p>
-        </Option>
-        <Option
+        </YesOption>
+        <NoOption
           lastStep={step === 5}
           index={1}
-          step={step}//saber
+          step={step} //saber
           show={step === 4}
           selected={step > 4 && answers[3] === 1}
           onClick={() => {
@@ -56,7 +56,7 @@ export default function FreeTest({
             />
           </svg>
           <p>خیر</p>
-        </Option>
+        </NoOption>
       </OptionBox>
     </>
   );
@@ -83,6 +83,67 @@ const Option = styled(OptionBase)`
 
   @media (max-width: 480px) {
     width: 127px;
+  }
+`;
+
+const YesOption = styled(Option)`
+  & > p {
+    color: ${({ selected }) => (selected ? "#2be2f4" : "#fff")};
+    background: ${({ selected }) => (selected ? "#fff" : "#fdcd10")};
+    line-height: 43px;
+    border-radius: 22px;
+    padding: 0 30px;
+    font-size: 1.9vw;
+  }
+
+  & > svg {
+    display: block;
+    width: 4vw;
+    height: 4vw;
+    margin: auto;
+    z-index: 20;
+
+    & > use {
+      display: flex;
+      margin: auto;
+      width: 4vw;
+      fill: #fdcd10;
+      storke: #fdcd10;
+    }
+  }
+
+  &:hover {
+    background: ${({ selected }) =>
+      selected
+        ? "linear-gradient(231deg, #37ABB8 0%, #71FBFF 100%)"
+        : "linear-gradient(208deg, #05185e 0%, #4b86ac 100%)"};
+
+    & > p {
+      color: ${({ selected }) => (selected ? "#2be2f4" : "#376796")};
+      background: #fff;
+    }
+  }
+`;
+
+const NoOption = styled(Option)`
+  & > p {
+    color: ${({ selected }) => (selected ? "#2be2f4" : "#fff")};
+    background: ${({ selected }) => (selected ? "#fff" : "#2be2f4")};
+    line-height: 43px;
+    border-radius: 22px;
+    padding: 0 24px;
+    font-size: 1.9vw;
+  }
+
+  &:hover {
+    background: ${({ selected }) =>
+      selected
+        ? "linear-gradient(231deg, #37ABB8 0%, #71FBFF 100%)"
+        : "linear-gradient(208deg, #05185e 0%, #4b86ac 100%)"};
+    & > p {
+      color: ${({ selected }) => (selected ? "#2be2f4" : "#376796")};
+      background: #fff;
+    }
   }
 `;
 
