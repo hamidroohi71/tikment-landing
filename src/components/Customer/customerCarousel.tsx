@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import data from "./customerData.json";
 import "./carouselOverride.css";
@@ -30,19 +30,27 @@ export default function CustomerCarousel({
     </Item>
   ));
 
+  useEffect(() => {
+    if (showComment) {
+      setInterval(() => {
+        setCurrentIndex((i) => i + 1);
+      }, 5000);
+    }
+  }, [showComment]);
+
   const carouselStyle = useSpring({
     from: { opacity: 0, transform: "translateX(-10vw)" },
     to: {
-      opacity: activeSection === 2 ? 1 : width < 480 ? 1 : 0,
-      transform: activeSection === 2 ? "translateX(0vw)" : "translateX(2vw)",
+      opacity: showComment ? 1 : width < 480 ? 1 : 0,
+      transform: showComment ? "translateX(0vw)" : "translateX(2vw)",
     },
-    delay: activeSection === 2 ? 2000 : 0,
+    // delay: activeSection === 2 ? 2000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   return (
     <>
-      <CommentContainer show={showComment && activeSection === 2}>
+      <CommentContainer show={showComment}>
         <CommentSlider selectedIndex={currentIndex} />
       </CommentContainer>
       <CarouselSection style={carouselStyle} onClick={enterComment}>
@@ -56,8 +64,8 @@ const CarouselSection = styled(animated.section)`
   display: flex;
   align-items: center;
   margin-top: 0px; //74px saber
-  height:10vh; // saber
-  
+  height: 10vh; // saber
+
   @media (max-width: 480px) {
     height: 20vh;
     width: 300vw;

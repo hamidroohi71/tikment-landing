@@ -62,7 +62,6 @@ export default function Customer() {
       }, 6000);
     } else if (activeSection !== null) {
       setActive(false);
-      setShowComment(false);
       clearTimeout(timeOut);
     }
   }, [activeSection]);
@@ -71,22 +70,27 @@ export default function Customer() {
 
   const num = useSpring({
     num: active ? 34561 : width < 480 ? 34561 : 0,
+    delay: 500,
     config: {
       duration: active ? 2000 : 0,
+
       easing: easings.easeOutQuart,
     },
   });
 
   return (
-    <CustomerElement active={active}>
+    <CustomerElement
+      active={active}
+      status={nextSection === 2 ? "show" : nextSection < 2 ? "before" : "after"}
+    >
       <MobileCircle />
       <BackgroundElement style={BackgroundElmStyle} />
       <Statistics style={styleProps2}>
-        <UntilToday style={untilTodayStyle}>
+        <UntilToday>
           تا امروز
           <Date>1401/03/03</Date>
         </UntilToday>
-        <MiddleText style={untilTodayStyle}>
+        <MiddleText>
           سیستم حضور و غیاب تیکمنت <span>در</span>
         </MiddleText>
         <TotalCustomer>
@@ -110,7 +114,7 @@ export default function Customer() {
   );
 }
 
-const CustomerElement = styled.section<{ active: boolean }>`
+const CustomerElement = styled.section<{ active: boolean; status: string }>`
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -120,6 +124,13 @@ const CustomerElement = styled.section<{ active: boolean }>`
   padding: 8vh 10vw;
   position: absolute;
   z-index: ${({ active }) => (active ? 20 : 0)};
+  transform: ${({ status }) =>
+    status === "show"
+      ? "translateY(0vh)"
+      : status === "before"
+      ? "translateY(100vh)"
+      : "translateY(-100vh)"};
+  transition: 0.5s ease-out;
 
   @media (max-width: 480px) {
     position: relative;
