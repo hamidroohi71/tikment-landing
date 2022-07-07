@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import data from "./customerData.json";
+import TickVideo from "../../assets/video/Tick01.webm";
 
 export default function CommentSlider({
   selectedIndex,
@@ -9,15 +10,34 @@ export default function CommentSlider({
 }) {
   const comments = data.customerData;
 
-  const namePart = comments.map((item, index) => (
-    <Title selected={index === selectedIndex} key={item.comment.author}>
-      <h3>{item.comment.author}</h3>
-      <h2>
-        {item.comment.position}
-        <span />
-      </h2>
-    </Title>
-  ));
+  const namePart = comments.map((item, index) => {
+    return (
+      <Title selected={index === selectedIndex} key={item.comment.author}>
+        <h3>{item.comment.author}</h3>
+        <h2>
+          {item.comment.position}
+          <span />
+        </h2>
+        <TickMotion
+          id={"tickVideo" + index}
+          src={TickVideo}
+          loop={false}
+          muted
+          selected={index === selectedIndex}
+        ></TickMotion>
+      </Title>
+    );
+  });
+
+  useEffect(() => {
+    const video = document.getElementById(
+      "tickVideo" + selectedIndex
+    ) as HTMLVideoElement;
+    console.log("tickVideo" + selectedIndex);
+    setTimeout(() => {
+      video.play();
+    }, 700);
+  }, [selectedIndex]);
 
   const commentPart = comments.map((item, index) => (
     <Comment selected={index === selectedIndex} key={item.comment.comment}>
@@ -39,7 +59,6 @@ export default function CommentSlider({
 
   return (
     <CommentSliderElement>
-      <BackgroundElement />
       <ProfilePicture>{avatarPart}</ProfilePicture>
       <CommentPart>
         <CommentTitle className="TitlePart">{namePart}</CommentTitle>
@@ -57,24 +76,6 @@ const CommentSliderElement = styled.section`
   @media (max-width: 480px) {
     flex-direction: column;
     position: relative;
-  }
-`;
-
-const BackgroundElement = styled.div`
-  width: 27vw;
-  height: 27vw;
-  position: absolute;
-  top: 5vh;
-  right: 5vw;
-  background: linear-gradient(5deg, #ff808036 0%, #ffd01136 100%);
-  box-shadow: inset 0px 0px 99px #80a5ac21;
-  border: 2px solid #ffd01140;
-  opacity: 0.5;
-  backdrop-filter: blur(19px);
-  border-radius: 50%;
-
-  @media (max-width: 480px) {
-    display: none;
   }
 `;
 
@@ -173,8 +174,20 @@ const Avatar = styled.div<{ selected: boolean; preSelected: boolean }>`
   }
 `;
 
+const TickMotion = styled.video<{ selected: boolean }>`
+  width: 4.6vw;
+  height: 4.6vw;
+  position: absolute;
+  right: -148px;
+  bottom: -11px;
+  object-fit: contain;
+  opacity: ${({ selected }) => (selected ? 1 : 0)};
+  transition-delay: ${({ selected }) => (selected ? "0.7s" : "0s")}; ;
+`;
+
 const Title = styled.div<{ selected: boolean }>`
   position: absolute;
+  margin: 0 5vw 0 0;
   & > h2 {
     font-size: 2vw;
     color: ${({ selected }) => (selected ? "#fff" : "transparent")};
@@ -182,7 +195,7 @@ const Title = styled.div<{ selected: boolean }>`
     line-height: 3vw;
     position: relative;
     transition: 1s ease-out;
-    transition-delay: ${({ selected }) => (selected ? "1.1s" : "0s")};
+    transition-delay: ${({ selected }) => (selected ? "2s" : "0s")};
 
     & > span {
       position: absolute;
@@ -196,7 +209,7 @@ const Title = styled.div<{ selected: boolean }>`
       transform-origin: right;
       z-index: -1;
       transition: 1s ease-out;
-      transition-delay: ${({ selected }) => (selected ? "1.1s" : "0s")};
+      transition-delay: ${({ selected }) => (selected ? "2s" : "0s")};
     }
   }
 
@@ -208,7 +221,7 @@ const Title = styled.div<{ selected: boolean }>`
     margin: 0 0 5px;
     line-height: 3vw;
     transition: 1s ease-out;
-    transition-delay: ${({ selected }) => (selected ? "1.1s" : "0s")};
+    transition-delay: ${({ selected }) => (selected ? "2s" : "0s")};
   }
 
   @media (max-width: 480px) {
@@ -246,7 +259,7 @@ const Comment = styled.div<{ selected: boolean }>`
     position: relative;
     z-index: 5;
     transition: 1s ease-out;
-    transition-delay: ${({ selected }) => (selected ? "1.1s" : "0s")};
+    transition-delay: ${({ selected }) => (selected ? "2s" : "0s")};
 
     &::after {
       content: "";
@@ -267,7 +280,7 @@ const Comment = styled.div<{ selected: boolean }>`
     z-index: 5;
     position: relative;
     transition: 1s ease-out;
-    transition-delay: ${({ selected }) => (selected ? "1.1s" : "0s")};
+    transition-delay: ${({ selected }) => (selected ? "2s" : "0s")};
   }
 
   @media (max-width: 480px) {
@@ -303,7 +316,7 @@ const CommentBubble = styled.div<{ selected: boolean }>`
   transform-origin: right;
   border-radius: 30px;
   transition: 1s ease-out;
-  transition-delay: ${({ selected }) => (selected ? "1.1s" : "0s")};
+  transition-delay: ${({ selected }) => (selected ? "2s" : "0s")};
 
   &::after,
   &::before {

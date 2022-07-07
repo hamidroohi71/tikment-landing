@@ -14,7 +14,7 @@ export default function Customer() {
   const [active, setActive] = useState(false);
   const styleProps2 = useSpring({
     from: { opacity: 1 },
-    to: { opacity: showComment ? (width > 480 ? 0 : 1) : 1 },//{opacity: 1},//
+    to: { opacity: showComment ? (width > 480 ? 0 : 1) : 1 }, //{opacity: 1},//
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
   const untilTodayStyle = useSpring({
@@ -27,6 +27,23 @@ export default function Customer() {
     to: { opacity: activeSection === 2 ? 1 : width < 480 ? 1 : 0 },
     delay: activeSection === 2 ? 2000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+
+  const BackgroundElmStyle = useSpring({
+    from: { opacity: 0, transform: "scale(0)" },
+    to: {
+      opacity: activeSection === 2 ? 1 : width < 480 ? 1 : 0,
+      transform: showComment
+        ? "scale(0.78)"
+        : activeSection === 2
+        ? "scale(1)"
+        : "scale(0)",
+    },
+    delay: showComment ? 0 : activeSection === 2 ? 2000 : 0,
+    config: {
+      duration: showComment ? 500 : 1000,
+      easing: easings.easeOutQuart,
+    },
   });
 
   useEffect(() => {
@@ -63,6 +80,7 @@ export default function Customer() {
   return (
     <CustomerElement active={active}>
       <MobileCircle />
+      <BackgroundElement style={BackgroundElmStyle} />
       <Statistics style={styleProps2}>
         <UntilToday style={untilTodayStyle}>
           تا امروز
@@ -80,7 +98,8 @@ export default function Customer() {
             سازمان خصوصی و دولتی فعال بوده است.
           </TotalNumSentence>
         </TotalCustomer>
-      </Statistics>{/*} customerCarousel is our css problem*/}
+      </Statistics>
+      {/*} customerCarousel is our css problem*/}
       <CustomerCarousel
         showComment={showComment}
         enterComment={() => {
@@ -110,9 +129,34 @@ const CustomerElement = styled.section<{ active: boolean }>`
   }
 `;
 
+const BackgroundElement = styled(animated.div)`
+  width: 38vw;
+  height: 38vw;
+  position: absolute;
+  top: 8vh;
+  right: 10vw;
+  background: linear-gradient(
+    5deg,
+    rgb(255 128 128 / 12%) 0%,
+    rgb(255 208 17 / 12%) 100%
+  );
+  box-shadow: inset 0px 0px 99px #80a5ac21;
+  border: 2px solid #ffd01140;
+  opacity: 0.5;
+  backdrop-filter: blur(19px);
+  border-radius: 50%;
+  z-index: 0;
+  transform-origin: 75% 25%;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
+`;
+
 const Statistics = styled(animated.div)`
   display: flex;
   flex-direction: column;
+  z-index: 5;
 `;
 
 const UntilToday = styled(animated.p)`
