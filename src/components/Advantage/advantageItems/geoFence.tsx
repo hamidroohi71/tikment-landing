@@ -57,9 +57,10 @@ export default function GEOFence({ active }: { active: boolean }) {
         <SubTitle style={sectionStyle}>ثبت آسان تردد</SubTitle>
         <MainTitle style={sectionStyle}>با تکنولوژی Geo-Fence</MainTitle>
         <Text style={textStyle}>
-          <b>با نصب تیکمنت در تلفن همراه</b>خود، به راحتی ورود و خروج‌تان را ثبت
-          کنید همچنین به محض قرارگیری در محدوۀ شرکت و یا بیرون از آن تکنولوژی{" "}
-          <b>GEO-FENCE</b>به کمک شما می‌آید و ثبت تردد را یادآوری می‌کند
+          <b> با نصب تیکمنت در تلفن همراه </b> خود، به راحتی ورود و خروج‌تان را
+          ثبت کنید همچنین به محض قرارگیری در محدوۀ شرکت و یا بیرون از آن
+          تکنولوژی <b> GEO-FENCE </b> به کمک شما می‌آید و ثبت تردد را یادآوری
+          می‌کند
         </Text>
       </TextBox>
     </>

@@ -28,7 +28,7 @@ const FreeTestBar = styled(animated.div)`
   justify-content: flex-end;
   position: absolute;
   right: 0;
-  top: 64vh;
+  top: 70vh;
   background: linear-gradient(
     0deg,
     rgb(117 201 219 / 7%) 0%,
