@@ -5,7 +5,7 @@ import styled from "styled-components";
 import RightArrow from "./rightArrow.svg";
 import { useSection } from "../../context/sectionStore";
 
-export default function ProductSlider() {
+export default function ProductSlider({ active }: { active: boolean }) {
   const productsData = data.products;
   const [slideIndex, setSlideIndex] = useState(0);
   const { activeSection } = useSection();
@@ -16,6 +16,7 @@ export default function ProductSlider() {
       key={item.name}
       product={item}
       current={slideIndex === index}
+      active={active}
     />
   ));
 

@@ -7,9 +7,11 @@ import { useSection } from "../../context/sectionStore";
 export default function ProductSlide({
   product,
   current,
+  active,
 }: {
   product: any;
   current: boolean;
+  active: boolean;
 }) {
   const { activeSection } = useSection();
   const [myInterval, setMyInterval] = useState<any>();
@@ -37,7 +39,7 @@ export default function ProductSlide({
       setMyInterval(newInterval);
     }
     console.log(benefitIndex);
-  }, [benefitIndex, current]);
+  }, [benefitIndex, current, active]);
 
   const benefits = product.benefits;
   const benefitsElement = benefits.map((item: any, index: number) => (

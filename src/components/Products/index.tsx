@@ -87,7 +87,7 @@ export default function Product() {
         </SubTitle2>
       </TitlePart>
       <ProductPart style={ProductStyle}>
-        <ProductSlider />
+        <ProductSlider active={!titleOn} />
       </ProductPart>
       <BottomHandle />
     </ProductSection>
