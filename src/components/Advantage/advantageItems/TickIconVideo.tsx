@@ -15,7 +15,7 @@ export default function TickIconVideo({
     if (play) {
       setTimeout(() => {
         videoRef.current?.play();
-      }, 2000);
+      }, 1000);
     }
   }, [play]);
   return (

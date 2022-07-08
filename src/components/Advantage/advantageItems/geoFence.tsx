@@ -9,8 +9,8 @@ export default function GEOFence({ active }: { active: boolean }) {
   const sectionStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : 0 },
-    delay: 2000,
-    config: { duration: 2000, easing: easings.easeOutQuart },
+    delay: 1000,
+    config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const imageStyle = useSpring({
@@ -19,29 +19,29 @@ export default function GEOFence({ active }: { active: boolean }) {
       opacity: active ? 1 : 0,
       transform: active ? "translateX(0%)" : "translateX(10%)",
     },
-    delay: active ? 2000 : 0,
-    config: { duration: 2000, easing: easings.easeOutQuart },
+    delay: active ? 1000 : 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const mobileContentStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : 0 },
-    delay: active ? 4000 : 0,
-    config: { duration: 2000, easing: easings.easeOutQuart },
+    delay: active ? 2000 : 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const textStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : 0 },
-    delay: active ? 4000 : 0,
-    config: { duration: 2000, easing: easings.easeOutQuart },
+    delay: active ? 2000 : 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const videoStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : 0 },
-    delay: active ? 2000 : 0,
-    config: { duration: 2000, easing: easings.easeOutQuart },
+    delay: active ? 1000 : 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   return (

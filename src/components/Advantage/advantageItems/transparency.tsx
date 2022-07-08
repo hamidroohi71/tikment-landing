@@ -8,22 +8,22 @@ export default function Transparency({ active }: { active: boolean }) {
   const sectionStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : 0 },
-    delay: active ? 2000 : 0,
-    config: { duration: 2000, easing: easings.easeOutQuart },
+    delay: active ? 1000 : 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const textStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : 0 },
-    delay: active ? 4000 : 0,
-    config: { duration: 2000, easing: easings.easeOutQuart },
+    delay: active ? 2000 : 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const videoStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : 0 },
-    delay: active ? 2000 : 0,
-    config: { duration: 2000, easing: easings.easeOutQuart },
+    delay: active ? 1000 : 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   return (

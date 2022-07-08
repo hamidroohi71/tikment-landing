@@ -33,22 +33,22 @@ export default function Advantage() {
   const coverStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : width < 480 ? 1 : 0 },
-    delay: active ? 1000 : 0,
-    config: { duration: 1000, easing: easings.easeOutQuart },
+    delay: active ? 500 : 0,
+    config: { duration: 500, easing: easings.easeOutQuart },
   });
 
   const titleStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active && index === 0 ? (width < 480 ? 0 : 1) : 0 },
-    delay: active && index === 0 ? 1000 : 0,
-    config: { duration: 1000, easing: easings.easeOutQuart },
+    delay: active && index === 0 ? 500 : 0,
+    config: { duration: 500, easing: easings.easeOutQuart },
   });
 
   const subTitleStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active && index === 0 ? 1 : 0 },
-    delay: active && index === 0 ? 2000 : 0,
-    config: { duration: 1000, easing: easings.easeOutQuart },
+    delay: active && index === 0 ? 1500 : 0,
+    config: { duration: 500, easing: easings.easeOutQuart },
   });
 
   const maskStyle = useSpring({
@@ -57,14 +57,14 @@ export default function Advantage() {
       WebkitMaskSize: index > 0 ? "100%" : "400%",
       WebkitMaskPosition: index > 0 ? "100% bottom" : "100% bottom",
     },
-    config: { duration: 2000, easing: easings.easeOutQuart },
+    config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const backgroundImageStyle = useSpring({
     from: { opacity: 1 },
     to: { opacity: index > 2 ? 0 : 1 },
-    delay: 2000,
-    config: { duration: 1000, easing: easings.easeOutQuart },
+    delay: 1000,
+    config: { duration: 500, easing: easings.easeOutQuart },
   });
 
   const CircleStyle = useSpring({
@@ -81,8 +81,8 @@ export default function Advantage() {
           : "scale(0.8) translateX(-109%)",
       transformOrigin: index > 5 ? "left top" : "center",
     },
-    delay: index === 3 ? 3000 : 0,
-    config: { duration: 1000, easing: easings.easeOutQuart },
+    delay: index === 3 ? 1500 : 0,
+    config: { duration: 500, easing: easings.easeOutQuart },
   });
 
   // const maskPositionStyle = useSpring({
