@@ -4,6 +4,7 @@ import ProductSlide from "./ProductSlides";
 import styled from "styled-components";
 import RightArrow from "./rightArrow.svg";
 import { useSection } from "../../context/sectionStore";
+import NameIconImage from "./nameIcon.svg";
 
 export default function ProductSlider({ active }: { active: boolean }) {
   const productsData = data.products;
@@ -48,6 +49,8 @@ export default function ProductSlider({ active }: { active: boolean }) {
       <PrevSlideBtn onClick={prevSlide}></PrevSlideBtn>
       <NextSlideBtn onClick={nextSlide}></NextSlideBtn>
       {productSlides}
+
+      <NameIcon />
     </ProductSliderSection>
   );
 }
@@ -108,5 +111,23 @@ const NextSlideBtn = styled(PrevSlideBtn)`
   @media (max-width: 480px) {
     right: unset;
     left: 10%;
+  }
+`;
+
+const NameIcon = styled.span`
+  display: inline-block;
+  position: absolute;
+  width: 4.7vw;
+  height: 4.7vw;
+  background: url(${NameIconImage});
+  background-size: contain;
+  left: 31.2vw;
+  bottom: 9vh;
+  margin: auto;
+  @media (max-width: 480px) {
+    width: 42px;
+    height: 42px;
+    left: unset;
+    right: -40px;
   }
 `;

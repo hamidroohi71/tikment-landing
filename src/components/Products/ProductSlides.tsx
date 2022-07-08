@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSpring, animated, easings } from "react-spring";
-import NameIconImage from "./nameIcon.svg";
 import { useSection } from "../../context/sectionStore";
 
 export default function ProductSlide({
@@ -35,7 +34,7 @@ export default function ProductSlide({
       console.log("here");
       const newInterval = setInterval(() => {
         setBenefitIndex((prevBenefitIndex) => prevBenefitIndex + 1);
-      }, 1000);
+      }, 500);
       setMyInterval(newInterval);
     }
     console.log(benefitIndex);
@@ -62,10 +61,7 @@ export default function ProductSlide({
       {product.id !== 2 && <Image3 src={product.pics[2]} alt={product.name} />}
 
       {benefitsElement}
-      <ProductName benefitIndex={benefitIndex}>
-        {product.name}
-        <NameIcon />
-      </ProductName>
+      <ProductName benefitIndex={benefitIndex}>{product.name}</ProductName>
     </ProDuctSlideSection>
   );
 }
@@ -244,24 +240,5 @@ const ProductName = styled.h2<{ benefitIndex: number }>`
     font-size: 35px;
     left: 0;
     opacity: 1;
-  }
-`;
-
-const NameIcon = styled.span`
-  display: inline-block;
-  position: absolute;
-  width: 4.7vw;
-  height: 4.7vw;
-  background: url(${NameIconImage});
-  background-size: contain;
-  left: -4.7vw;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  @media (max-width: 480px) {
-    width: 42px;
-    height: 42px;
-    left: unset;
-    right: -40px;
   }
 `;
