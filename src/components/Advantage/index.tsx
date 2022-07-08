@@ -30,14 +30,6 @@ export default function Advantage() {
     }
   }, [activeSection]);
 
-  // console.log("index:", index, "activeSection:", activeSection);
-
-  const sectionStyle = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: active ? 1 : width < 480 ? 1 : 0 },
-    config: { duration: active ? 0 : 0, easing: easings.easeOutQuart },
-  });
-
   const coverStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : width < 480 ? 1 : 0 },
@@ -171,7 +163,8 @@ export default function Advantage() {
       // onWheel={(e) => e.stopPropagation()}
       {...bind()}
       active={active}
-      style={sectionStyle}
+      // style={sectionStyle}
+      status={nextSection === 4 ? "show" : nextSection < 4 ? "before" : "after"}
     >
       <Background style={maskStyle}>
         <Cover style={coverStyle} />
@@ -196,13 +189,23 @@ export default function Advantage() {
   );
 }
 
-const AdvantageSection = styled(animated.section)<{ active: boolean }>`
+const AdvantageSection = styled(animated.section)<{
+  active: boolean;
+  status: string;
+}>`
   height: 100vh;
   padding-top: 292px;
   position: absolute;
   top: 0;
   width: 100vw;
   z-index: ${({ active }) => (active ? 20 : 0)};
+  transform: ${({ status }) =>
+    status === "show"
+      ? "translateY(0vh)"
+      : status === "before"
+      ? "translateY(100vh)"
+      : "translateY(-100vh)"};
+  transition: 0.5s ease-in;
   @media (max-width: 480px) {
     position: relative;
     z-index: 20;
