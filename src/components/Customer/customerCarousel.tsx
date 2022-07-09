@@ -8,6 +8,8 @@ import { useSection } from "../../context/sectionStore";
 import { useSpring, animated, easings } from "react-spring";
 import useWidth from "../../hooks/useWidth";
 
+let myTime: any;
+
 export default function CustomerCarousel({
   enterComment,
   showComment,
@@ -23,6 +25,7 @@ export default function CustomerCarousel({
       selected={showComment && currentIndex === index}
       key={customer.name}
       onClick={() => {
+        clearTimeout(myTime);
         setCurrentIndex(index);
       }}
     >
@@ -30,13 +33,28 @@ export default function CustomerCarousel({
     </Item>
   ));
 
-  useEffect(() => {
-    if (showComment) {
-      setInterval(() => {
-        setCurrentIndex((i) => i + 1);
-      }, 5000);
+  // useEffect(() => {
+  //   if (showComment) {
+  //     setInterval(() => {
+  //       setCurrentIndex((i) => i + 1);
+  //     }, 5000);
+  //   }
+  // }, [showComment]);
+
+  const goNextSlide = () => {
+    if (currentIndex < customerData.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    } else {
+      setCurrentIndex(0);
     }
-  }, [showComment]);
+  };
+
+  useEffect(() => {
+    myTime = setTimeout(() => {
+      goNextSlide();
+      clearTimeout(myTime);
+    }, 7000);
+  }, [currentIndex]);
 
   const carouselStyle = useSpring({
     from: { opacity: 0, transform: "translateX(-10vw)" },
@@ -76,8 +94,8 @@ const Item = styled.div<{ selected: boolean }>`
   height: 9vw; // 7vw not a good solution
   border-radius: 50%;
   // background: linear-gradient(180deg, #75c9db 0%, #4af3f8 100%);
-  box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
-  border: 1px solid #75c9db4d;
+  box-shadow: inset 0px 0px 80px #75c9db80;
+  border: 1px solid #b9e4ed;
   backdrop-filter: blur(7px);
   display: flex;
   align-items: center;
