@@ -50,7 +50,9 @@ export default function CommentSlider({
   const avatarPart = comments.map((item, index) => (
     <Avatar
       selected={index === selectedIndex}
-      preSelected={index === selectedIndex - 1}
+      preSelected={
+        selectedIndex === 0 ? index === 5 : index === selectedIndex - 1
+      }
       key={item.comment.position}
     >
       <img src={item.comment.profilePic} alt={item.comment.author} />
