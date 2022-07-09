@@ -12,7 +12,8 @@ const { Lethargy } = require("lethargy");
 let listInterval: any;
 
 export default function Advantage() {
-  const { activeSection, nextSection, setActiveSection } = useSection();
+  const { activeSection, nextSection, setActiveSection, setNextSection } =
+    useSection();
   const [active, setActive] = useState(false);
   const [index, setIndex] = useState(1);
   const width = useWidth();
@@ -122,12 +123,18 @@ export default function Advantage() {
   const nextSectionHnadler = () => {
     if (index < 7) {
       setIndex(index + 1);
+    } else {
+      setNextSection(5);
+      setActiveSection(null);
     }
   };
 
   const prevSectionHandler = () => {
     if (index > 0) {
       setIndex(index - 1);
+    } else {
+      setNextSection(3);
+      setActiveSection(null);
     }
   };
 
