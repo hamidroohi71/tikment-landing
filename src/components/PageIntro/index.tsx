@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSection } from "../../context/sectionStore";
 import Background from "./background";
+import GlassPattern from "./glassPattern";
 import Mobile from "./mobile";
 import StartForm from "./startForm";
 import Title from "./title";
@@ -33,6 +34,7 @@ export default function PageIntro() {
 
   return (
     <PageIntroduction active={active}>
+      <GlassPattern />
       <Background />
       <Mobile />
       <Title formOpen={formOpen} />
