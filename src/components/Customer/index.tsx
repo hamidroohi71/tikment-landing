@@ -4,6 +4,7 @@ import CustomerCarousel from "./customerCarousel";
 import { useSpring, animated, easings } from "react-spring";
 import { useSection } from "../../context/sectionStore";
 import useWidth from "../../hooks/useWidth";
+import GlassPattern from "./glassPattern";
 
 let timeOut: NodeJS.Timeout;
 
@@ -83,6 +84,7 @@ export default function Customer() {
       active={active}
       status={nextSection === 2 ? "show" : nextSection < 2 ? "before" : "after"}
     >
+      <GlassPattern showComment={showComment} />
       <MobileCircle />
       <BackgroundElement style={BackgroundElmStyle} />
       <Statistics style={styleProps2}>

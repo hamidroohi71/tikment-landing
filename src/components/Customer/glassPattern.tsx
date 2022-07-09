@@ -49,17 +49,6 @@ const patternInfo = [
     radius: "2.5px",
   },
   {
-    width: "25vw",
-    height: "25px",
-    bgColor:
-      "linear-gradient(to right, rgba(255,175,59,1) 0%, rgba(224,125,20,1) 100%)",
-    top: "27vh",
-    left: "1.6vw",
-    rotation: 45,
-    border: "none",
-    radius: "12.5px",
-  },
-  {
     width: "36vw",
     height: "1.8vw",
     bgColor:
@@ -69,17 +58,6 @@ const patternInfo = [
     rotation: 45,
     border: "1px solid rgba(117,201,219,0.69)",
     radius: "0.9vw",
-  },
-  {
-    width: "35vw",
-    height: "5vw",
-    bgColor:
-      "linear-gradient(to right, rgba(117,201,219,0.6) 0%, rgba(74,243,248,1) 100%)",
-    top: "-35px",
-    left: "-90px",
-    rotation: 45,
-    border: "1px solid rgba(117,201,219,0.69)",
-    radius: "2.5vw",
   },
   {
     width: "83vw",
@@ -92,61 +70,22 @@ const patternInfo = [
     border: "1px solid rgba(117,201,219,0.69)",
     radius: "4.3vw",
   },
-  {
-    width: "26vw",
-    height: "5px",
-    bgColor: "linear-gradient(to right, #FFAF3B 0%, #E07D14 100%)",
-    top: "28vh",
-    left: "37vw",
-    rotation: 45,
-    border: "none",
-    radius: "2.5px",
-  },
-  {
-    width: "26vw",
-    height: "5px",
-    bgColor: "linear-gradient(to right, #FFAF3B 0%, #E07D14 100%)",
-    top: "15px",
-    left: "30vw",
-    rotation: 45,
-    border: "none",
-    radius: "2.5px",
-  },
-  {
-    width: "10.5vw",
-    height: "5px",
-    bgColor: "linear-gradient(to right, #FFAF3B 0%, #E07D14 100%)",
-    top: "27vh",
-    left: "56vw",
-    rotation: 45,
-    border: "none",
-    radius: "2.5px",
-  },
 ];
 
-export default function GlassPattern() {
+export default function GlassPattern({
+  showComment,
+}: {
+  showComment: boolean;
+}) {
   const { activeSection } = useSection();
 
-  const glassStyleEven = useSpring({
-    from: {
-      transform: `rotate(45deg) translateX(500%) translateY(500%)`,
-    },
-    to: {
-      transform:
-        activeSection === 1
-          ? `rotate(45deg) translateX(0%) translateY(0%)`
-          : `rotate(45deg) translateX(500%) translateY(500%)`,
-    },
-    config: { duration: 1000, easing: easings.easeOutQuart },
-  });
-
-  const glassStyleOdd = useSpring({
+  const glassStyle = useSpring({
     from: {
       transform: `rotate(45deg) translateX(-500%) translateY(-500%)`,
     },
     to: {
       transform:
-        activeSection === 1
+        activeSection === 2 && showComment
           ? `rotate(45deg) translateX(0%) translateY(0%)`
           : `rotate(45deg) translateX(-500%) translateY(-500%)`,
     },
@@ -164,8 +103,8 @@ export default function GlassPattern() {
       border={item.border}
       radius={item.radius}
       index={index}
-      active={activeSection === 1}
-      glassStyle={index % 2 === 0 ? glassStyleEven : glassStyleOdd}
+      active={activeSection === 2}
+      glassStyle={glassStyle}
     />
   ));
   return <GlassPatternElement>{glassElems}</GlassPatternElement>;
@@ -174,10 +113,11 @@ export default function GlassPattern() {
 const GlassPatternElement = styled.div`
   position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 150vh;
   overflow: hidden;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: -1;
   opacity: 0.15;
+  transform: translateY(-70vh);
 `;

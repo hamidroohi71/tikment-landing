@@ -13,24 +13,8 @@ export default function GlassElement({
   radius,
   index,
   active,
+  glassStyle,
 }: any) {
-  const glassStyle = useSpring({
-    from: {
-      transform:
-        index % 2 === 0
-          ? `rotate(${rotation}deg) translateX(500%) translateY(500%)`
-          : `rotate(${rotation}deg) translateX(-500%) translateY(-500%)`,
-    },
-    to: {
-      transform: active
-        ? `rotate(${rotation}deg) translateX(0%) translateY(0%)`
-        : index % 2 === 0
-        ? `rotate(${rotation}deg) translateX(500%) translateY(500%)`
-        : `rotate(${rotation}deg) translateX(-500%) translateY(-500%)`,
-    },
-    config: { duration: 1000, easing: easings.easeOutQuart },
-  });
-
   const opacityStyle = useSpring({
     from: {
       opacity: 0,
