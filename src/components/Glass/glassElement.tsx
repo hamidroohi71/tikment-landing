@@ -12,6 +12,7 @@ export default function GlassElement({
   border,
   radius,
   index,
+  active,
 }: any) {
   const glassStyle = useSpring({
     from: {
@@ -20,13 +21,29 @@ export default function GlassElement({
           ? `rotate(${rotation}deg) translateX(500%) translateY(500%)`
           : `rotate(${rotation}deg) translateX(-500%) translateY(-500%)`,
     },
-    to: { transform: `rotate(${rotation}deg) translateX(0%) translateY(0%)` },
-    delay: 0,
+    to: {
+      transform: active
+        ? `rotate(${rotation}deg) translateX(0%) translateY(0%)`
+        : index % 2 === 0
+        ? `rotate(${rotation}deg) translateX(500%) translateY(500%)`
+        : `rotate(${rotation}deg) translateX(-500%) translateY(-500%)`,
+    },
     config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+
+  const opacityStyle = useSpring({
+    from: {
+      opacity: 0,
+    },
+    to: {
+      opacity: active ? 1 : 0,
+    },
+    delay: active ? 0 : 1000,
+    config: { duration: active ? 0 : 1000, easing: easings.easeOutQuart },
   });
   return (
     <Glass
-      style={glassStyle}
+      style={{ ...glassStyle, ...opacityStyle }}
       width={width}
       height={height}
       bgColor={bgColor}

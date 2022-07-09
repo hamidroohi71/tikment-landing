@@ -1,6 +1,7 @@
 import React from "react";
 import GlassElement from "../Glass/glassElement";
 import styled from "styled-components";
+import { useSection } from "../../context/sectionStore";
 
 const patternInfo = [
   {
@@ -123,6 +124,7 @@ const patternInfo = [
 ];
 
 export default function GlassPattern() {
+  const { activeSection } = useSection();
   const glassElems = patternInfo.map((item, index) => (
     <GlassElement
       width={item.width}
@@ -134,6 +136,7 @@ export default function GlassPattern() {
       border={item.border}
       radius={item.radius}
       index={index}
+      active={activeSection === 1}
     />
   ));
   return <GlassPatternElement>{glassElems}</GlassPatternElement>;
