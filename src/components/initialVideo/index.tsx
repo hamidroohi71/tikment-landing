@@ -105,7 +105,7 @@ export default function InitialVideo({
           onLoad(1);
         }}
         onEnded={() => {
-          console.log("end");
+          // console.log("end");
           setNextVideo(2);
         }}
       />

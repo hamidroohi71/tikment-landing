@@ -31,13 +31,12 @@ export default function ProductSlide({
 
   useEffect(() => {
     if (benefitIndex === 0 && current && activeSection === 3) {
-      console.log("here");
       const newInterval = setInterval(() => {
         setBenefitIndex((prevBenefitIndex) => prevBenefitIndex + 1);
       }, 500);
       setMyInterval(newInterval);
     }
-    console.log(benefitIndex);
+    // console.log(benefitIndex);
   }, [benefitIndex, current, active]);
 
   const benefits = product.benefits;

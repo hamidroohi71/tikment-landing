@@ -34,7 +34,7 @@ export default function JobType({
     </Option>
   ));
 
-  console.log(answers, step);
+  // console.log(answers, step);
 
   return (
     <>

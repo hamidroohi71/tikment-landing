@@ -33,7 +33,7 @@ export default function CommentSlider({
     const video = document.getElementById(
       "tickVideo" + selectedIndex
     ) as HTMLVideoElement;
-    console.log("tickVideo" + selectedIndex);
+    // console.log("tickVideo" + selectedIndex);
     setTimeout(() => {
       video.play();
     }, 700);

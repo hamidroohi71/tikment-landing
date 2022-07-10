@@ -15,7 +15,7 @@ export default function ContactUs() {
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
-  console.log(width);
+  // console.log(width);
 
   return (
     <ContactElement>

@@ -6,9 +6,17 @@ import RightArrow from "./rightArrow.svg";
 import { useSection } from "../../context/sectionStore";
 import NameIconImage from "./nameIcon.svg";
 
-export default function ProductSlider({ active }: { active: boolean }) {
+export default function ProductSlider({
+  active,
+  indexHandler,
+  productIndex,
+}: {
+  active: boolean;
+  indexHandler: any;
+  productIndex: number;
+}) {
   const productsData = data.products;
-  const [slideIndex, setSlideIndex] = useState(0);
+  // const [slideIndex, setSlideIndex] = useState(0);
   const { activeSection } = useSection();
   // console.log(productsData);
 
@@ -16,32 +24,26 @@ export default function ProductSlider({ active }: { active: boolean }) {
     <ProductSlide
       key={item.name}
       product={item}
-      current={slideIndex === index}
+      current={productIndex - 1 === index}
       active={active}
     />
   ));
 
   const prevSlide = () => {
-    if (slideIndex > 0) {
-      setSlideIndex(slideIndex - 1);
+    if (productIndex > 1) {
+      indexHandler(productIndex - 1);
     } else {
-      setSlideIndex(2);
+      indexHandler(3);
     }
   };
 
   const nextSlide = () => {
-    if (slideIndex < 2) {
-      setSlideIndex(slideIndex + 1);
+    if (productIndex < 3) {
+      indexHandler(productIndex + 1);
     } else {
-      setSlideIndex(0);
+      indexHandler(1);
     }
   };
-
-  useEffect(() => {
-    if (activeSection && activeSection === 3) {
-      setSlideIndex(0);
-    }
-  }, [activeSection]);
 
   return (
     <ProductSliderSection>

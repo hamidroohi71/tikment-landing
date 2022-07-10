@@ -139,7 +139,7 @@ export default function Advantage() {
   };
 
   useEffect(() => {
-    console.log(index);
+    // console.log(index);
   }, [index]);
 
   const lethargy = new Lethargy();

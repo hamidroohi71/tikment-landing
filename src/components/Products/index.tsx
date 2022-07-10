@@ -6,8 +6,11 @@ import { useSpring, animated, easings } from "react-spring";
 import useWidth from "../../hooks/useWidth";
 import TopHandleBack from "./topHandleback.webp";
 import HandleSign from "./handleIcon.png";
+import { useWheel } from "react-use-gesture";
+const { Lethargy } = require("lethargy");
 
 let timeOut: NodeJS.Timeout;
+let myInterval: any;
 
 export default function Product() {
   const [titleOn, setTitleOn] = useState(true);
@@ -15,6 +18,36 @@ export default function Product() {
   const { activeSection, setNextSection, nextSection, setActiveSection } =
     useSection();
   const [active, setActive] = useState(false);
+  const [productIndex, setProductIndex] = useState(0);
+
+  useEffect(() => {
+    console.log(productIndex, "productIndex");
+    if (productIndex > 0) {
+      setTitleOn(false);
+    } else {
+      setTitleOn(true);
+    }
+  }, [productIndex]);
+
+  const nextIndexHandler = () => {
+    console.log("next");
+    if (productIndex < 3) {
+      setProductIndex(productIndex + 1);
+    } else {
+      setNextSection(4);
+      setActiveSection(null);
+    }
+  };
+
+  const prevIndexHandler = () => {
+    console.log("prev");
+    if (productIndex > 0) {
+      setProductIndex(productIndex - 1);
+    } else {
+      setNextSection(2);
+      setActiveSection(null);
+    }
+  };
 
   const titlePartStyle = useSpring({
     from: { opacity: 1 },
@@ -55,17 +88,40 @@ export default function Product() {
       setTitleOn(true);
       setActive(true);
       timeOut = setTimeout(() => {
-        setTitleOn(false);
+        setProductIndex(1);
       }, 5000);
     } else if (activeSection !== null) {
       setActive(false);
-      setTitleOn(true);
       clearTimeout(timeOut);
     }
   }, [activeSection]);
 
+  const lethargy = new Lethargy();
+
+  const bind = useWheel(({ event, last, memo: wait = false }) => {
+    event.stopPropagation();
+    if (width > 480) {
+      if (!last) {
+        const s = lethargy.check(event);
+        if (s) {
+          if (!wait) {
+            if (s < 0) {
+              nextIndexHandler();
+            } else if (s > 0) {
+              prevIndexHandler();
+            }
+            return true;
+          }
+        } else return false;
+      } else {
+        return false;
+      }
+    }
+  });
+
   return (
     <ProductSection
+      {...bind()}
       active={active}
       status={nextSection === 3 ? "show" : nextSection < 3 ? "before" : "after"}
     >
@@ -87,7 +143,11 @@ export default function Product() {
         </SubTitle2>
       </TitlePart>
       <ProductPart style={ProductStyle}>
-        <ProductSlider active={!titleOn} />
+        <ProductSlider
+          active={!titleOn}
+          productIndex={productIndex}
+          indexHandler={setProductIndex}
+        />
       </ProductPart>
       <BottomHandle />
     </ProductSection>
