@@ -6,10 +6,12 @@ import call from "./call.png";
 import clock from "./clock.png";
 import location from "./location.png";
 import "../../../node_modules/font-awesome/css/font-awesome.min.css";
+import GlassPattern from "../PageIntro/glassPattern";
 
 export default function ContactForm() {
   return (
     <FormCantact>
+        <GlassPattern  />
       <Header></Header>
       <Forms>
         <ContactWay>
@@ -58,11 +60,16 @@ const Forms = styled.div`
   gap: 7vw;
   justify-content: center;
   margin-bottom: 13vh;
+  @media (max-width: 1400px) {
+    padding-top: 21vh;
+  }
+  
 `;
 
 const ContactWay = styled.div`
   max-width: 36vw;
   direction: ltr;
+  height: fit-content;
   position: relative;
   padding: 4.5vw 4vw;
   display: flex;
@@ -77,7 +84,7 @@ const ContactWay = styled.div`
   -webkit-transform-origin: top;
   -ms-transform-origin: top;
   transform-origin: top;
-
+  z-index:10;
   h2 {
     top: -2vh;
     position: absolute;
@@ -160,7 +167,7 @@ const ContactWay = styled.div`
 `;
 
 const SentMail = styled.div`
-  margin-top: 16vh;
+  margin-top: 21vh;
   height: fit-content;
   margin-bottom: -6vh;
   max-width: 34vw;
@@ -179,6 +186,7 @@ const SentMail = styled.div`
   -webkit-transform-origin: top;
   -ms-transform-origin: top;
   transform-origin: top;
+  z-index:10;
   h2 {
     top: -2vh;
     position: absolute;

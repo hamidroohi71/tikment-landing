@@ -9,7 +9,6 @@ import PageIntro from "./components/PageIntro";
 import Product from "./components/Products";
 import SalesService from "./components/salesService";
 import ScrollBody from "./components/ScrollBody";
-import ContactForm from "./components/ContactForm";
 
 function App() {
   const [loaded, setLoaded] = useState(true);
@@ -18,35 +17,30 @@ function App() {
     setLoaded(true);
   };
 
-  // return (
-  //   <div>
-  //     {loaded ? (
-  //       <>
-  //         <ScrollBody>
-  //           <>
-  //             <Header />
-  //             <PageIntro />
-  //             <Customer />
-  //             <Product />
-  //             <Advantage />
-  //             <SalesService />
-  //             <Comments />
-  //             <LastSec />
-  //           </>
-  //         </ScrollBody>
-  //       </>
-  //     ) : (
-  //       <InitialVideo handleLoaded={handleLoaded} />
-  //     )}
-  //   </div>
-  // );
-
-  return(
+  return (
     <div>
-      <ContactForm></ContactForm>
+      {loaded ? (
+        <>
+          <ScrollBody>
+            <>
+              <Header />
+              <PageIntro />
+              <Customer />
+              <Product />
+              <Advantage />
+              <SalesService />
+              <Comments />
+              <LastSec />
+            </>
+          </ScrollBody>
+        </>
+      ) : (
+        <InitialVideo handleLoaded={handleLoaded} />
+      )}
     </div>
-   
-  )
+  );
+
+  
 }
 
 export default App;

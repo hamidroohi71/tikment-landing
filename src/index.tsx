@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import "./index.css";
 import App from "./App";
+import ContactForm from "./components/ContactForm";
 import reportWebVitals from "./reportWebVitals";
 import SectionContext from "./context/sectionStore";
 
@@ -11,7 +13,12 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <SectionContext>
-      <App />
+    <Router>
+        <Routes>
+          <Route path="/" element={<App/>}/>
+          <Route path="/contactUs" element={<ContactForm/>}/>
+        </Routes>
+    </Router>
     </SectionContext>
   </React.StrictMode>
 );
