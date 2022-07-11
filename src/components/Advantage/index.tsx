@@ -7,6 +7,7 @@ import { useSpring, easings, animated } from "react-spring";
 import MaskImage from "./mask.webp";
 import useWidth from "../../hooks/useWidth";
 import { useWheel } from "react-use-gesture";
+import GlassPattern from "./glassPattern";
 const { Lethargy } = require("lethargy");
 
 let listInterval: any;
@@ -173,6 +174,7 @@ export default function Advantage() {
       // style={sectionStyle}
       status={nextSection === 4 ? "show" : nextSection < 4 ? "before" : "after"}
     >
+      <GlassPattern listIndex={index} />
       <Background style={maskStyle}>
         <Cover style={coverStyle} />
         <Image
