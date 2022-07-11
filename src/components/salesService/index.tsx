@@ -8,6 +8,7 @@ import useWidth from "../../hooks/useWidth";
 export default function SalesService() {
   const { activeSection, nextSection, setActiveSection } = useSection();
   const [active, setActive] = useState(false);
+  const [ifBack, turnOver] = useState(false); //saber
   const width = useWidth();
 
   useEffect(() => {
@@ -33,20 +34,73 @@ export default function SalesService() {
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
-  const serviceCards = data.serviceData.map((service, index) => (
-    <Service key={service.name} index={index}>
+  const ifShowBack = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: ifBack ? 1 : 0 },
+    delay: active ? 1000 : 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+
+  const ifShowFront = useSpring({
+    from: { opacity: 1 },
+    to: { opacity: ifBack ? 0 : 1 },
+    delay: active ? 1000 : 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+// service cards start:
+const serviceCards = data.serviceData.map((service, index) => (
+  <Service 
+    key={service.name} 
+    index={index}
+      >
+    <CardNum>{index === 0 ? "۱" : index === 1 ? "۲" : "۳"}</CardNum>
+
+    <ServiceCard onClick={() => {
+      turnOver(!ifBack);
+    }}    
+  >
+      <p>خدمات</p>
+      <p>{service.name}</p>
+      <div>
+        <svg>
+          <use width="100%" height="100%" href={service.logo} />
+        </svg>
+      </div>
+    </ServiceCard>
+
+  </Service>
+  ));
+
+  // service card back start:
+  const serviceCardsBack = data.serviceData.map((service, index) => (
+    <Service 
+      key={service.name} 
+      index={index}
+        >
       <CardNum>{index === 0 ? "۱" : index === 1 ? "۲" : "۳"}</CardNum>
-      <ServiceCard>
-        <p>خدمات</p>
-        <p>{service.name}</p>
+
+      <ServiceCardBack onClick={() => {
+        turnOver(!ifBack);
+      }}    
+      > 
         <div>
           <svg>
-            <use width="100%" height="100%" href={service.logo} />
+            <use 
+              width="100%" 
+              height="100%" 
+              href="/fastContactForm/freeTest/saber/tik.svg#tik"
+            />
           </svg>
         </div>
-      </ServiceCard>
+        <p>{service.name}</p>
+        <div>{service.det1}</div>
+        <div>{service.det2}</div>
+        <div>{service.det3}</div>
+      </ServiceCardBack>
     </Service>
-  ));
+    ));
+    //service card finished
+
   return (
     <ServicesSection active={active} style={sectionStyle}>
       <Title>در کنارتان هستیم</Title>
@@ -54,7 +108,8 @@ export default function SalesService() {
         از نصب سخت‌افزار
         <br /> تا آموزش نرم‌افزار و راه‌اندازی
       </Subtitle>
-      <ServicesContainer>{serviceCards}</ServicesContainer>
+      <ServicesContainer style={ifShowBack} >{serviceCardsBack}</ServicesContainer>
+      <ServicesContainer style={ifShowFront}>{serviceCards}</ServicesContainer>
     </ServicesSection>
   );
 }
@@ -107,7 +162,7 @@ const Subtitle = styled.h3`
   }
 `;
 
-const ServicesContainer = styled.div`
+const ServicesContainer = styled(animated.div)`
   display: flex;
   justify-content: space-between;
 
@@ -132,6 +187,8 @@ const Service = styled.div<{ index: number }>`
 `;
 
 const CardNum = styled.span`
+  position: absolute;
+  top: 15.3vw;
   width: 54px;
   height: 54px;
   border-radius: 50%;
@@ -142,7 +199,12 @@ const CardNum = styled.span`
   line-height: 54px;
 `;
 
+
+// dadash ma inja kar daim, besmeLLAAAAAAAAAAAAAAAAAAAAAHHH
 const ServiceCard = styled.div`
+  position: absolute;
+  top: 35.5vh;
+
   text-align: center;
   border-radius: 3vw;
   background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 100%);
@@ -172,7 +234,6 @@ const ServiceCard = styled.div`
     border: 1px solid #B8E2EB;
     backdrop-filter: blur(28px);
     display: flex;
-    
 
     & > svg {
       width: 7vw;
@@ -183,11 +244,100 @@ const ServiceCard = styled.div`
         width: 7vw;
         height: 7vw;
         fill: #75c9db;
-
       }
     }
   }
 
+  @media (max-width: 480px) {
+    padding: 25px 57px 78px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 64px;
+
+    & > p {
+      font-size: 42px;
+      letter-spacing: -1px;
+      &:first-of-type{
+        font-size: 26px;
+      }
+    }
+
+    & > div {
+      width: 205px;
+      height: 205px;
+  
+      & > svg {
+        width: 128px;
+        height: 128px;
+        margin: auto;
+  
+        & > use {
+          width: 128px;
+          height: 128px;
+          fill: #75c9db;
+  
+        }
+      }
+    }
+  }
+`;
+
+  
+const ServiceCardBack = styled.div`  //same as serviceCard <{ ifBack: boolean }>
+  position: absolute;
+  top: 35.5vh;
+  width: 20vw;
+  text-align: center;
+  border-radius: 3vw;
+  background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 100%);
+  border: 1px solid #183573;
+  box-sizing: border-box;
+  margin-top: 50px;
+  
+  & > p {
+    color: #183573;
+    text-align-center;
+    font-size: 2.7vw;
+    margin: 0;
+
+    &:first-of-type{
+      font-size: 1.6vw;
+      margin: 5px 0;
+    }
+  }
+
+  & > div {
+    border: 1px solid #B8E2EB;
+    padding: 0.7vw 0.7vw 0.7vw;
+    font-size: 1.6vw;
+    font-weight: lighter; 
+    border-style: solid none none;
+    
+    &:first-of-type { 
+      border: 10;
+      border-style: none  ;
+
+    }
+  
+    & > svg {
+      display: block;
+      width: 4vw;
+      height: 4vw;
+      margin: auto;
+      z-index: 20;
+  
+      & > use {
+        display: flex;
+        margin: auto;
+        width: 4vw;
+        height: 4vw;
+        transform: scale(1.4);
+      }
+  
+    
+  }
+  
   @media (max-width: 480px) {
     padding: 25px 57px 78px;
     display: flex;

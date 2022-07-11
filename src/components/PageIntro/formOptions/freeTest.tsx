@@ -63,6 +63,15 @@ export default function FreeTest({
 }
 
 const Option = styled(OptionBase)`
+  // z-index:35;
+  // border: 100px solid #ffffff99;
+  // width: "10vw";
+  // background-color: "red";
+  // color: #183573;
+  // font-size: 1.5vw;
+  // font-weight: 300;
+
+
   transform: ${({ index, selected, lastStep }) =>
     selected
       ? lastStep
