@@ -7,6 +7,7 @@ import useWidth from "../../hooks/useWidth";
 import TopHandleBack from "./topHandleback.webp";
 import HandleSign from "./handleIcon.png";
 import { useWheel } from "react-use-gesture";
+import GlassPattern from "./glassPattern";
 const { Lethargy } = require("lethargy");
 
 let timeOut: NodeJS.Timeout;
@@ -125,6 +126,7 @@ export default function Product() {
       active={active}
       status={nextSection === 3 ? "show" : nextSection < 3 ? "before" : "after"}
     >
+      <GlassPattern productIndex={productIndex} />
       <TopHandle
         onClick={() => {
           setNextSection(3);
@@ -216,6 +218,7 @@ const TitlePart = styled(animated.div)`
   justify-content: center;
   padding: 0 12.5vw;
   position: absolute;
+  z-index: 10;
 
   @media (max-width: 480px) {
     display: none;
