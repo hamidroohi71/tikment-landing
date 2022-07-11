@@ -15,10 +15,33 @@ export default function ProductSlide({
   const { activeSection } = useSection();
   const [myInterval, setMyInterval] = useState<any>();
   const [benefitIndex, setBenefitIndex] = useState(0);
+
   const slideStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: current ? 1 : 0 },
     config: { duration: 500, easing: easings.easeOutQuart },
+  });
+
+  const imageStyle = useSpring({
+    from: { transform: "scale(0) translateX(300%)" },
+    to: {
+      transform: current
+        ? "scale(1) translateX(0%)"
+        : "scale(0) translateX(300%)",
+    },
+    delay: 0,
+    config: { duration: current ? 500 : 0, easing: easings.easeOutQuart },
+  });
+
+  const mainImageStyle = useSpring({
+    from: { transform: "scale(0) translateX(300%)" },
+    to: {
+      transform: current
+        ? "scale(1) translateX(0%)"
+        : "scale(0) translateX(300%)",
+    },
+    delay: 0,
+    config: { duration: current ? 500 : 0, easing: easings.easeOutQuart },
   });
 
   useEffect(() => {
@@ -56,7 +79,7 @@ export default function ProductSlide({
   return (
     <ProDuctSlideSection style={slideStyle}>
       <Image1 src={product.pics[0]} alt={product.name} big={product.id === 2} />
-      <Image2 src={product.pics[1]} alt={product.name} />
+      <Image2 style={imageStyle} src={product.pics[1]} alt={product.name} />
       {product.id !== 2 && <Image3 src={product.pics[2]} alt={product.name} />}
 
       {benefitsElement}
@@ -96,13 +119,14 @@ const Image1 = styled.img<{ big: boolean }>`
   }
 `;
 
-const Image2 = styled.img`
+const Image2 = styled(animated.img)`
   position: absolute;
-  width: 9vw;
+  width: 13vw;
   height: 12vw;
   object-fit: contain;
   top: 34vh;
   right: 11vw;
+  transform-origin: right;
 
   @media (max-width: 480px) {
     display: none;
