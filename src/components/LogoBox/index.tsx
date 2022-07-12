@@ -25,6 +25,7 @@ export default function LogoBox() {
           setNextSection(1);
           setActiveSection(null);
         }
+        setActiveSection(1);
         navigate("/");
       }}
       style={styleProps}
