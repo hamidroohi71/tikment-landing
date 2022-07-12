@@ -188,11 +188,11 @@ const ProductSection = styled.section<{ status: string; active: boolean }>`
 
 const TopHandle = styled.div`
   position: absolute;
-  top: -103px;
+  top: -5vw;
   bottom: 100%;
   left: 6vw;
   right: 57vw;
-  background: url(${TopHandleBack}) center/contain no-repeat;
+  background: url(${TopHandleBack}) bottom/contain no-repeat;
   cursor: pointer;
 `;
 

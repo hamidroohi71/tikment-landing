@@ -5,9 +5,11 @@ import styled from "styled-components";
 import { animated, useSpring, easings } from "react-spring";
 import useWidth from "../../hooks/useWidth";
 import { useSection } from "../../context/sectionStore";
+import { useNavigate } from "react-router-dom";
 
 export default function LogoBox() {
   const { setNextSection, setActiveSection, activeSection } = useSection();
+  const navigate = useNavigate();
 
   const width = useWidth();
   const styleProps = useSpring({
@@ -23,6 +25,7 @@ export default function LogoBox() {
           setNextSection(1);
           setActiveSection(null);
         }
+        navigate("/");
       }}
       style={styleProps}
     >
