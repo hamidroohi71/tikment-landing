@@ -3,10 +3,12 @@ import Phone from "./phone.svg";
 import styled from "styled-components";
 import { useSection } from "../../context/sectionStore";
 import { useSpring, animated, easings } from "react-spring";
+import { useNavigate } from "react-router-dom";
 import useWidth from "../../hooks/useWidth";
 
 export default function ContactUs() {
   const { activeSection } = useSection();
+  const navigate = useNavigate();
   const width = useWidth();
   const styleProp = useSpring({
     from: { opacity: 1 },
@@ -18,7 +20,7 @@ export default function ContactUs() {
   // console.log(width);
 
   return (
-    <ContactElement>
+    <ContactElement onClick={() => navigate('/contactUs')} >
       <img src={Phone} alt="contact" />
       <animated.p style={styleProp}>
         {width > 480 ? "تماس با تیکمنت" : "تماس"}
@@ -33,7 +35,7 @@ const ContactElement = styled.section`
   padding: 10px 13px 10px 17px;
   border-left: 2px solid #7197b2;
   height: 100%;
-
+  cursor: pointer;
   & > img {
     width: 47px;
     height: 47px;
