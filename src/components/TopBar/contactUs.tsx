@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Phone from "./phone.svg";
 import styled from "styled-components";
 import { useSection } from "../../context/sectionStore";
@@ -8,19 +8,29 @@ import useWidth from "../../hooks/useWidth";
 
 export default function ContactUs() {
   const { activeSection } = useSection();
+  const [contact, setContact] = useState(false);
+
   const navigate = useNavigate();
   const width = useWidth();
   const styleProp = useSpring({
     from: { opacity: 1 },
-    to: { opacity: activeSection === 1 ? 1 : width < 480 ? 1 : 0 },
+    to: {
+      opacity: activeSection === 1 ? 1 : width < 480 ? 1 : contact ? 1 : 0,
+    },
     delay: activeSection === 1 ? 500 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
+  useEffect(() => {
+    if (window.location.href.includes("contactUs")) {
+      console.log("has");
+      setContact(true);
+    }
+  }, []);
   // console.log(width);
 
   return (
-    <ContactElement onClick={() => navigate('/contactUs')} >
+    <ContactElement onClick={() => navigate("/contactUs")}>
       <img src={Phone} alt="contact" />
       <animated.p style={styleProp}>
         {width > 480 ? "تماس با تیکمنت" : "تماس"}

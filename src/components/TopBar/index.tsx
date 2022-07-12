@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ContactUs from "./contactUs";
 import Menu from "./menu";
 import Search from "./search";
@@ -10,7 +10,16 @@ import useWidth from "../../hooks/useWidth";
 
 export default function TopBar() {
   const { activeSection } = useSection();
+  const [contact, setContact] = useState(false);
+
   const width = useWidth();
+
+  useEffect(() => {
+    if (window.location.href.includes("contactUs")) {
+      console.log("has");
+      setContact(true);
+    }
+  }, []);
   const styleProps = useSpring({
     from: {
       transform:
@@ -25,6 +34,8 @@ export default function TopBar() {
         activeSection === 1
           ? "translateX(0%)"
           : width < 480
+          ? "translateX(0%)"
+          : contact
           ? "translateX(0%)"
           : "translateX(-85%)",
     },

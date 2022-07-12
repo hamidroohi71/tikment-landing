@@ -11,7 +11,7 @@ import GlassPattern from "../PageIntro/glassPattern";
 export default function ContactForm() {
   return (
     <FormCantact>
-        <GlassPattern  />
+      <GlassPattern />
       <Header></Header>
       <Forms>
         <ContactWay>
@@ -63,7 +63,6 @@ const Forms = styled.div`
   @media (max-width: 1400px) {
     padding-top: 21vh;
   }
-  
 `;
 
 const ContactWay = styled.div`
@@ -75,16 +74,16 @@ const ContactWay = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2vw;
-  box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
+  box-shadow: inset 0px 0px 80px #75c9db80;
   background: linear-gradient(180deg, #75c9db1a 0%, #4af3f81a 100%);
-  border: 1px solid #75c9db4d;
+  border: 1px solid #b9e4ed;
   border-radius: 0px 3vw 3vw 3vw;
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
   -webkit-transform-origin: top;
   -ms-transform-origin: top;
   transform-origin: top;
-  z-index:10;
+  z-index: 10;
   h2 {
     top: -2vh;
     position: absolute;
@@ -177,16 +176,16 @@ const SentMail = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2vw;
-  box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
+  box-shadow: inset 0px 0px 80px #75c9db80;
   background: linear-gradient(180deg, #75c9db1a 0%, #4af3f81a 100%);
-  border: 1px solid #75c9db4d;
+  border: 1px solid #b9e4ed;
   border-radius: 3vw 0px 3vw 3vw;
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
   -webkit-transform-origin: top;
   -ms-transform-origin: top;
   transform-origin: top;
-  z-index:10;
+  z-index: 10;
   h2 {
     top: -2vh;
     position: absolute;
@@ -222,7 +221,7 @@ const SentMail = styled.div`
       direction: rtl;
       outline: none;
       font-size: 1.3vw;
-      font-family: FontAwesome;
+      font-family: YekanBakh, FontAwesome !important;
       &::placeholder {
         text-align: start;
       }
@@ -236,7 +235,7 @@ const SentMail = styled.div`
       direction: rtl;
       outline: none;
       border: none;
-      font-family: FontAwesome !important;
+      font-family: YekanBakh, FontAwesome !important;
       &::placeholder {
         text-align: start;
       }
@@ -250,7 +249,7 @@ const SentMail = styled.div`
       direction: rtl;
       outline: none;
       border: none;
-      font-family: FontAwesome !important;
+      font-family: YekanBakh, FontAwesome !important;
       &::placeholder {
         text-align: start;
       }
