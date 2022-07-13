@@ -8,7 +8,9 @@ import useWidth from "../../hooks/useWidth";
 export default function SalesService() {
   const { activeSection, nextSection, setActiveSection } = useSection();
   const [active, setActive] = useState(false);
-  const [ifBack, turnOver] = useState(false); //saber
+  const [c1IfBack, c1TurnOver] = useState(false); //saber
+  const [c2IfBack, c2TurnOver] = useState(false); //saber
+  const [c3IfBack, c3TurnOver] = useState(false); //saber
   const width = useWidth();
 
   useEffect(() => {
@@ -34,42 +36,74 @@ export default function SalesService() {
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
-  const ifShowBack = useSpring({
+  const c1IfShowBack = useSpring({
     from: { opacity: 0 },
-    to: { opacity: ifBack ? 1 : 0 },
+    to: { opacity: c1IfBack ? 1 : 0 },
     delay: active ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
-  const ifShowFront = useSpring({
+  const c2IfShowBack = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: c2IfBack ? 1 : 0 },
+    delay: active ? 1000 : 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+
+  const c3IfShowBack = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: c3IfBack ? 1 : 0 },
+    delay: active ? 1000 : 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+
+  const c1IfShowFront = useSpring({
     from: { opacity: 1 },
-    to: { opacity: ifBack ? 0 : 1 },
+    to: { opacity: c1IfBack ? 0 : 1 },
     delay: active ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
-// service cards start:
-const serviceCards = data.serviceData.map((service, index) => (
-  <Service 
-    key={service.name} 
-    index={index}
-      >
-    <CardNum>{index === 0 ? "۱" : index === 1 ? "۲" : "۳"}</CardNum>
 
-    <ServiceCard onClick={() => {
-      turnOver(!ifBack);
-    }}    
-  >
-      <p>خدمات</p>
-      <p>{service.name}</p>
-      <div>
-        <svg>
-          <use width="100%" height="100%" href={service.logo} />
-        </svg>
-      </div>
-    </ServiceCard>
+  const c2IfShowFront = useSpring({
+    from: { opacity: 1 },
+    to: { opacity: c2IfBack ? 0 : 1 },
+    delay: active ? 1000 : 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
 
-  </Service>
-  ));
+  const c3IfShowFront = useSpring({
+    from: { opacity: 1 },
+    to: { opacity: c3IfBack ? 0 : 1 },
+    delay: active ? 1000 : 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+
+  // service cards start:
+  const serviceCards = data.serviceData.map((service, index) => (
+    <Service 
+      key={service.name} 
+      index={index}
+        >
+      <CardNum>{index === 0 ? "۱" : index === 1 ? "۲" : "۳"}</CardNum>
+
+      <ServiceCard onClick={() => {
+        index === 0 ? c1TurnOver(!c1IfBack) :
+        index === 1 ? c2TurnOver(!c2IfBack) :
+           c3TurnOver(!c3IfBack)
+        ;
+      }}    
+    >
+        <p>خدمات</p>
+        <p>{service.name}</p>
+        <div>
+          <svg>
+            <use width="100%" height="100%" href={service.logo} />
+          </svg>
+        </div>
+      </ServiceCard>
+
+    </Service>
+    ));
 
   // service card back start:
   const serviceCardsBack = data.serviceData.map((service, index) => (
@@ -78,9 +112,11 @@ const serviceCards = data.serviceData.map((service, index) => (
       index={index}
         >
       <CardNum>{index === 0 ? "۱" : index === 1 ? "۲" : "۳"}</CardNum>
-
       <ServiceCardBack onClick={() => {
-        turnOver(!ifBack);
+        index === 0 ? c1TurnOver(!c1IfBack) :
+        index === 1 ? c2TurnOver(!c2IfBack) :
+           c3TurnOver(!c3IfBack)
+        ;
       }}    
       > 
         <div>
@@ -100,6 +136,7 @@ const serviceCards = data.serviceData.map((service, index) => (
     </Service>
     ));
     //service card finished
+    console.log(serviceCardsBack);
 
   return (
     <ServicesSection active={active} style={sectionStyle}>
@@ -108,8 +145,15 @@ const serviceCards = data.serviceData.map((service, index) => (
         از نصب سخت‌افزار
         <br /> تا آموزش نرم‌افزار و راه‌اندازی
       </Subtitle>
-      <ServicesContainer style={ifShowBack} >{serviceCardsBack}</ServicesContainer>
-      <ServicesContainer style={ifShowFront}>{serviceCards}</ServicesContainer>
+      <ServicesContainer style={c1IfShowBack} >{serviceCardsBack[0]}</ServicesContainer>
+      <ServicesContainer style={c1IfShowFront}>{serviceCards[0]}</ServicesContainer>
+
+      <ServicesContainer2 style={c2IfShowBack} >{serviceCardsBack[1]}</ServicesContainer2>
+      <ServicesContainer2 style={c2IfShowFront}>{serviceCards[1]}</ServicesContainer2>   
+      
+      <ServicesContainer3 style={c3IfShowBack} >{serviceCardsBack[2]}</ServicesContainer3>
+      <ServicesContainer3 style={c3IfShowFront}>{serviceCards[2]}</ServicesContainer3>
+
     </ServicesSection>
   );
 }
@@ -163,6 +207,9 @@ const Subtitle = styled.h3`
 `;
 
 const ServicesContainer = styled(animated.div)`
+  position: absolute;
+  top: 0vh;
+  right: 15%;
   display: flex;
   justify-content: space-between;
 
@@ -170,6 +217,32 @@ const ServicesContainer = styled(animated.div)`
     justify-content: center;
   }
 `;
+
+const ServicesContainer2 = styled(animated.div)`
+  position: absolute;
+  top: 0vh;
+  right: 40%;
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 480px) {
+    justify-content: center;
+  }
+`;
+
+const ServicesContainer3 = styled(animated.div)`
+  position: absolute;
+  top: 0vh;
+  right: 65%;
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 480px) {
+    justify-content: center;
+  }
+`;
+
+//const AnimatedService = styled(animated.Service)``;
 
 const Service = styled.div<{ index: number }>`
   width: 20vw;
@@ -284,7 +357,7 @@ const ServiceCard = styled.div`
 `;
 
   
-const ServiceCardBack = styled.div`  //same as serviceCard <{ ifBack: boolean }>
+const ServiceCardBack = styled.div`
   position: absolute;
   top: 35.5vh;
   width: 20vw;
