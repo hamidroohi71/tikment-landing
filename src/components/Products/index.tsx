@@ -151,7 +151,14 @@ export default function Product() {
           indexHandler={setProductIndex}
         />
       </ProductPart>
-      <BottomHandle />
+      <BottomHandle
+        onClick={() => {
+          setNextSection(3);
+          setActiveSection(null);
+        }}
+      >
+        <HandleIcon />
+      </BottomHandle>
     </ProductSection>
   );
 }
@@ -175,7 +182,7 @@ const ProductSection = styled.section<{ status: string; active: boolean }>`
       ? "translateY(100vh)"
       : "translateY(-100vh)"};
   transition: 0.5s ease-in;
-  z-index: 20;
+  z-index: 30;
 
   @media (max-width: 480px) {
     position: static;
@@ -209,7 +216,15 @@ const HandleIcon = styled.div`
   margin: auto;
 `;
 
-const BottomHandle = styled.div``;
+const BottomHandle = styled(TopHandle)`
+  transform: scaleY(-1);
+  bottom: -5vw;
+  top: 100%;
+
+  & > div {
+    transform: scaleY(-1);
+  }
+`;
 
 const TitlePart = styled(animated.div)`
   display: flex;
