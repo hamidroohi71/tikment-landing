@@ -39,60 +39,51 @@ export default function SalesService() {
   const c1IfShowBack = useSpring({
     from: { opacity: 0 },
     to: { opacity: c1IfBack ? 1 : 0 },
-    delay: active ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const c2IfShowBack = useSpring({
     from: { opacity: 0 },
     to: { opacity: c2IfBack ? 1 : 0 },
-    delay: active ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const c3IfShowBack = useSpring({
     from: { opacity: 0 },
     to: { opacity: c3IfBack ? 1 : 0 },
-    delay: active ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const c1IfShowFront = useSpring({
     from: { opacity: 1 },
     to: { opacity: c1IfBack ? 0 : 1 },
-    delay: active ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const c2IfShowFront = useSpring({
     from: { opacity: 1 },
     to: { opacity: c2IfBack ? 0 : 1 },
-    delay: active ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const c3IfShowFront = useSpring({
     from: { opacity: 1 },
     to: { opacity: c3IfBack ? 0 : 1 },
-    delay: active ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   // service cards start:
   const serviceCards = data.serviceData.map((service, index) => (
-    <Service 
-      key={service.name} 
-      index={index}
-        >
-      <CardNum>{index === 0 ? "۱" : index === 1 ? "۲" : "۳"}</CardNum>
-
-      <ServiceCard onClick={() => {
-        index === 0 ? c1TurnOver(!c1IfBack) :
-        index === 1 ? c2TurnOver(!c2IfBack) :
-           c3TurnOver(!c3IfBack)
-        ;
-      }}    
-    >
+    <Service key={service.name} index={index}>
+      <ServiceCard
+        onClick={() => {
+          index === 0
+            ? c1TurnOver(!c1IfBack)
+            : index === 1
+            ? c2TurnOver(!c2IfBack)
+            : c3TurnOver(!c3IfBack);
+        }}
+      >
         <p>خدمات</p>
         <p>{service.name}</p>
         <div>
@@ -101,29 +92,26 @@ export default function SalesService() {
           </svg>
         </div>
       </ServiceCard>
-
     </Service>
-    ));
+  ));
 
   // service card back start:
   const serviceCardsBack = data.serviceData.map((service, index) => (
-    <Service 
-      key={service.name} 
-      index={index}
-        >
-      <CardNum>{index === 0 ? "۱" : index === 1 ? "۲" : "۳"}</CardNum>
-      <ServiceCardBack onClick={() => {
-        index === 0 ? c1TurnOver(!c1IfBack) :
-        index === 1 ? c2TurnOver(!c2IfBack) :
-           c3TurnOver(!c3IfBack)
-        ;
-      }}    
-      > 
+    <Service key={service.name} index={index}>
+      <ServiceCardBack
+        onClick={() => {
+          index === 0
+            ? c1TurnOver(!c1IfBack)
+            : index === 1
+            ? c2TurnOver(!c2IfBack)
+            : c3TurnOver(!c3IfBack);
+        }}
+      >
         <div>
           <svg>
-            <use 
-              width="100%" 
-              height="100%" 
+            <use
+              width="100%"
+              height="100%"
               href="/fastContactForm/freeTest/saber/tik.svg#tik"
             />
           </svg>
@@ -134,9 +122,9 @@ export default function SalesService() {
         <div>{service.det3}</div>
       </ServiceCardBack>
     </Service>
-    ));
-    //service card finished
-    console.log(serviceCardsBack);
+  ));
+  //service card finished
+  console.log(serviceCardsBack);
 
   return (
     <ServicesSection active={active} style={sectionStyle}>
@@ -145,15 +133,35 @@ export default function SalesService() {
         از نصب سخت‌افزار
         <br /> تا آموزش نرم‌افزار و راه‌اندازی
       </Subtitle>
-      <ServicesContainer style={c1IfShowBack} >{serviceCardsBack[0]}</ServicesContainer>
-      <ServicesContainer style={c1IfShowFront}>{serviceCards[0]}</ServicesContainer>
+      <NumberPart>
+        <NumDividerShort />
+        <CardNum>۱</CardNum>
+        <NumDividerlong />
+        <CardNum>۲</CardNum>
+        <NumDividerlong />
+        <CardNum>۳</CardNum>
+        <NumDividerShort />
+      </NumberPart>
+      <ServicesContainer style={c1IfShowBack}>
+        {serviceCardsBack[0]}
+      </ServicesContainer>
+      <ServicesContainer style={c1IfShowFront}>
+        {serviceCards[0]}
+      </ServicesContainer>
 
-      <ServicesContainer2 style={c2IfShowBack} >{serviceCardsBack[1]}</ServicesContainer2>
-      <ServicesContainer2 style={c2IfShowFront}>{serviceCards[1]}</ServicesContainer2>   
-      
-      <ServicesContainer3 style={c3IfShowBack} >{serviceCardsBack[2]}</ServicesContainer3>
-      <ServicesContainer3 style={c3IfShowFront}>{serviceCards[2]}</ServicesContainer3>
+      <ServicesContainer2 style={c2IfShowBack}>
+        {serviceCardsBack[1]}
+      </ServicesContainer2>
+      <ServicesContainer2 style={c2IfShowFront}>
+        {serviceCards[1]}
+      </ServicesContainer2>
 
+      <ServicesContainer3 style={c3IfShowBack}>
+        {serviceCardsBack[2]}
+      </ServicesContainer3>
+      <ServicesContainer3 style={c3IfShowFront}>
+        {serviceCards[2]}
+      </ServicesContainer3>
     </ServicesSection>
   );
 }
@@ -204,6 +212,33 @@ const Subtitle = styled.h3`
       display: inline-block;
     }
   }
+`;
+
+const NumberPart = styled.div`
+  display: flex;
+`;
+
+const CardNum = styled.span`
+  top: 15.3vw;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #37abb8 0%, #71fbff 100%);
+  color: #fff;
+  font-size: 40px;
+  text-align: center;
+  line-height: 54px;
+  flex-shrink: 0;
+`;
+
+const NumDividerShort = styled.div`
+  width: 20vw;
+  height: 2px;
+`;
+
+const NumDividerlong = styled.div`
+  width: 23vw;
+  height: 2px;
 `;
 
 const ServicesContainer = styled(animated.div)`
@@ -259,20 +294,6 @@ const Service = styled.div<{ index: number }>`
   }
 `;
 
-const CardNum = styled.span`
-  position: absolute;
-  top: 15.3vw;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #37abb8 0%, #71fbff 100%);
-  color: #fff;
-  font-size: 40px;
-  text-align: center;
-  line-height: 54px;
-`;
-
-
 // dadash ma inja kar daim, besmeLLAAAAAAAAAAAAAAAAAAAAAHHH
 const ServiceCard = styled.div`
   position: absolute;
@@ -285,6 +306,7 @@ const ServiceCard = styled.div`
   box-sizing: border-box;
   padding: 1vw 3vw 4.8vw;
   margin-top: 50px;
+  height: 45vh;
 
   & > p {
     color: #183573;
@@ -356,7 +378,6 @@ const ServiceCard = styled.div`
   }
 `;
 
-  
 const ServiceCardBack = styled.div`
   position: absolute;
   top: 35.5vh;
@@ -367,6 +388,7 @@ const ServiceCardBack = styled.div`
   border: 1px solid #183573;
   box-sizing: border-box;
   margin-top: 50px;
+  height: 45vh;
   
   & > p {
     color: #183573;
