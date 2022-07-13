@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import DeviceImage from "./assets/device.webp";
-import Badge from "./assets/freeTest.webp";
 import { useSpring, easings, animated } from "react-spring";
 import styled from "styled-components";
 import TickIconVideo from "./TickIconVideo";
@@ -41,8 +39,6 @@ export default function FreeTest({ active }: { active: boolean }) {
           عمل ببینید
         </Text>
       </TextBox>
-      <Image style={sectionStyle} src={DeviceImage} alt="۳۰ روز تست رایگان" />
-      <Image style={sectionStyle} src={Badge} alt="نشان رایگان" />
       <FreeTestModule
         handleClick={() => {
           setOpen(true);

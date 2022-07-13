@@ -1,20 +1,11 @@
 import React from "react";
-import LaptopImage from "./assets/laptop2.webp";
 import { useSpring, easings, animated } from "react-spring";
 import styled from "styled-components";
 import TickIconVideo from "./TickIconVideo";
-import managementImage from "./assets/management.webp";
 
 export default function Management({ active }: { active: boolean }) {
   const sectionStyle = useSpring({
     from: { opacity: 0 },
-    to: { opacity: active ? 1 : 0 },
-    delay: active ? 1000 : 0,
-    config: { duration: 1000, easing: easings.easeOutQuart },
-  });
-
-  const imageStyle = useSpring({
-    from: { opacity: 0, transform: "translateX(0%)" },
     to: { opacity: active ? 1 : 0 },
     delay: active ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
@@ -34,21 +25,8 @@ export default function Management({ active }: { active: boolean }) {
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
-  const mobileContentStyle = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: active ? 1 : 0 },
-    delay: active ? 1500 : 0,
-    config: { duration: 1000, easing: easings.easeOutQuart },
-  });
-
   return (
     <>
-      <ImageContent
-        style={mobileContentStyle}
-        src={managementImage}
-        alt="geo-fence"
-      />
-      <Image style={imageStyle} src={LaptopImage} alt="مدیریت بهینهٔ شیفت‌ها" />
       <TextBox>
         <TickIconVideo styleProps={videoStyle} play={active} />
         <MainTitle style={sectionStyle}>مدیریت بهینهٔ شیفت‌ها</MainTitle>

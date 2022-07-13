@@ -174,7 +174,6 @@ export default function Advantage() {
       // style={sectionStyle}
       status={nextSection === 4 ? "show" : nextSection < 4 ? "before" : "after"}
     >
-      <GlassPattern listIndex={index} />
       <Background style={maskStyle}>
         <Cover style={coverStyle} />
         <Image
@@ -203,8 +202,9 @@ const AdvantageSection = styled(animated.section)<{
   status: string;
 }>`
   height: 100vh;
-  padding-top: 292px;
   position: absolute;
+  display: flex;
+  align-items: center;
   top: 0;
   width: 100vw;
   z-index: ${({ active }) => (active ? 20 : 0)};

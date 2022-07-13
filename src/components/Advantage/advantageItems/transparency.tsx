@@ -1,5 +1,4 @@
 import React from "react";
-import ManImage from "./assets/man.webp";
 import { useSpring, easings, animated } from "react-spring";
 import styled from "styled-components";
 import TickIconVideo from "./TickIconVideo";
@@ -28,7 +27,6 @@ export default function Transparency({ active }: { active: boolean }) {
 
   return (
     <>
-      <Image style={sectionStyle} src={ManImage} alt="شفافیت حقوق و مزایا" />
       <TextBox>
         <TickIconVideo styleProps={videoStyle} play={active} />
         <SubTitle style={sectionStyle}>حقوق و مزایا،</SubTitle>
@@ -45,16 +43,6 @@ export default function Transparency({ active }: { active: boolean }) {
     </>
   );
 }
-
-const Image = styled(animated.img)`
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-
-  @media (max-width: 480px) {
-    height: auto;
-  }
-`;
 
 const TextBox = styled.div`
   position: absolute;

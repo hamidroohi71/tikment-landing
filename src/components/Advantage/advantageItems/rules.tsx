@@ -1,5 +1,4 @@
 import React from "react";
-import laughingManImage from "./assets/laughingMan.webp";
 import { useSpring, easings, animated } from "react-spring";
 import styled from "styled-components";
 import TickIconVideo from "./TickIconVideo";
@@ -28,11 +27,6 @@ export default function Rules({ active }: { active: boolean }) {
 
   return (
     <>
-      <Image
-        style={sectionStyle}
-        src={laughingManImage}
-        alt="تنظیم قوانین و مقررات"
-      />
       <TextBox>
         <TickIconVideo styleProps={videoStyle} play={active} />
         <MainTitle style={sectionStyle}>

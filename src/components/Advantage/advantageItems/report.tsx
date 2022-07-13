@@ -1,9 +1,7 @@
 import React from "react";
-import LaptopImage from "./assets/laptop.webp";
 import { useSpring, easings, animated } from "react-spring";
 import styled from "styled-components";
 import TickIconVideo from "./TickIconVideo";
-import ReportImage from "./assets/report.webp";
 
 export default function Report({ active }: { active: boolean }) {
   const sectionStyle = useSpring({
@@ -11,13 +9,6 @@ export default function Report({ active }: { active: boolean }) {
     to: { opacity: active ? 1 : 0 },
     delay: active ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
-  });
-
-  const imageStyle = useSpring({
-    from: { transform: "translateX(-150%)" },
-    to: { transform: active ? "translateX(0%)" : "translateX(-150%)" },
-    delay: 0,
-    config: { duration: 500, easing: easings.easeOutQuart },
   });
 
   const titleStyle = useSpring({
@@ -40,21 +31,8 @@ export default function Report({ active }: { active: boolean }) {
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
-  const mobileContentStyle = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: active ? 1 : 0 },
-    delay: active ? 1500 : 0,
-    config: { duration: 1000, easing: easings.easeOutQuart },
-  });
-
   return (
     <>
-      <ImageContent
-        style={mobileContentStyle}
-        src={ReportImage}
-        alt="geo-fence"
-      />
-      <Image style={imageStyle} src={LaptopImage} alt="گزارش‌های هوش تجاری" />
       <TextBox>
         <TickIconVideo styleProps={videoStyle} play={active} />
         <MainTitle style={titleStyle}>گزارش‌های هوش تجاری</MainTitle>

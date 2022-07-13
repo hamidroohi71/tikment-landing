@@ -1,25 +1,13 @@
 import React from "react";
-import MobileImage from "./assets/mobile.webp";
 import { useSpring, easings, animated } from "react-spring";
 import styled from "styled-components";
 import TickIconVideo from "./TickIconVideo";
-import GeoFenceImage from "./assets/geoFence.webp";
 
 export default function GEOFence({ active }: { active: boolean }) {
   const sectionStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : 0 },
     delay: 1000,
-    config: { duration: 1000, easing: easings.easeOutQuart },
-  });
-
-  const imageStyle = useSpring({
-    from: { opacity: 0, transform: "translateX(10%)" },
-    to: {
-      opacity: active ? 1 : 0,
-      transform: active ? "translateX(0%)" : "translateX(10%)",
-    },
-    delay: active ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
@@ -46,12 +34,6 @@ export default function GEOFence({ active }: { active: boolean }) {
 
   return (
     <>
-      <ImageContent
-        style={mobileContentStyle}
-        src={GeoFenceImage}
-        alt="geo-fence"
-      />
-      <Image style={imageStyle} src={MobileImage} alt="geo-fence" />
       <TextBox>
         <TickIconVideo styleProps={videoStyle} play={active} />
         <SubTitle style={sectionStyle}>ثبت آسان تردد</SubTitle>

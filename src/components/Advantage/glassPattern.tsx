@@ -205,7 +205,7 @@ const GlassPatternElement = styled(animated.div)<{ show: boolean }>`
   overflow: hidden;
   top: -20vh;
   left: 20vw;
-  z-index: 30;
+  z-index: 20;
   opacity: ${({ show }) => (show ? 0.15 : 0)};
   transform-origin: left;
   mix-blend-mode: multiply;

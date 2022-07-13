@@ -1,9 +1,7 @@
 import React from "react";
-import MobileImage from "./assets/mobile2.webp";
 import { useSpring, easings, animated } from "react-spring";
 import styled from "styled-components";
 import TickIconVideo from "./TickIconVideo";
-import TripImage from "./assets/trip.webp";
 
 export default function Trip({ active }: { active: boolean }) {
   const sectionStyle = useSpring({
@@ -11,13 +9,6 @@ export default function Trip({ active }: { active: boolean }) {
     to: { opacity: active ? 1 : 0 },
     delay: active ? 1000 : 0,
     config: { duration: active ? 1000 : 250, easing: easings.easeOutQuart },
-  });
-
-  const mobileContentStyle = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: active ? 1 : 0 },
-    delay: active ? 1500 : 0,
-    config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const textStyle = useSpring({
@@ -36,8 +27,6 @@ export default function Trip({ active }: { active: boolean }) {
 
   return (
     <>
-      <ImageContent style={mobileContentStyle} src={TripImage} alt="trip" />
-      <Image style={sectionStyle} src={MobileImage} alt="سفر" />
       <TextBox>
         <TickIconVideo styleProps={videoStyle} play={active} />
         <SubTitle style={sectionStyle}>با خیالی راحت</SubTitle>
@@ -57,10 +46,6 @@ const Image = styled(animated.img)`
   width: 100vw;
   height: 100vh;
   position: absolute;
-`;
-
-const ImageContent = styled(Image)`
-  z-index: 20;
 `;
 
 const TextBox = styled.div`
