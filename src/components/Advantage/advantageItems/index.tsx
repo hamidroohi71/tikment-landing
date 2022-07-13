@@ -91,15 +91,23 @@ export default function AdvantagesList({
   });
 
   const managementContentStyle = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: index === 5 ? 1 : 0 },
-    delay: index === 5 ? 1500 : 0,
+    from: { opacity: 0, transform: "scale(1)" },
+    to: {
+      opacity: index === 5 || index === 6 ? 1 : 0,
+      transform:
+        index === 5 ? "scale(1)" : index === 6 ? "scale(0.3)" : "scale(1)",
+    },
+    delay: index === 5 ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const LaptopStyle2 = useSpring({
-    from: { opacity: 0, transform: "translateX(0%)" },
-    to: { opacity: index === 5 ? 1 : 0 },
+    from: { opacity: 0, transform: "scale(1)" },
+    to: {
+      opacity: index === 5 || index === 6 ? 1 : 0,
+      transform:
+        index === 5 ? "scale(1)" : index === 6 ? "scale(0.3)" : "scale(1)",
+    },
     delay: index === 5 ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
@@ -149,12 +157,12 @@ export default function AdvantagesList({
         alt="geo-fence"
       />
       <Image
-        style={LaptopStyle2}
+        style={{ ...LaptopStyle2, transformOrigin: "5% center" }}
         src={LaptopImage2}
         alt="مدیریت بهینهٔ شیفت‌ها"
       />
       <ImageContent
-        style={managementContentStyle}
+        style={{ ...managementContentStyle, transformOrigin: "5% center" }}
         src={managementImage}
         alt="geo-fence"
       />
@@ -176,6 +184,7 @@ const Advantages = styled(animated.div)`
   position: absolute;
   z-index: 20;
   top: 0;
+  perspective: 50vw;
 `;
 
 const Image = styled(animated.img)`
@@ -183,6 +192,7 @@ const Image = styled(animated.img)`
   height: 100vh;
   position: absolute;
   z-index: 25;
+  object-fit: contain;
 
   @media (max-width: 480px) {
     height: auto;

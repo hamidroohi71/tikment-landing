@@ -247,7 +247,7 @@ const CircleBack = styled(animated.div)`
     rgba(255, 208, 17, 0.12)
   );
   position: absolute;
-  top: 15vh;
+  top: 8vw;
   right: 5.6vw;
   z-index: 20;
 `;
