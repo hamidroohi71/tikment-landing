@@ -13,6 +13,10 @@ const Dot = styled.div<{ selected: boolean }>`
   border-radius: 50%;
   transition: 0.3s ease-out;
   cursor: pointer;
+  opacity:${({ selected }) => (selected ? 1 : 0.4)};
+  &:hover{
+    opacity:1;
+  }
 `;
 
 function NavigationDot({
