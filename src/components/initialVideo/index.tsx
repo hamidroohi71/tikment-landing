@@ -6,6 +6,7 @@ import Video2 from "./IntroVideo02.mp4";
 import Video3 from "./IntroVideo03.mp4";
 import Video4 from "./IntroVideo04.mp4";
 import LoadingGif from "./loadIcon.webm";
+import arrow from "./arrow-right.png";
 
 export default function InitialVideo({
   handleLoaded,
@@ -154,6 +155,11 @@ export default function InitialVideo({
           handleLoaded();
         }}
       />
+
+      <SkipVideo onClick={()=>handleLoaded()}>
+        <p>بگذرید</p>
+        <span></span>
+      </SkipVideo>
     </VideoSections>
   );
 }
@@ -193,5 +199,36 @@ const LoadingVideo = styled(Video)`
 
   @media (max-width: 480px) {
     display: block;
+  }
+`;
+
+const SkipVideo = styled.div`
+backdrop-filter: blur(19px);
+  position: absolute;
+  bottom: 18vh;
+  right: 7vw;
+  padding: 1vw 2vw;
+  z-index: 10;
+  border: 2px solid #ffffff;
+  border-radius: 3vw;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 2vw;
+  cursor: pointer;
+
+  &>p {
+    font-size: 2vw;
+    color: #380005;
+    font-weight: light;
+    margin:0;
+  }
+  span {
+    background-image: url(${arrow});
+    background-size: cover;
+    background-repeat: no-reapet;
+    width: 13px;
+    height: 27px;
   }
 `;
