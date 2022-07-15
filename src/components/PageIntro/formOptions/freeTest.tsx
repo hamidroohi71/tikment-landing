@@ -29,13 +29,27 @@ export default function FreeTest({
           }}
         >
           <svg>
-            <use
+            {step === 5 ? (
+              <use
               width="100%"
               height="100%"
-              href="/fastContactForm/freeTest/yes.svg#yes"
+              href="/fastContactForm/freeTest/tick.svg#tick"
             />
+            ) : (
+              <use
+                width="100%"
+                height="100%"
+                href="/fastContactForm/freeTest/yes.svg#yes"
+              />
+            )}
           </svg>
-          <p>بله</p>
+          <p>
+            {step === 5 ? (
+              <span className="se-content">نسخۀ تست رایگان (۳۰روزه)</span>
+            ) : (
+              "بله"
+            )}
+          </p>
         </YesOption>
         <NoOption
           lastStep={step === 5}
@@ -71,7 +85,6 @@ const Option = styled(OptionBase)`
   // font-size: 1.5vw;
   // font-weight: 300;
 
-
   transform: ${({ index, selected, lastStep }) =>
     selected
       ? lastStep
@@ -103,6 +116,10 @@ const YesOption = styled(Option)`
     border-radius: 22px;
     padding: 0 30px;
     font-size: 1.9vw;
+  }
+
+  .se-content {
+    font-size: 1.2vw;
   }
 
   & > svg {
