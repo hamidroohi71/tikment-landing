@@ -182,7 +182,7 @@ const ProductSection = styled.section<{ status: string; active: boolean }>`
       ? "translateY(100vh)"
       : "translateY(-100vh)"};
   transition: 0.5s ease-in;
-  z-index: 30;
+  z-index:1;
 
   @media (max-width: 480px) {
     position: static;
