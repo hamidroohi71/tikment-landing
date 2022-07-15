@@ -7,6 +7,8 @@ import CommentSlider from "./CommentSlider";
 import { useSection } from "../../context/sectionStore";
 import { useSpring, animated, easings } from "react-spring";
 import useWidth from "../../hooks/useWidth";
+import back from "./back.png";
+import forward from "./forward.png";
 
 let myTime: any;
 
@@ -72,15 +74,36 @@ export default function CustomerCarousel({
         <CommentSlider selectedIndex={currentIndex} />
       </CommentContainer>
       <CarouselSection style={carouselStyle} onClick={enterComment}>
+        <Back onClick={()=>currentIndex===0?"": setCurrentIndex(currentIndex-1)}></Back>
         {customerData}
+        <Forward onClick={()=>goNextSlide()}></Forward>
       </CarouselSection>
     </>
   );
 }
 
+const Back = styled.div`
+  background-image: url(${back});
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 40px;
+  height: 23px;
+  cursor: pointer;
+`;
+
+const Forward = styled.div`
+  background-image: url(${forward});
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 40px;
+  height: 23px;
+  cursor: pointer;
+`;
+
 const CarouselSection = styled(animated.section)`
   display: flex;
   align-items: center;
+  flex-direction: row-reverse;
   margin-top: 0px; //74px saber
   height: 10vh; // saber
 
