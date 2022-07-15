@@ -5,13 +5,12 @@ import styled from "styled-components";
 import call from "./call.png";
 import clock from "./clock.png";
 import location from "./location.png";
+import pic from "./Group.png";
 import "../../../node_modules/font-awesome/css/font-awesome.min.css";
-import GlassPattern from "../PageIntro/glassPattern";
 
 export default function ContactForm() {
   return (
     <FormCantact>
-      <GlassPattern />
       <Header></Header>
       <Forms>
         <ContactWay>
@@ -51,7 +50,11 @@ export default function ContactForm() {
   );
 }
 
-const FormCantact = styled.section``;
+const FormCantact = styled.section`
+  background-image: url(${pic});
+  background-size: cover;
+  background-repeat: no-reapet;
+`;
 
 const Forms = styled.div`
   padding-top: 16vh;
@@ -80,10 +83,17 @@ const ContactWay = styled.div`
   border-radius: 0px 3vw 3vw 3vw;
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
-  -webkit-transform-origin: top;
-  -ms-transform-origin: top;
-  transform-origin: top;
+  animation: form-notion 2s;
   z-index: 10;
+
+  @keyframes form-notion {
+    from {
+      transform: translate(-9%, 16%);
+    }
+    to {
+      transform: translate(0%, 0%);
+    }
+  }
   h2 {
     top: -2vh;
     position: absolute;
@@ -97,9 +107,6 @@ const ContactWay = styled.div`
     color: #fff;
     padding: 0 3vw;
     margin: 0;
-    -webkit-transform-origin: right;
-    -ms-transform-origin: right;
-    transform-origin: right;
   }
 
   .tel {
@@ -182,10 +189,17 @@ const SentMail = styled.div`
   border-radius: 3vw 0px 3vw 3vw;
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
-  -webkit-transform-origin: top;
-  -ms-transform-origin: top;
-  transform-origin: top;
   z-index: 10;
+  animation:form-motion 2s;
+
+  @keyframes form-motion {
+    from {
+      transform: translate(9%, -16%);
+    }
+    to {
+      transform: translate(0%, 0%);
+    }
+  }
   h2 {
     top: -2vh;
     position: absolute;
@@ -199,9 +213,6 @@ const SentMail = styled.div`
     color: #fff;
     padding: 0 3vw;
     margin: 0;
-    -webkit-transform-origin: right;
-    -ms-transform-origin: right;
-    transform-origin: right;
   }
   form {
     width: 100%;
@@ -262,6 +273,10 @@ const SentMail = styled.div`
       color: white;
       font-size: 1.7vw;
       font-weight: 500;
+      transition : background .8s ease-in-out;
+      &:hover{
+        background:#ff5151;
+      }
     }
   }
 `;
