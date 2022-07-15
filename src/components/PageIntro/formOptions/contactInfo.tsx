@@ -121,7 +121,7 @@ const TimeOption = styled.span<{ selected: boolean, smlWidth: boolean }>`
   background: ${({ selected }) =>
     selected
       ? "linear-gradient(241deg, #05185e 0%, #4b86ac 100%)"
-      : "linear-gradient(180deg, #37ABB878 0%, #71FBFFA6 100%)"};
+      : "linear-gradient( #37ABB81A 0%, #71FBFF1A 100%)"};
   box-shadow: ${({ selected }) =>
     selected ? "7px 7px 20px #00000038" : "none"};
   border: ${({ selected }) =>
@@ -215,10 +215,15 @@ const SubmitButton = styled.input`
   margin-right: 21px;
   cursor: pointer;
   color: #fff;
+  transition:background 2s ease-in-out;
 
   &:focus {
     border: none;
     outline: none;
+  }
+
+  &:hover{
+    background:#ff5151;
   }
 `;
 
