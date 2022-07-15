@@ -29,8 +29,10 @@ export default function ContactUs() {
   }, []);
   // console.log(width);
 
+  console.log("hamidreza:",activeSection)
+
   return (
-    <ContactElement onClick={() => navigate("/contactUs")}>
+    <ContactElement activeSection={activeSection}  contact={contact} onClick={() => navigate("/contactUs")}>
       <img src={Phone} alt="contact" />
       <animated.p style={styleProp}>
         {width > 480 ? "تماس با تیکمنت" : "تماس"}
@@ -39,13 +41,14 @@ export default function ContactUs() {
   );
 }
 
-const ContactElement = styled.section`
+const ContactElement = styled.section<{ activeSection: number ,contact:boolean}>`
   display: flex;
   align-items: center;
   padding: 10px 13px 10px 17px;
   border-left: 2px solid #7197b2;
   height: 100%;
   cursor: pointer;
+  transition:width 2s ease-in-out;
   & > img {
     width: 47px;
     height: 47px;
@@ -59,6 +62,18 @@ const ContactElement = styled.section`
     margin: 0;
     margin-right: 21px;
   }
+  &:hover{
+    width:${({ activeSection ,contact}) => (activeSection!== 1 && !contact ?"22vw":"")};
+    background:${({ activeSection,contact }) => (activeSection!== 1 && !contact ? "linear-gradient(to right, #0089a7, #04165d)":0)};
+    border-radius:${({ activeSection,contact }) => (activeSection!== 1 && !contact? "3vw":'')};
+    margin-right:${({ activeSection,contact }) => (activeSection!== 1 && !contact ? "-130px":'')};
+
+    p{
+      opacity:${({ activeSection ,contact}) => (activeSection!== 1 && !contact ?"1 !important":'')};
+    }
+   
+    
+  }
 
   @media (max-width: 480px) {
     padding: 5px 5px 5px 21px;
@@ -71,5 +86,7 @@ const ContactElement = styled.section`
     p {
       font-size: 29px;
     }
+
+  
   }
 `;

@@ -37,14 +37,14 @@ export default function TopBar() {
           ? "translateX(0%)"
           : contact
           ? "translateX(0%)"
-          : "translateX(-85%)",
+          : "translateX(-89%)",
     },
     delay: 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
   return (
     <TopBarElement style={styleProps}>
-      <ContactUs />
+      <ContactUs/>
       <Menu />
       <Search />
       <SocailMedia />
@@ -65,6 +65,8 @@ const TopBarElement = styled(animated.section)`
   height: 68px;
   box-shadow: 0px 10px 14px #033f7733;
 
+ 
+
   @media (max-width: 480px) {
     top: 29px;
     width: 76vw;
@@ -72,3 +74,5 @@ const TopBarElement = styled(animated.section)`
     border-radius: 0 26px 26px 0;
   }
 `;
+
+
