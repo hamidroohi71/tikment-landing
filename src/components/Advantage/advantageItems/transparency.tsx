@@ -63,7 +63,7 @@ const TextBox = styled.div`
 `;
 
 const MainTitle = styled(animated.h2)`
-  font-size: 4.6vw;
+  font-size: 3.6vw;
   color: #183573;
   margin: 0;
   @media (max-width: 480px) {
@@ -72,7 +72,7 @@ const MainTitle = styled(animated.h2)`
 `;
 
 const SubTitle = styled(MainTitle)`
-  font-size: 3.9vw;
+  font-size: 3.1vw;
   font-weight: 500;
   margin: 0;
   @media (max-width: 480px) {
@@ -81,10 +81,10 @@ const SubTitle = styled(MainTitle)`
 `;
 
 const Text = styled(animated.p)`
-  font-size: 1.6vw;
+  font-size: 1.2vw;
   color: #292929;
   font-weight: 300;
   @media (max-width: 480px) {
-    font-size: 24px;
+    font-size: 19px;
   }
 `;

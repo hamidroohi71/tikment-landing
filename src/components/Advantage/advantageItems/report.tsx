@@ -67,13 +67,13 @@ const TextBox = styled.div`
 `;
 
 const MainTitle = styled(animated.h2)`
-  font-size: 3.9vw;
+  font-size: 3.1vw;
   color: #183573;
   margin: 0;
 `;
 
 const Text = styled(animated.p)`
-  font-size: 1.6vw;
+  font-size: 1.2vw;
   color: #292929;
   font-weight: 300;
   padding-left: 8vw;

@@ -291,7 +291,7 @@ const TitlePart = styled.div`
 `;
 
 const MainTitle = styled(animated.h2)`
-  font-size: 7vw;
+  font-size: 5.6vw;
   color: #fff;
   font-weight: 700;
   text-align: center;
@@ -299,7 +299,7 @@ const MainTitle = styled(animated.h2)`
 `;
 
 const SubTitle = styled(animated.h3)`
-  font-size: 3.5vw;
+  font-size: 2.8vw;
   color: #fff;
   font-weight: 400;
   margin: 0;
@@ -307,7 +307,7 @@ const SubTitle = styled(animated.h3)`
 `;
 
 const SubTitle2 = styled(animated.h4)`
-  font-size: 2.7vw;
+  font-size: 2.1vw;
   color: #fff;
   font-weight: 100;
   margin: 0;

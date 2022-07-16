@@ -59,7 +59,7 @@ const FreeTestBtn = styled.p`
   background: linear-gradient(254deg, #ff8080 0%, #ffd011 100%);
   box-shadow: 0px 7px 15px #00000033;
   border-radius: 32px;
-  font-size: 1.6vw;
+  font-size: 1.2vw;
   color: #fff;
   padding: 0 20px;
   line-height: 3vw;
