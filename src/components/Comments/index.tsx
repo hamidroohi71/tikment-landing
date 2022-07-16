@@ -25,6 +25,7 @@ export default function Comments() {
       setActive(true);
     } else if (activeSection !== null) {
       setActive(false);
+      setCommentIndex(0);
     }
   }, [activeSection]);
 
@@ -75,7 +76,7 @@ const CommentsContainer = styled.div<{ index: number }>`
   & > div {
     transition: 0.5s ease-out;
     transform: translateY(
-      -${({ index }) => (index === 0 ? 0 : index === 1 ? 2 : index * 20 + 2)}vh
+      -${({ index }) => (index === 0 ? 0 : index === 1 ? 1 : index * 10 + 1)}vw
     );
   }
 `;

@@ -13,7 +13,7 @@ export default function FAQBlock({
   even: boolean;
 }) {
   return (
-    <FaqBlock>
+    <FaqBlock open={open}>
       <TitlePart even={even}>
         <Sign even={even} open={open}>
           <span />
@@ -30,9 +30,12 @@ export default function FAQBlock({
   );
 }
 
-const FaqBlock = styled.div`
+const FaqBlock = styled.div<{ open: boolean }>`
   width: 100%;
   margin: 3.5vh;
+  max-height: ${({ open }) => (open ? "10vh" : "3vh")};
+  transition: 0.5s ease-out;
+  transition-delay: ${({ open }) => (open ? "10vh" : "3vh")};
 
   @media (max-width: 480px) {
     margin: 25px 0;
@@ -61,6 +64,7 @@ const Title = styled.h2<{ open: boolean }>`
   padding: 0 43px;
   width: fit-content;
   margin: 0;
+  transition: 1s all ease-out;
 
   @media (max-width: 480px) {
     font-size: 24px;
@@ -112,7 +116,9 @@ const Sign = styled.div<{ open: boolean; even: boolean }>`
   }
 `;
 const Answer = styled.p<{ open: boolean; even: boolean }>`
-  display: ${({ open }) => (open ? "block" : "none")};
+  opacity: ${({ open }) => (open ? 1 : 0)};
+  transition: 0.5s ease-out;
+  overflow: hidden;
   border: 1px solid #9e9e9e;
   padding: 57px 80px 24px;
   border-radius: 64px;

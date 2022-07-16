@@ -8,9 +8,8 @@ import useWidth from "../../hooks/useWidth";
 export default function SalesService() {
   const { activeSection, nextSection, setActiveSection } = useSection();
   const [active, setActive] = useState(false);
-  const [c1IfBack, c1TurnOver] = useState(false); //saber
-  const [c2IfBack, c2TurnOver] = useState(false); //saber
-  const [c3IfBack, c3TurnOver] = useState(false); //saber
+  const [cardFront, setCardFront] = useState([true, true, true]);
+
   const width = useWidth();
 
   useEffect(() => {
@@ -33,98 +32,67 @@ export default function SalesService() {
     from: { opacity: 0 },
     to: { opacity: active ? 1 : width < 480 ? 1 : 0 },
     delay: active ? 1000 : 0,
-    config: { duration: 1000, easing: easings.easeOutQuart },
+    config: { duration: active ? 1000 : 0, easing: easings.easeOutQuart },
   });
 
-  const c1IfShowBack = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: c1IfBack ? 1 : 0 },
-    config: { duration: 1000, easing: easings.easeOutQuart },
-  });
-
-  const c2IfShowBack = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: c2IfBack ? 1 : 0 },
-    config: { duration: 1000, easing: easings.easeOutQuart },
-  });
-
-  const c3IfShowBack = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: c3IfBack ? 1 : 0 },
-    config: { duration: 1000, easing: easings.easeOutQuart },
-  });
-
-  const c1IfShowFront = useSpring({
-    from: { opacity: 1 },
-    to: { opacity: c1IfBack ? 0 : 1 },
-    config: { duration: 1000, easing: easings.easeOutQuart },
-  });
-
-  const c2IfShowFront = useSpring({
-    from: { opacity: 1 },
-    to: { opacity: c2IfBack ? 0 : 1 },
-    config: { duration: 1000, easing: easings.easeOutQuart },
-  });
-
-  const c3IfShowFront = useSpring({
-    from: { opacity: 1 },
-    to: { opacity: c3IfBack ? 0 : 1 },
-    config: { duration: 1000, easing: easings.easeOutQuart },
-  });
+  const toggleSide = (index: number) => {
+    const newList = cardFront;
+    newList[index] = !newList[index];
+    setCardFront([...newList]);
+  };
 
   // service cards start:
   const serviceCards = data.serviceData.map((service, index) => (
     <Service key={service.name} index={index}>
       <ServiceCard
         onClick={() => {
-          index === 0
-            ? c1TurnOver(!c1IfBack)
-            : index === 1
-            ? c2TurnOver(!c2IfBack)
-            : c3TurnOver(!c3IfBack);
+          toggleSide(index);
         }}
+        front={cardFront[index]}
       >
-        <p>خدمات</p>
-        <p>{service.name}</p>
-        <div>
-          <svg>
-            <use width="100%" height="100%" href={service.logo} />
-          </svg>
-        </div>
+        <FrontSide>
+          <p>خدمات</p>
+          <p>{service.name}</p>
+          <div>
+            <svg>
+              <use width="100%" height="100%" href={service.logo} />
+            </svg>
+          </div>
+        </FrontSide>
+        <BackSide>
+          <div>
+            <svg>
+              <use
+                width="100%"
+                height="100%"
+                href="/fastContactForm/freeTest/saber/tik.svg#tik"
+              />
+            </svg>
+          </div>
+          <p>{service.name}</p>
+          <div>{service.det1}</div>
+          <div>{service.det2}</div>
+          <div>{service.det3}</div>
+        </BackSide>
       </ServiceCard>
     </Service>
   ));
 
   // service card back start:
-  const serviceCardsBack = data.serviceData.map((service, index) => (
-    <Service key={service.name} index={index}>
-      <ServiceCardBack
-        onClick={() => {
-          index === 0
-            ? c1TurnOver(!c1IfBack)
-            : index === 1
-            ? c2TurnOver(!c2IfBack)
-            : c3TurnOver(!c3IfBack);
-        }}
-      >
-        <div>
-          <svg>
-            <use
-              width="100%"
-              height="100%"
-              href="/fastContactForm/freeTest/saber/tik.svg#tik"
-            />
-          </svg>
-        </div>
-        <p>{service.name}</p>
-        <div>{service.det1}</div>
-        <div>{service.det2}</div>
-        <div>{service.det3}</div>
-      </ServiceCardBack>
-    </Service>
-  ));
+  // const serviceCardsBack = data.serviceData.map((service, index) => (
+  //   <Service key={service.name} index={index}>
+  //     <ServiceCardBack
+  //       onClick={() => {
+  //         index === 0
+  //           ? c1TurnOver(!c1IfBack)
+  //           : index === 1
+  //           ? c2TurnOver(!c2IfBack)
+  //           : c3TurnOver(!c3IfBack);
+  //       }}
+  //     ></ServiceCardBack>
+  //   </Service>
+  // ));
   //service card finished
-  console.log(serviceCardsBack);
 
   return (
     <ServicesSection active={active} style={sectionStyle}>
@@ -142,26 +110,7 @@ export default function SalesService() {
         <CardNum>۳</CardNum>
         <NumDividerShort />
       </NumberPart>
-      <ServicesContainer style={c1IfShowBack}>
-        {serviceCardsBack[0]}
-      </ServicesContainer>
-      <ServicesContainer style={c1IfShowFront}>
-        {serviceCards[0]}
-      </ServicesContainer>
-
-      <ServicesContainer2 style={c2IfShowBack}>
-        {serviceCardsBack[1]}
-      </ServicesContainer2>
-      <ServicesContainer2 style={c2IfShowFront}>
-        {serviceCards[1]}
-      </ServicesContainer2>
-
-      <ServicesContainer3 style={c3IfShowBack}>
-        {serviceCardsBack[2]}
-      </ServicesContainer3>
-      <ServicesContainer3 style={c3IfShowFront}>
-        {serviceCards[2]}
-      </ServicesContainer3>
+      <ServicesContainer>{serviceCards}</ServicesContainer>
     </ServicesSection>
   );
 }
@@ -170,7 +119,7 @@ const ServicesSection = styled(animated.section)<{ active: boolean }>`
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  padding: 13vh 12vw 0;
+  padding: 13vh 0 0;
   position: absolute;
   z-index: ${({ active }) => (active ? 20 : 0)};
 
@@ -216,89 +165,68 @@ const Subtitle = styled.h3`
 
 const NumberPart = styled.div`
   display: flex;
+  align-items: center;
+  width: 100%;
 `;
 
 const CardNum = styled.span`
   top: 15.3vw;
-  width: 54px;
-  height: 54px;
+  width: 3vw;
+  height: 3vw;
   border-radius: 50%;
   background: linear-gradient(180deg, #37abb8 0%, #71fbff 100%);
   color: #fff;
-  font-size: 40px;
+  font-size: 2vw;
   text-align: center;
-  line-height: 54px;
+  line-height: 3vw;
   flex-shrink: 0;
 `;
 
 const NumDividerShort = styled.div`
-  width: 20vw;
+  width: 20.5vw;
   height: 2px;
+  background: linear-gradient(to right, transparent 50%, #fff 50%),
+    linear-gradient(to right, #cbcbcb, #fff);
+  background-size: 16px 2px, 100% 2px;
+
+  &:last-child {
+    transform: scaleX(-1);
+  }
 `;
 
 const NumDividerlong = styled.div`
-  width: 23vw;
+  width: 25vw;
   height: 2px;
+  background: linear-gradient(to right, transparent 50%, #cbcbcb 50%);
+  background-size: 16px 2px, 100% 2px;
 `;
 
 const ServicesContainer = styled(animated.div)`
-  position: absolute;
-  top: 0vh;
-  right: 15%;
   display: flex;
   justify-content: space-between;
+  padding: 0 12vw;
 
   @media (max-width: 480px) {
     justify-content: center;
   }
 `;
 
-const ServicesContainer2 = styled(animated.div)`
-  position: absolute;
-  top: 0vh;
-  right: 40%;
-  display: flex;
-  justify-content: space-between;
+const ServiceCard = styled.div<{ front: boolean }>`
+  position: relative;
+  width: 19vw;
+  margin: 0 76px;
 
-  @media (max-width: 480px) {
-    justify-content: center;
+  & > div:first-child {
+    opacity: ${({ front }) => (front ? 1 : 0)};
+  }
+
+  & > div:last-child {
+    opacity: ${({ front }) => (front ? 0 : 1)};
   }
 `;
 
-const ServicesContainer3 = styled(animated.div)`
+const FrontSide = styled.div`
   position: absolute;
-  top: 0vh;
-  right: 65%;
-  display: flex;
-  justify-content: space-between;
-
-  @media (max-width: 480px) {
-    justify-content: center;
-  }
-`;
-
-//const AnimatedService = styled(animated.Service)``;
-
-const Service = styled.div<{ index: number }>`
-  width: 20vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  @media (max-width: 480px) {
-    width: 200px;
-    &:first-child,
-    &:last-child {
-      display: none;
-    }
-  }
-`;
-
-// dadash ma inja kar daim, besmeLLAAAAAAAAAAAAAAAAAAAAAHHH
-const ServiceCard = styled.div`
-  position: absolute;
-  top: 35.5vh;
-
   text-align: center;
   border-radius: 3vw;
   background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 100%);
@@ -376,11 +304,9 @@ const ServiceCard = styled.div`
       }
     }
   }
-`;
-
-const ServiceCardBack = styled.div`
-  position: absolute;
-  top: 35.5vh;
+  
+  `;
+const BackSide = styled.div`position: absolute;
   width: 20vw;
   text-align: center;
   border-radius: 3vw;
@@ -389,7 +315,7 @@ const ServiceCardBack = styled.div`
   box-sizing: border-box;
   margin-top: 50px;
   height: 45vh;
-  
+
   & > p {
     color: #183573;
     text-align-center;
@@ -414,14 +340,14 @@ const ServiceCardBack = styled.div`
       border-style: none  ;
 
     }
-  
+
     & > svg {
       display: block;
       width: 4vw;
       height: 4vw;
       margin: auto;
       z-index: 20;
-  
+
       & > use {
         display: flex;
         margin: auto;
@@ -429,8 +355,7 @@ const ServiceCardBack = styled.div`
         height: 4vw;
         transform: scale(1.4);
       }
-  
-    
+    }
   }
   
   @media (max-width: 480px) {
@@ -443,7 +368,7 @@ const ServiceCardBack = styled.div`
     & > p {
       font-size: 42px;
       letter-spacing: -1px;
-      &:first-of-type{
+      &:first-of-type {
         font-size: 26px;
       }
     }
@@ -451,20 +376,34 @@ const ServiceCardBack = styled.div`
     & > div {
       width: 205px;
       height: 205px;
-      
-  
+
       & > svg {
         width: 128px;
         height: 128px;
         margin: auto;
-  
+
         & > use {
           width: 128px;
           height: 128px;
           fill: #75c9db;
-  
         }
       }
     }
   }
+`;
+
+//const AnimatedService = styled(animated.Service)``;
+
+const Service = styled.div<{ index: number }>`
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: @media (max-width: 480px) {
+    width: 200px;
+    &:first-child,
+    &:last-child {
+      display: none;
+    }
+  
 `;
