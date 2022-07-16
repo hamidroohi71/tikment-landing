@@ -115,11 +115,11 @@ const YesOption = styled(Option)`
     line-height: 43px;
     border-radius: 22px;
     padding: 0 30px;
-    font-size: 1.9vw;
+    font-size: 1.5vw;
   }
 
   .se-content {
-    font-size: 1.2vw;
+    font-size: 1vw;
   }
 
   & > svg {
@@ -158,7 +158,7 @@ const NoOption = styled(Option)`
     line-height: 43px;
     border-radius: 22px;
     padding: 0 24px;
-    font-size: 1.9vw;
+    font-size: 1.5vw;
   }
 
   &:hover {

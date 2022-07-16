@@ -105,7 +105,7 @@ const TimeForm = styled(animated.div)`
   backdrop-filter: blur(50px);
 
   p {
-    font-size: 1.5vw;
+    font-size: 1.2vw;
     color: #376796;
     margin: 0 0 10px;
   }
@@ -126,13 +126,13 @@ const TimeOption = styled.span<{ selected: boolean, smlWidth: boolean }>`
     selected ? "7px 7px 20px #00000038" : "none"};
   border: ${({ selected }) =>
     selected ? "1px solid #ffffff99;" : "2px solid #FFFFFF"};
-  border-radius: 36px;
-  font-size: 1.5vw;
+  border-radius: 3vw;
+  font-size: 1.2vw;
   line-height: ${({smlWidth}) =>( 
     (smlWidth) ? "3.5vh" : "6vh")};
   font-weight: 300;
   color: ${({ selected }) => (selected ? "#fff" : "#00DDE3")};
-  padding: 0 24px;
+  padding: 0 2.5vw;
   cursor: pointer;
 `;
 
@@ -163,7 +163,7 @@ const FormInput = styled.input`
   background-repeat: no-repeat;
   background-size: 1.8vw;
   margin-bottom: 20px;
-  font-size: 1.2vw;
+  font-size: 1vw;
   position: relative;
   background-image: url(${PersonIcon});
 
@@ -200,6 +200,13 @@ const FormInput = styled.input`
       background-image: url(${PhoneIcon});
     }
   }
+
+  @media (min-width: 1920px) {
+    width: 50%;
+    &:nth-child(3) {
+      width: 80%;
+    }
+  }
 `;
 
 const SubmitButton = styled.input`
@@ -210,7 +217,7 @@ const SubmitButton = styled.input`
   border-radius: 2.5vh;
   border: none;
   outline: none;
-  font-size: 1.6vw;
+  font-size: 1.2vw;
   padding: 0 63px;
   margin-right: 21px;
   cursor: pointer;

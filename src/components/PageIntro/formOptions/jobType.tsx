@@ -59,7 +59,7 @@ export const OptionBox = styled.section`
 
 export const TitleBase = styled.h3<{ show: boolean }>`
   color: #183573;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   font-weight: 300;
   opacity: ${({ show }) => (show ? 1 : 0)};
   position: absolute;

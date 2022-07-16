@@ -175,7 +175,7 @@ const Title = styled(animated.h2)`
   line-height: 64px;
   border-radius: 32px;
   box-shadow: 0px 7px 15px #00000033;
-  font-size: 1.8vw;
+  font-size: 1.4vw;
   font-weight: 500;
   color: #fff;
   padding: 0 59px;

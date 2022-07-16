@@ -70,7 +70,7 @@ const Title1 = styled(animated.img)`
   }
 `;
 const Title2 = styled(animated.h2)`
-  font-size: 2.7vw;
+  font-size: 2.1vw;
   font-weight: 300;
   color: #9e9e9e;
   margin: 0;
@@ -85,7 +85,7 @@ const Title2 = styled(animated.h2)`
   }
 `;
 const Title3 = styled(animated.h3)`
-  font-size: 3.6vw;
+  font-size: 3vw;
   color: #183573;
   font-weight: 500;
   margin: 0 0 10px;

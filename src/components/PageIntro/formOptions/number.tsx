@@ -48,8 +48,8 @@ const Option = styled(OptionBase)`
     background: ${({ selected }) => (selected ? "#fff" : "#4af3f8")};
     line-height: 43px;
     border-radius: 22px;
-    padding: 0 7px;
-    font-size: 1.9vw;
+    padding: 0 1.6vw;
+    font-size: 1.5vw;
   }
 
   &:hover {
