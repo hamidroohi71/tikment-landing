@@ -208,7 +208,7 @@ const BenefitIcon = styled.img<{ benefitIndex: number }>`
 `;
 
 const BenefitTitle = styled.p<{ index: number; benefitIndex: number }>`
-  font-size: 2.1vw;
+  font-size: 1.6vw;
   color: #183573;
   line-height: 4.4vw;
   margin: 0 1vw 0 0;
@@ -217,7 +217,7 @@ const BenefitTitle = styled.p<{ index: number; benefitIndex: number }>`
   transition-delay: 0.25s;
 
   &:first-of-type {
-    font-size: 23px;
+    font-size: 18px;
   }
 
   @media (max-width: 480px) {
@@ -247,7 +247,7 @@ const BenefitBorder = styled.div<{ index: number; benefitIndex: number }>`
 `;
 
 const ProductName = styled.h2<{ benefitIndex: number }>`
-  font-size: 4vw;
+  font-size: 3.2vw;
   color: #ff4d4d;
   position: absolute;
   bottom: 8.4vh;
@@ -260,7 +260,7 @@ const ProductName = styled.h2<{ benefitIndex: number }>`
   @media (max-width: 480px) {
     top: 45px;
     bottom: unset;
-    font-size: 35px;
+    font-size: 28px;
     left: 0;
     opacity: 1;
   }
