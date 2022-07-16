@@ -56,14 +56,17 @@ const ContactElement = styled.section<{ activeSection: number ,contact:boolean}>
 
   p {
     text-align: center;
-    font-size: 1.8vw;
+    font-size: 1.5vw;
     font-weight: 500;
     color: #f5f5f5;
     margin: 0;
     margin-right: 21px;
+    white-space: nowrap;
+
+    
   }
   &:hover{
-    width:${({ activeSection ,contact}) => (activeSection!== 1 && !contact ?"22vw":"")};
+    width:${({ activeSection ,contact}) => (activeSection!== 1 && !contact ?"24vw":"")};
     background:${({ activeSection,contact }) => (activeSection!== 1 && !contact ? "linear-gradient(to right, #0089a7, #04165d)":0)};
     border-radius:${({ activeSection,contact }) => (activeSection!== 1 && !contact? "3vw":'')};
     margin-right:${({ activeSection,contact }) => (activeSection!== 1 && !contact ? "-130px":'')};

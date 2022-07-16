@@ -25,12 +25,12 @@ const SearchElement = styled.section`
     background: transparent;
     border: none;
     outline: none;
-    font-size: 1.2vw;
+    font-size: 1vw;
     flex-grow: 1;
 
     &::placeholder {
       color: #cbcbcb;
-      font-size: 1.2vw;
+      font-size: 1vw;
       font-weight: 300;
     }
   }
