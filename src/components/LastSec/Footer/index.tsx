@@ -47,7 +47,7 @@ const FooterSection = styled.section`
 
 const FooterTop = styled.section`
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: space-between;
 
   @media (max-width: 480px) {
@@ -70,7 +70,7 @@ const FooterRight = styled.div`
 const FooterLeft = styled.div`
   width: 78%;
   color: #fff;
-  font-size: 1.6vw;
+  font-size: 1vw;
   font-weight: 300;
   padding: 4vh 4.2vw 4vh 12vw;
   border-radius: 0 3.3vw 3.3vw 0;
@@ -78,19 +78,19 @@ const FooterLeft = styled.div`
   box-shadow: 0px 10px 14px #033f7733;
   flex-shrink: 0;
   @media (max-width: 480px) {
-    font-size: 20px;
+    font-size: 14px;
   }
 `;
 
 const CopyRight = styled.div`
   color: #04165d;
-  font-size: 1.6vw;
+  font-size: 1vw;
   text-align: center;
   height: 7vh;
   line-height: 7vh;
   margin: 0;
   @media (max-width: 480px) {
-    font-size: 20px;
+    font-size: 14px;
     line-height: 1.5;
     height: unset;
     padding: 0 30px;
@@ -101,7 +101,7 @@ const SocialBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 9vw 2vw 2vw;
+  padding: 11vw 2vw 2vw;
 
   & > div {
     width: 3.6vw;
@@ -134,5 +134,8 @@ const SocialBox = styled.div`
         height: 50%;
       }
     }
+  }
+  @media (min-width: 1920px) {
+    padding-top:8vw;
   }
 `;

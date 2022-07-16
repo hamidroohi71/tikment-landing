@@ -135,22 +135,28 @@ const TitleBox = styled(animated.div)`
   align-items: center;
   z-index: 10;
   position: relative;
+  margin-bottom: -2vw;
+  margin-right: -2vw;
+  @media (min-width: 1920px) {
+    margin-bottom: -1vw;
+  }
+
 `;
 
 const Title = styled(animated.h2)`
   background: linear-gradient(252deg, #37abb8 0%, #71fbff 100%);
   line-height: 64px;
-  border-radius: 32px;
+  border-radius: 3vw;
   box-shadow: 0px 7px 15px #00000033;
-  font-size: 1.8vw;
+  font-size: 1.4vw;
   font-weight: 500;
   letter-spacing: -1px;
   color: #fff;
-  padding: 0 20px;
+  padding: 0 2.5vw;
   margin: 0;
   transform-origin: right;
   @media (max-width: 480px) {
-    font-size: 30px;
+    font-size: 24px;
     padding: 0 21px;
     line-height: 45px;
     font-weight: 500;
@@ -211,7 +217,7 @@ const TimeForm = styled(animated.div)`
   border-radius: 64px 0 0 0;
 
   p {
-    font-size: 1.5vw;
+    font-size: 1.2vw;
     color: #376796;
     margin: 0 0 10px;
   }
@@ -233,23 +239,23 @@ const TimeOption = styled.span<{ selected: boolean }>`
   background: ${({ selected }) =>
     selected
       ? "linear-gradient(241deg, #05185e 0%, #4b86ac 100%)"
-      : "linear-gradient(180deg, #37ABB878 0%, #71FBFFA6 100%)"};
+      : "linear-gradient( #37ABB81A 0%, #71FBFF1A 100%)"};
   box-shadow: ${({ selected }) =>
     selected ? "7px 7px 20px #00000038" : "none"};
   border: ${({ selected }) =>
     selected ? "1px solid #ffffff99;" : "2px solid #FFFFFF"};
-  border-radius: 36px;
-  font-size: 1.5vw;
+  border-radius: 3vw;
+  font-size: 1.2vw;
   line-height: 6vh;
   font-weight: 300;
   color: ${({ selected }) => (selected ? "#fff" : "#00DDE3")};
-  padding: 0 24px;
+  padding: 0 2.5vw;
   cursor: pointer;
 
   @media (max-width: 480px) {
     line-height: 51px;
     margin: 10px 0;
-    font-size: 20px;
+    font-size: 16px;
     letter-spacing: -1px;
   }
 `;
@@ -276,7 +282,7 @@ const FormInput = styled.input`
   background-repeat: no-repeat;
   background-size: 1.8vw;
   margin-bottom: 20px;
-  font-size: 1.2vw;
+  font-size: 1vw;
   position: relative;
   // background-image: url(${PersonIcon});
 
@@ -318,7 +324,7 @@ const FormInput = styled.input`
     width: 100% !important;
     max-width: 100% !important;
     margin: 10px 0 !important;
-    font-size: 18px;
+    font-size: 14px;
     padding: 0 40px 0 20px;
   }
 `;
@@ -331,7 +337,7 @@ const SubmitButton = styled.input`
   border-radius: 2.5vh;
   border: none;
   outline: none;
-  font-size: 1.6vw;
+  font-size: 1.2vw;
   padding: 0 63px;
   margin-right: 21px;
   cursor: pointer;
@@ -346,6 +352,6 @@ const SubmitButton = styled.input`
     width: 100% !important;
     max-width: 100% !important;
     margin: 10px 0 !important;
-    font-size: 18px;
+    font-size: 14px;
   }
 `;

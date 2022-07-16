@@ -55,7 +55,7 @@ const TitlePart = styled.div<{ even: boolean }>`
 
 const Title = styled.h2<{ open: boolean }>`
   cursor: pointer;
-  font-size: 1.6vw;
+  font-size: 1.2vw;
   font-weight: 500;
   color: #fff;
   background: ${({ open }) => (open ? "#FF8080" : "#bababa")};
@@ -67,7 +67,7 @@ const Title = styled.h2<{ open: boolean }>`
   transition: 1s all ease-out;
 
   @media (max-width: 480px) {
-    font-size: 24px;
+    font-size: 19px;
     line-height: 1.5;
     padding: 17px 35px;
     letter-spacing: -1px;
@@ -131,7 +131,7 @@ const Answer = styled.p<{ open: boolean; even: boolean }>`
   margin-right: ${({ even }) => (even ? "0" : "auto")};
 
   @media (max-width: 480px) {
-    font-size: 27px;
+    font-size: 21px;
     line-height: 1.5;
     padding: 72px 36px 30px;
     width: 100%;
