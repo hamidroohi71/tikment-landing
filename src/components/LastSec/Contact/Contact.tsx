@@ -3,15 +3,61 @@ import styled from "styled-components";
 import { useSpring, animated, easings } from "react-spring";
 import PersonIcon from "../../PageIntro/formOptions/person.svg";
 import PhoneIcon from "../../PageIntro/formOptions/phone.svg";
+import TickVideo from "../../../assets/video/Tick01.webm";
 
 export default function Contact() {
   const [timeOption, setTimeOption] = useState(0);
+  const [tick, setTick] = useState(false);
+
+  const styleProps1 = useSpring({
+    from: { transform: "scaleX(0)" },
+    to: { transform: "scaleX(1)" },
+    delay: 1000,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+
+  const styleProps2 = useSpring({
+    from: { transform: "scaleX(1)" },
+    to: { transform: tick ? "scaleY(0)" : "scaleY(1)" },
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+
+  const styleProps3 = useSpring({
+    from: { maxHeight: "100vh" },
+    to: { maxHeight: tick ? "3vh" : "100vh" },
+    delay: 3000,
+    config: { duration: 2000, easing: easings.easeOutQuart },
+  });
+
+  const styleProps6 = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: tick ? 0 : 1 },
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+
+  const styleProps7 = useSpring({
+    from: { transform: "scaleX(0)" },
+    to: { transform: tick ? "scaleX(1)" : "scaleX(0)" },
+    delay: 2000,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
 
   return (
-    <ContactSection>
-      <h2>برای مشاورهٔ رایگان در اولین فرصت با شما تماس می‌گیریم.</h2>
+    <ContactSection style={styleProps3}>
+      <TitleBox>
+        {tick && <Tick src={TickVideo} loop={false} muted autoPlay={tick} />}
 
-      <FormBox>
+        {!tick && <RingSign></RingSign>}
+
+        <Title style={{ ...styleProps1, ...styleProps6 }}>
+          برای مشاوره رایگان در اولین فرصت با شما تماس می‌گیریم.
+        </Title>
+        <Result style={styleProps7}>
+          اطلاعات شما ثبت شده است. کارشناسان ما به‌زودی با شما تماس خواهند گرفت
+        </Result>
+      </TitleBox>
+
+      <FormBox style={styleProps2}>
         <TimeForm>
           <p>
             برای مشاوره و راه‌اندازی نسخۀ رایگان تیکمنت، چه ساعتی با شما تماس
@@ -47,6 +93,7 @@ export default function Contact() {
         <ContactForm
           onSubmit={(e) => {
             e.preventDefault();
+            setTick(true);
           }}
         >
           <FormInput
@@ -74,7 +121,7 @@ export default function Contact() {
   );
 }
 
-const ContactSection = styled.section`
+const ContactSection = styled(animated.section)`
   padding: 11vh 21vw 0;
 
   @media (max-width: 480px) {
@@ -83,13 +130,75 @@ const ContactSection = styled.section`
   }
 `;
 
+const TitleBox = styled(animated.div)`
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  position: relative;
+`;
+
+const Title = styled(animated.h2)`
+  background: linear-gradient(252deg, #37abb8 0%, #71fbff 100%);
+  line-height: 64px;
+  border-radius: 32px;
+  box-shadow: 0px 7px 15px #00000033;
+  font-size: 1.8vw;
+  font-weight: 500;
+  letter-spacing: -1px;
+  color: #fff;
+  padding: 0 20px;
+  margin: 0;
+  transform-origin: right;
+  @media (max-width: 480px) {
+    font-size: 30px;
+    padding: 0 21px;
+    line-height: 45px;
+    font-weight: 500;
+  }
+`;
+
+const Result = styled(Title)`
+  position: absolute;
+  top: 0;
+  right: 5.5vw;
+  height: 64px;
+`;
+
+const Tick = styled.video`
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  right: -7px;
+`;
+
+const RingSign = styled.span`
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #fff;
+  border: 19px solid #38acb9;
+  margin-left: 13px;
+  box-shadow: 0px 7px 15px #00000033;
+  @media (max-width: 480px) {
+    width: 45px;
+    height: 45px;
+    border: 13.5px solid #38acb9;
+  }
+`;
+
 const FormBox = styled(animated.div)`
-  background: linear-gradient(180deg, #75c9db 0%, #4af3f8 100%);
+  background: linear-gradient(
+    180deg,
+    rgb(117 201 219 / 10%) 0%,
+    rgb(74 243 248 / 10%) 100%
+  );
   box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
   border: 1px solid #75c9db4d;
   border-radius: 64px 0px 64px 64px;
   backdrop-filter: blur(13px);
   overflow: hidden;
+  transform-origin: top;
 `;
 
 const TimeForm = styled(animated.div)`
@@ -99,6 +208,7 @@ const TimeForm = styled(animated.div)`
   border: 3px solid #75c9db4d;
   opacity: 1;
   backdrop-filter: blur(50px);
+  border-radius: 64px 0 0 0;
 
   p {
     font-size: 1.5vw;
@@ -146,7 +256,7 @@ const TimeOption = styled.span<{ selected: boolean }>`
 
 const ContactForm = styled(animated.form)`
   box-sizing: border-box;
-  padding: 26px 44px 79px;
+  padding: 26px 44px 26px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
