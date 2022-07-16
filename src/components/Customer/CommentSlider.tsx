@@ -191,7 +191,7 @@ const Title = styled.div<{ selected: boolean }>`
   position: absolute;
   margin: 0 5vw 0 0;
   & > h2 {
-    font-size: 2vw;
+    font-size: 1.6vw;
     color: ${({ selected }) => (selected ? "#fff" : "transparent")};
     margin: 0;
     line-height: 3vw;
@@ -216,7 +216,7 @@ const Title = styled.div<{ selected: boolean }>`
   }
 
   & > h3 {
-    font-size: 1.8vw;
+    font-size: 1.4vw;
     font-weight: 300;
     color: #04165d;
     opacity: ${({ selected }) => (selected ? 1 : 0)};
@@ -229,7 +229,7 @@ const Title = styled.div<{ selected: boolean }>`
   @media (max-width: 480px) {
     width: 100%;
     & > h2 {
-      font-size: 22px;
+      font-size: 17px;
       line-height: 35px;
       letter-spacing: -1px;
       text-align: center;
@@ -245,7 +245,7 @@ const Title = styled.div<{ selected: boolean }>`
     }
 
     & > h3 {
-      font-size: 22px;
+      font-size: 17px;
       line-height: 35px;
     }
   }
@@ -254,7 +254,7 @@ const Title = styled.div<{ selected: boolean }>`
 const Comment = styled.div<{ selected: boolean }>`
   position: absolute;
   & > h2 {
-    font-size: 2vw;
+    font-size: 1.6vw;
     opacity: ${({ selected }) => (selected ? 1 : 0)};
     margin: 0 0 13px;
     color: #292929;
@@ -274,7 +274,7 @@ const Comment = styled.div<{ selected: boolean }>`
   }
 
   & > p {
-    font-size: 1.5vw;
+    font-size: 1.2vw;
     font-weight: 300;
     color: #666666;
     opacity: ${({ selected }) => (selected ? 1 : 0)};
@@ -290,7 +290,7 @@ const Comment = styled.div<{ selected: boolean }>`
     padding: 25px;
     box-sizing: border-box;
     & > h2 {
-      font-size: 25px;
+      font-size: 20px;
       color: #183573;
       font-weight: 500;
 

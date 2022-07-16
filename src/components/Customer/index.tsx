@@ -173,14 +173,14 @@ const Statistics = styled(animated.div)`
 `;
 
 const UntilToday = styled(animated.p)`
-  font-size: 3vw;
+  font-size: 2.4vw;
   color: #183573;
   display: flex;
   align-items: center;
 
   @media (max-width: 480px) {
     display: block;
-    font-size: 42px;
+    font-size: 33px;
     margin: 0;
   }
 `;
@@ -188,7 +188,7 @@ const UntilToday = styled(animated.p)`
 const Date = styled.span`
   display: inline-block;
   font-family: Digital-7;
-  font-size: 5vw;
+  font-size: 4vw;
   padding: 0 18px;
   line-height: 128px;
   background: #f9f8f7 0% 0% no-repeat padding-box;
@@ -201,14 +201,14 @@ const Date = styled.span`
 
   @media (max-width: 480px) {
     display: block;
-    font-size: 65px;
+    font-size: 52px;
     line-height: 87px;
     margin-right: 0;
   }
 `;
 
 const MiddleText = styled(animated.p)`
-  font-size: 4vw;
+  font-size: 3.2vw;
   color: #e67205;
   margin: 0;
 
@@ -217,12 +217,12 @@ const MiddleText = styled(animated.p)`
   }
 
   @media (max-width: 480px) {
-    font-size: 65px;
+    font-size: 52px;
     letter-spacing: -2px;
 
     span {
       color: #183573;
-      font-size: 50px;
+      font-size: 40px;
       display: inline-block;
     }
   }
@@ -244,7 +244,7 @@ const TotalNumber = styled(Date)`
   @media (max-width: 480px) {
     display: block !important;
     width: 100%;
-    font-size: 127px;
+    font-size: 100px;
     padding: 5px 10px;
     margin: 0;
     text-align: center;
@@ -256,7 +256,7 @@ const TotalNumSentence = styled(animated.span)`
   @media (max-width: 480px) {
     display: block !important;
     width: 100%;
-    font-size: 35px;
+    font-size: 28px;
     padding: 5px 10px;
     margin: 0;
     letter-spacing: -2px;
