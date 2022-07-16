@@ -72,7 +72,7 @@ const Avatar = styled.div<{ orange: boolean; show: boolean }>`
 `;
 
 const Position = styled.p<{ show: boolean }>`
-  font-size: 1.6vw;
+  font-size: 1.2vw;
   color: #e67205;
   font-weight: 100;
   position: relative;
@@ -97,7 +97,7 @@ const PositionBox = styled.span<{ show: boolean; even: boolean }>`
 `;
 
 const CommentText = styled.p<{ even: boolean; show: boolean }>`
-  font-size: 1.8vw;
+  font-size: 1.4vw;
   color: #666666;
   font-weight: 300;
   position: relative;

@@ -82,7 +82,7 @@ const CommentsContainer = styled.div<{ index: number }>`
 `;
 
 const Title = styled.h2`
-  font-size: 4.6vw;
+  font-size: 3.6vw;
   color: #e67205;
   margin: 0;
   text-align: center;
