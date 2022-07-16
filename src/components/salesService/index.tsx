@@ -131,21 +131,21 @@ const ServicesSection = styled(animated.section)<{ active: boolean }>`
 `;
 
 const Title = styled.h2`
-  font-size: 3.7vw;
+  font-size: 2.9vw;
   color: #e67205;
   text-align: center;
   margin: 0;
   font-weight: 500;
 
   @media (max-width: 480px) {
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 500;
     letter-spacing: -1px;
   }
 `;
 
 const Subtitle = styled.h3`
-  font-size: 2.3vw;
+  font-size: 1.8vw;
   color: #183573;
   text-align: center;
   margin: 0 0 17px;
@@ -154,7 +154,7 @@ const Subtitle = styled.h3`
     display: none;
   }
   @media (max-width: 480px) {
-    font-size: 29px;
+    font-size: 23px;
     font-weight: 500;
     letter-spacing: -1px;
     br {
@@ -176,7 +176,7 @@ const CardNum = styled.span`
   border-radius: 50%;
   background: linear-gradient(180deg, #37abb8 0%, #71fbff 100%);
   color: #fff;
-  font-size: 2vw;
+  font-size: 1.6vw;
   text-align: center;
   line-height: 3vw;
   flex-shrink: 0;
@@ -238,11 +238,11 @@ const FrontSide = styled.div`
 
   & > p {
     color: #183573;
-    font-size: 2.7vw;
+    font-size: 2.1vw;
     text-align-center;
     margin: 0;
     &:first-of-type{
-      font-size: 1.6vw;
+      font-size: 1.2vw;
       margin: 5px 0;
     }
   }
@@ -279,10 +279,10 @@ const FrontSide = styled.div`
     border-radius: 64px;
 
     & > p {
-      font-size: 42px;
+      font-size: 33px;
       letter-spacing: -1px;
       &:first-of-type{
-        font-size: 26px;
+        font-size: 20px;
       }
     }
 
@@ -319,11 +319,11 @@ const BackSide = styled.div`position: absolute;
   & > p {
     color: #183573;
     text-align-center;
-    font-size: 2.7vw;
+    font-size: 2.1vw;
     margin: 0;
 
     &:first-of-type{
-      font-size: 1.6vw;
+      font-size: 1.2vw;
       margin: 5px 0;
     }
   }
@@ -331,7 +331,7 @@ const BackSide = styled.div`position: absolute;
   & > div {
     border: 1px solid #B8E2EB;
     padding: 0.7vw 0.7vw 0.7vw;
-    font-size: 1.6vw;
+    font-size: 1.2vw;
     font-weight: lighter; 
     border-style: solid none none;
     
@@ -366,10 +366,10 @@ const BackSide = styled.div`position: absolute;
     border-radius: 64px;
 
     & > p {
-      font-size: 42px;
+      font-size: 33px;
       letter-spacing: -1px;
       &:first-of-type {
-        font-size: 26px;
+        font-size: 20px;
       }
     }
 
