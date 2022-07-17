@@ -25,8 +25,6 @@ export default function LastSec() {
     }
   }, [activeSection]);
 
-  const [timeOption, setTimeOption] = useState(0);
-
   return (
     <LastSection
       onWheel={(e) => {

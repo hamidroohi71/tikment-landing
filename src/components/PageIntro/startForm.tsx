@@ -11,11 +11,7 @@ import { useSection } from "../../context/sectionStore";
 import useWidth from "../../hooks/useWidth";
 import TickVideo from "../../assets/video/Tick01.webm";
 
-export default function StartForm({
-  handleFormOpen,
-}: {
-  handleFormOpen: (status: boolean) => void;
-}) {
+export default function StartForm({ handleFormOpen, open }: any) {
   const [done, setDone] = useState(false);
   const width = useWidth();
   const [result, setResult] = useState(
@@ -27,39 +23,35 @@ export default function StartForm({
   const { activeSection } = useSection();
   const styleProps1 = useSpring({
     from: { transform: "scaleX(0)" },
-    to: { transform: "scaleX(1)" },
-    delay: 1000,
-    config: { duration: 1000, easing: easings.easeOutQuart },
+    to: { transform: open ? "scaleX(1)" : "scaleX(0)" },
+    delay: open ? 1000 : 0,
+    config: { duration: open ? 1000 : 0, easing: easings.easeOutQuart },
   });
   const styleProps2 = useSpring({
     from: { transform: "scaleY(0)" },
-    to: { transform: "scaleY(1)" },
-    delay: 2000,
-    config: { duration: 1000, easing: easings.easeOutQuart },
+    to: { transform: open ? "scaleY(1)" : "scaleY(0)" },
+    delay: open ? 2000 : 0,
+    config: { duration: open ? 1000 : 0, easing: easings.easeOutQuart },
   });
 
   const styleProps3 = useSpring({
     from: { opacity: 0 },
-    to: { opacity: 1 },
+    to: { opacity: open ? 1 : 0 },
     delay: 3000,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const styleProps4 = useSpring({
     to: {
-      transform:
-        activeSection === 1
-          ? "translateX(0vw)"
-          : width < 480
-          ? "translateX(0vw)"
-          : "translateX(100vw)",
+      opacity: activeSection === 4 && open ? 1 : width < 480 ? 1 : 0,
     },
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const styleProps5 = useSpring({
     to: {
-      top: step === 5 ? "20vh" : width < 480 ? "0" : "57vh",
+      top: step === 5 ? "20vh" : width < 480 ? "0" : "30vh",
+      bottom: step === 5 ? "6vh" : width < 480 ? "06vh" : "34vh",
     },
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
@@ -88,11 +80,11 @@ export default function StartForm({
   };
 
   useEffect(() => {
-    if (step === 5) {
-      handleFormOpen(true);
-    } else {
-      handleFormOpen(false);
-    }
+    // if (step === 5) {
+    //   handleFormOpen(true);
+    // } else {
+    //   handleFormOpen(false);
+    // }
     if (step === 6) {
       setTimeout(() => {
         setTick(true);
@@ -102,9 +94,21 @@ export default function StartForm({
     }
   }, [step]);
 
+  useEffect(() => {
+    if (open) {
+      setStep(1);
+    }
+  }, [open]);
+
   // console.log(answers);
   return (
-    <StartFormElement style={{ ...styleProps4, ...styleProps5 }}>
+    <StartFormElement
+      onClick={(e: any) => {
+        e.stopPropagation();
+      }}
+      style={{ ...styleProps4, ...styleProps5 }}
+      open={open}
+    >
       <TitleBox>
         {tick && <Tick src={TickVideo} loop={false} muted autoPlay={tick} />}
 
@@ -149,11 +153,12 @@ export default function StartForm({
   );
 }
 
-const StartFormElement = styled(animated.section)`
-  z-index: 10;
+const StartFormElement = styled(animated.section)<{ open: boolean }>`
+  z-index: ${({ open }) => (open ? 70 : 0)};
   position: absolute;
-  top: 57vh;
-  bottom: 6vh;
+  top: 30vh;
+  bottom: 34vh;
+  right: 10vw;
 
   @media (max-width: 480px) {
     position: relative;

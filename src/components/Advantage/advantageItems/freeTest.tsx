@@ -4,6 +4,7 @@ import styled from "styled-components";
 import TickIconVideo from "./TickIconVideo";
 import FreeTestModule from "./freeTestModule";
 import StartForm from "../../PageIntro/startForm";
+import { isAbsolute } from "node:path/win32";
 
 export default function FreeTest({ active }: { active: boolean }) {
   const [open, setOpen] = useState(false);
@@ -28,6 +29,8 @@ export default function FreeTest({ active }: { active: boolean }) {
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
+  console.log(open);
+
   return (
     <>
       <TextBox>
@@ -45,7 +48,14 @@ export default function FreeTest({ active }: { active: boolean }) {
         }}
         style={sectionStyle}
       />
-      <StartForm handleFormOpen={setOpen} />
+      <StarFormBox
+        onClick={() => {
+          setOpen(false);
+        }}
+        show={open}
+      >
+        <StartForm open={open} handleFormOpen={setOpen} />
+      </StarFormBox>
     </>
   );
 }
@@ -76,4 +86,19 @@ const Text = styled(animated.p)`
   color: #292929;
   font-weight: 300;
   padding-left: 8vw;
+`;
+
+const StarFormBox = styled.div<{ show: boolean }>`
+  display: ${({ show }) => (show ? "block" : "none")};
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, #75c9dba8 0%, #4af3f8a3 100%);
+  box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
+  border: 1px solid #75c9db4d;
+  opacity: 1;
+  backdrop-filter: blur(38px);
+  z-index: 70;
 `;
