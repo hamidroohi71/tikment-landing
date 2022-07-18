@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSection } from "../../context/sectionStore";
 import Background from "./background";
+import FirstForm from "./firstForm";
 import GlassPattern from "./glassPattern";
 import Mobile from "./mobile";
 import StartForm from "./startForm";
@@ -38,6 +39,9 @@ export default function PageIntro() {
       <Background />
       <Mobile />
       <Title formOpen={formOpen} />
+      {/* for first section */}
+      <FirstForm handleFormOpen={handleFormOpen}/>
+      {/* for advantage section */}
       <StartForm handleFormOpen={handleFormOpen} />
     </PageIntroduction>
   );
