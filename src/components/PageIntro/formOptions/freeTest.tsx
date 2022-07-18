@@ -31,10 +31,10 @@ export default function FreeTest({
           <svg>
             {step === 5 ? (
               <use
-              width="100%"
-              height="100%"
-              href="/fastContactForm/freeTest/tick.svg#tick"
-            />
+                width="100%"
+                height="100%"
+                href="/fastContactForm/freeTest/tick.svg#tick"
+              />
             ) : (
               <use
                 width="100%"
@@ -116,6 +116,11 @@ const YesOption = styled(Option)`
     border-radius: 22px;
     padding: 0 30px;
     font-size: 1.5vw;
+
+    @media (max-width: 480px) {
+      font-size: 20px;
+      padding: 0 25px;
+    }
   }
 
   .se-content {
@@ -128,6 +133,11 @@ const YesOption = styled(Option)`
     height: 4vw;
     margin: auto;
     z-index: 20;
+
+    @media (max-width: 480px) {
+      width: 50px;
+      height: 50px;
+    }
 
     & > use {
       display: flex;
@@ -159,6 +169,11 @@ const NoOption = styled(Option)`
     border-radius: 22px;
     padding: 0 24px;
     font-size: 1.5vw;
+
+    @media (max-width: 480px) {
+      font-size: 20px;
+      padding: 0 25px;
+    }
   }
 
   &:hover {

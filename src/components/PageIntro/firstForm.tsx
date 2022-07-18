@@ -127,7 +127,7 @@ const StartFormElement = styled(animated.section)`
   @media (max-width: 480px) {
     position: relative;
     top: 0;
-    margin-top: 596px;
+    margin-top: 680px;
     right: -20px;
   }
 `;
@@ -190,7 +190,8 @@ const FormBox = styled(animated.div)`
     top: -20px;
     right: 20px;
     width: 330px;
-    padding: 25px;
+    padding: 25px 25px 90px;
+    border-radius: 64px 0px 64px 64px;
   }
 `;
 

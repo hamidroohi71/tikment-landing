@@ -50,6 +50,11 @@ const Option = styled(OptionBase)`
     border-radius: 22px;
     padding: 0 1.6vw;
     font-size: 1.5vw;
+
+    @media (max-width: 480px){
+      font-size: 20px;
+      padding: 0 25px;
+    }
   }
 
   &:hover {

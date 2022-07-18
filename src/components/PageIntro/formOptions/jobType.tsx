@@ -175,7 +175,8 @@ export const OptionBase = styled.div<{
 
   @media (max-width: 480px) {
     width: 127px;
-    height: 127px;
+    border-radius: 36px;
+    height: 141px;
     position: static;
     transform: translateX(0) !important;
     margin: 5px;
@@ -193,6 +194,7 @@ export const OptionBase = styled.div<{
 
     & > p {
       font-size: 15px;
+      white-space: nowrap;
     }
   }
 `;

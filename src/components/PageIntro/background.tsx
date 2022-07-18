@@ -68,7 +68,7 @@ const BackgroundImage = styled(animated.div)`
     mask-position: 100%;
     left: -10%;
     height: 870px;
-    top: 389px;
+    top: 450px;
   }
 `;
 

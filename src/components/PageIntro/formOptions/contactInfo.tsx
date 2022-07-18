@@ -115,6 +115,16 @@ const TimeForm = styled(animated.div)`
     align-items: cemter;
     justify-content: space-between;
   }
+
+  @media (max-width: 480px){
+    padding: 20px 10px;
+    height: 120px;
+    z-index:60;
+
+    p{
+      font-size:12px;
+    }
+  }
 `;
 
 const TimeOption = styled.span<{ selected: boolean, smlWidth: boolean }>`
@@ -134,6 +144,11 @@ const TimeOption = styled.span<{ selected: boolean, smlWidth: boolean }>`
   color: ${({ selected }) => (selected ? "#fff" : "#00DDE3")};
   padding: 0 2.5vw;
   cursor: pointer;
+
+  @media (max-width: 480px){
+    font-size:10px;
+  }
+
 `;
 
 const ContactForm = styled(animated.form)`
@@ -147,6 +162,11 @@ const ContactForm = styled(animated.form)`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  @media (max-width: 480px){
+    padding:20px 10px 50px;
+   z-index:60;
+  }
 `;
 
 const FormInput = styled.input`
@@ -207,6 +227,15 @@ const FormInput = styled.input`
       width: 80%;
     }
   }
+
+  @media (max-width: 480px){
+    width:100%;
+    margin-bottom:20px;
+    max-width: inherit !important;
+    margin-right: 0 !important;
+    font-size :12px;
+  }
+
 `;
 
 const SubmitButton = styled.input`
@@ -231,6 +260,13 @@ const SubmitButton = styled.input`
 
   &:hover{
     background:#ff5151;
+  }
+
+  @media (max-width: 480px){
+    direciton:ltr;
+    width:50%;
+    font-size:12px;
+    margin-right:50%;
   }
 `;
 

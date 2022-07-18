@@ -23,6 +23,11 @@ const ProgressBarElement = styled.section`
   opacity: 0.71;
   backdrop-filter: blur(0px);
   // background: linear-gradient(-90deg, #ffffff78 0%, #71fbffa6 100%);
+
+  @media (max-width: 480px) {
+    bottom: 24px;
+    width: 75%;
+  }
 `;
 
 const ProgressDegree = styled.div<{ percent: number }>`

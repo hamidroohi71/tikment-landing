@@ -41,8 +41,8 @@ const MobilePhoto = styled(animated.section)`
   }
 
   @media (max-width: 480px) {
-    width: 70vw;
-    height: 50vh;
-    top: 57vh;
+    width: 310px;
+    height: 427px;
+    top: 560px;
   }
 `;
