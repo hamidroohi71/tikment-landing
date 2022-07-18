@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import LogoBox from "../../LogoBox";
+import Tlogo from "./tik-logo.png";
 import data from "./data.json";
 
 export default function Footer() {
@@ -13,6 +14,7 @@ export default function Footer() {
     <FooterSection>
       <FooterTop>
         <FooterRight>
+          <Logo></Logo>
           <LogoBox />
           <SocialBox>{socicalElement}</SocialBox>
         </FooterRight>
@@ -64,6 +66,24 @@ const FooterRight = styled.div`
 
   @media (max-width: 480px) {
     width: 100%;
+    & > section {
+      display: none;
+    }
+  }
+`;
+
+const Logo = styled.div`
+  display: none;
+  @media (max-width: 480px) {
+    display:flex;
+    background-image: url(${Tlogo});
+    width: 222px;
+    height: 51px;
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    right: -4px;
+    top: 11px;
   }
 `;
 
@@ -78,7 +98,12 @@ const FooterLeft = styled.div`
   box-shadow: 0px 10px 14px #033f7733;
   flex-shrink: 0;
   @media (max-width: 480px) {
-    font-size: 14px;
+    font-size: 27px;
+    text-align: justify;
+    border-radius: 0 64px 64px 0;
+    width: 92%;
+    padding: 41px 61px 22px 55px;
+    font-weight: 300;
   }
 `;
 
@@ -90,10 +115,11 @@ const CopyRight = styled.div`
   line-height: 7vh;
   margin: 0;
   @media (max-width: 480px) {
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 24px;
+    line-height: 34px;
     height: unset;
     padding: 0 30px;
+    color: #04165d;
   }
 `;
 
@@ -123,7 +149,10 @@ const SocialBox = styled.div`
   }
 
   @media (max-width: 480px) {
-    padding: 0 110px 20px 50px;
+    padding: 0 90px 20px 50px;
+    div:nth-child(1){
+      margin-right:53%;
+    }
 
     & > div {
       width: 52px;
@@ -136,6 +165,6 @@ const SocialBox = styled.div`
     }
   }
   @media (min-width: 1920px) {
-    padding-top:8vw;
+    padding-top: 8vw;
   }
 `;
