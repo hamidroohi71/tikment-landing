@@ -8,6 +8,8 @@ import styled from "styled-components";
 import ProgressBar from "./formOptions/progressBar";
 import { useSpring, animated, easings } from "react-spring";
 import { useSection } from "../../context/sectionStore";
+import useWidth from "../../hooks/useWidth";
+import TickVideo from "../../assets/video/Tick01.webm";
 
 export default function FirstForm({
   handleFormOpen,
@@ -15,10 +17,13 @@ export default function FirstForm({
   handleFormOpen: (status: boolean) => void;
 }) {
   const [done, setDone] = useState(false);
-  const width = window.innerWidth;
+  const width = useWidth();
+
   const [result, setResult] = useState(
     "کارشناسان ما امروز با شما تماس خواهند گرفت"
   );
+  const [tick, setTick] = useState(false);
+
   const [step, setStep] = useState(1);
   const [answers, setAnswers] = useState([] as any);
   const { activeSection } = useSection();
@@ -30,7 +35,7 @@ export default function FirstForm({
   });
   const styleProps2 = useSpring({
     from: { transform: "scaleY(0)" },
-    to: { transform: "scaleY(1)" },
+    to: { transform: step === 6 ? "scaleY(0)" : "scaleY(1)" },
     delay: 2000,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
@@ -60,6 +65,19 @@ export default function FirstForm({
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
+  const styleProps6 = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: step === 6 ? 0 : 1 },
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+
+  const styleProps7 = useSpring({
+    from: { transform: "scaleX(0)" },
+    to: { transform: step === 6 ? "scaleX(1)" : "scaleX(0)" },
+    delay: 2000,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
+
   const changeStep = (newStep: number) => {
     setStep(newStep);
   };
@@ -76,16 +94,29 @@ export default function FirstForm({
     } else {
       handleFormOpen(false);
     }
+    if (step === 6) {
+      setTimeout(() => {
+        setTick(true);
+      }, 100);
+    } else {
+      setTick(false);
+    }
   }, [step]);
 
   // console.log(answers);
   return (
     <StartFormElement style={{ ...styleProps4, ...styleProps5 }}>
       <TitleBox>
-        <RingSign></RingSign>
-        <Title style={styleProps1}>{done ? result : "برای انتخاب بهتر"}</Title>
+        {tick && <Tick src={TickVideo} loop={false} muted autoPlay={tick} />}
+
+        {!tick && <RingSign></RingSign>}
+
+        <Title style={{ ...styleProps1, ...styleProps6 }}>
+          {"برای انتخاب بهتر"}
+        </Title>
+        <Result style={styleProps7}>{result}</Result>
       </TitleBox>
-      <FormBox style={styleProps2}>
+      <FormBox end={step === 6} style={styleProps2}>
         <FormContent style={styleProps3}>
           <JobType
             step={step}
@@ -155,7 +186,33 @@ const Title = styled(animated.h2)`
     padding: 0 21px;
     line-height: 45px;
     font-weight: 500;
+    }
+    
   }
+`;
+
+const Result = styled(Title)`
+  position: absolute;
+  top: 0;
+  right: 5.5vw;
+  height: 64px;
+  width: 39vw;
+
+  @media (max-width: 480px){
+    top: -9px  ;
+    right: 76px ;
+    height: fit-content ;
+    width: 79% ;
+    font-size: 20px ;
+    border-radius: 35px ;
+  }
+`;
+
+const Tick = styled.video`
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  right: -7px;
 `;
 
 const RingSign = styled.span`
@@ -173,18 +230,20 @@ const RingSign = styled.span`
   }
 `;
 
-const FormBox = styled(animated.div)`
+const FormBox = styled(animated.div)<{ end: boolean }>`
   position: absolute;
   top: 32px;
-  bottom: 0;
+  bottom: ${({ end }) => (end ? "calc(100% - 32px)" : "0")};
   right: 32px;
   width: 53vw;
   box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
-  border: 1px solid #75c9db4d;
+  background: linear-gradient(180deg, #75c9db1a 0%, #4af3f81a 100%);
+  border: ${({ end }) => (end ? "none" : "1px solid #75c9db4d")};
   border-radius: 3vw;
   backdrop-filter: blur(13px);
   transform-origin: top;
-  padding: 2.5vw 2vw;
+  padding: ${({ end }) => (end ? "0" : "2.5vw 2vw")};
+  transition: 0.5s ease-out;
   @media (max-width: 480px) {
     position: relative;
     top: -20px;
@@ -200,4 +259,3 @@ const FormContent = styled(animated.div)`
     height: 480px;
   }
 `;
-
