@@ -22,6 +22,7 @@ const MenuLink = styled.a`
 
   @media (max-width: 480px) {
     font-size: 24px;
-    font-weight: 100;
+    font-weight: 400;
+    font-family: 'YekanBakh';
   }
 `;

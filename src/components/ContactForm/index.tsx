@@ -6,6 +6,7 @@ import call from "./call.png";
 import clock from "./clock.png";
 import location from "./location.png";
 import pic from "./Group.png";
+import dot from "./dot.png";
 import "../../../node_modules/font-awesome/css/font-awesome.min.css";
 
 export default function ContactForm() {
@@ -65,6 +66,18 @@ const Forms = styled.div`
   margin-bottom: 13vh;
   @media (max-width: 1400px) {
     padding-top: 21vh;
+  }
+
+  @media (max-width: 1400px) {
+    padding-top: 21vh;
+  }
+
+  @media (max-width: 480px) {
+    padding-top: 21vh;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    gap: 40px;
   }
 `;
 
@@ -170,6 +183,67 @@ const ContactWay = styled.div`
       left: -1vw;
     }
   }
+
+  @media (max-width: 480px) {
+    width: 83%;
+    max-width: inherit;
+    margin: auto;
+    border-radius: 35px 0px 35px 35px;
+    padding: 55px 14px 11px 19px;
+    gap: 30px;
+    h2 {
+      font-size: 24px;
+      font-weight: 500;
+      padding: 10px 35px;
+      border-radius: 35px;
+      top: -17px;
+      left: 100px;
+      &:before {
+        content: "";
+        display: inline-flex;
+        background-image: url(${dot});
+        background-size: contain;
+        background-repeat: no-reapet;
+        width: 45px;
+        height: 45px;
+        position: absolute;
+        right: -50px;
+        top: -2px;
+      }
+    }
+
+    .tel {
+      font-size: 39px;
+      padding-left: 75px;
+      &:before {
+        width: 80px;
+        height: 82px;
+        top: -8px;
+      }
+    }
+
+    .time {
+      font-size: 31px;
+      padding-left: 77px;
+      &:before {
+        width: 56px;
+        top: 18px;
+        height: 56px;
+        left: 0;
+      }
+    }
+
+    .address {
+      font-size: 22px;
+      padding-left: 80px;
+      &:before {
+        width: 56px;
+        height: 56px;
+        left: 0;
+        top: 27px;
+      }
+    }
+  }
 `;
 
 const SentMail = styled.div`
@@ -190,7 +264,7 @@ const SentMail = styled.div`
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
   z-index: 10;
-  animation:form-motion 2s;
+  animation: form-motion 2s;
 
   @keyframes form-motion {
     from {
@@ -273,9 +347,65 @@ const SentMail = styled.div`
       color: white;
       font-size: 1.7vw;
       font-weight: 500;
-      transition : background .8s ease-in-out;
-      &:hover{
-        background:#ff5151;
+      transition: background 0.8s ease-in-out;
+      &:hover {
+        background: #ff5151;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 83%;
+    max-width: initial;
+    margin: auto;
+    border-radius: 0px 35px 35px 35px;
+    padding: 44px 34px 25px 27px;
+    h2 {
+      font-size: 22px;
+      padding: 7px 10px;
+      border-radius: 35px;
+      &:before {
+        content: "";
+        display: inline-flex;
+        background-image: url(${dot});
+        background-size: contain;
+        background-repeat: no-reapet;
+        width: 45px;
+        height: 45px;
+        position: absolute;
+        left: -47px;
+        top: -6px;
+      }
+    }
+
+    form {
+      gap: 27px;
+
+      .text {
+        font-size: 24px;
+        border-radius: 32px;
+        padding: 22px;
+        min-height: 224px;
+      }
+
+      .name {
+        font-size: 24px;
+        border-radius: 32px;
+        padding: 15px;
+      }
+
+      .number {
+        width: 100%;
+        font-size: 24px;
+        border-radius: 32px;
+        padding: 15px;
+      }
+
+      .submit {
+        font-size: 32px;
+        border-radius: 32px;
+        padding: 15px;
+        width:100%;
       }
     }
   }
