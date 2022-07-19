@@ -42,7 +42,7 @@ export default function PageIntro() {
       {/* for first section */}
       <FirstForm handleFormOpen={handleFormOpen}/>
       {/* for advantage section */}
-      <StartForm handleFormOpen={handleFormOpen} />
+      {/* <StartForm handleFormOpen={handleFormOpen} /> */}
     </PageIntroduction>
   );
 }

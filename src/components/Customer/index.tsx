@@ -139,6 +139,7 @@ const CustomerElement = styled.section<{ active: boolean; status: string }>`
     height: unset;
     z-index: 20;
     padding: 20px 10vw 0;
+    transform: translateY(0vh);
   }
 `;
 
@@ -162,7 +163,7 @@ const BackgroundElement = styled(animated.div)`
   transform-origin: 75% 25%;
 
   @media (max-width: 480px) {
-    display: none;
+    // display: none;
   }
 `;
 
@@ -256,10 +257,11 @@ const TotalNumSentence = styled(animated.span)`
   @media (max-width: 480px) {
     display: block !important;
     width: 100%;
-    font-size: 28px;
-    padding: 5px 10px;
+    font-size: 40px;
+    padding: 10px;
     margin: 0;
     letter-spacing: -2px;
+    text-align: center;
   }
 `;
 
@@ -277,7 +279,7 @@ const MobileCircle = styled.div`
   backdrop-filter: blur(19px);
   z-index: -1;
 
-  @media (max-screen) {
+  @media (max-width:480px) {
     display: block;
   }
 `;

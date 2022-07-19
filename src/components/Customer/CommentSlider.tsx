@@ -185,6 +185,13 @@ const TickMotion = styled.video<{ selected: boolean }>`
   object-fit: contain;
   opacity: ${({ selected }) => (selected ? 1 : 0)};
   transition-delay: ${({ selected }) => (selected ? "0.7s" : "0s")}; ;
+
+  @media (max-width: 480px){
+    width: 45px;
+    height: 45px;
+    right: -50px;
+    bottom: -3px;
+  }
 `;
 
 const Title = styled.div<{ selected: boolean }>`
@@ -247,6 +254,8 @@ const Title = styled.div<{ selected: boolean }>`
     & > h3 {
       font-size: 17px;
       line-height: 35px;
+      text-align: center;
+      margin-right : -50px;
     }
   }
 `;
