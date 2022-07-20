@@ -22,8 +22,8 @@ export default function ProductImageSlider({ step }: { step: number }) {
           step === 1
             ? "translateX(0vw) scale(1)"
             : step === 2
-            ? "translateX(100vw) scale(0.25)"
-            : "translateX(50vw) scale(0.5)"
+            ? "translateX(100vw) translateY(10vh) scale(0.25)"
+            : "translateX(50vw) translateY(10vh) scale(0.5)"
         }
         src={FaceDetect1}
         alt="حسگر تغییر چهره تیکمنت"
@@ -82,8 +82,8 @@ export default function ProductImageSlider({ step }: { step: number }) {
           step === 2
             ? "translateX(0vw) scale(1)"
             : step === 3
-            ? "translateX(100vw) scale(0.25)"
-            : "translateX(35vw) scale(0.5)"
+            ? "translateX(100vw) translateY(10vh) scale(0.25)"
+            : "translateX(35vw) translateY(10vh) scale(0.5)"
         }
         src={FingerPrint1}
         alt="حسگر اثر انگشت تیکمنت"
