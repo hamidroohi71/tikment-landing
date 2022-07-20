@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import LogoBox from "../../LogoBox";
 import Tlogo from "./tik-logo.png";
@@ -10,6 +10,7 @@ export default function Footer() {
       <img src={item.icon} alt={item.name} />
     </div>
   ));
+
   return (
     <FooterSection>
       <FooterTop>
