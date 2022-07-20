@@ -251,8 +251,8 @@ const ProductName = styled.h2<{ benefitIndex: number }>`
   color: #ff4d4d;
   position: absolute;
   bottom: 8.4vh;
-  right: 0;
-  left: 8vw;
+  left: 36vw;
+  text-align: left;
   margin: auto;
   width: fit-content;
   opacity: ${({ benefitIndex }) => (benefitIndex > 4 ? 1 : 0)};
