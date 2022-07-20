@@ -32,7 +32,7 @@ export default function FAQBlock({
 
 const FaqBlock = styled.div<{ open: boolean }>`
   width: 100%;
-  margin: 3.5vh;
+  margin: ${({ open }) => (open ? "3.5vh 3.5vh 8vh" : "3.5vh")};
   max-height: ${({ open }) => (open ? "14vh" : "3vh")};
   transition: 0.5s ease-out;
   transition-delay: ${({ open }) => (open ? "10vh" : "3vh")};
@@ -129,6 +129,8 @@ const Answer = styled.p<{ open: boolean; even: boolean }>`
   color: #6e6d6d;
   margin-left: ${({ even }) => (even ? "auto" : "0")};
   margin-right: ${({ even }) => (even ? "0" : "auto")};
+  font-size: 1.8vw;
+  font-weight: 500;
 
   @media (max-width: 480px) {
     font-size: 21px;
