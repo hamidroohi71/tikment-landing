@@ -40,7 +40,10 @@ export default function CommentSlider({
   }, [selectedIndex]);
 
   const commentPart = comments.map((item, index) => (
-    <Comment selected={index === selectedIndex} key={item.comment.comment}>
+    <Comment
+      selected={index === selectedIndex}
+      key={item.comment.comment + index}
+    >
       <h2>{item.comment.comment}</h2>
       <p>{item.comment.subComment}</p>
       <CommentBubble selected={index === selectedIndex}></CommentBubble>
@@ -53,7 +56,7 @@ export default function CommentSlider({
       preSelected={
         selectedIndex === 0 ? index === 5 : index === selectedIndex - 1
       }
-      key={item.comment.position}
+      key={item.comment.position + index}
     >
       <img src={item.comment.profilePic} alt={item.comment.author} />
     </Avatar>

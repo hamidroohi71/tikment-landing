@@ -1,24 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 interface Props {
   comment: any;
   index: number;
   commentIndex: number;
+  setDistance: (number: number) => void;
 }
 
 export default function Comment(props: Props) {
   const { comment, index, commentIndex } = props;
   const [show, setShow] = useState(false);
+  const elRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (commentIndex > index) {
       setShow(true);
     }
-  }, [index, commentIndex]);
+    if (elRef.current && commentIndex === index + 2) {
+      props.setDistance(elRef.current.offsetTop);
+      console.log(elRef.current.offsetTop);
+    }
+  }, [index, commentIndex, elRef.current]);
 
   return (
-    <CommentElement>
+    <CommentElement ref={elRef}>
       <CommentTitle even={index % 2 === 0}>
         <Avatar show={show} orange={index % 2 === 0}>
           <img src={comment.photo} alt={comment.author} />
