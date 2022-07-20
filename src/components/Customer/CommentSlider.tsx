@@ -115,6 +115,7 @@ const CommentTitle = styled.div`
 const CommentBox = styled.div`
   position: relative;
   height: 65%;
+  z-index: 5;
   @media (max-width: 480px) {
     position: static;
   }

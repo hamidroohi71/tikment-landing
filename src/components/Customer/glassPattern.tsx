@@ -117,7 +117,8 @@ const GlassPatternElement = styled.div`
   overflow: hidden;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: 1;
   opacity: 0.15;
   transform: translateY(-70vh);
+  mix-blend-mode: multiply;
 `;
