@@ -41,8 +41,8 @@ export default function Background() {
   });
   return (
     <BackgroundImage style={{ ...maskPositionStyle, ...maskStyle }}>
+      <BackMain src={BackgroundImg} alt="tikment-station" />
       <BackCover style={CoverStyle} src={YellowBack} alt="tikment" />
-      <img src={BackgroundImg} alt="tikment-station" />
     </BackgroundImage>
   );
 }
@@ -70,6 +70,10 @@ const BackgroundImage = styled(animated.div)`
     height: 870px;
     top: 450px;
   }
+`;
+
+const BackMain = styled.img`
+  filter: blur(8px);
 `;
 
 const BackCover = styled(animated.img)`
