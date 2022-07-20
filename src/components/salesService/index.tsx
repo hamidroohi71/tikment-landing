@@ -12,6 +12,7 @@ export default function SalesService() {
     useSection();
   const [active, setActive] = useState(false);
   const [cardFront, setCardFront] = useState([true, true, true]);
+  const [cardHover, setCardHover] = useState([false, false, false]);
   const [step, setStep] = useState(-1);
 
   const width = useWidth();
@@ -121,13 +122,27 @@ export default function SalesService() {
         }}
         front={cardFront[index]}
         style={index === 0 ? CardEnter1 : index === 1 ? CardEnter2 : CardEnter3}
+        onMouseEnter={() => {
+          const newList = [...cardHover];
+          newList[index] = true;
+          setCardHover([...newList]);
+        }}
+        onMouseLeave={() => {
+          const newList = [...cardHover];
+          newList[index] = false;
+          setCardHover([...newList]);
+        }}
       >
         <FrontSide>
           <p>خدمات</p>
           <p>{service.name}</p>
           <div>
             <svg>
-              <use width="100%" height="100%" href={service.logo} />
+              <use
+                width="100%"
+                height="100%"
+                href={cardHover[index] ? service.hoverLogo : service.logo}
+              />
             </svg>
           </div>
         </FrontSide>
