@@ -30,7 +30,8 @@ export default function ContactInfo({
             بگیریم؟
           </p>
           <div>
-            <TimeOption smlWidth={width < 1290}
+            <TimeOption
+              smlWidth={width < 1290}
               selected={timeOption === 0}
               onClick={() => {
                 setTimeOption(0);
@@ -38,7 +39,8 @@ export default function ContactInfo({
             >
               همین امروز
             </TimeOption>
-            <TimeOption smlWidth={width < 1290}
+            <TimeOption
+              smlWidth={width < 1290}
               selected={timeOption === 1}
               onClick={() => {
                 setTimeOption(1);
@@ -46,7 +48,8 @@ export default function ContactInfo({
             >
               روزهای زوج، از ساعت ۱۰ تا ۱۶
             </TimeOption>
-            <TimeOption smlWidth={width < 1290}
+            <TimeOption
+              smlWidth={width < 1290}
               selected={timeOption === 2}
               onClick={() => {
                 setTimeOption(2);
@@ -116,18 +119,18 @@ const TimeForm = styled(animated.div)`
     justify-content: space-between;
   }
 
-  @media (max-width: 480px){
+  @media (max-width: 480px) {
     padding: 20px 10px;
     height: 120px;
-    z-index:60;
+    z-index: 60;
 
-    p{
-      font-size:12px;
+    p {
+      font-size: 12px;
     }
   }
 `;
 
-const TimeOption = styled.span<{ selected: boolean, smlWidth: boolean }>`
+const TimeOption = styled.span<{ selected: boolean; smlWidth: boolean }>`
   background: ${({ selected }) =>
     selected
       ? "linear-gradient(241deg, #05185e 0%, #4b86ac 100%)"
@@ -138,17 +141,15 @@ const TimeOption = styled.span<{ selected: boolean, smlWidth: boolean }>`
     selected ? "1px solid #ffffff99;" : "2px solid #FFFFFF"};
   border-radius: 3vw;
   font-size: 1.2vw;
-  line-height: ${({smlWidth}) =>( 
-    (smlWidth) ? "3.5vh" : "6vh")};
+  line-height: ${({ smlWidth }) => (smlWidth ? "3.5vh" : "6vh")};
   font-weight: 300;
   color: ${({ selected }) => (selected ? "#fff" : "#00DDE3")};
   padding: 0 2.5vw;
   cursor: pointer;
 
-  @media (max-width: 480px){
-    font-size:10px;
+  @media (max-width: 480px) {
+    font-size: 10px;
   }
-
 `;
 
 const ContactForm = styled(animated.form)`
@@ -163,9 +164,9 @@ const ContactForm = styled(animated.form)`
   flex-wrap: wrap;
   justify-content: space-between;
 
-  @media (max-width: 480px){
-    padding:20px 10px 50px;
-   z-index:60;
+  @media (max-width: 480px) {
+    padding: 20px 10px 50px;
+    z-index: 60;
   }
 `;
 
@@ -228,14 +229,13 @@ const FormInput = styled.input`
     }
   }
 
-  @media (max-width: 480px){
-    width:100%;
-    margin-bottom:20px;
+  @media (max-width: 480px) {
+    width: 100%;
+    margin-bottom: 20px;
     max-width: inherit !important;
     margin-right: 0 !important;
-    font-size :12px;
+    font-size: 12px;
   }
-
 `;
 
 const SubmitButton = styled.input`
@@ -251,22 +251,22 @@ const SubmitButton = styled.input`
   margin-right: 21px;
   cursor: pointer;
   color: #fff;
-  transition:background 2s ease-in-out;
+  transition: background 2s ease-in-out;
 
   &:focus {
     border: none;
     outline: none;
   }
 
-  &:hover{
-    background:#ff5151;
+  &:hover {
+    background: #ff5151;
   }
 
-  @media (max-width: 480px){
-    direciton:ltr;
-    width:50%;
-    font-size:12px;
-    margin-right:50%;
+  @media (max-width: 480px) {
+    direciton: ltr;
+    width: 50%;
+    font-size: 12px;
+    margin-right: 50%;
   }
 `;
 

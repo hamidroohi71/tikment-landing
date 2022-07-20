@@ -4,6 +4,7 @@ import { useSpring, animated, easings } from "react-spring";
 import PersonIcon from "../../PageIntro/formOptions/person.svg";
 import PhoneIcon from "../../PageIntro/formOptions/phone.svg";
 import TickVideo from "../../../assets/video/Tick01.webm";
+import useWidth from "../../../hooks/useWidth";
 
 export default function Contact() {
   const [timeOption, setTimeOption] = useState(0);
@@ -42,6 +43,8 @@ export default function Contact() {
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
+  const width = useWidth();
+
   return (
     <ContactSection style={styleProps3}>
       <TitleBox>
@@ -65,6 +68,7 @@ export default function Contact() {
           </p>
           <div>
             <TimeOption
+              smlWidth={width < 1290}
               selected={timeOption === 0}
               onClick={() => {
                 setTimeOption(0);
@@ -73,6 +77,7 @@ export default function Contact() {
               همین امروز
             </TimeOption>
             <TimeOption
+              smlWidth={width < 1290}
               selected={timeOption === 1}
               onClick={() => {
                 setTimeOption(1);
@@ -81,6 +86,7 @@ export default function Contact() {
               روزهای زوج، از ساعت ۱۰ تا ۱۶
             </TimeOption>
             <TimeOption
+              smlWidth={width < 1290}
               selected={timeOption === 2}
               onClick={() => {
                 setTimeOption(2);
@@ -114,7 +120,7 @@ export default function Contact() {
             placeholder="شماره تماس"
             style={{ flexGrow: 1 }}
           />
-          <SubmitButton type="submit" value="درخواست مشاوره" />
+          <SubmitButton type="submit" value="ثبت" />
         </ContactForm>
       </FormBox>
     </ContactSection>
@@ -140,7 +146,6 @@ const TitleBox = styled(animated.div)`
   @media (min-width: 1920px) {
     margin-bottom: -1vw;
   }
-
 `;
 
 const Title = styled(animated.h2)`
@@ -229,13 +234,17 @@ const TimeForm = styled(animated.div)`
   }
 
   @media (max-width: 480px) {
-    & > div {
-      flex-direction: column;
+    padding: 20px 10px;
+    height: 120px;
+    z-index: 60;
+
+    p {
+      font-size: 12px;
     }
   }
 `;
 
-const TimeOption = styled.span<{ selected: boolean }>`
+const TimeOption = styled.span<{ selected: boolean; smlWidth: boolean }>`
   background: ${({ selected }) =>
     selected
       ? "linear-gradient(241deg, #05185e 0%, #4b86ac 100%)"
@@ -246,26 +255,28 @@ const TimeOption = styled.span<{ selected: boolean }>`
     selected ? "1px solid #ffffff99;" : "2px solid #FFFFFF"};
   border-radius: 3vw;
   font-size: 1.2vw;
-  line-height: 6vh;
+  line-height: ${({ smlWidth }) => (smlWidth ? "3.5vh" : "6vh")};
   font-weight: 300;
   color: ${({ selected }) => (selected ? "#fff" : "#00DDE3")};
   padding: 0 2.5vw;
   cursor: pointer;
 
   @media (max-width: 480px) {
-    line-height: 51px;
-    margin: 10px 0;
-    font-size: 16px;
-    letter-spacing: -1px;
+    font-size: 10px;
   }
 `;
 
 const ContactForm = styled(animated.form)`
   box-sizing: border-box;
-  padding: 26px 44px 26px;
+  padding: 26px 44px 79px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  @media (max-width: 480px) {
+    padding: 20px 10px 50px;
+    z-index: 60;
+  }
 `;
 
 const FormInput = styled.input`
@@ -276,7 +287,7 @@ const FormInput = styled.input`
   box-shadow: inset 0px 1px 3px #00000029;
   border: 0.5px solid #cbcbcb;
   color: #9e9e9e;
-  padding: 0 80px;
+  padding: 0 80px 0 0;
   background-position-x: 90%;
   background-position-y: center;
   background-repeat: no-repeat;
@@ -284,24 +295,24 @@ const FormInput = styled.input`
   margin-bottom: 20px;
   font-size: 1vw;
   position: relative;
-  // background-image: url(${PersonIcon});
+  background-image: url(${PersonIcon});
 
   &:nth-child(1) {
     background-position-x: 93%;
   }
 
-  // &:nth-child(3) {
-  //   background-image: url(${PhoneIcon});
-  //   background-position-x: 95%;
-  // }
+  &:nth-child(3) {
+    background-image: url(${PhoneIcon});
+    background-position-x: 95%;
+  }
 
   &:focus {
     border: 0.5px solid #cbcbcb;
     outline: none;
   }
 
-  &::before {
-    content: "";
+  &:before {
+    content: none;
     display: inline-block;
     position: absolute;
     top: 0;
@@ -320,12 +331,19 @@ const FormInput = styled.input`
     }
   }
 
+  @media (min-width: 1920px) {
+    width: 50%;
+    &:nth-child(3) {
+      width: 80%;
+    }
+  }
+
   @media (max-width: 480px) {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 10px 0 !important;
-    font-size: 14px;
-    padding: 0 40px 0 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    max-width: inherit !important;
+    margin-right: 0 !important;
+    font-size: 12px;
   }
 `;
 
@@ -342,16 +360,21 @@ const SubmitButton = styled.input`
   margin-right: 21px;
   cursor: pointer;
   color: #fff;
+  transition: background 2s ease-in-out;
 
   &:focus {
     border: none;
     outline: none;
   }
 
+  &:hover {
+    background: #ff5151;
+  }
+
   @media (max-width: 480px) {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 10px 0 !important;
-    font-size: 14px;
+    direciton: ltr;
+    width: 50%;
+    font-size: 12px;
+    margin-right: 50%;
   }
 `;
