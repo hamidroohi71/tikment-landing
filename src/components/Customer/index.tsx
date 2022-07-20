@@ -35,7 +35,7 @@ export default function Customer() {
     to: {
       opacity: activeSection === 2 ? 1 : width < 480 ? 1 : 0,
       transform: showComment
-        ? "scale(0.78)"
+        ? "scale(0.75)"
         : activeSection === 2
         ? "scale(1)"
         : "scale(0)",
@@ -123,7 +123,7 @@ const CustomerElement = styled.section<{ active: boolean; status: string }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 8vh 10vw;
+  padding: 5vh 10vw 8vh;
   position: absolute;
   z-index: ${({ active }) => (active ? 20 : 0)};
   transform: ${({ status }) =>
@@ -192,8 +192,8 @@ const Date = styled.span`
   padding: 0 18px;
   line-height: 128px;
   background: #f9f8f7 0% 0% no-repeat padding-box;
-  box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
-  border: 1px solid #75c9db4d;
+  box-shadow: inset 0px 0px 80px #75c9db80;
+  border: 1px solid #b9e4ed;
   border-radius: 36px;
   opacity: 1;
   backdrop-filter: blur(2px);

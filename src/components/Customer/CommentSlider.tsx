@@ -109,7 +109,7 @@ const CommentPart = styled.div`
 const CommentTitle = styled.div`
   position: relative;
   height: 20%;
-  margin-bottom: 15%;
+  margin-bottom: 10%;
 `;
 
 const CommentBox = styled.div`
@@ -307,10 +307,10 @@ const Comment = styled.div<{ selected: boolean }>`
 
 const CommentBubble = styled.div<{ selected: boolean }>`
   position: absolute;
-  top: -47px;
-  left: -83px;
-  right: -83px;
-  bottom: -47px;
+  top: -4vh;
+  left: -4vw;
+  right: -4vw;
+  bottom: -4vh;
   background: #ffffff;
   box-shadow: inset 0px -90px 99px #0000000a, 8px 8px 36px #a0bdc180;
   border: 1px solid #cbcbcb;

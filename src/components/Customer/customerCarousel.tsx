@@ -74,9 +74,13 @@ export default function CustomerCarousel({
         <CommentSlider selectedIndex={currentIndex} />
       </CommentContainer>
       <CarouselSection style={carouselStyle} onClick={enterComment}>
-        <Back onClick={()=>currentIndex===0?"": setCurrentIndex(currentIndex-1)}></Back>
+        <Back
+          onClick={() =>
+            currentIndex === 0 ? "" : setCurrentIndex(currentIndex - 1)
+          }
+        ></Back>
         {customerData}
-        <Forward onClick={()=>goNextSlide()}></Forward>
+        <Forward onClick={() => goNextSlide()}></Forward>
       </CarouselSection>
     </>
   );
@@ -104,8 +108,7 @@ const CarouselSection = styled(animated.section)`
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
-  margin-top: 0px; //74px saber
-  height: 10vh; // saber
+  margin-top: -5px;
 
   @media (max-width: 480px) {
     height: 20vh;
@@ -127,6 +130,7 @@ const Item = styled.div<{ selected: boolean }>`
   cursor: pointer;
   transform: ${({ selected }) => (selected ? "scale(1.4)" : "scale(1)")};
   transition: 0.2s ease-out;
+  flex-shrink: 0;
 
   & > img {
     width: 70%;
