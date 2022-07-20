@@ -75,7 +75,7 @@ const FooterRight = styled.div`
 const Logo = styled.div`
   display: none;
   @media (max-width: 480px) {
-    display:flex;
+    display: flex;
     background-image: url(${Tlogo});
     width: 222px;
     height: 51px;
@@ -90,7 +90,7 @@ const Logo = styled.div`
 const FooterLeft = styled.div`
   width: 78%;
   color: #fff;
-  font-size: 1vw;
+  font-size: 1.6vw;
   font-weight: 300;
   padding: 4vh 4.2vw 4vh 12vw;
   border-radius: 0 3.3vw 3.3vw 0;
@@ -109,7 +109,7 @@ const FooterLeft = styled.div`
 
 const CopyRight = styled.div`
   color: #04165d;
-  font-size: 1vw;
+  font-size: 1.6vw;
   text-align: center;
   height: 7vh;
   line-height: 7vh;
@@ -134,8 +134,8 @@ const SocialBox = styled.div`
     height: 3.6vw;
     border-radius: 50%;
     background: #f9f8f7;
-    box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
-    border: 1px solid #75c9db4d;
+    box-shadow: inset 0px 0px 80px #75c9db80;
+    border: 1px solid #b9e4ed;
     display: flex;
     margin: 10px;
     cursor: pointer;
@@ -150,8 +150,8 @@ const SocialBox = styled.div`
 
   @media (max-width: 480px) {
     padding: 0 90px 20px 50px;
-    div:nth-child(1){
-      margin-right:53%;
+    div:nth-child(1) {
+      margin-right: 53%;
     }
 
     & > div {
