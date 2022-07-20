@@ -78,9 +78,9 @@ export default function ProductSlide({
   ));
   return (
     <ProDuctSlideSection style={slideStyle}>
-      <Image1 src={product.pics[0]} alt={product.name} big={product.id === 2} />
+      {/* <Image1 src={product.pics[0]} alt={product.name} big={product.id === 2} />
       <Image2 style={imageStyle} src={product.pics[1]} alt={product.name} />
-      {product.id !== 2 && <Image3 src={product.pics[2]} alt={product.name} />}
+      {product.id !== 2 && <Image3 src={product.pics[2]} alt={product.name} />} */}
 
       {benefitsElement}
       <ProductName benefitIndex={benefitIndex}>{product.name}</ProductName>
