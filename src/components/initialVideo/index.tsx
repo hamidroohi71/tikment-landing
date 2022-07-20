@@ -156,7 +156,7 @@ export default function InitialVideo({
         }}
       />
 
-      <SkipVideo onClick={()=>handleLoaded()}>
+      <SkipVideo onClick={() => handleLoaded()}>
         <p>بگذرید</p>
         <span></span>
       </SkipVideo>
@@ -203,9 +203,9 @@ const LoadingVideo = styled(Video)`
 `;
 
 const SkipVideo = styled.div`
-backdrop-filter: blur(19px);
+  backdrop-filter: blur(19px);
   position: absolute;
-  bottom: 18vh;
+  bottom: 9vh;
   right: 7vw;
   padding: 1vw 2vw;
   z-index: 10;
@@ -218,11 +218,11 @@ backdrop-filter: blur(19px);
   gap: 2vw;
   cursor: pointer;
 
-  &>p {
+  & > p {
     font-size: 2vw;
     color: #380005;
     font-weight: light;
-    margin:0;
+    margin: 0;
   }
   span {
     background-image: url(${arrow});
