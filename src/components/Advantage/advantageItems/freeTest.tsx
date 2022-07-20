@@ -95,10 +95,12 @@ const StarFormBox = styled.div<{ show: boolean }>`
   right: 0;
   left: 0;
   bottom: 0;
-  background: linear-gradient(180deg, #75c9dba8 0%, #4af3f8a3 100%);
-  box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
-  border: 1px solid #75c9db4d;
+  z-index: 70;
+  background: linear-gradient(rgb(255 255 255) 0%, rgb(164 252 255 / 64%) 100%);
+  box-shadow: rgb(215 248 255 / 90%) 0px 0px 80px inset,
+    rgb(129 37 37 / 90%) 0px 3px 3px;
+  border: 1px solid rgb(84 225 255);
   opacity: 1;
-  backdrop-filter: blur(38px);
+  backdrop-filter: blur(29px);
   z-index: 70;
 `;
