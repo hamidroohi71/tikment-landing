@@ -4,13 +4,24 @@ import data from "./serviceData.json";
 import { useSection } from "../../context/sectionStore";
 import { useSpring, easings, animated } from "react-spring";
 import useWidth from "../../hooks/useWidth";
+import { useWheel } from "react-use-gesture";
+const { Lethargy } = require("lethargy");
 
 export default function SalesService() {
-  const { activeSection, nextSection, setActiveSection } = useSection();
+  const { activeSection, nextSection, setActiveSection, setNextSection } =
+    useSection();
   const [active, setActive] = useState(false);
   const [cardFront, setCardFront] = useState([true, true, true]);
+  const [step, setStep] = useState(-1);
 
   const width = useWidth();
+
+  useEffect(() => {
+    console.log(step);
+    const newList = [true, true, true];
+    newList[step] = false;
+    setCardFront([...newList]);
+  }, [step]);
 
   useEffect(() => {
     if (active) {
@@ -23,6 +34,7 @@ export default function SalesService() {
   useEffect(() => {
     if (activeSection === 5) {
       setActive(true);
+      setStep(-1);
     } else if (activeSection !== null) {
       setActive(false);
     }
@@ -59,6 +71,46 @@ export default function SalesService() {
     newList[index] = !newList[index];
     setCardFront([...newList]);
   };
+
+  const nextStepHandler = () => {
+    if (step < 2) {
+      setStep(step + 1);
+    } else {
+      setNextSection(6);
+      setActiveSection(null);
+    }
+  };
+  const prevStepHandler = () => {
+    if (step > -1) {
+      setStep(step - 1);
+    } else {
+      setNextSection(4);
+      setActiveSection(null);
+    }
+  };
+
+  const lethargy = new Lethargy();
+
+  const bind = useWheel(({ event, last, memo: wait = false }) => {
+    event.stopPropagation();
+    if (width > 480) {
+      if (!last) {
+        const s = lethargy.check(event);
+        if (s) {
+          if (!wait) {
+            if (s < 0) {
+              nextStepHandler();
+            } else if (s > 0) {
+              prevStepHandler();
+            }
+            return true;
+          }
+        } else return false;
+      } else {
+        return false;
+      }
+    }
+  });
 
   // service cards start:
   const serviceCards = data.serviceData.map((service, index) => (
@@ -115,7 +167,7 @@ export default function SalesService() {
   //service card finished
 
   return (
-    <ServicesSection active={active} style={sectionStyle}>
+    <ServicesSection active={active} style={sectionStyle} {...bind()}>
       <Title>در کنارتان هستیم</Title>
       <Subtitle>
         از نصب سخت‌افزار
