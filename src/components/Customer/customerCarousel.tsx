@@ -109,6 +109,7 @@ const CarouselSection = styled(animated.section)`
   align-items: center;
   flex-direction: row-reverse;
   margin-top: -5px;
+  z-index: 10;
 
   @media (max-width: 480px) {
     height: 20vh;
