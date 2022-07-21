@@ -5,6 +5,7 @@ import styled from "styled-components";
 import RightArrow from "./rightArrow.svg";
 import { useSection } from "../../context/sectionStore";
 import NameIconImage from "./nameIcon.svg";
+import ProductImageSlider from "./ProductImageSlider";
 
 export default function ProductSlider({
   active,
@@ -29,7 +30,7 @@ export default function ProductSlider({
     />
   ));
 
-  const prevSlide = () => {
+  const nextSlide = () => {
     if (productIndex > 1) {
       indexHandler(productIndex - 1);
     } else {
@@ -37,7 +38,7 @@ export default function ProductSlider({
     }
   };
 
-  const nextSlide = () => {
+  const prevSlide = () => {
     if (productIndex < 3) {
       indexHandler(productIndex + 1);
     } else {
@@ -51,6 +52,7 @@ export default function ProductSlider({
       <PrevSlideBtn onClick={prevSlide}></PrevSlideBtn>
       <NextSlideBtn onClick={nextSlide}></NextSlideBtn>
       {productSlides}
+      <ProductImageSlider step={productIndex} />
 
       <NameIcon />
     </ProductSliderSection>

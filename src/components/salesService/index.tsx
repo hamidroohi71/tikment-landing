@@ -4,13 +4,25 @@ import data from "./serviceData.json";
 import { useSection } from "../../context/sectionStore";
 import { useSpring, easings, animated } from "react-spring";
 import useWidth from "../../hooks/useWidth";
+import { useWheel } from "react-use-gesture";
+const { Lethargy } = require("lethargy");
 
 export default function SalesService() {
-  const { activeSection, nextSection, setActiveSection } = useSection();
+  const { activeSection, nextSection, setActiveSection, setNextSection } =
+    useSection();
   const [active, setActive] = useState(false);
   const [cardFront, setCardFront] = useState([true, true, true]);
+  const [cardHover, setCardHover] = useState([false, false, false]);
+  const [step, setStep] = useState(-1);
 
   const width = useWidth();
+
+  useEffect(() => {
+    console.log(step);
+    const newList = [true, true, true];
+    newList[step] = false;
+    setCardFront([...newList]);
+  }, [step]);
 
   useEffect(() => {
     if (active) {
@@ -23,6 +35,7 @@ export default function SalesService() {
   useEffect(() => {
     if (activeSection === 5) {
       setActive(true);
+      setStep(-1);
     } else if (activeSection !== null) {
       setActive(false);
     }
@@ -35,11 +48,70 @@ export default function SalesService() {
     config: { duration: active ? 1000 : 0, easing: easings.easeOutQuart },
   });
 
+  const CardEnter1 = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: active ? 1 : 0 },
+    delay: active ? 2000 : 0,
+    config: { duration: active ? 1000 : 0, easing: easings.easeOutQuart },
+  });
+  const CardEnter2 = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: active ? 1 : 0 },
+    delay: active ? 3000 : 0,
+    config: { duration: active ? 1000 : 0, easing: easings.easeOutQuart },
+  });
+  const CardEnter3 = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: active ? 1 : 0 },
+    delay: active ? 4000 : 0,
+    config: { duration: active ? 1000 : 0, easing: easings.easeOutQuart },
+  });
+
   const toggleSide = (index: number) => {
     const newList = cardFront;
     newList[index] = !newList[index];
     setCardFront([...newList]);
   };
+
+  const nextStepHandler = () => {
+    if (step < 2) {
+      setStep(step + 1);
+    } else {
+      setNextSection(6);
+      setActiveSection(null);
+    }
+  };
+  const prevStepHandler = () => {
+    if (step > -1) {
+      setStep(step - 1);
+    } else {
+      setNextSection(4);
+      setActiveSection(null);
+    }
+  };
+
+  const lethargy = new Lethargy();
+
+  const bind = useWheel(({ event, last, memo: wait = false }) => {
+    event.stopPropagation();
+    if (width > 480) {
+      if (!last) {
+        const s = lethargy.check(event);
+        if (s) {
+          if (!wait) {
+            if (s < 0) {
+              nextStepHandler();
+            } else if (s > 0) {
+              prevStepHandler();
+            }
+            return true;
+          }
+        } else return false;
+      } else {
+        return false;
+      }
+    }
+  });
 
   // service cards start:
   const serviceCards = data.serviceData.map((service, index) => (
@@ -49,13 +121,28 @@ export default function SalesService() {
           toggleSide(index);
         }}
         front={cardFront[index]}
+        style={index === 0 ? CardEnter1 : index === 1 ? CardEnter2 : CardEnter3}
+        onMouseEnter={() => {
+          const newList = [...cardHover];
+          newList[index] = true;
+          setCardHover([...newList]);
+        }}
+        onMouseLeave={() => {
+          const newList = [...cardHover];
+          newList[index] = false;
+          setCardHover([...newList]);
+        }}
       >
         <FrontSide>
           <p>خدمات</p>
           <p>{service.name}</p>
           <div>
             <svg>
-              <use width="100%" height="100%" href={service.logo} />
+              <use
+                width="100%"
+                height="100%"
+                href={cardHover[index] ? service.hoverLogo : service.logo}
+              />
             </svg>
           </div>
         </FrontSide>
@@ -95,20 +182,20 @@ export default function SalesService() {
   //service card finished
 
   return (
-    <ServicesSection active={active} style={sectionStyle}>
+    <ServicesSection active={active} style={sectionStyle} {...bind()}>
       <Title>در کنارتان هستیم</Title>
       <Subtitle>
         از نصب سخت‌افزار
         <br /> تا آموزش نرم‌افزار و راه‌اندازی
       </Subtitle>
       <NumberPart>
-        <NumDividerShort />
-        <CardNum>۱</CardNum>
-        <NumDividerlong />
-        <CardNum>۲</CardNum>
-        <NumDividerlong />
-        <CardNum>۳</CardNum>
-        <NumDividerShort />
+        <NumDividerShort style={CardEnter1} />
+        <CardNum style={CardEnter1}>۱</CardNum>
+        <NumDividerlong style={CardEnter2} />
+        <CardNum style={CardEnter2}>۲</CardNum>
+        <NumDividerlong style={CardEnter3} />
+        <CardNum style={CardEnter3}>۳</CardNum>
+        <NumDividerShort style={CardEnter3} />
       </NumberPart>
       <ServicesContainer>{serviceCards}</ServicesContainer>
     </ServicesSection>
@@ -169,7 +256,7 @@ const NumberPart = styled.div`
   width: 100%;
 `;
 
-const CardNum = styled.span`
+const CardNum = styled(animated.div)`
   top: 15.3vw;
   width: 3vw;
   height: 3vw;
@@ -182,7 +269,7 @@ const CardNum = styled.span`
   flex-shrink: 0;
 `;
 
-const NumDividerShort = styled.div`
+const NumDividerShort = styled(animated.div)`
   width: 20.5vw;
   height: 2px;
   background: linear-gradient(to right, transparent 50%, #fff 50%),
@@ -194,7 +281,7 @@ const NumDividerShort = styled.div`
   }
 `;
 
-const NumDividerlong = styled.div`
+const NumDividerlong = styled(animated.div)`
   width: 25vw;
   height: 2px;
   background: linear-gradient(to right, transparent 50%, #cbcbcb 50%);
@@ -211,10 +298,11 @@ const ServicesContainer = styled(animated.div)`
   }
 `;
 
-const ServiceCard = styled.div<{ front: boolean }>`
+const ServiceCard = styled(animated.div)<{ front: boolean }>`
   position: relative;
   width: 19vw;
   margin: 0 76px;
+  cursor: pointer;
 
   & > div:first-child {
     opacity: ${({ front }) => (front ? 1 : 0)};
@@ -222,6 +310,10 @@ const ServiceCard = styled.div<{ front: boolean }>`
 
   & > div:last-child {
     opacity: ${({ front }) => (front ? 0 : 1)};
+  }
+
+  & > div {
+    transition: 0.5s ease-out;
   }
 `;
 
@@ -235,12 +327,15 @@ const FrontSide = styled.div`
   padding: 1vw 3vw 4.8vw;
   margin-top: 50px;
   height: 45vh;
+  z-index: 1;
 
   & > p {
     color: #183573;
+    color:#75C9DB;
     font-size: 2.1vw;
     text-align-center;
     margin: 0;
+    transition: 0.5s ease-out;
     &:first-of-type{
       font-size: 1.2vw;
       margin: 5px 0;
@@ -257,6 +352,7 @@ const FrontSide = styled.div`
     border: 1px solid #B8E2EB;
     backdrop-filter: blur(28px);
     display: flex;
+    transition: 0.5s ease-out;
 
     & > svg {
       width: 7vw;
@@ -267,6 +363,24 @@ const FrontSide = styled.div`
         width: 7vw;
         height: 7vw;
         fill: #75c9db;
+        transition: 0.5s ease-out;
+      }
+    }
+  }
+
+  &:hover {& > p {
+    color: #183573;
+
+  }
+    & > div {
+      background:  linear-gradient(180deg,#05185E 0%,#4B86AC 100%);
+  
+      & > svg {
+  
+        & > use {
+          fill: #fff;
+          stroke: #fff;
+        }
       }
     }
   }
@@ -305,9 +419,10 @@ const FrontSide = styled.div`
     }
   }
   
-  `;
-const BackSide = styled.div`position: absolute;
-  width: 20vw;
+`;
+const BackSide = styled.div`
+  position: absolute;
+  width: 100%;
   text-align: center;
   border-radius: 3vw;
   background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 100%);
@@ -320,31 +435,30 @@ const BackSide = styled.div`position: absolute;
     color: #183573;
     text-align-center;
     font-size: 2.1vw;
-    margin: 0;
+    margin: 0 0 1.6vw;
 
-    &:first-of-type{
-      font-size: 1.2vw;
-      margin: 5px 0;
-    }
+    
   }
 
   & > div {
-    border: 1px solid #B8E2EB;
+    border: 1px solid #E4E4E4;
     padding: 0.7vw 0.7vw 0.7vw;
-    font-size: 1.2vw;
+    font-size: 1.6vw;
     font-weight: lighter; 
     border-style: solid none none;
+    letter-spacing: -1px;
+    
     
     &:first-of-type { 
-      border: 10;
-      border-style: none  ;
+      border-style: none ;
+      padding: 0;
 
     }
 
     & > svg {
       display: block;
-      width: 4vw;
-      height: 4vw;
+      width: 3.5vw;
+      height: 3.5vw;
       margin: auto;
       z-index: 20;
 

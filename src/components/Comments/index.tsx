@@ -3,13 +3,18 @@ import styled from "styled-components";
 import Comment from "./comment";
 import data from "./commentsData.json";
 import { useSection } from "../../context/sectionStore";
+import { useWheel } from "react-use-gesture";
+import useWidth from "../../hooks/useWidth";
+const { Lethargy } = require("lethargy");
 
-let TimeOut: any;
+let myTimeOut: any;
 
 export default function Comments() {
-  const { activeSection, nextSection, setActiveSection } = useSection();
+  const { activeSection, nextSection, setActiveSection, setNextSection } =
+    useSection();
   const [active, setActive] = useState(false);
   const [commentIndex, setCommentIndex] = useState(0);
+  const [distance, setDistance] = useState(0);
 
   useEffect(() => {
     if (active) {
@@ -31,7 +36,8 @@ export default function Comments() {
 
   useEffect(() => {
     if (commentIndex < 4 && active) {
-      setTimeout(() => {
+      clearTimeout(myTimeOut);
+      myTimeOut = setTimeout(() => {
         setCommentIndex((index) => index + 1);
       }, 5000);
     }
@@ -42,13 +48,57 @@ export default function Comments() {
       key={item.id}
       comment={item}
       index={index}
+      setDistance={setDistance}
     />
   ));
 
+  const lethargy = new Lethargy();
+
+  const nextCommentHandler = () => {
+    if (commentIndex < data.comments.length) {
+      setCommentIndex(commentIndex + 1);
+    } else {
+      setNextSection(7);
+      setActiveSection(null);
+    }
+  };
+
+  const prevCommentHandler = () => {
+    if (commentIndex > 0) {
+      setCommentIndex(commentIndex - 1);
+    } else {
+      setNextSection(5);
+      setActiveSection(null);
+    }
+  };
+
+  const width = useWidth();
+
+  const bind = useWheel(({ event, last, memo: wait = false }) => {
+    event.stopPropagation();
+    if (width > 480) {
+      if (!last) {
+        const s = lethargy.check(event);
+        if (s) {
+          if (!wait) {
+            if (s < 0) {
+              nextCommentHandler();
+            } else if (s > 0) {
+              prevCommentHandler();
+            }
+            return true;
+          }
+        } else return false;
+      } else {
+        return false;
+      }
+    }
+  });
+
   return (
-    <CommentSection active={active}>
+    <CommentSection active={active} {...bind()}>
       <Title>نظرات مشتریان تیکمنت</Title>
-      <CommentsContainer index={commentIndex}>
+      <CommentsContainer dis={distance} commentIndex={commentIndex}>
         <div>{commentList}</div>
       </CommentsContainer>
     </CommentSection>
@@ -70,14 +120,26 @@ const CommentSection = styled.section<{ active: boolean }>`
   }
 `;
 
-const CommentsContainer = styled.div<{ index: number }>`
+const CommentsContainer = styled.div<{ dis: number; commentIndex: number }>`
   height: 65vh;
   overflow: hidden;
+  position: relative;
   & > div {
     transition: 0.5s ease-out;
-    transform: translateY(
-      -${({ index }) => (index === 0 ? 0 : index === 1 ? 1 : index * 10 + 1)}vw
-    );
+    transform: translateY(-${({ dis }) => dis}px);
+  }
+  &::before {
+    opacity: ${({ commentIndex }) => (commentIndex > 1 ? 1 : 0)};
+    transition: 0.5s ease-out;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 10vh;
+    background: linear-gradient(to bottom, #fff 0%, transparent 100%);
+    z-index: 5;
   }
 `;
 

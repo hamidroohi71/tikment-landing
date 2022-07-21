@@ -3,14 +3,15 @@
     {
       "name": "پیش از فروش",
       "logo": "/services/beforeSale.svg#beforeSale",
+      "hoverLogo": "/services/beforeSaleHover.svg#beforeSale",
       "det1": "۳۰ روز  تست رایگان",
       "det2": "بازدید و امکان‌سنجی ",
       "det3": "مشاورۀ رایگان حضوری و غیرحضوری"
-      
     },
     {
       "name": "حین فروش",
       "logo": "/services/duringSale.svg#duringSale",
+      "hoverLogo": "/services/duringSaleHover.svg#duringSale",
       "det1": "تعریف دقیق اثر انگشت و چهره پرسنل",
       "det2": "آموزش کامل استفاده از سیستم",
       "det3": "امکان عودت محصول بدون کسر وجه "
@@ -18,6 +19,7 @@
     {
       "name": "پس از فروش",
       "logo": "/services/afterSale.svg#afterSale",
+      "hoverLogo": "/services/afterSaleHover.svg#afterSale",
       "det1": "ارتباط با سایر نرم افزارهای شرکت برای تبادل داده",
       "det2": "گارانتی و بیمۀ محصولات",
       "det3": "آپدیت‌ها و آموزش‌های جدید"
