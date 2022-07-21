@@ -21,6 +21,7 @@ import managementImage from "./assets/management.webp";
 import laughingManImage from "./assets/laughingMan.webp";
 import DeviceImage from "./assets/device.webp";
 import Badge from "./assets/freeTest.webp";
+import MobilePic from "./assets/mobile.png"
 
 export default function AdvantagesList({
   show,
@@ -195,7 +196,12 @@ const Image = styled(animated.img)`
   object-fit: contain;
 
   @media (max-width: 480px) {
+    content : url(${MobilePic});
+    right: -96%;
+    top:-15%;
+     width: 150%;
     height: auto;
+    
   }
 `;
 
