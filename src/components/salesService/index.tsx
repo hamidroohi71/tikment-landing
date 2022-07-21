@@ -50,19 +50,19 @@ export default function SalesService() {
 
   const CardEnter1 = useSpring({
     from: { opacity: 0 },
-    to: { opacity: active ? 1 : 0 },
+    to: { opacity: active ? 1 :width< 480 ? 1: 0 },
     delay: active ? 2000 : 0,
     config: { duration: active ? 1000 : 0, easing: easings.easeOutQuart },
   });
   const CardEnter2 = useSpring({
     from: { opacity: 0 },
-    to: { opacity: active ? 1 : 0 },
+    to: { opacity: active ? 1 :width< 480 ? 1: 0 },
     delay: active ? 3000 : 0,
     config: { duration: active ? 1000 : 0, easing: easings.easeOutQuart },
   });
   const CardEnter3 = useSpring({
     from: { opacity: 0 },
-    to: { opacity: active ? 1 : 0 },
+    to: { opacity: active ? 1:width< 480 ? 1 : 0 },
     delay: active ? 4000 : 0,
     config: { duration: active ? 1000 : 0, easing: easings.easeOutQuart },
   });
@@ -214,6 +214,7 @@ const ServicesSection = styled(animated.section)<{ active: boolean }>`
     position: static;
     height: unset;
     z-index: 20;
+    padding-top:0;
   }
 `;
 
@@ -254,6 +255,9 @@ const NumberPart = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
+  @media (max-width:480px){
+    display:none;
+  }
 `;
 
 const CardNum = styled(animated.div)`
@@ -294,7 +298,13 @@ const ServicesContainer = styled(animated.div)`
   padding: 0 12vw;
 
   @media (max-width: 480px) {
-    justify-content: center;
+    opacity: 1;
+    overflow-x: scroll;
+    height: 400px;
+    justify-content: flex-start;
+    gap: 300px;
+    height:550px;
+
   }
 `;
 
@@ -391,6 +401,8 @@ const FrontSide = styled.div`
     flex-direction: column;
     align-items: center;
     border-radius: 64px;
+    height:455px;
+    max-width:321px;
 
     & > p {
       font-size: 33px;
@@ -478,6 +490,8 @@ const BackSide = styled.div`
     flex-direction: column;
     align-items: center;
     border-radius: 64px;
+    height:455px;
+    width:321px;
 
     & > p {
       font-size: 33px;
@@ -490,6 +504,8 @@ const BackSide = styled.div`
     & > div {
       width: 205px;
       height: 205px;
+      font-size: 16px;
+      font-weight: 400;
 
       & > svg {
         width: 128px;
