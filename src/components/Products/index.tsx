@@ -8,7 +8,9 @@ import TopHandleBack from "./topHandleback.webp";
 import HandleSign from "./handleIcon.png";
 import { useWheel } from "react-use-gesture";
 import GlassPattern from "./glassPattern";
+import Background from "../PageIntro/background";
 const { Lethargy } = require("lethargy");
+
 
 let timeOut: NodeJS.Timeout;
 let myInterval: any;
@@ -189,7 +191,7 @@ const ProductSection = styled.section<{ status: string; active: boolean }>`
     height: unset;
     z-index: 20;
     transform: translateY(0);
-    height: 120vh;
+    height: 140vh;
   }
 `;
 
@@ -201,6 +203,10 @@ const TopHandle = styled.div`
   right: 57vw;
   background: url(${TopHandleBack}) bottom/contain no-repeat;
   cursor: pointer;
+
+  @media(max-width:480px){
+    display:none;
+  }
 `;
 
 const HandleIcon = styled.div`
@@ -275,5 +281,6 @@ const ProductPart = styled(animated.div)`
 
   @media (max-width: 480px) {
     top: 0;
+   
   }
 `;

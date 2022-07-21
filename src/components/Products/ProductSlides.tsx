@@ -16,9 +16,10 @@ export default function ProductSlide({
   const [myInterval, setMyInterval] = useState<any>();
   const [benefitIndex, setBenefitIndex] = useState(0);
 
+
   const slideStyle = useSpring({
     from: { opacity: 0 },
-    to: { opacity: current ? 1 : 0 },
+    to: { opacity: current ? 1   : 0 },
     config: { duration: 500, easing: easings.easeOutQuart },
   });
 
@@ -62,6 +63,8 @@ export default function ProductSlide({
     // console.log(benefitIndex);
   }, [benefitIndex, current, active]);
 
+ 
+
   const benefits = product.benefits;
   const benefitsElement = benefits.map((item: any, index: number) => (
     <BenefitBox key={item.name} index={index} benefitIndex={benefitIndex}>
@@ -95,6 +98,7 @@ const ProDuctSlideSection = styled(animated.section)`
 
   @media (max-width: 480px) {
     height: fit-content;
+   
   }
 `;
 
@@ -261,7 +265,8 @@ const ProductName = styled.h2<{ benefitIndex: number }>`
     top: 45px;
     bottom: unset;
     font-size: 28px;
-    left: 0;
     opacity: 1;
+    left: 50%;
+    transform: translate(-50%, -19px);
   }
 `;

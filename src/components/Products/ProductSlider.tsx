@@ -6,6 +6,8 @@ import RightArrow from "./rightArrow.svg";
 import { useSection } from "../../context/sectionStore";
 import NameIconImage from "./nameIcon.svg";
 import ProductImageSlider from "./ProductImageSlider";
+import useWidth from "../../hooks/useWidth";
+import backpic from "./123.png";
 
 export default function ProductSlider({
   active,
@@ -20,6 +22,7 @@ export default function ProductSlider({
   // const [slideIndex, setSlideIndex] = useState(0);
   const { activeSection } = useSection();
   // console.log(productsData);
+  const width = useWidth();
 
   const productSlides = productsData.map((item, index) => (
     <ProductSlide
@@ -46,6 +49,13 @@ export default function ProductSlider({
     }
   };
 
+  //For show prodict in slider in mobile screen
+  useEffect(() => {
+    if (width < 480) {
+      nextSlide();
+    }
+  }, [width]);
+
   return (
     <ProductSliderSection>
       <BackgroundElement />
@@ -55,6 +65,7 @@ export default function ProductSlider({
       <ProductImageSlider step={productIndex} />
 
       <NameIcon />
+      <BackPic/>
     </ProductSliderSection>
   );
 }
@@ -65,6 +76,24 @@ const ProductSliderSection = styled.section`
   height: 100vh;
   @media (max-width: 480px) {
     top: 0;
+  }
+`;
+
+const BackPic = styled.div`
+  display: none;
+  @media (max-width: 480px) {
+    display: flex;
+    position: absolute;
+    left :0;
+    top:20px;
+    background-image: url(${backpic});
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: auto;
+    padding-top: 57%;
+    top: 333px;
+    z-index: -1;
   }
 `;
 
@@ -81,8 +110,8 @@ const BackgroundElement = styled.div`
   border: 2px solid #e4e4e4;
   background: linear-gradient(to bottom, #37abb81f, #71fbff1f);
   @media (max-width: 480px) {
-    width: 73vw;
-    height: 73vw;
+    width: 280px;
+    height: 280px;
   }
 `;
 
@@ -100,11 +129,11 @@ const PrevSlideBtn = styled.div`
   cursor: pointer;
   z-index: 100;
   @media (max-width: 480px) {
-    width: 20px;
-    height: 40px;
+    width: 17px;
+    height: 34px;
     bottom: unset;
-    top: 50%;
-    right: 10%;
+    top: 37%;
+    right: 7%;
   }
 `;
 
@@ -114,7 +143,7 @@ const NextSlideBtn = styled(PrevSlideBtn)`
   left: 26vw;
   @media (max-width: 480px) {
     right: unset;
-    left: 10%;
+    left: 7%;
   }
 `;
 
