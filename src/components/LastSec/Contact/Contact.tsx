@@ -133,6 +133,7 @@ const ContactSection = styled(animated.section)`
   @media (max-width: 480px) {
     order: 1;
     padding: 37px;
+    margin-bottom:30px;
   }
 `;
 
@@ -161,10 +162,11 @@ const Title = styled(animated.h2)`
   margin: 0;
   transform-origin: right;
   @media (max-width: 480px) {
-    font-size: 24px;
+    font-size: 15px;
     padding: 0 21px;
     line-height: 45px;
     font-weight: 500;
+    border-radius:35px;
   }
 `;
 
@@ -235,11 +237,16 @@ const TimeForm = styled(animated.div)`
 
   @media (max-width: 480px) {
     padding: 20px 10px;
-    height: 120px;
+    height: inherit;
     z-index: 60;
 
     p {
       font-size: 12px;
+    }
+
+    & > div{
+      gap:20px;
+      flex-direction:column;
     }
   }
 `;
@@ -262,7 +269,12 @@ const TimeOption = styled.span<{ selected: boolean; smlWidth: boolean }>`
   cursor: pointer;
 
   @media (max-width: 480px) {
-    font-size: 10px;
+    font-size: 20px;
+    padding: 12px;
+    border-radius: 35px;
+    text-align: center;
+    width: 90%;
+    margin: auto;
   }
 `;
 
@@ -339,11 +351,16 @@ const FormInput = styled.input`
   }
 
   @media (max-width: 480px) {
-    width: 100%;
-    margin-bottom: 20px;
     max-width: inherit !important;
-    margin-right: 0 !important;
-    font-size: 12px;
+    font-size: 24px;
+    margin: auto;
+    margin-bottom: 20px;
+    padding-right: 57px;
+    height: 53px;
+    border-radius: 35px;
+    background-size: 28px;
+    flex-grow:0 !important;
+}
   }
 `;
 
@@ -372,9 +389,11 @@ const SubmitButton = styled.input`
   }
 
   @media (max-width: 480px) {
-    direciton: ltr;
-    width: 50%;
-    font-size: 12px;
-    margin-right: 50%;
+    width: 90%;
+    font-size: 20px;
+    margin: auto;
+    height: 45px;
+    border-radius: 35px;
+}
   }
 `;

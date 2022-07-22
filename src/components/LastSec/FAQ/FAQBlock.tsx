@@ -39,6 +39,8 @@ const FaqBlock = styled.div<{ open: boolean }>`
 
   @media (max-width: 480px) {
     margin: 25px 0;
+    max-height: ${({ open }) => (open ? "fit-content" : "100px")};
+    
   }
 `;
 
