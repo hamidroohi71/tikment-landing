@@ -318,7 +318,7 @@ const ServiceCard = styled(animated.div)<{ front: boolean }>`
 `;
 
 const FrontSide = styled.div`
-  position: absolute;
+  // position: absolute;
   text-align: center;
   border-radius: 3vw;
   background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 100%);
@@ -326,7 +326,7 @@ const FrontSide = styled.div`
   box-sizing: border-box;
   padding: 1vw 3vw 4.8vw;
   margin-top: 50px;
-  height: 45vh;
+  // height: 45vh;
   z-index: 1;
 
   & > p {
@@ -429,7 +429,9 @@ const BackSide = styled.div`
   border: 1px solid #183573;
   box-sizing: border-box;
   margin-top: 50px;
-  height: 45vh;
+  // height: 45vh;
+  top:0;
+  bottom: 0;
 
   & > p {
     color: #183573;
@@ -510,6 +512,7 @@ const BackSide = styled.div`
 
 const Service = styled.div<{ index: number }>`
   width: 20vw;
+  align-self: stretch;
   display: flex;
   flex-direction: column;
   align-items: center;
