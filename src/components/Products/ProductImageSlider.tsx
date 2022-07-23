@@ -119,7 +119,7 @@ const Image = styled.img<{
   top: ${({ top }) => top};
   left: ${({ left }) => left};
   opacity: ${({ opacity }) => opacity};
-  filter: ${({ blur }) => (blur ? " blur(2px)" : " blur(0px)")};
+  filter: ${({ blur }) => (blur ? " blur(6px)" : " blur(0px)")};
   position: absolute;
   object-fit: contain;
   transform: ${({ transform }) => transform};

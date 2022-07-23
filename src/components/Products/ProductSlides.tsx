@@ -98,57 +98,6 @@ const ProDuctSlideSection = styled(animated.section)`
   }
 `;
 
-const Image1 = styled.img<{ big: boolean }>`
-  position: absolute;
-  width: ${({ big }) => (big ? "45vw" : "19vw")};
-  height: ${({ big }) => (big ? "23.6vw" : "18vw")};
-  object-fit: contain;
-  top: ${({ big }) => (big ? "0" : "25vh")};
-  bottom: ${({ big }) => (big ? "0" : "unset")};
-  margin: auto;
-  left: ${({ big }) => (big ? "0" : "30vw")};
-  right: ${({ big }) => (big ? "0" : "unset")};
-
-  @media (max-width: 480px) {
-    width: ${({ big }) => (big ? "70vw" : "40vw")};
-    height: ${({ big }) => (big ? "50vw" : "50vw")};
-    left: ${({ big }) => (big ? "0" : "5vw")};
-    right: ${({ big }) => (big ? "0" : "unset")};
-    top: 25vh;
-    bottom: unset;
-  }
-`;
-
-const Image2 = styled(animated.img)`
-  position: absolute;
-  width: 13vw;
-  height: 12vw;
-  object-fit: contain;
-  top: 34vh;
-  right: 11vw;
-  transform-origin: right;
-
-  @media (max-width: 480px) {
-    display: none;
-  }
-`;
-
-const Image3 = styled.img`
-  position: absolute;
-  width: 27.8vw;
-  height: 19.8vw;
-  object-fit: contain;
-  top: 33.4vh;
-  right: 29.6vw;
-
-  @media (max-width: 480px) {
-    width: 60vw;
-    height: 50vw;
-    right: 10vw;
-    top: 30vh;
-  }
-`;
-
 const BenefitBox = styled.div<{ index: number; benefitIndex: number }>`
   opacity: ${({ index, benefitIndex }) => (index <= benefitIndex ? 1 : 0)};
   transition: 1s ease-out;
