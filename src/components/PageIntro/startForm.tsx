@@ -29,8 +29,10 @@ export default function StartForm({ handleFormOpen, open }: any) {
   });
   const styleProps2 = useSpring({
     from: { transform: "scaleY(0)" },
-    to: { transform: open ? "scaleY(1)" : "scaleY(0)" },
-    delay: open ? 2000 : 0,
+    to: {
+      transform: open ? (step === 6 ? "scaleY(0)" : "scaleY(1)") : "scaleY(0)",
+    },
+    delay: open ? (step === 6 ? 0 : 2000) : 0,
     config: { duration: open ? 1000 : 0, easing: easings.easeOutQuart },
   });
 
@@ -119,7 +121,7 @@ export default function StartForm({ handleFormOpen, open }: any) {
         </Title>
         <Result style={styleProps7}>{result}</Result>
       </TitleBox>
-      <FormBox end={step === 6} style={styleProps2}>
+      <FormBox step={step} style={styleProps2}>
         <FormContent style={{ ...styleProps3, ...styleProps6 }}>
           <JobType
             step={step}
@@ -197,7 +199,7 @@ const Title = styled(animated.h2)`
 const Result = styled(Title)`
   position: absolute;
   top: 0;
-  right: 5.5vw;
+  right: 85px;
   height: 64px;
   width: 39vw;
 `;
@@ -225,19 +227,19 @@ const RingSign = styled.span`
   }
 `;
 
-const FormBox = styled(animated.div)<{ end: boolean }>`
+const FormBox = styled(animated.div)<{ step: number }>`
   position: absolute;
   top: 32px;
-  bottom: ${({ end }) => (end ? "calc(100% - 32px)" : "0")};
+  bottom: 0;
   right: 32px;
   width: 53vw;
-  box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
+  box-shadow: inset 0px 0px 80px #75c9db80;
   background: linear-gradient(180deg, #75c9db1a 0%, #4af3f81a 100%);
-  border: ${({ end }) => (end ? "none" : "1px solid #75c9db4d")};
+  border: ${({ step }) => (step === 6 ? "none" : "1px solid #b9e4ed")};
   border-radius: 3vw;
   backdrop-filter: blur(13px);
   transform-origin: top;
-  padding: ${({ end }) => (end ? "0" : "2.5vw 2vw")};
+  padding: ${({ step }) => (step === 6 ? "0" : "2.5vw 2vw")};
   transition: 0.5s ease-out;
 
   @media (max-width: 480px) {

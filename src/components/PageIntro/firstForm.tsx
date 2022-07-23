@@ -198,13 +198,13 @@ const Result = styled(Title)`
   height: 64px;
   width: 39vw;
 
-  @media (max-width: 480px){
-    top: -9px  ;
-    right: 76px ;
-    height: fit-content ;
-    width: 79% ;
-    font-size: 20px ;
-    border-radius: 35px ;
+  @media (max-width: 480px) {
+    top: -9px;
+    right: 76px;
+    height: fit-content;
+    width: 79%;
+    font-size: 20px;
+    border-radius: 35px;
   }
 `;
 
@@ -236,9 +236,9 @@ const FormBox = styled(animated.div)<{ end: boolean }>`
   bottom: ${({ end }) => (end ? "calc(100% - 32px)" : "0")};
   right: 32px;
   width: 53vw;
-  box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
+  box-shadow: inset 0px 0px 80px #75c9db80;
   background: linear-gradient(180deg, #75c9db1a 0%, #4af3f81a 100%);
-  border: ${({ end }) => (end ? "none" : "1px solid #75c9db4d")};
+  border: ${({ end }) => (end ? "none" : "1px solid #b9e4ed")};
   border-radius: 3vw;
   backdrop-filter: blur(13px);
   transform-origin: top;

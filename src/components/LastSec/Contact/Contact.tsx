@@ -204,8 +204,8 @@ const FormBox = styled(animated.div)`
     rgb(117 201 219 / 10%) 0%,
     rgb(74 243 248 / 10%) 100%
   );
-  box-shadow: inset 0px 0px 80px #75c9db80, 0px 3px 3px #8125254d;
-  border: 1px solid #75c9db4d;
+  box-shadow: inset 0px 0px 80px #75c9db80;
+  border: 1px solid #b9e4ed;
   border-radius: 64px 0px 64px 64px;
   backdrop-filter: blur(13px);
   overflow: hidden;

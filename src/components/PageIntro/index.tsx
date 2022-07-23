@@ -40,9 +40,9 @@ export default function PageIntro() {
       <Mobile />
       <Title formOpen={formOpen} />
       {/* for first section */}
-      <FirstForm handleFormOpen={handleFormOpen}/>
+      <FirstForm handleFormOpen={handleFormOpen} />
       {/* for advantage section */}
-      <StartForm handleFormOpen={handleFormOpen} />
+      {/* <StartForm handleFormOpen={handleFormOpen} /> */}
     </PageIntroduction>
   );
 }
