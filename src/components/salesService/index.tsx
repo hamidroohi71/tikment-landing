@@ -7,6 +7,8 @@ import useWidth from "../../hooks/useWidth";
 import { useWheel } from "react-use-gesture";
 const { Lethargy } = require("lethargy");
 
+let myTime: any;
+
 export default function SalesService() {
   const { activeSection, nextSection, setActiveSection, setNextSection } =
     useSection();
@@ -18,10 +20,16 @@ export default function SalesService() {
   const width = useWidth();
 
   useEffect(() => {
+    clearTimeout(myTime);
     console.log(step);
+    const newHoverList = [false, false, false];
     const newList = [true, true, true];
+    newHoverList[step] = true;
     newList[step] = false;
-    setCardFront([...newList]);
+    setCardHover(newHoverList);
+    myTime = setTimeout(() => {
+      setCardFront([...newList]);
+    }, 1000);
   }, [step]);
 
   useEffect(() => {
@@ -133,7 +141,7 @@ export default function SalesService() {
           setCardHover([...newList]);
         }}
       >
-        <FrontSide>
+        <FrontSide hover={cardHover[index]}>
           <p>خدمات</p>
           <p>{service.name}</p>
           <div>
@@ -190,11 +198,17 @@ export default function SalesService() {
       </Subtitle>
       <NumberPart>
         <NumDividerShort style={CardEnter1} />
-        <CardNum style={CardEnter1}>۱</CardNum>
+        <CardNum hover={cardHover[0]} style={CardEnter1}>
+          ۱
+        </CardNum>
         <NumDividerlong style={CardEnter2} />
-        <CardNum style={CardEnter2}>۲</CardNum>
+        <CardNum hover={cardHover[1]} style={CardEnter2}>
+          ۲
+        </CardNum>
         <NumDividerlong style={CardEnter3} />
-        <CardNum style={CardEnter3}>۳</CardNum>
+        <CardNum hover={cardHover[2]} style={CardEnter3}>
+          ۳
+        </CardNum>
         <NumDividerShort style={CardEnter3} />
       </NumberPart>
       <ServicesContainer>{serviceCards}</ServicesContainer>
@@ -256,17 +270,22 @@ const NumberPart = styled.div`
   width: 100%;
 `;
 
-const CardNum = styled(animated.div)`
+const CardNum = styled(animated.div)<{ hover: boolean }>`
   top: 15.3vw;
   width: 3vw;
   height: 3vw;
   border-radius: 50%;
   background: linear-gradient(180deg, #37abb8 0%, #71fbff 100%);
+  background: ${({ hover }) =>
+    hover
+      ? "linear-gradient(180deg,#05185E 0%,#4B86AC 100%)"
+      : "linear-gradient(180deg, #37abb8 0%, #71fbff 100%)"};
   color: #fff;
   font-size: 1.6vw;
   text-align: center;
   line-height: 3vw;
   flex-shrink: 0;
+  transition: 0.5s ease-out;
 `;
 
 const NumDividerShort = styled(animated.div)`
@@ -317,8 +336,8 @@ const ServiceCard = styled(animated.div)<{ front: boolean }>`
   }
 `;
 
-const FrontSide = styled.div`
-  // position: absolute;
+const FrontSide = styled.div<{ hover: boolean }>`
+  position: relative;
   text-align: center;
   border-radius: 3vw;
   background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 100%);
@@ -330,8 +349,7 @@ const FrontSide = styled.div`
   z-index: 1;
 
   & > p {
-    color: #183573;
-    color:#75C9DB;
+    color: ${({ hover }) => (hover ? "#183573" : "#75C9DB")};
     font-size: 2.1vw;
     text-align-center;
     margin: 0;
@@ -347,9 +365,15 @@ const FrontSide = styled.div`
     height: 13vw;
     border-radius: 50%;
     margin-top: 2vw;
-    background:  linear-gradient(180deg,#00e5ff14 0%,#b7fdff14 100%);
-    box-shadow: inset 0px 0px 99px #80A5AC21;
-    border: 1px solid #B8E2EB;
+    background: ${({ hover }) =>
+      hover
+        ? "linear-gradient(180deg,#05185E 0%,#4B86AC 100%)"
+        : "linear-gradient(180deg,#00e5ff14 0%,#b7fdff14 100%)"};
+    box-shadow: ${({ hover }) =>
+      hover
+        ? "15px 15px 30px rgba(0,0,0,0.2)"
+        : "inset 0px 0px 99px #80A5AC21"};
+    border: ${({ hover }) => (hover ? "none" : "1px solid #B8E2EB")};
     backdrop-filter: blur(28px);
     display: flex;
     transition: 0.5s ease-out;
@@ -368,22 +392,7 @@ const FrontSide = styled.div`
     }
   }
 
-  &:hover {& > p {
-    color: #183573;
-
-  }
-    & > div {
-      background:  linear-gradient(180deg,#05185E 0%,#4B86AC 100%);
   
-      & > svg {
-  
-        & > use {
-          fill: #fff;
-          stroke: #fff;
-        }
-      }
-    }
-  }
 
   @media (max-width: 480px) {
     padding: 25px 57px 78px;
