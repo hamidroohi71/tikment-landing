@@ -82,6 +82,7 @@ export default function LastSec() {
 
   return (
     <LastSection
+      status={nextSection === 7 ? "show" : nextSection < 7 ? "before" : "after"}
       dis={dis - window.innerHeight}
       part={part}
       {...bind()}
@@ -100,22 +101,27 @@ const LastSection = styled.section<{
   active: boolean;
   part: number;
   dis: number;
+  status: string;
 }>`
   width: 100vw;
   height: 100vh;
   overflow: visible;
   position: absolute;
-  transform: ${({ active, part, dis }) =>
-    active
+
+  transform: ${({ status, active, part, dis }) =>
+    status === "show"
       ? part === 0
         ? "translateY(0)"
         : part === 1
         ? "translateY(-55%)"
         : `translateY(-${dis + 30}px)`
       : "translateY(100vh)"};
+      : status === "before"
+      ? "translateY(100vh)"
+      : "translateY(-100vh)"};
+  
   z-index: ${({ active }) => (active ? 20 : 0)};
-  transition: 0.5s ease-out;
-  transition-delay: ${({ active }) => (active ? "0.5s" : "0s")};
+  transition: 0.8s ease-out;
 
   @media (max-width: 480px) {
     position: relative;

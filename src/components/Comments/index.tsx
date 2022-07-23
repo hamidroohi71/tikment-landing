@@ -96,7 +96,11 @@ export default function Comments() {
   });
 
   return (
-    <CommentSection active={active} {...bind()}>
+    <CommentSection
+      active={active}
+      status={nextSection === 6 ? "show" : nextSection < 6 ? "before" : "after"}
+      {...bind()}
+    >
       <Title>نظرات مشتریان تیکمنت</Title>
       <CommentsContainer dis={distance} commentIndex={commentIndex}>
         <div>{commentList}</div>
@@ -105,14 +109,18 @@ export default function Comments() {
   );
 }
 
-const CommentSection = styled.section<{ active: boolean }>`
+const CommentSection = styled.section<{ active: boolean; status: string }>`
   height: 100vh;
   overflow: hidden;
   position: absolute;
-  transform: ${({ active }) =>
-    active ? "translateY(0)" : "translateY(100vh)"};
+  transform: ${({ status }) =>
+    status === "show"
+      ? "translateY(0vh)"
+      : status === "before"
+      ? "translateY(100vh)"
+      : "translateY(-100vh)"};
+  transition: 0.5s ease-in;
   z-index: ${({ active }) => (active ? 20 : 0)};
-  transition: 0.5s ease-out;
   padding: 13.6vh 17vw 7vh;
 
   @media (max-width: 480px) {

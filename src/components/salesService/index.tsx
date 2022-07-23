@@ -50,10 +50,21 @@ export default function SalesService() {
   }, [activeSection]);
 
   const sectionStyle = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: active ? 1 : width < 480 ? 1 : 0 },
-    delay: active ? 1000 : 0,
-    config: { duration: active ? 1000 : 0, easing: easings.easeOutQuart },
+    from: { transform: "translateY(100vh)" },
+    to: {
+      transform:
+        activeSection === 5
+          ? "translateY(0vh)"
+          : activeSection > 5
+          ? "translateY(-100vh)"
+          : activeSection < 5
+          ? "translateY(100vh)"
+          : width < 480
+          ? "translateY(0vh)"
+          : "translateY(0vh)",
+    },
+    delay: 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const CardEnter1 = useSpring({
@@ -173,24 +184,12 @@ export default function SalesService() {
     </Service>
   ));
 
-  // service card back start:
-  // const serviceCardsBack = data.serviceData.map((service, index) => (
-  //   <Service key={service.name} index={index}>
-  //     <ServiceCardBack
-  //       onClick={() => {
-  //         index === 0
-  //           ? c1TurnOver(!c1IfBack)
-  //           : index === 1
-  //           ? c2TurnOver(!c2IfBack)
-  //           : c3TurnOver(!c3IfBack);
-  //       }}
-  //     ></ServiceCardBack>
-  //   </Service>
-  // ));
-  //service card finished
-
   return (
-    <ServicesSection active={active} style={sectionStyle} {...bind()}>
+    <ServicesSection
+      active={active}
+      status={nextSection === 5 ? "show" : nextSection < 5 ? "before" : "after"}
+      {...bind()}
+    >
       <Title>در کنارتان هستیم</Title>
       <Subtitle>
         از نصب سخت‌افزار
@@ -216,13 +215,23 @@ export default function SalesService() {
   );
 }
 
-const ServicesSection = styled(animated.section)<{ active: boolean }>`
+const ServicesSection = styled(animated.section)<{
+  active: boolean;
+  status: string;
+}>`
   height: 100vh;
   width: 100vw;
   overflow: hidden;
   padding: 13vh 0 0;
   position: absolute;
   z-index: ${({ active }) => (active ? 20 : 0)};
+  transform: ${({ status }) =>
+    status === "show"
+      ? "translateY(0vh)"
+      : status === "before"
+      ? "translateY(100vh)"
+      : "translateY(-100vh)"};
+  transition: 0.5s ease-in;
 
   @media (max-width: 480px) {
     position: static;
