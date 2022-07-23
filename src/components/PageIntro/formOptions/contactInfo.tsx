@@ -222,12 +222,12 @@ const FormInput = styled.input`
     }
   }
 
-  @media (min-width: 1920px) {
-    width: 50%;
-    &:nth-child(3) {
-      width: 80%;
-    }
-  }
+  // @media (min-width: 1920px) {
+  //   width: 50%;
+  //   &:nth-child(3) {
+  //     width: 80%;
+  //   }
+  // }
 
   @media (max-width: 480px) {
     width: 100%;
