@@ -216,10 +216,6 @@ const BenefitTitle = styled.p<{ index: number; benefitIndex: number }>`
   transition: 1s ease-out;
   transition-delay: 0.25s;
 
-  &:first-of-type {
-    font-size: 18px;
-  }
-
   @media (max-width: 480px) {
     opacity: 1;
     padding-left: 10px;
