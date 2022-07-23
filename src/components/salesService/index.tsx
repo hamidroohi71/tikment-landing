@@ -347,12 +347,14 @@ const FrontSide = styled.div<{ hover: boolean }>`
   margin-top: 50px;
   // height: 45vh;
   z-index: 1;
+  transition: 0.5s ease-out;
 
   & > p {
     color: ${({ hover }) => (hover ? "#183573" : "#75C9DB")};
     font-size: 2.1vw;
     text-align-center;
     margin: 0;
+    transition: 0.5s ease-out;
     transition: 0.5s ease-out;
     &:first-of-type{
       font-size: 1.2vw;
