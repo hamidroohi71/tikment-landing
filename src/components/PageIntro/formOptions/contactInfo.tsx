@@ -101,7 +101,7 @@ const TimeForm = styled(animated.div)`
   left: -2px;
   box-sizing: border-box;
   padding: 39px 31px 39px 47px;
-  background: #f9f8f7;
+  background: rgb(249 248 247 / 54%);
   border: 3px solid #75c9db4d;
   opacity: 1;
   backdrop-filter: blur(50px);
