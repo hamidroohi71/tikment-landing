@@ -74,7 +74,6 @@ export default function ContactInfo({
             type="text"
             placeholder="نام شرکت"
             style={{
-              maxWidth: "40%",
               marginRight: "21px",
             }}
           />
@@ -179,7 +178,7 @@ const FormInput = styled.input`
   border: 0.5px solid #cbcbcb;
   color: #9e9e9e;
   padding: 0 80px 0 0;
-  background-position-x: 90%;
+  background-position-x: calc(100% - 8px);
   background-position-y: center;
   background-repeat: no-repeat;
   background-size: 1.8vw;
@@ -187,14 +186,15 @@ const FormInput = styled.input`
   font-size: 1vw;
   position: relative;
   background-image: url(${PersonIcon});
+  flex-shrink: 0;
+  flex-grow: 1;
 
   &:nth-child(1) {
-    background-position-x: 93%;
   }
 
   &:nth-child(3) {
     background-image: url(${PhoneIcon});
-    background-position-x: 95%;
+    width: 70%;
   }
 
   &:focus {
