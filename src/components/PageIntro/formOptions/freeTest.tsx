@@ -28,7 +28,7 @@ export default function FreeTest({
             addAnswer(step > 3 && answers[3] === 0 ? null : 0, 3);
           }}
         >
-          <svg>
+          {/* <svg>
             {step === 5 ? (
               <use
                 width="100%"
@@ -42,7 +42,13 @@ export default function FreeTest({
                 href="/fastContactForm/freeTest/yes.svg#yes"
               />
             )}
-          </svg>
+          </svg> */}
+          {step === 5 ? (
+            <img src="/fastContactForm/freeTest/yesTick.png" alt="tikment" />
+          ) : (
+            <img src="/fastContactForm/freeTest/yes.png" alt="tikment" />
+          )}
+
           <p>
             {step === 5 ? (
               <span className="se-content">نسخۀ تست رایگان (۳۰روزه)</span>
@@ -125,6 +131,15 @@ const YesOption = styled(Option)`
 
   .se-content {
     font-size: 1vw;
+  }
+
+  & > img {
+    display: block;
+    width: 3vw;
+    height: 3vw;
+    margin: auto;
+    object-fit: contain;
+    z-index: 20;
   }
 
   & > svg {
