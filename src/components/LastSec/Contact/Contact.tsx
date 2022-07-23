@@ -215,10 +215,10 @@ const FormBox = styled(animated.div)`
 const TimeForm = styled(animated.div)`
   box-sizing: border-box;
   padding: 39px 31px 39px 47px;
-  background: #f9f8f7;
+  background: rgb(249 248 247 / 54%);
   border: 3px solid #75c9db4d;
   opacity: 1;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(80px);
   border-radius: 64px 0 0 0;
 
   p {
@@ -288,7 +288,7 @@ const FormInput = styled.input`
   border: 0.5px solid #cbcbcb;
   color: #9e9e9e;
   padding: 0 80px 0 0;
-  background-position-x: 90%;
+  background-position-x: calc(100% - 8px);
   background-position-y: center;
   background-repeat: no-repeat;
   background-size: 1.8vw;
@@ -296,14 +296,15 @@ const FormInput = styled.input`
   font-size: 1vw;
   position: relative;
   background-image: url(${PersonIcon});
+  flex-shrink: 0;
+  flex-grow: 1;
 
   &:nth-child(1) {
-    background-position-x: 93%;
   }
 
   &:nth-child(3) {
     background-image: url(${PhoneIcon});
-    background-position-x: 95%;
+    width: 70%;
   }
 
   &:focus {
