@@ -77,4 +77,5 @@ const Text = styled(animated.p)`
   color: #292929;
   font-weight: 300;
   padding-left: 8vw;
+  max-width: 31vw;
 `;
