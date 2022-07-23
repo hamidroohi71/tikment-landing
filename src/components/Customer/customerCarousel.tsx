@@ -26,9 +26,15 @@ export default function CustomerCarousel({
   const width = useWidth();
   const { activeSection } = useSection();
   // const [currentIndex, setCurrentIndex] = useState(0);
+  // const [currentIndex, setCurrentIndex] = useState(0);
+  console.log("showComment:", showComment);
   const customerData = data.customerData.map((customer, index) => (
     <Item
+      // selected={showComment && currentIndex === index}
       selected={showComment && currentIndex === index}
+      preSelected={
+        currentIndex === 0 ? index === 5 : index === currentIndex - 1
+      }
       key={customer.name}
       onClick={() => {
         clearTimeout(myTime);
@@ -46,6 +52,12 @@ export default function CustomerCarousel({
   //     }, 5000);
   //   }
   // }, [showComment]);
+
+  useEffect(() => {
+    if (width < 480) {
+      enterComment();
+    }
+  }, []);
 
   const goNextSlide = () => {
     if (currentIndex < customerData.length - 1) {
@@ -97,6 +109,11 @@ const Back = styled.div`
   width: 40px;
   height: 23px;
   cursor: pointer;
+
+  @media (max-width: 480px) {
+    width: 20px;
+    height: 12px;
+  }
 `;
 
 const Forward = styled.div`
@@ -106,6 +123,13 @@ const Forward = styled.div`
   width: 40px;
   height: 23px;
   cursor: pointer;
+
+  @media (max-width: 480px) {
+    width: 20px;
+    height: 12px;
+    right: -24px;
+    position: absolute;
+  }
 `;
 
 const CarouselSection = styled(animated.section)`
@@ -116,11 +140,12 @@ const CarouselSection = styled(animated.section)`
   z-index: 10;
 
   @media (max-width: 480px) {
-    height: 20vh;
-    width: 300vw;
+    height: 168px;
+    width: 100%;
+    margin-top: 35px;
   }
 `;
-const Item = styled.div<{ selected: boolean }>`
+const Item = styled.div<{ selected: boolean; preSelected: boolean }>`
   width: 9vw; //7vw not a good solution
   height: 9vw; // 7vw not a good solution
   border-radius: 50%;
@@ -148,10 +173,17 @@ const Item = styled.div<{ selected: boolean }>`
   }
 
   @media (max-width: 480px) {
+    position: absolute;
     width: 67px;
     height: 67px;
-    transform: ${({ selected }) => (selected ? "scale(2)" : "scale(1)")};
     margin: ${({ selected }) => (selected ? "0 10vw" : "0 2vw")};
+    transform: ${({ selected, preSelected }) =>
+      selected
+        ? " translateX(100px) scale(2)"
+        : preSelected
+        ? "translateX(258px) scale(1)"
+        : " translateX(10px) scale(1)"};
+    filter: none;
   }
 `;
 

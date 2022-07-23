@@ -3,6 +3,7 @@ import data from "./data.json";
 import styled from "styled-components";
 import FAQBlock from "./FAQBlock";
 
+
 export default function FAQ() {
   const [current, setCurrent] = useState(0);
   const faqElements = data.faq.map((item, index) => (

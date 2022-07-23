@@ -88,7 +88,7 @@ export default function LastSec() {
       {...bind()}
       active={active}
     >
-      <div ref={lengthRef}>
+      <div ref={lengthRef} className="last">
         <Contact />
         <FAQ />
         <Footer />
@@ -130,5 +130,10 @@ const LastSection = styled.section<{
     overflow: visible;
     height: unset;
     transform: none;
+
+    .last{
+      display:flex;
+      flex-direction: column;
+    }
   }
 `;

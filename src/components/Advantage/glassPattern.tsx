@@ -3,6 +3,7 @@ import GlassElement from "../Glass/glassElement";
 import styled from "styled-components";
 import { useSection } from "../../context/sectionStore";
 import { useSpring, animated, easings } from "react-spring";
+import ZBpic from "./ZBpic.png";
 
 const patternInfo = [
   {
@@ -209,4 +210,15 @@ const GlassPatternElement = styled(animated.div)<{ show: boolean }>`
   opacity: ${({ show }) => (show ? 0.15 : 0)};
   transform-origin: left;
   mix-blend-mode: multiply;
+
+  @media(max-width:480px){
+    width: 100%;
+    left: 0;
+    top:0;
+    opacity:1;
+    transform: none !important;
+    background-image: url(${ZBpic});
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
 `;

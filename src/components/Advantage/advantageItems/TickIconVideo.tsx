@@ -42,5 +42,7 @@ const Tick = styled(animated.video)`
     left: 0;
     margin: auto;
     top: -20px;
+    width: 68px;
+    height: 75px;
   }
 `;

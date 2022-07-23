@@ -59,6 +59,7 @@ const TextBox = styled.div`
     text-align: center;
     padding-left: 0;
     top: 30vh;
+    padding-top:50px;
   }
 `;
 
@@ -77,6 +78,8 @@ const SubTitle = styled(MainTitle)`
   margin: 0;
   @media (max-width: 480px) {
     font-size: 36px;
+    text-align:end;
+    font-weight: 600;
   }
 `;
 

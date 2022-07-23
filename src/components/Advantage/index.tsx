@@ -5,6 +5,7 @@ import BackgroundImage from "./background.png";
 import { useSection } from "../../context/sectionStore";
 import { useSpring, easings, animated } from "react-spring";
 import MaskImage from "./mask.webp";
+import MaskMobile from "./mask-mobile.png";
 import useWidth from "../../hooks/useWidth";
 import GlassPattern from "./glassPattern";
 import { useWheel } from "react-use-gesture";
@@ -218,6 +219,8 @@ const AdvantageSection = styled(animated.section)<{
   @media (max-width: 480px) {
     position: relative;
     z-index: 20;
+    transform: none;
+    margin-top: 50px;
   }
 `;
 
@@ -232,7 +235,13 @@ const Background = styled(animated.div)`
   top: 0;
 
   @media (max-width: 480px) {
-    mask-image: none;
+    mask-image: url(${MaskMobile});
+    width: 534px;
+    height: 511px;
+    top: -50px;
+    right: -63%;
+    transform: rotate(6deg);
+}
   }
 `;
 
@@ -260,7 +269,7 @@ const Image = styled(animated.img)`
   top: 0;
 
   @media (max-width: 480px) {
-    display: none;
+    //  display: none;
   }
 `;
 
