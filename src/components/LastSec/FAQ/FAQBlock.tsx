@@ -32,8 +32,8 @@ export default function FAQBlock({
 
 const FaqBlock = styled.div<{ open: boolean }>`
   width: 100%;
-  margin: ${({ open }) => (open ? "4vh 3.5vh 9vh" : "3.5vh")};
-  max-height: ${({ open }) => (open ? "16vh" : "3vh")};
+  margin: ${({ open }) => (open ? "4vh 3.5vh" : "3.5vh")};
+  max-height: ${({ open }) => (open ? "29vh" : "3vh")};
   transition: 0.5s ease-out;
   transition-delay: ${({ open }) => (open ? "10vh" : "3vh")};
 
