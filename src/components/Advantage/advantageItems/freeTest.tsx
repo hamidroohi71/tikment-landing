@@ -82,7 +82,7 @@ const MainTitle = styled(animated.h2)`
 `;
 
 const Text = styled(animated.p)`
-  font-size: 1.2vw;
+  font-size: 1.6vw;
   color: #292929;
   font-weight: 300;
   padding-left: 8vw;

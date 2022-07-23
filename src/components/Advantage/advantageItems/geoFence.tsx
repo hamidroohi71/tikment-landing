@@ -90,7 +90,7 @@ const SubTitle = styled(MainTitle)`
 `;
 
 const Text = styled(animated.p)`
-  font-size: 1.2vw;
+  font-size: 1.6vw;
   color: #292929;
   font-weight: 300;
 `;
