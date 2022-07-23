@@ -29,10 +29,14 @@ export default function ContactUs() {
   }, []);
   // console.log(width);
 
-  console.log("hamidreza:",activeSection)
+  console.log("hamidreza:", activeSection);
 
   return (
-    <ContactElement activeSection={activeSection}  contact={contact} onClick={() => navigate("/contactUs")}>
+    <ContactElement
+      activeSection={activeSection}
+      contact={contact}
+      onClick={() => navigate("/contactUs")}
+    >
       <img src={Phone} alt="contact" />
       <animated.p style={styleProp}>
         {width > 480 ? "تماس با تیکمنت" : "تماس"}
@@ -41,14 +45,22 @@ export default function ContactUs() {
   );
 }
 
-const ContactElement = styled.section<{ activeSection: number ,contact:boolean}>`
+const ContactElement = styled.section<{
+  activeSection: number;
+  contact: boolean;
+}>`
   display: flex;
   align-items: center;
   padding: 10px 13px 10px 17px;
   border-left: 2px solid #7197b2;
   height: 100%;
   cursor: pointer;
-  transition:width 2s ease-in-out;
+  transition: margin-right 2s ease-in-out 0s, min-width 2s ease-in-out 0s,
+    background 0s ease-in-out 2s;
+  min-width: 0vw;
+  margin-right: 0;
+  border-radius: 3vw;
+
   & > img {
     width: 47px;
     height: 47px;
@@ -62,20 +74,23 @@ const ContactElement = styled.section<{ activeSection: number ,contact:boolean}>
     margin: 0;
     margin-right: 21px;
     white-space: nowrap;
-
-    
   }
-  &:hover{
-    width:${({ activeSection ,contact}) => (activeSection!== 1 && !contact ?"24vw":"")};
-    background:${({ activeSection,contact }) => (activeSection!== 1 && !contact ? "linear-gradient(to right, #0089a7, #04165d)":0)};
-    border-radius:${({ activeSection,contact }) => (activeSection!== 1 && !contact? "3vw":'')};
-    margin-right:${({ activeSection,contact }) => (activeSection!== 1 && !contact ? "-130px":'')};
+  &:hover {
+    min-width: ${({ activeSection, contact }) =>
+      activeSection !== 1 && !contact ? "20vw" : "0vw"};
+    background: ${({ activeSection, contact }) =>
+      activeSection !== 1 && !contact ? " #04165d" : 0};
+    border-radius: ${({ activeSection, contact }) =>
+      activeSection !== 1 && !contact ? "3vw" : ""};
+    margin-right: ${({ activeSection, contact }) =>
+      activeSection !== 1 && !contact ? "-130px" : ""};
 
-    p{
-      opacity:${({ activeSection ,contact}) => (activeSection!== 1 && !contact ?"1 !important":'')};
+    p {
+      opacity: ${({ activeSection, contact }) =>
+        activeSection !== 1 && !contact ? "1 !important" : ""};
     }
-   
-    
+    transition: margin-right 2s ease-in-out 0s, min-width 2s ease-in-out 0s,
+      background 0s ease-in-out 0s;
   }
 
   @media (max-width: 480px) {
@@ -89,7 +104,5 @@ const ContactElement = styled.section<{ activeSection: number ,contact:boolean}>
     p {
       font-size: 29px;
     }
-
-  
   }
 `;
