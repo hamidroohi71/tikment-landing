@@ -6,8 +6,8 @@ import { useSection } from "../../context/sectionStore";
 import { useSpring, easings, animated } from "react-spring";
 import MaskImage from "./mask.webp";
 import useWidth from "../../hooks/useWidth";
-import { useWheel } from "react-use-gesture";
 import GlassPattern from "./glassPattern";
+import { useWheel } from "react-use-gesture";
 const { Lethargy } = require("lethargy");
 
 let listInterval: any;

@@ -15,13 +15,17 @@ let myTime: any;
 export default function CustomerCarousel({
   enterComment,
   showComment,
+  currentIndex,
+  setCurrentIndex,
 }: {
   showComment: boolean;
   enterComment: () => void;
+  currentIndex: number;
+  setCurrentIndex: (number: number) => void;
 }) {
   const width = useWidth();
   const { activeSection } = useSection();
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // const [currentIndex, setCurrentIndex] = useState(0);
   const customerData = data.customerData.map((customer, index) => (
     <Item
       selected={showComment && currentIndex === index}

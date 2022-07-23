@@ -5,14 +5,20 @@ import { useSpring, animated, easings } from "react-spring";
 import { useSection } from "../../context/sectionStore";
 import useWidth from "../../hooks/useWidth";
 import GlassPattern from "./glassPattern";
+import { useWheel } from "react-use-gesture";
+import data from "./customerData.json";
+
+const { Lethargy } = require("lethargy");
 
 let timeOut: NodeJS.Timeout;
 
 export default function Customer() {
   const width = useWidth();
-  const { activeSection, nextSection, setActiveSection } = useSection();
+  const { activeSection, nextSection, setActiveSection, setNextSection } =
+    useSection();
   const [showComment, setShowComment] = useState(false);
   const [active, setActive] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const styleProps2 = useSpring({
     from: { opacity: 1 },
     to: { opacity: showComment ? (width > 480 ? 0 : 1) : 1 }, //{opacity: 1},//
@@ -79,8 +85,58 @@ export default function Customer() {
     },
   });
 
+  const nextStepHandler = () => {
+    if (!showComment) {
+      setShowComment(true);
+    } else {
+      if (currentIndex < data.customerData.length - 1) {
+        setCurrentIndex(currentIndex + 1);
+      } else {
+        setNextSection(3);
+        setActiveSection(null);
+      }
+    }
+  };
+
+  const prevStepHandler = () => {
+    if (showComment) {
+      if (currentIndex > 0) {
+        setCurrentIndex(currentIndex - 1);
+      } else {
+        setShowComment(false);
+      }
+    } else {
+      setNextSection(1);
+      setActiveSection(null);
+    }
+  };
+
+  const lethargy = new Lethargy();
+
+  const bind = useWheel(({ event, last, memo: wait = false }) => {
+    event.stopPropagation();
+    if (width > 480) {
+      if (!last) {
+        const s = lethargy.check(event);
+        if (s) {
+          if (!wait) {
+            if (s < 0) {
+              nextStepHandler();
+            } else if (s > 0) {
+              prevStepHandler();
+            }
+            return true;
+          }
+        } else return false;
+      } else {
+        return false;
+      }
+    }
+  });
+
   return (
     <CustomerElement
+      {...bind()}
       active={active}
       status={nextSection === 2 ? "show" : nextSection < 2 ? "before" : "after"}
     >
@@ -111,6 +167,8 @@ export default function Customer() {
         enterComment={() => {
           setShowComment(true);
         }}
+        currentIndex={currentIndex}
+        setCurrentIndex={setCurrentIndex}
       />
     </CustomerElement>
   );
