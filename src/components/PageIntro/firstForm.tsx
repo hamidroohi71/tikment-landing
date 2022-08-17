@@ -30,20 +30,20 @@ export default function FirstForm({
   const styleProps1 = useSpring({
     from: { transform: "scaleX(0)" },
     to: { transform: "scaleX(1)" },
-    delay: 1000,
-    config: { duration: 1000, easing: easings.easeOutQuart },
+    delay: 500,
+    config: { duration: 500, easing: easings.easeOutQuart },
   });
   const styleProps2 = useSpring({
     from: { transform: "scaleY(0)" },
     to: { transform: step === 6 ? "scaleY(0)" : "scaleY(1)" },
-    delay: 2000,
-    config: { duration: 1000, easing: easings.easeOutQuart },
+    delay: 1000,
+    config: { duration: 500, easing: easings.easeOutQuart },
   });
   const styleProps3 = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
-    delay: 3000,
-    config: { duration: 1000, easing: easings.easeOutQuart },
+    delay: 1500,
+    config: { duration: 500, easing: easings.easeOutQuart },
   });
 
   const styleProps4 = useSpring({
@@ -55,27 +55,27 @@ export default function FirstForm({
           ? "translateX(0vw)"
           : "translateX(100vw)",
     },
-    config: { duration: 1000, easing: easings.easeOutQuart },
+    config: { duration: 500, easing: easings.easeOutQuart },
   });
 
   const styleProps5 = useSpring({
     to: {
       top: step === 5 ? "20vh" : width < 480 ? "0" : "57vh",
     },
-    config: { duration: 1000, easing: easings.easeOutQuart },
+    config: { duration: 500, easing: easings.easeOutQuart },
   });
 
   const styleProps6 = useSpring({
     from: { opacity: 0 },
     to: { opacity: step === 6 ? 0 : 1 },
-    config: { duration: 1000, easing: easings.easeOutQuart },
+    config: { duration: 500, easing: easings.easeOutQuart },
   });
 
   const styleProps7 = useSpring({
     from: { transform: "scaleX(0)" },
     to: { transform: step === 6 ? "scaleX(1)" : "scaleX(0)" },
-    delay: 2000,
-    config: { duration: 1000, easing: easings.easeOutQuart },
+    delay: 1000,
+    config: { duration: 500, easing: easings.easeOutQuart },
   });
 
   const changeStep = (newStep: number) => {

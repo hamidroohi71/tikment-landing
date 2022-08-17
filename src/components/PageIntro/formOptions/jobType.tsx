@@ -111,7 +111,7 @@ export const OptionBase = styled.div<{
   opacity: ${({ show, selected }) => (show ? 1 : selected ? 1 : 0)};
   position: absolute;
   top: 9vh;
-  transition: 0.5s ease-out;
+  transition: 0.25s ease-out;
   z-index: ${({ show, selected }) => (show ? 25 : selected ? 25 : 0)};
 
   &:hover {
@@ -139,7 +139,7 @@ export const OptionBase = styled.div<{
     left: -12px;
     background: #fff;
     opacity: ${({ selected }) => (selected ? 1 : 0)};
-    transition: 0.5s ease-out;
+    transition: 0.25s ease-out;
   }
 
   & > svg {
