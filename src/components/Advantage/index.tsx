@@ -20,8 +20,9 @@ export default function Advantage() {
   const [index, setIndex] = useState(1);
   const width = useWidth();
 
+  console.log("injast:",activeSection)
   useEffect(() => {
-    if (activeSection === 4) {
+    if (activeSection === 2) {
       // listInterval = setInterval(() => {
       //   setIndex((index) => index + 1);
       // }, 10000);
@@ -104,7 +105,7 @@ export default function Advantage() {
   }, [active, nextSection]);
 
   useEffect(() => {
-    if (activeSection === 4) {
+    if (activeSection === 2) {
       setActive(true);
     } else if (activeSection !== null) {
       setActive(false);
@@ -123,10 +124,10 @@ export default function Advantage() {
   // }, [width]);
 
   const nextSectionHnadler = () => {
-    if (index < 7) {
+    if (index < 5) {
       setIndex(index + 1);
     } else {
-      setNextSection(5);
+      setNextSection(3);
       setActiveSection(null);
     }
   };
@@ -135,7 +136,7 @@ export default function Advantage() {
     if (index > 0) {
       setIndex(index - 1);
     } else {
-      setNextSection(3);
+      setNextSection(1);
       setActiveSection(null);
     }
   };
@@ -173,7 +174,7 @@ export default function Advantage() {
       {...bind()}
       active={active}
       // style={sectionStyle}
-      status={nextSection === 4 ? "show" : nextSection < 4 ? "before" : "after"}
+      status={nextSection === 2 ? "show" : nextSection < 2? "before" : "after"}
     >
       <Background style={maskStyle}>
         <Cover style={coverStyle} />

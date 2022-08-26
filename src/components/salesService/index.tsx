@@ -33,7 +33,7 @@ export default function SalesService() {
   }, [active, nextSection]);
 
   useEffect(() => {
-    if (activeSection === 5) {
+    if (activeSection === 4) {
       setActive(true);
       setStep(-1);
     } else if (activeSection !== null) {
@@ -77,7 +77,7 @@ export default function SalesService() {
     if (step < 2) {
       setStep(step + 1);
     } else {
-      setNextSection(6);
+      setNextSection(5);
       setActiveSection(null);
     }
   };
@@ -85,7 +85,7 @@ export default function SalesService() {
     if (step > -1) {
       setStep(step - 1);
     } else {
-      setNextSection(4);
+      setNextSection(3);
       setActiveSection(null);
     }
   };

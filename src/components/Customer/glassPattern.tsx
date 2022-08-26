@@ -85,7 +85,7 @@ export default function GlassPattern({
     },
     to: {
       transform:
-        activeSection === 2 && showComment
+        activeSection === 3 && showComment
           ? `rotate(45deg) translateX(0%) translateY(0%)`
           : `rotate(45deg) translateX(-500%) translateY(-500%)`,
     },
@@ -103,7 +103,7 @@ export default function GlassPattern({
       border={item.border}
       radius={item.radius}
       index={index}
-      active={activeSection === 2}
+      active={activeSection === 3}
       glassStyle={glassStyle}
     />
   ));

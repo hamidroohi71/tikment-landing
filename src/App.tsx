@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Advantage from "./components/Advantage";
-import Comments from "./components/Comments";
+// import Comments from "./components/Comments";
 import LastSec from "./components/LastSec";
 import Customer from "./components/Customer";
 import Header from "./components/Header";
 import InitialVideo from "./components/initialVideo";
 import PageIntro from "./components/PageIntro";
-import Product from "./components/Products";
+// import Product from "./components/Products";
 import SalesService from "./components/salesService";
 import ScrollBody from "./components/ScrollBody";
 
@@ -25,11 +25,11 @@ function App() {
             <>
               <Header />
               <PageIntro />
-              <Customer />
-              <Product />
               <Advantage />
+              <Customer />
+              {/* <Product /> */}
               <SalesService />
-              <Comments />
+              {/* <Comments /> */}
               <LastSec />
             </>
           </ScrollBody>

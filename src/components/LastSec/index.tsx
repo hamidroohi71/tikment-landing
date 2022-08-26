@@ -24,7 +24,7 @@ export default function LastSec() {
   }, [active, nextSection]);
 
   useEffect(() => {
-    if (activeSection === 7) {
+    if (activeSection === 5) {
       setActive(true);
     } else if (activeSection !== null) {
       setActive(false);
@@ -43,7 +43,7 @@ export default function LastSec() {
     if (part > 0) {
       setPart(part - 1);
     } else {
-      setNextSection(6);
+      setNextSection(4);
       setActiveSection(null);
     }
   };

@@ -52,13 +52,13 @@ export default function Navigation({
   });
   const elements = [];
 
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 5; i++) {
     elements.push(
       <NavigationDot
         goToSection={goToSection}
         index={i}
         key={i}
-        selected={i === activeSection - 1}
+        selected={i === activeSection -1}
       />
     );
   }
