@@ -3,6 +3,8 @@ import styled from "styled-components";
 import LogoBox from "../../LogoBox";
 import Tlogo from "./tik-logo.png";
 import data from "./data.json";
+import FooterForm from "./footerForm";
+
 
 export default function Footer() {
   const socicalElement = data.footerSocial.map((item) => (
@@ -20,15 +22,7 @@ export default function Footer() {
           <SocialBox>{socicalElement}</SocialBox>
         </FooterRight>
         <FooterLeft>
-          <p>
-            سیستم حضوروغیاب تیکمنت پیش‌تر با نام «جهان‌گستر پارس» در خدمت
-            همکاران عزیز بود. ما تا کنون در بیش از ۳۵۰۰۰ سازمان خصوصی و دولتی
-            فعال بوده‌ایم و با بیش از ۷۰ نمایندگی در سرتاسر ایران خدمت
-            رسانده‌ایم. شرکت هوش تجاری پایدار در سال ۱۳۹۹ تصمیم گرفت، تا برند
-            «جهان‌گستر پارس» را به‌روز کند. اینک مفتخریم: سیستم حضوروغیاب جدید
-            خود را با نام «تیکمنت» در اختیار سازمان‌ها‌ی خصوصی و دولتی و دیگر
-            مراکز درمانی و تجاری قرار دهیم
-          </p>
+          <FooterForm/>
         </FooterLeft>
       </FooterTop>
 
@@ -38,6 +32,8 @@ export default function Footer() {
     </FooterSection>
   );
 }
+
+
 
 const FooterSection = styled.section`
   display: flex;
@@ -93,7 +89,8 @@ const FooterLeft = styled.div`
   color: #fff;
   font-size: 1.6vw;
   font-weight: 300;
-  padding: 4vh 4.2vw 4vh 12vw;
+  display:flex;
+  // padding: 4vh 4.2vw 4vh 12vw;
   border-radius: 0 3.3vw 3.3vw 0;
   background: linear-gradient(92deg, #0089a7 0%, #04165d 100%);
   box-shadow: 0px 10px 14px #033f7733;
@@ -128,7 +125,7 @@ const SocialBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 11vw 2vw 2vw;
+  padding: 16vw 7vw 2vw 3vw;
 
   & > div {
     width: 3.6vw;
