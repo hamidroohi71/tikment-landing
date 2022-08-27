@@ -190,7 +190,7 @@ const Item = styled.div<{ selected: boolean; preSelected: boolean }>`
 const CommentContainer = styled.div<{ show: boolean }>`
   display: ${({ show }) => (show ? "block" : "none")};
   position: absolute;
-  top: 8vh;
+  top: 20vh;
   left: 10vw;
   right: 10vw;
   bottom: 32vh;

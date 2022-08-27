@@ -140,6 +140,7 @@ export default function Customer() {
       active={active}
       status={nextSection === 3 ? "show" : nextSection < 3 ? "before" : "after"}
     >
+      <Title>نظرات مشتریان تیکمنت</Title>
       <GlassPattern showComment={showComment} />
       <MobileCircle />
       <BackgroundElement style={BackgroundElmStyle} />
@@ -174,13 +175,20 @@ export default function Customer() {
   );
 }
 
+const Title = styled.h2`
+  font-size: 3.9vw;
+  color: #e67205;
+  font-weight: 500;
+  text-align: center;
+`;
+
 const CustomerElement = styled.section<{ active: boolean; status: string }>`
   height: 100vh;
   width: 100vw;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   padding: 5vh 10vw 8vh;
   position: absolute;
   z-index: ${({ active }) => (active ? 20 : 0)};
@@ -205,7 +213,7 @@ const BackgroundElement = styled(animated.div)`
   width: 38vw;
   height: 38vw;
   position: absolute;
-  top: 8vh;
+  top: 18vh;
   right: 10vw;
   background: linear-gradient(
     5deg,
@@ -229,6 +237,7 @@ const Statistics = styled(animated.div)`
   display: flex;
   flex-direction: column;
   z-index: 5;
+  display: none;
 `;
 
 const UntilToday = styled(animated.p)`
