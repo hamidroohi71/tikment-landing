@@ -10,6 +10,7 @@ import Product from "./components/Products";
 import SalesService from "./components/salesService";
 import ScrollBody from "./components/ScrollBody";
 import FAQ from "./components/FAQ";
+import AboutUs from "./components/AboutUs";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -33,6 +34,7 @@ function App() {
               {/* <Comments /> */}
               <FAQ />
               <LastSec />
+              <AboutUs />
             </>
           </ScrollBody>
         </>

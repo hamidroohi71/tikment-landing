@@ -31,10 +31,6 @@ export default function Footer() {
           </p>
         </FooterLeft>
       </FooterTop>
-
-      <CopyRight>
-        <p>همۀحقوق این وب‌سایت متعلق به گروه شرکت‌های هوش تجاری است.</p>
-      </CopyRight>
     </FooterSection>
   );
 }
