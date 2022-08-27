@@ -26,12 +26,12 @@ export default function Customer() {
   });
   const untilTodayStyle = useSpring({
     from: { opacity: 0 },
-    to: { opacity: activeSection === 2 ? 1 : width < 480 ? 1 : 0 },
+    to: { opacity: activeSection === 3 ? 1 : width < 480 ? 1 : 0 },
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
   const totalSentenceStyle = useSpring({
     from: { opacity: 0 },
-    to: { opacity: activeSection === 2 ? 1 : width < 480 ? 1 : 0 },
+    to: { opacity: activeSection === 3 ? 1 : width < 480 ? 1 : 0 },
     delay: activeSection === 2 ? 2000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
@@ -39,14 +39,14 @@ export default function Customer() {
   const BackgroundElmStyle = useSpring({
     from: { opacity: 0, transform: "scale(0)" },
     to: {
-      opacity: activeSection === 2 ? 1 : width < 480 ? 1 : 0,
+      opacity: activeSection === 3 ? 1 : width < 480 ? 1 : 0,
       transform: showComment
         ? "scale(0.75)"
         : activeSection === 2
         ? "scale(1)"
         : "scale(0)",
     },
-    delay: showComment ? 0 : activeSection === 2 ? 2000 : 0,
+    delay: showComment ? 0 : activeSection === 3 ? 2000 : 0,
     config: {
       duration: showComment ? 500 : 1000,
       easing: easings.easeOutQuart,
@@ -62,7 +62,7 @@ export default function Customer() {
   }, [active, nextSection]);
 
   useEffect(() => {
-    if (activeSection === 2) {
+    if (activeSection === 3) {
       setActive(true);
       timeOut = setTimeout(() => {
         setShowComment(true);
@@ -92,7 +92,7 @@ export default function Customer() {
       if (currentIndex < data.customerData.length - 1) {
         setCurrentIndex(currentIndex + 1);
       } else {
-        setNextSection(3);
+        setNextSection(4);
         setActiveSection(null);
       }
     }
@@ -106,7 +106,7 @@ export default function Customer() {
         setShowComment(false);
       }
     } else {
-      setNextSection(1);
+      setNextSection(2);
       setActiveSection(null);
     }
   };
@@ -138,7 +138,7 @@ export default function Customer() {
     <CustomerElement
       {...bind()}
       active={active}
-      status={nextSection === 2 ? "show" : nextSection < 2 ? "before" : "after"}
+      status={nextSection === 3 ? "show" : nextSection < 3 ? "before" : "after"}
     >
       <GlassPattern showComment={showComment} />
       <MobileCircle />
@@ -337,7 +337,7 @@ const MobileCircle = styled.div`
   backdrop-filter: blur(19px);
   z-index: -1;
 
-  @media (max-width:480px) {
+  @media (max-width: 480px) {
     display: block;
   }
 `;

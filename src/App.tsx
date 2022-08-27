@@ -25,11 +25,11 @@ function App() {
             <>
               <Header />
               <PageIntro />
-              <Customer />
-              <Product />
               <Advantage />
+              <Customer />
+              {/* <Product /> */}
               <SalesService />
-              <Comments />
+              {/* <Comments /> */}
               <LastSec />
             </>
           </ScrollBody>
@@ -39,8 +39,6 @@ function App() {
       )}
     </div>
   );
-
-  
 }
 
 export default App;

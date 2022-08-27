@@ -41,7 +41,7 @@ export default function SalesService() {
   }, [active, nextSection]);
 
   useEffect(() => {
-    if (activeSection === 5) {
+    if (activeSection === 4) {
       setActive(true);
       setStep(-1);
     } else if (activeSection !== null) {
@@ -53,11 +53,11 @@ export default function SalesService() {
     from: { transform: "translateY(100vh)" },
     to: {
       transform:
-        activeSection === 5
+        activeSection === 4
           ? "translateY(0vh)"
-          : activeSection > 5
+          : activeSection > 4
           ? "translateY(-100vh)"
-          : activeSection < 5
+          : activeSection < 4
           ? "translateY(100vh)"
           : width < 480
           ? "translateY(0vh)"
@@ -69,19 +69,19 @@ export default function SalesService() {
 
   const CardEnter1 = useSpring({
     from: { opacity: 0 },
-    to: { opacity: active ? 1 :width< 480 ? 1: 0 },
+    to: { opacity: active ? 1 : width < 480 ? 1 : 0 },
     delay: active ? 2000 : 0,
     config: { duration: active ? 1000 : 0, easing: easings.easeOutQuart },
   });
   const CardEnter2 = useSpring({
     from: { opacity: 0 },
-    to: { opacity: active ? 1 :width< 480 ? 1: 0 },
+    to: { opacity: active ? 1 : width < 480 ? 1 : 0 },
     delay: active ? 3000 : 0,
     config: { duration: active ? 1000 : 0, easing: easings.easeOutQuart },
   });
   const CardEnter3 = useSpring({
     from: { opacity: 0 },
-    to: { opacity: active ? 1:width< 480 ? 1 : 0 },
+    to: { opacity: active ? 1 : width < 480 ? 1 : 0 },
     delay: active ? 4000 : 0,
     config: { duration: active ? 1000 : 0, easing: easings.easeOutQuart },
   });
@@ -96,7 +96,7 @@ export default function SalesService() {
     if (step < 2) {
       setStep(step + 1);
     } else {
-      setNextSection(6);
+      setNextSection(5);
       setActiveSection(null);
     }
   };
@@ -104,7 +104,7 @@ export default function SalesService() {
     if (step > -1) {
       setStep(step - 1);
     } else {
-      setNextSection(4);
+      setNextSection(3);
       setActiveSection(null);
     }
   };
@@ -187,7 +187,7 @@ export default function SalesService() {
   return (
     <ServicesSection
       active={active}
-      status={nextSection === 5 ? "show" : nextSection < 5 ? "before" : "after"}
+      status={nextSection === 4 ? "show" : nextSection < 4 ? "before" : "after"}
       {...bind()}
     >
       <Title>در کنارتان هستیم</Title>
@@ -237,7 +237,7 @@ const ServicesSection = styled(animated.section)<{
     position: static;
     height: unset;
     z-index: 20;
-    padding-top:0;
+    padding-top: 0;
   }
 `;
 
@@ -278,8 +278,8 @@ const NumberPart = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  @media (max-width:480px){
-    display:none;
+  @media (max-width: 480px) {
+    display: none;
   }
 `;
 
@@ -331,8 +331,7 @@ const ServicesContainer = styled(animated.div)`
     height: 400px;
     justify-content: flex-start;
     gap: 300px;
-    height:550px;
-
+    height: 550px;
   }
 `;
 
