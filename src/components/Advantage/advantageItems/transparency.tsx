@@ -29,15 +29,13 @@ export default function Transparency({ active }: { active: boolean }) {
     <>
       <TextBox>
         <TickIconVideo styleProps={videoStyle} play={active} />
-        <SubTitle style={sectionStyle}>حقوق و مزایا،</SubTitle>
-        <MainTitle style={sectionStyle}>شفاف‌تر از همیشه</MainTitle>
+        <SubTitle style={sectionStyle}>شفافیت در حقوق و مزایا</SubTitle>
         <Text style={textStyle}>
-          پژوهش‌ها نشان می‌دهد: هرچه حقوق و مزایا شفاف تر باشد، بازده کارمندان
-          بیشتر است. تیکمنت <b>گزارش‌های دقیقی</b> را در اختیار مدیران و
-          کارمندان قرار می‌دهد. از
-          <b> محاسبۀ حقوق و مزایا، مرخصی‌ها و اضافه‌کاری‌ها </b>
-          گرفته تا <b>تأخیر و تعجیل، غیبت‌ها و پاداش‌ها، حق بیمه </b> و ده‌ها
-          مورد دیگر{" "}
+          شفافیت در حقوق و مزایا همواره افزایش بازدهی را به همراه داشته است
+          <br />
+          تیکمنت با ثبت و محاسبه‌ی دقیق ساعات کاری، گزارش‌های دقیقی را از حقوق و
+          مزایا، مرخصی‌‌‌ و اضافه‌کاری‌ها‌، غیبت‌ و پاداش‌ها‌، حق بیمه و ده‌ها
+          مورد دیگر را در اختیار مدیران و کارمندان قرار می‌دهد
         </Text>
       </TextBox>
     </>
@@ -59,7 +57,7 @@ const TextBox = styled.div`
     text-align: center;
     padding-left: 0;
     top: 30vh;
-    padding-top:50px;
+    padding-top: 50px;
   }
 `;
 
@@ -78,7 +76,7 @@ const SubTitle = styled(MainTitle)`
   margin: 0;
   @media (max-width: 480px) {
     font-size: 36px;
-    text-align:end;
+    text-align: end;
     font-weight: 600;
   }
 `;

@@ -3,18 +3,11 @@ import { useSpring, easings, animated } from "react-spring";
 import styled from "styled-components";
 import TickIconVideo from "./TickIconVideo";
 
-export default function GEOFence({ active }: { active: boolean }) {
+export default function FastDetection({ active }: { active: boolean }) {
   const sectionStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : 0 },
-    delay: 1000,
-    config: { duration: 1000, easing: easings.easeOutQuart },
-  });
-
-  const mobileContentStyle = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: active ? 1 : 0 },
-    delay: active ? 2000 : 0,
+    delay: active ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
@@ -36,28 +29,19 @@ export default function GEOFence({ active }: { active: boolean }) {
     <>
       <TextBox>
         <TickIconVideo styleProps={videoStyle} play={active} />
-        <SubTitle style={sectionStyle}>تکنولوژی GEO-Fence</SubTitle>
-        <MainTitle style={sectionStyle}>با فراموشی خداحافظی کنید</MainTitle>
+        <MainTitle style={sectionStyle}>
+          تشخیص چهره و اثر انگشت در کمتر از ۱ ثانیه
+        </MainTitle>
         <Text style={textStyle}>
-          تیکمنت بخش نرم‌افزاری جذابی هم دارد. به عنوان مثال با نصب اپلیکیشن
-          تیکمنت بر روی تلفن همراه، قابلیتِ Geo-Fence به کمک شما آمده و به محض
-          قرارگیری در محدوده شرکت، ثبت تردد را به شما یادآوری می‌کند. به این
-          ترتیب، دیگر ثبت ورود و خروجتان را فراموش نخواهید کرد
+          تیکمنت با بهره‌گیری از تکنولوژی و اسکن سه‌بعدی IRFT، چهره‌ پرسنل را
+          حتی از پشت ماسک نیز تشخیص ‌می‌دهد. به علاوه، استفاده از نسل جدید
+          سنسورهای نوری باعث شده تا حسگر اثر انگشت هیچگونه خط و خشی برنداشته و
+          حتی در استفاده‌های طولانی مدت هم دقیق و سریع عمل کند
         </Text>
       </TextBox>
     </>
   );
 }
-
-const Image = styled(animated.img)`
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-`;
-
-const ImageContent = styled(Image)`
-  z-index: 25;
-`;
 
 const TextBox = styled.div`
   position: absolute;
@@ -66,32 +50,43 @@ const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: 8vw;
-`;
 
-const Tick = styled(animated.video)`
-  position: absolute;
-  width: 6.3vw;
-  height: 6.3vw;
-  object-fit: contain;
-  top: 3vw;
-  right: -8vw;
+  @media (max-width: 480px) {
+    height: auto;
+    right: 46px;
+    left: 46px;
+    text-align: center;
+    padding-left: 0;
+    top: 30vh;
+    padding-top: 50px;
+  }
 `;
 
 const MainTitle = styled(animated.h2)`
-  font-size: 3.1vw;
-  font-weight: 500;
+  font-size: 3.6vw;
   color: #183573;
   margin: 0;
+  @media (max-width: 480px) {
+    font-size: 42px;
+  }
 `;
 
 const SubTitle = styled(MainTitle)`
   font-size: 3.1vw;
   font-weight: 500;
   margin: 0;
+  @media (max-width: 480px) {
+    font-size: 36px;
+    text-align: end;
+    font-weight: 600;
+  }
 `;
 
 const Text = styled(animated.p)`
   font-size: 1.6vw;
   color: #292929;
   font-weight: 300;
+  @media (max-width: 480px) {
+    font-size: 19px;
+  }
 `;

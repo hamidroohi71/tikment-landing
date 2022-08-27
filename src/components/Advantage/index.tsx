@@ -65,7 +65,7 @@ export default function Advantage() {
 
   const backgroundImageStyle = useSpring({
     from: { opacity: 1 },
-    to: { opacity: index > 2 ? 0 : 1 },
+    to: { opacity: index > 3 ? 0 : 1 },
     delay: 1000,
     config: { duration: 500, easing: easings.easeOutQuart },
   });
@@ -73,16 +73,16 @@ export default function Advantage() {
   const CircleStyle = useSpring({
     from: { opacity: 0, transform: "scale(0)", transformOrigin: "center" },
     to: {
-      opacity: index > 2 ? 1 : 0,
+      opacity: index > 3 ? 1 : 0,
       transform:
-        index === 3
+        index === 4
           ? "scale(1) translateX(0%)"
-          : index === 4 || index === 5
+          : index === 5 || index === 6
           ? "scale(1) translateX(-90%)"
-          : index > 5
+          : index > 6
           ? "scale(0.8) translateX(-109%)"
           : "scale(0.8) translateX(-109%)",
-      transformOrigin: index > 5 ? "left top" : "center",
+      transformOrigin: index > 6 ? "left top" : "center",
     },
     delay: index === 3 ? 1500 : 0,
     config: { duration: 500, easing: easings.easeOutQuart },

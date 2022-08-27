@@ -32,29 +32,23 @@ export default function Trip({ active }: { active: boolean }) {
         <SubTitle style={sectionStyle}>با خیالی راحت</SubTitle>
         <MainTitle style={sectionStyle}>حتی در سفر</MainTitle>
         <Text style={textStyle}>
-          حتی در<b> سفر و دورکاری </b> ، تیکمنت در کنار شماست. با اپلیکیشن{" "}
-          <b>تیکمنت</b>، مدیران می‌توانند فقط با یک کلیک درخواست‌ها را بررسی
-          کنند کارمندان نیز در <b> ایام دورکاری </b>، به‌راحتی ساعت شروع و پایان
-          کارشان را ثبت می‌کنند
+          حتی در سفر و دورکاری، تیکمنت در کنار شماست. در ایام دورکاری، مدیران
+          می‌توانند با اپلیکیشن تیکمنت تمامی درخواست‌‌‌ها را تنها با یک کلیک
+          بررسی کنند و کارمندان نیز می‌توانند مواردی مثل ساعت شروع و پایان کار و
+          یا درخواست مرخصی را به راحتی ثبت کنند
         </Text>
       </TextBox>
     </>
   );
 }
 
-const Image = styled(animated.img)`
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-`;
-
 const TextBox = styled.div`
   position: absolute;
   top: 26vh;
-  right: 59vw;
+  left: 43vw;
+  right: 13vw;
   display: flex;
   flex-direction: column;
-  padding-left: 8vw;
 `;
 
 const MainTitle = styled(animated.h2)`
