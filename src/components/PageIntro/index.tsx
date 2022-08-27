@@ -5,6 +5,7 @@ import Background from "./background";
 import FirstForm from "./firstForm";
 import GlassPattern from "./glassPattern";
 import Mobile from "./mobile";
+import ProductForm from "./productForm";
 import StartForm from "./startForm";
 import Title from "./title";
 
@@ -12,6 +13,7 @@ export default function PageIntro() {
   const { activeSection, nextSection, setActiveSection } = useSection();
   const [active, setActive] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(0);
 
   useEffect(() => {
     if (active) {
@@ -37,10 +39,13 @@ export default function PageIntro() {
     <PageIntroduction active={active}>
       <GlassPattern />
       <Background />
-      <Mobile />
+      <Mobile selectedProuct={selectedProduct} />
       <Title formOpen={formOpen} />
       {/* for first section */}
-      <FirstForm handleFormOpen={handleFormOpen} />
+      <ProductForm
+        setSelectedProduct={setSelectedProduct}
+        handleFormOpen={handleFormOpen}
+      />
       {/* for advantage section */}
       {/* <StartForm handleFormOpen={handleFormOpen} /> */}
     </PageIntroduction>

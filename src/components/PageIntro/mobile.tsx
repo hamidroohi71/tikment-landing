@@ -4,8 +4,9 @@ import styled from "styled-components";
 import { useSection } from "../../context/sectionStore";
 import { useSpring, animated } from "react-spring";
 import useWidth from "../../hooks/useWidth";
+import data from "./formOptions/productData.json";
 
-export default function Mobile() {
+export default function Mobile({ selectedProuct }: any) {
   const { activeSection } = useSection();
   const width = useWidth();
   const styleProp = useSpring({
@@ -21,7 +22,10 @@ export default function Mobile() {
   });
   return (
     <MobilePhoto style={styleProp}>
-      <img src={MobileImage} alt="Handy tikment app" />
+      <img
+        src={data.productData[selectedProuct].image}
+        alt="Handy tikment app"
+      />
     </MobilePhoto>
   );
 }

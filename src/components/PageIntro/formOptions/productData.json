@@ -1,0 +1,19 @@
+{
+  "productData": [
+    {
+      "name": "تشخیص چهره",
+      "icon": "/fastContactForm/productSelection/faceDetection.svg#faceDetetion",
+      "image": "/fastContactForm/productSelection/faceDetectionImage.png"
+    },
+    {
+      "name": "اپلیکیشن موبایل",
+      "icon": "/fastContactForm/productSelection/mobileApp.svg#mobileApp",
+      "image": "/fastContactForm/productSelection/mobileAppImage.png"
+    },
+    {
+      "name": "اثر انگشت",
+      "icon": "/fastContactForm/productSelection/fingerPrint.svg#fingerPrint",
+      "image": "/fastContactForm/productSelection/FingerPrintImage.png"
+    }
+  ]
+}
