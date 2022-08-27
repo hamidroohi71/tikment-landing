@@ -33,19 +33,16 @@ export default function LastSec() {
 
   const nextPart = () => {
     console.log("next");
-    if (part < 2) {
-      setPart(part + 1);
-    }
+
+    setNextSection(7);
+    setActiveSection(null);
   };
 
   const prevPart = () => {
     console.log("prev");
-    if (part > 0) {
-      setPart(part - 1);
-    } else {
-      setNextSection(5);
-      setActiveSection(null);
-    }
+
+    setNextSection(5);
+    setActiveSection(null);
   };
 
   const width = useWidth();
@@ -105,16 +102,8 @@ const LastSection = styled.section<{
   width: 100vw;
   height: 100vh;
   overflow: visible;
-  position: absolute;
+  position: relative;
   top: 0;
-
-  transform: ${({ status }) =>
-    status === "show"
-      ? "translateY(0vh)"
-      : status === "before"
-      ? "translateY(100vh)"
-      : "translateY(-100vh)"};
-
   z-index: ${({ active }) => (active ? 20 : 0)};
   transition: 0.8s ease-out;
 

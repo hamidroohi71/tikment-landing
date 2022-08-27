@@ -191,14 +191,8 @@ const CustomerElement = styled.section<{ active: boolean; status: string }>`
   flex-direction: column;
   justify-content: space-between;
   padding: 5vh 10vw 8vh;
-  position: absolute;
+  position: relative;
   z-index: ${({ active }) => (active ? 20 : 0)};
-  transform: ${({ status }) =>
-    status === "show"
-      ? "translateY(0vh)"
-      : status === "before"
-      ? "translateY(100vh)"
-      : "translateY(-100vh)"};
   transition: 0.5s ease-out;
 
   @media (max-width: 480px) {

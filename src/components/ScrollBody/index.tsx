@@ -75,10 +75,11 @@ const Body = styled.div`
 
 const Content = styled.div<{ section: number }>`
   width: 100%;
-  height: 100vh;
+  height: 800vh;
   overflow: hidden;
   position: absolute;
-
+  transform: translateY(-${({ section }) => ((section - 1) / 8) * 100}%);
+  transition: 0.5s ease-out;
   @media (max-width: 480px) {
     position: static;
     height: unset;

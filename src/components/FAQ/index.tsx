@@ -106,7 +106,8 @@ const FAQSection = styled(animated.section)`
   justify-content: center;
   align-items: center;
   padding: 10vh 12vw;
-
+  position: relative;
+  height: 100vh;
   @media (max-width: 480px) {
     order: 0;
     padding: 10vh 28px;

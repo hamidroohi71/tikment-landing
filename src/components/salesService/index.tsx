@@ -224,14 +224,8 @@ const ServicesSection = styled(animated.section)<{
   width: 100vw;
   overflow: hidden;
   padding: 13vh 0 0;
-  position: absolute;
+  position: relative;
   z-index: ${({ active }) => (active ? 20 : 0)};
-  transform: ${({ status }) =>
-    status === "show"
-      ? "translateY(0vh)"
-      : status === "before"
-      ? "translateY(100vh)"
-      : "translateY(-100vh)"};
   transition: 0.5s ease-in;
 
   @media (max-width: 480px) {
