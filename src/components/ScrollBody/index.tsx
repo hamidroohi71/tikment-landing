@@ -12,7 +12,7 @@ export default function ScrollBody({ children }: { children: JSX.Element }) {
     useSection();
 
   const nextSectionHnadler = () => {
-    if (activeSection < 6) {
+    if (activeSection < 7) {
       setNextSection(activeSection + 1);
       setActiveSection(null);
     }

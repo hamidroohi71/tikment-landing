@@ -52,7 +52,7 @@ export default function Navigation({
   });
   const elements = [];
 
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 7; i++) {
     elements.push(
       <NavigationDot
         goToSection={goToSection}

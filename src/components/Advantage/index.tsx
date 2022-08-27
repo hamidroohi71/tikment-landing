@@ -203,18 +203,13 @@ const AdvantageSection = styled(animated.section)<{
   status: string;
 }>`
   height: 100vh;
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: center;
   top: 0;
   width: 100vw;
   z-index: ${({ active }) => (active ? 20 : 0)};
-  transform: ${({ status }) =>
-    status === "show"
-      ? "translateY(0vh)"
-      : status === "before"
-      ? "translateY(100vh)"
-      : "translateY(-100vh)"};
+
   transition: 0.5s ease-in;
   @media (max-width: 480px) {
     position: relative;

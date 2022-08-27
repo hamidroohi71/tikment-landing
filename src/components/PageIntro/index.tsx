@@ -57,7 +57,7 @@ const PageIntroduction = styled.section<{ active: boolean }>`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  position: absolute;
+  position: relative;
   z-index: ${({ active }) => (active ? 20 : 0)};
 
   @media (max-width: 1200px) {
