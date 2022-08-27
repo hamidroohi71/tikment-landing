@@ -56,6 +56,7 @@ export default function Customer() {
   useEffect(() => {
     if (active) {
       setTimeout(() => {
+        console.log("bug:", nextSection);
         setActiveSection(nextSection);
       }, 500);
     }

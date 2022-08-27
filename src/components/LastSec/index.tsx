@@ -24,7 +24,7 @@ export default function LastSec() {
   }, [active, nextSection]);
 
   useEffect(() => {
-    if (activeSection === 7) {
+    if (activeSection === 6) {
       setActive(true);
     } else if (activeSection !== null) {
       setActive(false);
@@ -43,7 +43,7 @@ export default function LastSec() {
     if (part > 0) {
       setPart(part - 1);
     } else {
-      setNextSection(6);
+      setNextSection(5);
       setActiveSection(null);
     }
   };
@@ -82,7 +82,7 @@ export default function LastSec() {
 
   return (
     <LastSection
-      status={nextSection === 7 ? "show" : nextSection < 7 ? "before" : "after"}
+      status={nextSection === 6 ? "show" : nextSection < 6 ? "before" : "after"}
       dis={dis - window.innerHeight}
       part={part}
       {...bind()}
@@ -90,7 +90,6 @@ export default function LastSec() {
     >
       <div ref={lengthRef} className="last">
         <Contact />
-        <FAQ />
         <Footer />
       </div>
     </LastSection>
@@ -107,19 +106,15 @@ const LastSection = styled.section<{
   height: 100vh;
   overflow: visible;
   position: absolute;
+  top: 0;
 
-  transform: ${({ status, active, part, dis }) =>
+  transform: ${({ status }) =>
     status === "show"
-      ? part === 0
-        ? "translateY(0)"
-        : part === 1
-        ? "translateY(-55%)"
-        : `translateY(-${dis + 30}px)`
-      : "translateY(100vh)"};
+      ? "translateY(0vh)"
       : status === "before"
       ? "translateY(100vh)"
       : "translateY(-100vh)"};
-  
+
   z-index: ${({ active }) => (active ? 20 : 0)};
   transition: 0.8s ease-out;
 
@@ -131,8 +126,8 @@ const LastSection = styled.section<{
     height: unset;
     transform: none;
 
-    .last{
-      display:flex;
+    .last {
+      display: flex;
       flex-direction: column;
     }
   }

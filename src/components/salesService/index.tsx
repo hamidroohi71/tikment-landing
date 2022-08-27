@@ -35,6 +35,7 @@ export default function SalesService() {
   useEffect(() => {
     if (active) {
       setTimeout(() => {
+        console.log("sales:", nextSection);
         setActiveSection(nextSection);
       }, 500);
     }
