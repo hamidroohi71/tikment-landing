@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import useWidth from "../../hooks/useWidth";
-import Video1 from "./IntroVideo01.mp4";
-import Video2 from "./IntroVideo02.mp4";
-import Video3 from "./IntroVideo03.mp4";
-import Video4 from "./IntroVideo04.mp4";
+// import Video1 from "./IntroVideo01.mp4";
+// import Video2 from "./IntroVideo02.mp4";
+import Video1 from "./IntroVideo03.mp4";
+import Video2 from "./IntroVideo04.mp4";
 import LoadingGif from "./loadIcon.webm";
 import arrow from "./arrow-right.png";
 
@@ -120,36 +120,6 @@ export default function InitialVideo({
         loop={!loadList.includes(3)}
         onCanPlayThrough={() => {
           onLoad(2);
-        }}
-        onEnded={() => {
-          setNextVideo(3);
-        }}
-      />
-      <Video
-        ref={videoRef3}
-        show={playIndex === 3}
-        src={Video3}
-        autoPlay={playIndex === 3}
-        muted={true}
-        width="100%"
-        loop={!loadList.includes(4)}
-        onCanPlayThrough={() => {
-          onLoad(3);
-        }}
-        onEnded={() => {
-          setNextVideo(4);
-        }}
-      />
-      <Video
-        ref={videoRef4}
-        show={playIndex === 4}
-        src={Video4}
-        autoPlay={playIndex === 4}
-        muted={true}
-        width="100%"
-        loop={!domLoaded}
-        onCanPlayThrough={() => {
-          onLoad(4);
         }}
         onEnded={() => {
           handleLoaded();
