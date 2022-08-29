@@ -62,6 +62,9 @@ const TextBox = styled.div`
   left: 45.7vw;
   display: flex;
   flex-direction: column;
+  b {
+    font-weight: 500;
+  }
 `;
 
 const MainTitle = styled(animated.h2)`

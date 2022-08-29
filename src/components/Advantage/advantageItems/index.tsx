@@ -106,7 +106,7 @@ export default function AdvantagesList({
 
   const LaptopStyle1 = useSpring({
     from: { transform: "translateX(-150%)" },
-    to: { transform: index === 6 ? "translateX(0%)" : "translateX(-150%)" },
+    to: { transform: index === 7 ? "translateX(0%)" : "translateX(-150%)" },
     delay: 0,
     config: { duration: 500, easing: easings.easeOutQuart },
   });
@@ -119,24 +119,20 @@ export default function AdvantagesList({
   });
 
   const managementContentStyle = useSpring({
-    from: { opacity: 0, transform: "scale(1)" },
+    from: { opacity: 0 },
     to: {
-      opacity: index === 7 ? 1 : 0,
-      transform:
-        index === 5 ? "scale(1)" : index === 6 ? "scale(0.3)" : "scale(1)",
+      opacity: index === 6 ? 1 : 0,
     },
-    delay: index === 5 ? 1000 : 0,
+    delay: index === 6 ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const LaptopStyle2 = useSpring({
-    from: { opacity: 0, transform: "scale(1)" },
+    from: { opacity: 0 },
     to: {
-      opacity: index === 7 ? 1 : 0,
-      transform:
-        index === 7 ? "scale(1)" : index === 7 ? "scale(0.3)" : "scale(1)",
+      opacity: index === 6 ? 1 : 0,
     },
-    delay: index === 7 ? 1000 : 0,
+    delay: index === 6 ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
@@ -186,12 +182,12 @@ export default function AdvantagesList({
         alt="geo-fence"
       />
       <Image
-        style={{ ...LaptopStyle2, transformOrigin: "5% center" }}
+        style={LaptopStyle2}
         src={LaptopImage2}
         alt="مدیریت بهینهٔ شیفت‌ها"
       />
       <ImageContent
-        style={{ ...managementContentStyle, transformOrigin: "5% center" }}
+        style={managementContentStyle}
         src={managementImage}
         alt="geo-fence"
       />

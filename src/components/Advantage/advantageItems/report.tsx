@@ -37,10 +37,12 @@ export default function Report({ active }: { active: boolean }) {
         <TickIconVideo styleProps={videoStyle} play={active} />
         <MainTitle style={titleStyle}>گزارش‌های هوش تجاری</MainTitle>
         <Text style={textStyle}>
-          در سال‌های اخیر از دلایل محبوبیت تیکمنت ارائۀ گزارش‌هایی توسط این نرم
-          افزار با عنوان <b> گزارش‌های هوش تجاری </b> بوده است. گزارش‌هایی که با
-          <b> تحلیل دقیق بازده و عملکرد کارکنان </b>، به مدیران کمک می‌کنند تا
-          <b> هزینه‌های سازمان را کاهش و سودآوری آن را افزایش دهند </b>
+          از مهم‌ترین دلایل محبوبیت تیکمنت در میان مدیران، ارائه‌ی گزارش‌هایی
+          تحت عنوان <b>گزارش‌های هوش تجاری</b> بوده است.
+          <br />
+          این گزارش‌ها با بررسی عملکرد کارکنان و تحلیلی دقیق از بازدهی ساعات
+          کاری، کمک ارزشمندی به کاهش هزینه‌ها و افزایش سودآوری سازمان‌ها کرده
+          است
         </Text>
       </TextBox>
     </>
@@ -64,6 +66,10 @@ const TextBox = styled.div`
   left: 45.7vw;
   display: flex;
   flex-direction: column;
+
+  b {
+    font-weight: 500;
+  }
 `;
 
 const MainTitle = styled(animated.h2)`
