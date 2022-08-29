@@ -66,7 +66,7 @@ export default function Advantage() {
   const backgroundImageStyle = useSpring({
     from: { opacity: 1 },
     to: { opacity: index > 3 ? 0 : 1 },
-    delay: 1000,
+    delay: 1000 > 2 ? 0 : 1000,
     config: { duration: 500, easing: easings.easeOutQuart },
   });
 
@@ -76,15 +76,15 @@ export default function Advantage() {
       opacity: index > 3 ? 1 : 0,
       transform:
         index === 4
-          ? "scale(1) translateX(0%)"
+          ? "scale(1)"
           : index === 5 || index === 6
-          ? "scale(1) translateX(-90%)"
+          ? "scale(1)"
           : index > 6
-          ? "scale(0.8) translateX(-109%)"
-          : "scale(0.8) translateX(-109%)",
-      transformOrigin: index > 6 ? "left top" : "center",
+          ? "scale(0.8)"
+          : "scale(0.8)",
+      transformOrigin: index > 3 ? "left top" : "center",
     },
-    delay: index === 3 ? 1500 : 0,
+    delay: index > 4 ? 1500 : 0,
     config: { duration: 500, easing: easings.easeOutQuart },
   });
 
@@ -241,7 +241,7 @@ const CircleBack = styled(animated.div)`
   );
   position: absolute;
   top: 8vw;
-  right: 5.6vw;
+  left: 5.6vw;
   z-index: 20;
 `;
 

@@ -65,12 +65,12 @@ export default function AdvantagesList({
   });
 
   const mobileImageStyle2 = useSpring({
-    from: { opacity: 0, transform: "translateX(10%)" },
+    from: { opacity: 0, transform: "translateX(-10%)" },
     to: {
       opacity: index === 4 ? 1 : 0,
-      transform: index === 4 ? "translateX(0%)" : "translateX(10%)",
+      transform: index === 4 ? "translateX(0%)" : "translateX(-10%)",
     },
-    delay: index === 3 ? 1000 : 0,
+    delay: index === 4 ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
@@ -91,7 +91,7 @@ export default function AdvantagesList({
   const reportContentStyle = useSpring({
     from: { opacity: 0 },
     to: { opacity: index === 5 ? 1 : 0 },
-    delay: index === 4 ? 1500 : 0,
+    delay: index === 5 ? 1500 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
