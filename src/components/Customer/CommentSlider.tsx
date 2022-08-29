@@ -33,7 +33,6 @@ export default function CommentSlider({
     const video = document.getElementById(
       "tickVideo" + selectedIndex
     ) as HTMLVideoElement;
-    // console.log("tickVideo" + selectedIndex);
     setTimeout(() => {
       video.play();
     }, 700);
@@ -188,9 +187,9 @@ const TickMotion = styled.video<{ selected: boolean }>`
   bottom: -11px;
   object-fit: contain;
   opacity: ${({ selected }) => (selected ? 1 : 0)};
-  transition-delay: ${({ selected }) => (selected ? "0.7s" : "0s")}; ;
+  transition-delay: ${({ selected }) => (selected ? "0.7s" : "0s")};
 
-  @media (max-width: 480px){
+  @media (max-width: 480px) {
     width: 45px;
     height: 45px;
     right: -50px;
@@ -259,7 +258,7 @@ const Title = styled.div<{ selected: boolean }>`
       font-size: 17px;
       line-height: 35px;
       text-align: center;
-      margin-right : -50px;
+      margin-right: -50px;
     }
   }
 `;

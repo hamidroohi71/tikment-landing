@@ -16,14 +16,6 @@ export default function FAQ() {
   const width = useWidth();
 
   useEffect(() => {
-    if (active) {
-      setTimeout(() => {
-        setActiveSection(nextSection);
-      }, 500);
-    }
-  }, [active, nextSection]);
-
-  useEffect(() => {
     if (activeSection === 5) {
       setActive(true);
     } else if (activeSection !== null) {
@@ -93,7 +85,7 @@ export default function FAQ() {
     />
   ));
   return (
-    <FAQSection {...bind()} style={sectionStyle}>
+    <FAQSection style={sectionStyle}>
       <Title>پرسش‌های شما</Title>
       {faqElements}
     </FAQSection>

@@ -99,7 +99,6 @@ export default function Comments() {
     <CommentSection
       active={active}
       status={nextSection === 6 ? "show" : nextSection < 6 ? "before" : "after"}
-      {...bind()}
     >
       <Title>نظرات مشتریان تیکمنت</Title>
       <CommentsContainer dis={distance} commentIndex={commentIndex}>

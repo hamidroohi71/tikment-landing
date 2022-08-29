@@ -27,7 +27,6 @@ export default function CustomerCarousel({
   const { activeSection } = useSection();
   // const [currentIndex, setCurrentIndex] = useState(0);
   // const [currentIndex, setCurrentIndex] = useState(0);
-  console.log("showComment:", showComment);
   const customerData = data.customerData.map((customer, index) => (
     <Item
       // selected={showComment && currentIndex === index}

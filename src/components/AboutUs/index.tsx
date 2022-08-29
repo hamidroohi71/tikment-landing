@@ -13,14 +13,6 @@ export default function AboutUs() {
   const [active, setActive] = useState(false);
 
   useEffect(() => {
-    if (active) {
-      setTimeout(() => {
-        setActiveSection(nextSection);
-      }, 500);
-    }
-  }, [active, nextSection]);
-
-  useEffect(() => {
     if (activeSection === 7) {
       setActive(true);
     } else if (activeSection !== null) {
@@ -29,7 +21,6 @@ export default function AboutUs() {
   }, [activeSection]);
 
   const handlePrevSection = () => {
-    console.log("prev");
     setNextSection(6);
     setActiveSection(null);
   };
@@ -57,7 +48,7 @@ export default function AboutUs() {
   });
 
   return (
-    <AboutUsSec {...bind()}>
+    <AboutUsSec>
       <Title>درباره تیکمنت</Title>
       <Text>
         سیستم حضوروغیاب تیکمنت پیش‌تر با نام «جهان‌گستر پارس» در خدمت همکاران

@@ -31,7 +31,7 @@ function NavigationDot({
   return (
     <Dot
       onClick={() => {
-        goToSection(index);
+        goToSection(index + 1);
       }}
       selected={selected}
     ></Dot>

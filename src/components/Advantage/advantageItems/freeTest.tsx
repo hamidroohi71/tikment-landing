@@ -29,8 +29,6 @@ export default function FreeTest({ active }: { active: boolean }) {
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
-  console.log(open);
-
   return (
     <>
       <TextBox>

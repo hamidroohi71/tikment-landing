@@ -95,13 +95,6 @@ export default function Advantage() {
   //   },
   //   config: { duration: 500 },
   // });
-  useEffect(() => {
-    if (active) {
-      setTimeout(() => {
-        setActiveSection(nextSection);
-      }, 500);
-    }
-  }, [active, nextSection]);
 
   useEffect(() => {
     if (activeSection === 2) {
@@ -140,9 +133,7 @@ export default function Advantage() {
     }
   };
 
-  useEffect(() => {
-    // console.log(index);
-  }, [index]);
+  useEffect(() => {}, [index]);
 
   const lethargy = new Lethargy();
 
@@ -170,7 +161,6 @@ export default function Advantage() {
   return (
     <AdvantageSection
       // onWheel={(e) => e.stopPropagation()}
-      {...bind()}
       active={active}
       // style={sectionStyle}
       status={nextSection === 2 ? "show" : nextSection < 2 ? "before" : "after"}

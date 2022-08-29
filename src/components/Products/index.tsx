@@ -11,7 +11,6 @@ import GlassPattern from "./glassPattern";
 import Background from "../PageIntro/background";
 const { Lethargy } = require("lethargy");
 
-
 let timeOut: NodeJS.Timeout;
 let myInterval: any;
 
@@ -24,7 +23,6 @@ export default function Product() {
   const [productIndex, setProductIndex] = useState(0);
 
   useEffect(() => {
-    console.log(productIndex, "productIndex");
     if (productIndex > 0) {
       setTitleOn(false);
     } else {
@@ -33,7 +31,6 @@ export default function Product() {
   }, [productIndex]);
 
   const nextIndexHandler = () => {
-    console.log("next");
     if (productIndex < 3) {
       setProductIndex(productIndex + 1);
     } else {
@@ -43,7 +40,6 @@ export default function Product() {
   };
 
   const prevIndexHandler = () => {
-    console.log("prev");
     if (productIndex > 0) {
       setProductIndex(productIndex - 1);
     } else {
@@ -124,7 +120,6 @@ export default function Product() {
 
   return (
     <ProductSection
-      {...bind()}
       active={active}
       status={nextSection === 3 ? "show" : nextSection < 3 ? "before" : "after"}
     >
@@ -204,8 +199,8 @@ const TopHandle = styled.div`
   background: url(${TopHandleBack}) bottom/contain no-repeat;
   cursor: pointer;
 
-  @media(max-width:480px){
-    display:none;
+  @media (max-width: 480px) {
+    display: none;
   }
 `;
 
@@ -281,6 +276,5 @@ const ProductPart = styled(animated.div)`
 
   @media (max-width: 480px) {
     top: 0;
-   
   }
 `;

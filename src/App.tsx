@@ -24,14 +24,6 @@ function App() {
   const width = useWidth();
 
   useEffect(() => {
-    if (active) {
-      setTimeout(() => {
-        setActiveSection(nextSection);
-      }, 500);
-    }
-  }, [active, nextSection]);
-
-  useEffect(() => {
     if (activeSection === 6) {
       setActive(true);
     } else if (activeSection !== null) {

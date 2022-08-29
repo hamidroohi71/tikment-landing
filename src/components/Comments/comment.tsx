@@ -19,7 +19,6 @@ export default function Comment(props: Props) {
     }
     if (elRef.current && commentIndex === index + 2) {
       props.setDistance(elRef.current.offsetTop);
-      console.log(elRef.current.offsetTop);
     }
   }, [index, commentIndex, elRef.current]);
 

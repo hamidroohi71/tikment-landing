@@ -23,13 +23,10 @@ export default function ContactUs() {
 
   useEffect(() => {
     if (window.location.href.includes("contactUs")) {
-      console.log("has");
       setContact(true);
     }
   }, []);
   // console.log(width);
-
-  console.log("hamidreza:", activeSection);
 
   return (
     <ContactElement

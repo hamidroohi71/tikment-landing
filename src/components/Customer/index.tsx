@@ -54,15 +54,6 @@ export default function Customer() {
   });
 
   useEffect(() => {
-    if (active) {
-      setTimeout(() => {
-        console.log("bug:", nextSection);
-        setActiveSection(nextSection);
-      }, 500);
-    }
-  }, [active, nextSection]);
-
-  useEffect(() => {
     if (activeSection === 3) {
       setActive(true);
       timeOut = setTimeout(() => {
@@ -137,7 +128,6 @@ export default function Customer() {
 
   return (
     <CustomerElement
-      {...bind()}
       active={active}
       status={nextSection === 3 ? "show" : nextSection < 3 ? "before" : "after"}
     >

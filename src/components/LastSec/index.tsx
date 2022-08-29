@@ -16,14 +16,6 @@ export default function LastSec() {
   const [dis, setDis] = useState(0);
 
   useEffect(() => {
-    if (active) {
-      setTimeout(() => {
-        setActiveSection(nextSection);
-      }, 500);
-    }
-  }, [active, nextSection]);
-
-  useEffect(() => {
     if (activeSection === 6) {
       setActive(true);
     } else if (activeSection !== null) {
@@ -32,15 +24,11 @@ export default function LastSec() {
   }, [activeSection]);
 
   const nextPart = () => {
-    console.log("next");
-
     setNextSection(7);
     setActiveSection(null);
   };
 
   const prevPart = () => {
-    console.log("prev");
-
     setNextSection(5);
     setActiveSection(null);
   };
@@ -82,7 +70,6 @@ export default function LastSec() {
       status={nextSection === 6 ? "show" : nextSection < 6 ? "before" : "after"}
       dis={dis - window.innerHeight}
       part={part}
-      {...bind()}
       active={active}
     >
       <div ref={lengthRef} className="last">

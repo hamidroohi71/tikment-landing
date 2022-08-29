@@ -21,7 +21,6 @@ export default function SalesService() {
 
   useEffect(() => {
     clearTimeout(myTime);
-    console.log(step);
     const newHoverList = [false, false, false];
     const newList = [true, true, true];
     newHoverList[step] = true;
@@ -31,15 +30,6 @@ export default function SalesService() {
       setCardFront([...newList]);
     }, 1000);
   }, [step]);
-
-  useEffect(() => {
-    if (active) {
-      setTimeout(() => {
-        console.log("sales:", nextSection);
-        setActiveSection(nextSection);
-      }, 500);
-    }
-  }, [active, nextSection]);
 
   useEffect(() => {
     if (activeSection === 4) {
@@ -189,7 +179,6 @@ export default function SalesService() {
     <ServicesSection
       active={active}
       status={nextSection === 4 ? "show" : nextSection < 4 ? "before" : "after"}
-      {...bind()}
     >
       <Title>در کنارتان هستیم</Title>
       <Subtitle>

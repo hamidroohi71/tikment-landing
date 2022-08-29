@@ -16,14 +16,6 @@ export default function PageIntro() {
   const [selectedProduct, setSelectedProduct] = useState(0);
 
   useEffect(() => {
-    if (active) {
-      setTimeout(() => {
-        setActiveSection(nextSection);
-      }, 500);
-    }
-  }, [active, nextSection]);
-
-  useEffect(() => {
     if (activeSection === 1) {
       setActive(true);
     } else if (activeSection !== null) {

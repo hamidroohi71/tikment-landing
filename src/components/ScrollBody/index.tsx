@@ -13,15 +13,13 @@ export default function ScrollBody({ children }: { children: JSX.Element }) {
 
   const nextSectionHnadler = () => {
     if (activeSection < 7) {
-      setNextSection(activeSection + 1);
-      setActiveSection(null);
+      setActiveSection(activeSection + 1);
     }
   };
 
   const prevSectionHandler = () => {
     if (activeSection > 1) {
-      setNextSection(activeSection - 1);
-      setActiveSection(null);
+      setActiveSection(activeSection - 1);
     }
   };
 
@@ -50,14 +48,15 @@ export default function ScrollBody({ children }: { children: JSX.Element }) {
   });
 
   const goToSection = (index: number) => {
-    setNextSection(index + 1);
-    setActiveSection(null);
+    setActiveSection(index);
   };
 
   return (
     <Body {...bind()}>
       <Navigation goToSection={goToSection} />
-      <Content section={activeSection}>{children}</Content>
+      <Content className="content" section={activeSection}>
+        {children}
+      </Content>
     </Body>
   );
 }
