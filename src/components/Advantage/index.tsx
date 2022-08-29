@@ -75,16 +75,10 @@ export default function Advantage() {
     to: {
       opacity: index > 3 ? 1 : 0,
       transform:
-        index === 4
-          ? "scale(1)"
-          : index === 5 || index === 6
-          ? "scale(1)"
-          : index > 6
-          ? "scale(0.8)"
-          : "scale(0.8)",
+        index === 4 ? "scale(1)" : index > 4 ? "scale(0.8)" : "scale(0.8)",
       transformOrigin: index > 3 ? "left top" : "center",
     },
-    delay: index > 4 ? 1500 : 0,
+    delay: index > 4 ? 1000 : 0,
     config: { duration: 500, easing: easings.easeOutQuart },
   });
 

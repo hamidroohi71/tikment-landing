@@ -65,40 +65,63 @@ export default function AdvantagesList({
   });
 
   const mobileImageStyle2 = useSpring({
-    from: { opacity: 0, transform: "translateX(-10%)" },
-    to: {
-      opacity: index === 4 ? 1 : 0,
-      transform: index === 4 ? "translateX(0%)" : "translateX(-10%)",
+    from: {
+      opacity: 0,
+      transform: "translateX(-10%) scale(1)",
+      transformOrigin: "left",
     },
-    delay: index === 4 ? 1000 : 0,
+    to: {
+      opacity: index === 4 || index === 5 ? 1 : 0,
+      transform:
+        index === 4
+          ? "translateX(0%) scale(1)"
+          : index === 5
+          ? "translateX(0%) scale(0.4)"
+          : index < 4
+          ? "translateX(-10%) scale(1)"
+          : "translateX(0%) scale(0.4)",
+      transformOrigin: "left",
+    },
+    delay: index === 4 ? 1000 : index === 5 ? 500 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const tripMobileContentStyle = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: index === 4 ? 1 : 0 },
-    delay: index === 4 ? 1500 : 0,
+    from: { opacity: 0, transform: "scale(1)", transformOrigin: "left" },
+    to: {
+      opacity: index === 4 || index === 5 ? 1 : 0,
+      transform:
+        index === 4
+          ? " scale(1)"
+          : index === 5
+          ? "scale(0.4)"
+          : index < 4
+          ? "scale(1)"
+          : "scale(0.4)",
+      transformOrigin: "left",
+    },
+    delay: index === 4 ? 1000 : index === 5 ? 500 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const LaptopStyle1 = useSpring({
     from: { transform: "translateX(-150%)" },
-    to: { transform: index === 5 ? "translateX(0%)" : "translateX(-150%)" },
+    to: { transform: index === 6 ? "translateX(0%)" : "translateX(-150%)" },
     delay: 0,
     config: { duration: 500, easing: easings.easeOutQuart },
   });
 
   const reportContentStyle = useSpring({
     from: { opacity: 0 },
-    to: { opacity: index === 5 ? 1 : 0 },
-    delay: index === 5 ? 1500 : 0,
+    to: { opacity: index === 7 ? 1 : 0 },
+    delay: index === 7 ? 1500 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const managementContentStyle = useSpring({
     from: { opacity: 0, transform: "scale(1)" },
     to: {
-      opacity: index === 6 || index === 7 ? 1 : 0,
+      opacity: index === 7 ? 1 : 0,
       transform:
         index === 5 ? "scale(1)" : index === 6 ? "scale(0.3)" : "scale(1)",
     },
@@ -109,18 +132,18 @@ export default function AdvantagesList({
   const LaptopStyle2 = useSpring({
     from: { opacity: 0, transform: "scale(1)" },
     to: {
-      opacity: index === 6 || index === 7 ? 1 : 0,
+      opacity: index === 7 ? 1 : 0,
       transform:
-        index === 6 ? "scale(1)" : index === 7 ? "scale(0.3)" : "scale(1)",
+        index === 7 ? "scale(1)" : index === 7 ? "scale(0.3)" : "scale(1)",
     },
-    delay: index === 6 ? 1000 : 0,
+    delay: index === 7 ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const laughingManStyle = useSpring({
     from: { opacity: 0 },
-    to: { opacity: index === 7 ? 1 : 0 },
-    delay: index === 7 ? 1000 : 0,
+    to: { opacity: index === 5 ? 1 : 0 },
+    delay: index === 5 ? 1000 : 0,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
