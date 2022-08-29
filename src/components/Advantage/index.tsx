@@ -119,8 +119,7 @@ export default function Advantage() {
     if (index < 7) {
       setIndex(index + 1);
     } else {
-      setNextSection(3);
-      setActiveSection(null);
+      setActiveSection(3);
     }
   };
 
@@ -128,8 +127,7 @@ export default function Advantage() {
     if (index > 0) {
       setIndex(index - 1);
     } else {
-      setNextSection(1);
-      setActiveSection(null);
+      setActiveSection(1);
     }
   };
 
@@ -161,6 +159,7 @@ export default function Advantage() {
   return (
     <AdvantageSection
       // onWheel={(e) => e.stopPropagation()}
+      {...bind()}
       active={active}
       // style={sectionStyle}
       status={nextSection === 2 ? "show" : nextSection < 2 ? "before" : "after"}

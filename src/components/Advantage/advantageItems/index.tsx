@@ -19,7 +19,7 @@ import LaptopImage1 from "./assets/laptop.webp";
 import LaptopImage2 from "./assets/laptop2.webp";
 import managementImage from "./assets/management.webp";
 import laughingManImage from "./assets/laughingMan.webp";
-import DeviceImage from "./assets/device.png";
+import DeviceImage from "./assets/device.webp";
 import Badge from "./assets/freeTest.webp";
 import MobilePic from "./assets/mobile.png";
 import FastDetection from "./fastDetection";
@@ -177,8 +177,6 @@ export default function AdvantagesList({
         src={laughingManImage}
         alt="تنظیم قوانین و مقررات"
       />
-
-      <Image style={deviceStyle} src={Badge} alt="نشان رایگان" />
     </Advantages>
   );
 }
