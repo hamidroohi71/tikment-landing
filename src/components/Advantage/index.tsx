@@ -98,6 +98,14 @@ export default function Advantage() {
     }
   }, [activeSection]);
 
+  useEffect(() => {
+    if (active && index === 0) {
+      setTimeout(() => {
+        setIndex(1);
+      }, 5000);
+    }
+  }, [active]);
+
   // useEffect(() => {
   //   if (width < 480) {
   //     listInterval = setInterval(() => {
