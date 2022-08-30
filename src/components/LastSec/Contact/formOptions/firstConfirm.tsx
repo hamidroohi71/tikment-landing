@@ -30,6 +30,7 @@ const ConfirmBox = styled.section<{ show: boolean }>`
   display: flex;
   flex-direction: column;
   opacity: ${({ show }) => (show ? 1 : 0)};
+  z-index: ${({ show }) => (show ? 100 : -1)};
   position: absolute;
   top: 4.5vh;
   right: 4.5vh;
@@ -40,7 +41,9 @@ const ConfirmBox = styled.section<{ show: boolean }>`
     font-size: 1.8vw;
     color: #183573;
     font-weight: 500;
-    line-height: 180%;
+    line-height: 150%;
+    margin-top: 0;
+    margin-bottom: 30px;
   }
 
   & > div {
