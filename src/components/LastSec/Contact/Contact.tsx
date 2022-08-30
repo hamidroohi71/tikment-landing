@@ -5,10 +5,12 @@ import PersonIcon from "../../PageIntro/formOptions/person.svg";
 import PhoneIcon from "../../PageIntro/formOptions/phone.svg";
 import TickVideo from "../../../assets/video/Tick01.webm";
 import useWidth from "../../../hooks/useWidth";
+import StartForm from "./startForm";
 
 export default function Contact() {
   const [timeOption, setTimeOption] = useState(0);
   const [tick, setTick] = useState(false);
+  const [formOpen, setFormOpen] = useState(false);
 
   const styleProps1 = useSpring({
     from: { transform: "scaleX(0)" },
@@ -45,83 +47,27 @@ export default function Contact() {
 
   const width = useWidth();
 
+  const handleFormOpen = (open: boolean) => {
+    setFormOpen(open);
+  };
+
   return (
     <ContactSection style={styleProps3}>
-      <TitleBox>
+      {/* <TitleBox>
         {tick && <Tick src={TickVideo} loop={false} muted autoPlay={tick} />}
 
         {!tick && <RingSign></RingSign>}
 
         <Title style={{ ...styleProps1, ...styleProps6 }}>
-          برای مشاوره رایگان در اولین فرصت با شما تماس می‌گیریم.
+          همین امروز اقدام کنید.
         </Title>
         <Result style={styleProps7}>
           اطلاعات شما ثبت شده است. کارشناسان ما به‌زودی با شما تماس خواهند گرفت
         </Result>
-      </TitleBox>
+      </TitleBox> */}
 
-      <FormBox style={styleProps2}>
-        <TimeForm>
-          <p>
-            برای مشاوره و راه‌اندازی نسخۀ رایگان تیکمنت، چه ساعتی با شما تماس
-            بگیریم؟
-          </p>
-          <div>
-            <TimeOption
-              smlWidth={width < 1290}
-              selected={timeOption === 0}
-              onClick={() => {
-                setTimeOption(0);
-              }}
-            >
-              همین امروز
-            </TimeOption>
-            <TimeOption
-              smlWidth={width < 1290}
-              selected={timeOption === 1}
-              onClick={() => {
-                setTimeOption(1);
-              }}
-            >
-              روزهای زوج، از ساعت ۱۰ تا ۱۶
-            </TimeOption>
-            <TimeOption
-              smlWidth={width < 1290}
-              selected={timeOption === 2}
-              onClick={() => {
-                setTimeOption(2);
-              }}
-            >
-              روزهای فرد، از ساعت ۱۰ تا ۱۶
-            </TimeOption>
-          </div>
-        </TimeForm>
-        <ContactForm
-          onSubmit={(e) => {
-            e.preventDefault();
-            setTick(true);
-          }}
-        >
-          <FormInput
-            type="text"
-            placeholder="نام و نام خانوادگی"
-            style={{ flexGrow: 1 }}
-          />
-          <FormInput
-            type="text"
-            placeholder="نام شرکت"
-            style={{
-              maxWidth: "40%",
-              marginRight: "21px",
-            }}
-          />
-          <FormInput
-            type="text"
-            placeholder="شماره تماس"
-            style={{ flexGrow: 1 }}
-          />
-          <SubmitButton type="submit" value="ثبت" />
-        </ContactForm>
+      <FormBox open={formOpen} style={styleProps2}>
+        <StartForm handleFormOpen={handleFormOpen} open={true} />
       </FormBox>
     </ContactSection>
   );
@@ -133,7 +79,7 @@ const ContactSection = styled(animated.section)`
   @media (max-width: 480px) {
     order: 1;
     padding: 37px;
-    margin-bottom:30px;
+    margin-bottom: 30px;
   }
 `;
 
@@ -166,7 +112,7 @@ const Title = styled(animated.h2)`
     padding: 0 21px;
     line-height: 45px;
     font-weight: 500;
-    border-radius:35px;
+    border-radius: 35px;
   }
 `;
 
@@ -200,18 +146,22 @@ const RingSign = styled.span`
   }
 `;
 
-const FormBox = styled(animated.div)`
-  background: linear-gradient(
-    180deg,
-    rgb(117 201 219 / 10%) 0%,
-    rgb(74 243 248 / 10%) 100%
-  );
-  box-shadow: inset 0px 0px 80px #75c9db80;
-  border: 1px solid #b9e4ed;
-  border-radius: 64px 0px 64px 64px;
-  backdrop-filter: blur(13px);
+const FormBox = styled(animated.div)<{ open: boolean }>`
+  // background: linear-gradient(
+  //   180deg,
+  //   rgb(117 201 219 / 10%) 0%,
+  //   rgb(74 243 248 / 10%) 100%
+  // );
+  // box-shadow: inset 0px 0px 80px #75c9db80;
+  // border: 1px solid #b9e4ed;
+  // border-radius: 64px 0px 64px 64px;
+  // backdrop-filter: blur(13px);
   overflow: hidden;
   transform-origin: top;
+  height: ${({ open }) => (open ? "65vh" : "38vh")};
+  margin-bottom: 61px;
+  position: relative;
+  transition: 0.5s ease-out;
 `;
 
 const TimeForm = styled(animated.div)`
@@ -244,9 +194,9 @@ const TimeForm = styled(animated.div)`
       font-size: 12px;
     }
 
-    & > div{
-      gap:20px;
-      flex-direction:column;
+    & > div {
+      gap: 20px;
+      flex-direction: column;
     }
   }
 `;
