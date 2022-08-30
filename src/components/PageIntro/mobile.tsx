@@ -42,6 +42,7 @@ const MobilePhoto = styled(animated.section)`
     width: 100%;
     height: 100%;
     object-fit: contain;
+    object-position: left;
   }
 
   @media (max-width: 480px) {

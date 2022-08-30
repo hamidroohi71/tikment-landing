@@ -3,7 +3,7 @@ import styled from "styled-components";
 import data from "./productData.json";
 
 export default function ProductSelection({ setSelectedProduct }: any) {
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(1);
 
   useEffect(() => {
     setSelectedProduct(selected);
@@ -86,9 +86,9 @@ export const OptionBase = styled.div<{
       width: 4vw;
       height: 4vw;
       fill: ${({ selected }) => (selected ? "#fff" : "#2BE2F4")};
-      fill: ${({ selected }) => (selected ? "#fff" : "default")}; // saber
+      fill: ${({ selected }) => (selected ? "#fff" : "#183573")}; // saber
       stroke: ${({ selected }) => (selected ? "#fff" : "#2BE2F4")};
-      stroke: ${({ selected }) => (selected ? "#fff" : "default")}; // saber
+      stroke: ${({ selected }) => (selected ? "#fff" : "#183573")}; // saber
     }
   }
 
@@ -98,7 +98,7 @@ export const OptionBase = styled.div<{
     font-weight: 500;
     // color: #4af3f8;
     color: ${({ selected }) => (selected ? "#fff" : "#4AF3F8")};
-    color: ${({ selected }) => (selected ? "#fff" : "default")}; // saber
+    color: ${({ selected }) => (selected ? "#fff" : "#183573")}; // saber
   }
 
   @media (max-width: 480px) {
