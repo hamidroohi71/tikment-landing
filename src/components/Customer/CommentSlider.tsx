@@ -111,7 +111,7 @@ const CommentPart = styled.div`
 const CommentTitle = styled.div`
   position: relative;
   height: 20%;
-  margin-bottom: 10%;
+  margin-bottom: 15%;
 `;
 
 const CommentBox = styled.div`

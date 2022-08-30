@@ -16,7 +16,7 @@ export default function Customer() {
   const width = useWidth();
   const { activeSection, nextSection, setActiveSection, setNextSection } =
     useSection();
-  const [showComment, setShowComment] = useState(false);
+  const [showComment, setShowComment] = useState(true);
   const [active, setActive] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const styleProps2 = useSpring({
