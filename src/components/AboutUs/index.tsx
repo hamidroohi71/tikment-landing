@@ -60,8 +60,12 @@ export default function AboutUs() {
       </Text>
       <Title>گواهی‌های تیکمنت</Title>
       <LicenseBox>
-        <img src={LicenseImage1} alt="دانش بنیان" />
-        <img src={LicenseImage2} alt="نظام صنفی رایانه‌ای" />
+        <div>
+          <img src={LicenseImage1} alt="دانش بنیان" />
+        </div>
+        <div>
+          <img src={LicenseImage2} alt="نظام صنفی رایانه‌ای" />
+        </div>
       </LicenseBox>
       <CopyRight>
         <p>همۀحقوق این وب‌سایت متعلق به گروه شرکت‌های هوش تجاری است.</p>
@@ -70,22 +74,86 @@ export default function AboutUs() {
   );
 }
 
-const AboutUsSec = styled.section``;
+const AboutUsSec = styled.section`
+  padding: 70px 222px 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+`;
 
-const Title = styled.h2``;
+const Title = styled.h2`
+  font-size: 1.8vw;
+  font-weight: 500;
+  color: #e67205;
+  line-height: 60px;
+  margin: 0 0 21px;
+`;
 
-const Text = styled.p``;
+const Text = styled.p`
+  font-size: 1.8vw;
+  color: #6e6d6d;
+  margin: 0 0 21px;
+  font-weight: 300;
+`;
 
-const LicenseBox = styled.div``;
+const LicenseBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+  & > div {
+    width: 23vw;
+    height: 23vw;
+    border-radius: 50%;
+    background: #f7f7f7;
+    border: 2px solid #cbcbcb;
+    display: flex;
+    margin: 0 24px;
+    position: relative;
+
+    img {
+      width: 60%;
+      height: 60%;
+      object-fit: contain;
+      margin: auto;
+      filter: grayscale(100%);
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      border-radius: 50%;
+      background: linear-gradient(to bottom, #05185e, #4b86ac);
+      opacity: 0.5;
+      mix-blend-mode: color;
+    }
+  }
+`;
 
 const CopyRight = styled.div`
   color: #04165d;
+  margin-top: auto;
+  margin-bottom: 0;
   font-size: 1.6vw;
   text-align: center;
   height: 7vh;
   line-height: 7vh;
   margin: 0;
+  background: #f9f8f7;
+  box-shadow: inset 0px 0px 80px #75c9db80;
+  border: 1px solid #b9e4ed;
+  border-radius: 35px 35px 0 0;
+  padding: 0 44px;
+  width: fit-content;
 
+  p {
+    margin: 0;
+  }
   @media (max-width: 480px) {
     font-size: 24px;
     line-height: 34px;
