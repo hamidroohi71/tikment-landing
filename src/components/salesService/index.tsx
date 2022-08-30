@@ -61,20 +61,20 @@ export default function SalesService() {
   const CardEnter1 = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : width < 480 ? 1 : 0 },
-    delay: active ? 2000 : 0,
-    config: { duration: active ? 1000 : 0, easing: easings.easeOutQuart },
+    delay: active ? 500 : 0,
+    config: { duration: active ? 500 : 0, easing: easings.easeOutQuart },
   });
   const CardEnter2 = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : width < 480 ? 1 : 0 },
-    delay: active ? 3000 : 0,
-    config: { duration: active ? 1000 : 0, easing: easings.easeOutQuart },
+    delay: active ? 1200 : 0,
+    config: { duration: active ? 500 : 0, easing: easings.easeOutQuart },
   });
   const CardEnter3 = useSpring({
     from: { opacity: 0 },
     to: { opacity: active ? 1 : width < 480 ? 1 : 0 },
-    delay: active ? 4000 : 0,
-    config: { duration: active ? 1000 : 0, easing: easings.easeOutQuart },
+    delay: active ? 1900 : 0,
+    config: { duration: active ? 500 : 0, easing: easings.easeOutQuart },
   });
 
   const toggleSide = (index: number) => {
