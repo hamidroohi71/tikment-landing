@@ -10,6 +10,7 @@ import { useSpring, animated, easings } from "react-spring";
 import { useSection } from "../../../context/sectionStore";
 import useWidth from "../../../hooks/useWidth";
 import TickVideo from "../../../assets/video/Tick01.webm";
+import FirstConfirm from "./formOptions/firstConfirm";
 
 export default function StartForm({ handleFormOpen, open }: any) {
   const [done, setDone] = useState(false);
@@ -18,7 +19,7 @@ export default function StartForm({ handleFormOpen, open }: any) {
     "کارشناسان ما امروز با شما تماس خواهند گرفت"
   );
   const [tick, setTick] = useState(false);
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState([] as any);
   const styleProps1 = useSpring({
     from: { transform: "scaleX(0)" },
@@ -94,7 +95,7 @@ export default function StartForm({ handleFormOpen, open }: any) {
 
   useEffect(() => {
     if (open) {
-      setStep(1);
+      setStep(0);
     }
   }, [open]);
 
@@ -119,6 +120,7 @@ export default function StartForm({ handleFormOpen, open }: any) {
       </TitleBox>
       <FormBox step={step} style={styleProps2}>
         <FormContent style={{ ...styleProps3, ...styleProps6 }}>
+          <FirstConfirm step={step} nextStep={changeStep} />
           <JobType
             step={step}
             nextStep={changeStep}
@@ -144,7 +146,7 @@ export default function StartForm({ handleFormOpen, open }: any) {
             addAnswer={addAnswer}
           />
           <ContactInfo step={step} answers={answers} nextStep={changeStep} />
-          <ProgressBar percent={(step / 5) * 100} />
+          <ProgressBar show={step !== 0} percent={(step / 5) * 100} />
         </FormContent>
       </FormBox>
     </StartFormElement>
