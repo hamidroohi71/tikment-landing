@@ -33,8 +33,8 @@ const ProductSelectionBox = styled.section`
 export const OptionBase = styled.div<{
   selected: boolean;
 }>`
-  width: 8.7vw;
-  height: 16vh;
+  width: 10.7vw;
+  height: 18vh;
 
   background: ${({ selected }) =>
     selected

@@ -32,11 +32,11 @@ export default function Mobile({ selectedProuct }: any) {
 
 const MobilePhoto = styled(animated.section)`
   z-index: 10;
-  width: 38vw;
-  height: 93vh;
+  width: 100vw;
+  height: 100vh;
   position: absolute;
-  top: 16.8vh;
-  left: -3.5vw;
+  top: 0;
+  left: 0;
 
   & > img {
     width: 100%;

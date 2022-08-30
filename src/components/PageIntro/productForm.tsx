@@ -132,7 +132,7 @@ const StartFormElement = styled(animated.section)`
   z-index: 10;
   position: absolute;
   top: 57vh;
-  bottom: 6vh;
+  bottom: 12vh;
   @media (max-width: 480px) {
     position: relative;
     top: 0;
@@ -222,6 +222,9 @@ const FormBox = styled(animated.div)<{ end: boolean }>`
   transform-origin: top;
   padding: ${({ end }) => (end ? "0" : "2.5vw 2vw")};
   transition: 0.5s ease-out;
+  display: flex;
+  align-items: center;
+
   @media (max-width: 480px) {
     position: relative;
     top: -20px;
@@ -233,6 +236,7 @@ const FormBox = styled(animated.div)<{ end: boolean }>`
 `;
 
 const FormContent = styled(animated.div)`
+  width: 100%;
   @media (max-width: 480px) {
     height: 480px;
   }

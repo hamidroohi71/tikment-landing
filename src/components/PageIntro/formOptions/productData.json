@@ -3,17 +3,17 @@
     {
       "name": "تشخیص چهره",
       "icon": "/fastContactForm/productSelection/faceDetection.svg#faceDetetion",
-      "image": "/fastContactForm/productSelection/faceDetectionImage.png"
+      "image": "/fastContactForm/productSelection/faceDetectionImage.webp"
     },
     {
       "name": "اپلیکیشن موبایل",
       "icon": "/fastContactForm/productSelection/mobileApp.svg#mobileApp",
-      "image": "/fastContactForm/productSelection/mobileAppImage.png"
+      "image": "/fastContactForm/productSelection/mobileAppImage.webp"
     },
     {
       "name": "اثر انگشت",
       "icon": "/fastContactForm/productSelection/fingerPrint.svg#fingerPrint",
-      "image": "/fastContactForm/productSelection/FingerPrintImage.png"
+      "image": "/fastContactForm/productSelection/FingerPrintImage.webp"
     }
   ]
 }
