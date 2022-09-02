@@ -4,12 +4,12 @@ import { animated, useSpring, easings } from "react-spring";
 import { useSection } from "../../context/sectionStore";
 
 const Dot = styled.div<{ selected: boolean }>`
-  background-color: #37b3b8;
+  background-color: #9e9e9e;
   width: 13px;
   height: 13px;
-  transform: ${({ selected }) => (selected ? "scale(1.6)" : "scale(1)")};
+  // transform: ${({ selected }) => (selected ? "scale(1.2)" : "scale(1)")};
   transform-origin: center;
-  margin: 18px 0;
+  margin: 4px 0;
   border-radius: 50%;
   transition: 0.3s ease-out;
   cursor: pointer;
@@ -52,7 +52,7 @@ export default function Navigation({
   });
   const elements = [];
 
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 5; i++) {
     elements.push(
       <NavigationDot
         goToSection={goToSection}
@@ -62,8 +62,23 @@ export default function Navigation({
       />
     );
   }
-  return <NavigationBar style={styleProps}>{elements}</NavigationBar>;
+  return (
+    <NavigationBar style={styleProps}>
+      {elements}
+      <Progress active={activeSection < 6 ? activeSection : 5} />
+    </NavigationBar>
+  );
 }
+
+const Progress = styled.div<{ active: number }>`
+  position: absolute;
+  top: 4px;
+  bottom: ${({ active }) => `${(5 - active) * 21 + 4}px`};
+  width: 13px;
+  background: #9e9e9e;
+  border-radius: 6.5px;
+  transition: 0.5s ease-out;
+`;
 
 const NavigationBar = styled(animated.section)`
   display: flex;
