@@ -176,10 +176,10 @@ export default function Advantage() {
       </Background>
       <CircleBack style={CircleStyle} />
       <TitlePart>
-        <MainTitle style={titleStyle}>چرا تیکمنت؟</MainTitle>
-        <SubTitle style={subTitleStyle}>
-          چرا تیکمنت انتخاب بسیاری از مدیران و سازمان‌ها بوده است؟‌
-        </SubTitle>
+        <MainTitle style={titleStyle}>
+          از کسب‌وکارهای کوچک تا سازمان‌های بزرگ <br />
+          تیکمنت را انتخاب کرده‌اند
+        </MainTitle>
         <SubTitle2 style={subTitleStyle}>
           کافیست این ۷ دلیل را تا انتها بخوانید:
         </SubTitle2>
@@ -286,9 +286,9 @@ const TitlePart = styled.div`
 `;
 
 const MainTitle = styled(animated.h2)`
-  font-size: 5.6vw;
+  font-size: 4.6vw;
   color: #fff;
-  font-weight: 700;
+  font-weight: 500;
   text-align: center;
   margin: 0;
 `;
@@ -302,8 +302,9 @@ const SubTitle = styled(animated.h3)`
 `;
 
 const SubTitle2 = styled(animated.h4)`
-  font-size: 2.1vw;
+  font-size: 3.5vw;
   color: #fff;
   font-weight: 100;
   margin: 0;
+  text-align: center;
 `;
