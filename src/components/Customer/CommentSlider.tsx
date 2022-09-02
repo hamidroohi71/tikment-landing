@@ -140,7 +140,7 @@ const Avatar = styled.div<{ selected: boolean; preSelected: boolean }>`
       : " translateX(-100%)"};
 
   transform-origin: left;
-  transition: 1s ease-out;
+  transition: 0.5s ease-out;
   transition-delay: 0s;
   filter: ${({ selected }) => (selected ? " blur(0px)" : " blur(4px)")};
 
@@ -151,7 +151,7 @@ const Avatar = styled.div<{ selected: boolean; preSelected: boolean }>`
     transform: ${({ selected, preSelected }) =>
       selected ? "scale(3.12) " : preSelected ? "scale(1) " : "scale(1)"};
     transform-origin: right;
-    transition: 1s ease-out;
+    transition: 0.5s ease-out;
     transition-delay: 0s;
   }
 
@@ -206,8 +206,8 @@ const Title = styled.div<{ selected: boolean }>`
     margin: 0;
     line-height: 3vw;
     position: relative;
-    transition: 1s ease-out;
-    transition-delay: ${({ selected }) => (selected ? "2s" : "0s")};
+    transition: 0.5s ease-out;
+    transition-delay: ${({ selected }) => (selected ? "1s" : "0s")};
 
     & > span {
       position: absolute;
@@ -220,8 +220,8 @@ const Title = styled.div<{ selected: boolean }>`
       transform: ${({ selected }) => (selected ? "scaleX(1)" : "scaleX(0)")};
       transform-origin: right;
       z-index: -1;
-      transition: 1s ease-out;
-      transition-delay: ${({ selected }) => (selected ? "2s" : "0s")};
+      transition: 0.5s ease-out;
+      transition-delay: ${({ selected }) => (selected ? "1s" : "0s")};
     }
   }
 
@@ -233,7 +233,7 @@ const Title = styled.div<{ selected: boolean }>`
     margin: 0 0 5px;
     line-height: 3vw;
     transition: 1s ease-out;
-    transition-delay: ${({ selected }) => (selected ? "2s" : "0s")};
+    transition-delay: ${({ selected }) => (selected ? "1s" : "0s")};
   }
 
   @media (max-width: 480px) {
@@ -272,8 +272,8 @@ const Comment = styled.div<{ selected: boolean }>`
     color: #292929;
     position: relative;
     z-index: 5;
-    transition: 1s ease-out;
-    transition-delay: ${({ selected }) => (selected ? "2s" : "0s")};
+    transition: 0.5s ease-out;
+    transition-delay: ${({ selected }) => (selected ? "1s" : "0s")};
 
     &::after {
       content: "";
@@ -293,8 +293,8 @@ const Comment = styled.div<{ selected: boolean }>`
     margin: 13px 0 0;
     z-index: 5;
     position: relative;
-    transition: 1s ease-out;
-    transition-delay: ${({ selected }) => (selected ? "2s" : "0s")};
+    transition: 0.5s ease-out;
+    transition-delay: ${({ selected }) => (selected ? "1s" : "0s")};
   }
 
   @media (max-width: 480px) {
@@ -329,8 +329,8 @@ const CommentBubble = styled.div<{ selected: boolean }>`
   transform: ${({ selected }) => (selected ? "scale(1)" : "scale(0)")};
   transform-origin: right;
   border-radius: 30px;
-  transition: 1s ease-out;
-  transition-delay: ${({ selected }) => (selected ? "2s" : "0s")};
+  transition: 0.5s ease-out;
+  transition-delay: ${({ selected }) => (selected ? "1s" : "0s")};
 
   &::after,
   &::before {
