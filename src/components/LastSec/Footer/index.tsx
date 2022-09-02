@@ -41,7 +41,17 @@ export default function Footer() {
               </p>
             </div>
           </InfoBox>
-          <FormBox></FormBox>
+          <FormBox>
+            <h2>پیام‌تان را در اولین فرصت پاسخ می‌دهیم:</h2>
+            <form>
+              <input type="textarea" placeholder="پیام‌تان را بنویسد." />
+              <input type="text" placeholder="نام و نام خانوداگی" />
+              <div>
+                <input type="text" placeholder="شمارهٔ‌ تماس" />
+                <input type="submit" value="ثبت" />
+              </div>
+            </form>
+          </FormBox>
         </FooterLeft>
       </FooterTop>
     </FooterSection>
@@ -108,6 +118,8 @@ const FooterLeft = styled.div`
   background: linear-gradient(92deg, #0089a7 0%, #04165d 100%);
   box-shadow: 0px 10px 14px #033f7733;
   flex-shrink: 0;
+  display: flex;
+
   @media (max-width: 480px) {
     font-size: 27px;
     text-align: justify;
@@ -122,6 +134,7 @@ const InfoBox = styled.div`
   padding: 3vh 3.8vw 3.5vh;
   display: flex;
   flex-direction: column;
+  border-left: 1px solid #e4e4e4;
 
   & > div {
     display: flex;
@@ -172,7 +185,67 @@ const InfoBox = styled.div`
   }
 `;
 
-const FormBox = styled.div``;
+const FormBox = styled.div`
+  padding: 3.8vh 3.8vh 5.8vh 5vw;
+
+  h2 {
+    font-size: 1.8vw;
+    font-weight: 300;
+    color: #fff;
+    text-align: center;
+    margin: 0 0 2vh;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+
+    input[type="textarea"] {
+      height: 17vh;
+      background: #fff;
+      border-radius: 32px;
+      border: none;
+      outline: none;
+      margin-bottom: 2vh;
+    }
+
+    input[type="text"] {
+      height: 5.9vh;
+      background: #fff;
+      border-radius: 32px;
+      border: none;
+      outline: none;
+      margin-bottom: 2vh;
+    }
+
+    & > div {
+      display: flex;
+      align-items: center;
+      input[type="text"] {
+        width: 17vw;
+        height: 5.9vh;
+        background: #fff;
+        border-radius: 32px;
+        border: none;
+        outline: none;
+        flex-shrink: 0;
+        margin: 0;
+      }
+      input[type="submit"] {
+        background: linear-gradient(210deg, #37abb8, #71fbff);
+        height: 5.9vh;
+        border-radius: 32px;
+        flex-grow: 1;
+        border: none;
+        outline: none;
+        flex-shrink: 0;
+        margin: 0 2vh 0 0;
+        font-size: 1.5vw;
+        color: #fff;
+        font-weight: 500;
+      }
+    }
+  }
+`;
 
 const CopyRight = styled.div`
   color: #04165d;

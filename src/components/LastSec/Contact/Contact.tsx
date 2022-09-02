@@ -158,7 +158,7 @@ const FormBox = styled(animated.div)<{ open: boolean }>`
   // backdrop-filter: blur(13px);
   transform-origin: top;
   height: ${({ open }) => (open ? "65vh" : "38vh")};
-  margin-bottom: 61px;
+  margin-bottom: 5.6vh;
   position: relative;
   transition: 0.5s ease-out;
 `;
