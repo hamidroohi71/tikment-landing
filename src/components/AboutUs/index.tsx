@@ -75,19 +75,18 @@ export default function AboutUs() {
 }
 
 const AboutUsSec = styled.section`
-  padding: 70px 222px 0;
+  padding: 20px 222px 0;
   display: flex;
   flex-direction: column;
   height: 100vh;
-  align-items: center;
 `;
 
 const Title = styled.h2`
   font-size: 1.8vw;
-  font-weight: 500;
+  font-weight: 300;
   color: #e67205;
-  line-height: 60px;
-  margin: 0 0 21px;
+  line-height: 1.8;
+  margin: 0 0 5px;
 `;
 
 const Text = styled.p`
@@ -103,8 +102,8 @@ const LicenseBox = styled.div`
   align-items: center;
   margin-bottom: 80px;
   & > div {
-    width: 23vw;
-    height: 23vw;
+    width: 30vh;
+    height: 30vh;
     border-radius: 50%;
     background: #f7f7f7;
     border: 2px solid #cbcbcb;
@@ -143,7 +142,7 @@ const CopyRight = styled.div`
   text-align: center;
   height: 7vh;
   line-height: 7vh;
-  margin: 0;
+  margin: 0 auto;
   background: #f9f8f7;
   box-shadow: inset 0px 0px 80px #75c9db80;
   border: 1px solid #b9e4ed;
