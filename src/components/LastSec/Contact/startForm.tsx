@@ -114,7 +114,7 @@ export default function StartForm({ handleFormOpen, open }: any) {
         {!tick && <RingSign></RingSign>}
 
         <Title style={{ ...styleProps1, ...styleProps6 }}>
-          {"برای انتخاب بهتر"}
+          همین امروز اقدام کنید.
         </Title>
         <Result style={styleProps7}>{result}</Result>
       </TitleBox>
@@ -177,7 +177,7 @@ const TitleBox = styled(animated.div)`
 
 const Title = styled(animated.h2)`
   background: linear-gradient(252deg, #37abb8 0%, #71fbff 100%);
-  line-height: 64px;
+  line-height: 5.9vh;
   border-radius: 32px;
   box-shadow: 0px 7px 15px #00000033;
   font-size: 1.4vw;
@@ -211,11 +211,11 @@ const Tick = styled.video`
 
 const RingSign = styled.span`
   display: block;
-  width: 64px;
-  height: 64px;
+  width: 5.9vh;
+  height: 5.9vh;
   border-radius: 50%;
   background: #fff;
-  border: 19px solid #38acb9;
+  border: 1.5vh solid #38acb9;
   margin-left: 13px;
   box-shadow: 0px 7px 15px #00000033;
   @media (max-width: 480px) {
@@ -227,14 +227,14 @@ const RingSign = styled.span`
 
 const FormBox = styled(animated.div)<{ step: number }>`
   position: absolute;
-  top: 32px;
+  top: 2.9vh;
   bottom: 0;
-  right: 32px;
+  right: 2.9vh;
   width: 53vw;
   box-shadow: inset 0px 0px 80px #75c9db80;
   background: linear-gradient(180deg, #75c9db1a 0%, #4af3f81a 100%);
   border: ${({ step }) => (step === 6 ? "none" : "1px solid #b9e4ed")};
-  border-radius: 3vw;
+  border-radius: 3vw 0 3vw 3vw;
   backdrop-filter: blur(13px);
   transform-origin: top;
   padding: ${({ step }) => (step === 6 ? "0" : "2.5vw 2vw")};

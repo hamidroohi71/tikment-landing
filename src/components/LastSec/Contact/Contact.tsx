@@ -74,7 +74,7 @@ export default function Contact() {
 }
 
 const ContactSection = styled(animated.section)`
-  padding: 11vh 21vw 0;
+  padding: 20px 21vw 0;
 
   @media (max-width: 480px) {
     order: 1;
@@ -156,7 +156,6 @@ const FormBox = styled(animated.div)<{ open: boolean }>`
   // border: 1px solid #b9e4ed;
   // border-radius: 64px 0px 64px 64px;
   // backdrop-filter: blur(13px);
-  overflow: hidden;
   transform-origin: top;
   height: ${({ open }) => (open ? "65vh" : "38vh")};
   margin-bottom: 61px;
