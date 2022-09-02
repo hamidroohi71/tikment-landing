@@ -3,6 +3,9 @@ import styled from "styled-components";
 import LogoBox from "../../LogoBox";
 import Tlogo from "./tik-logo.png";
 import data from "./data.json";
+import PhoneIcon from "../../../assets/icons/PhoneIcon.png";
+import TimeIcon from "../../../assets/icons/TimeIcon.svg";
+import LocationIcon from "../../../assets/icons/LocationIcon.svg";
 
 export default function Footer() {
   const socicalElement = data.footerSocial.map((item) => (
@@ -20,15 +23,25 @@ export default function Footer() {
           <SocialBox>{socicalElement}</SocialBox>
         </FooterRight>
         <FooterLeft>
-          <p>
-            سیستم حضوروغیاب تیکمنت پیش‌تر با نام «جهان‌گستر پارس» در خدمت
-            همکاران عزیز بود. ما تا کنون در بیش از ۳۵۰۰۰ سازمان خصوصی و دولتی
-            فعال بوده‌ایم و با بیش از ۷۰ نمایندگی در سرتاسر ایران خدمت
-            رسانده‌ایم. شرکت هوش تجاری پایدار در سال ۱۳۹۹ تصمیم گرفت، تا برند
-            «جهان‌گستر پارس» را به‌روز کند. اینک مفتخریم: سیستم حضوروغیاب جدید
-            خود را با نام «تیکمنت» در اختیار سازمان‌ها‌ی خصوصی و دولتی و دیگر
-            مراکز درمانی و تجاری قرار دهیم
-          </p>
+          <InfoBox>
+            <div>
+              <img src={PhoneIcon} alt="تلفن" />
+              <p>۰۲۱-۴۱۳۹۲۰۰۰</p>
+            </div>
+            <div>
+              <img src={TimeIcon} alt="ساعت کاری" />
+              <p>شنبه تا چهارشنبه</p>
+              <p>۹:۰۰ تا ۱۷:۰۰</p>
+            </div>
+            <div>
+              <img src={LocationIcon} alt="آدرس" />
+              <p>
+                تهران، خیابان شهید دکتر بهشتی
+                <br /> بعد از خیابان کاووسی‌فر پلاک ۲۰۴، طبقۀ اول
+              </p>
+            </div>
+          </InfoBox>
+          <FormBox></FormBox>
         </FooterLeft>
       </FooterTop>
     </FooterSection>
@@ -61,6 +74,10 @@ const FooterRight = styled.div`
   width: 22%;
   flex-shrink: 0;
 
+  .LogoBox {
+    top: 0;
+  }
+
   @media (max-width: 480px) {
     width: 100%;
     & > section {
@@ -87,9 +104,6 @@ const Logo = styled.div`
 const FooterLeft = styled.div`
   width: 78%;
   color: #fff;
-  font-size: 1.6vw;
-  font-weight: 300;
-  padding: 4vh 4.2vw 4vh 12vw;
   border-radius: 0 3.3vw 3.3vw 0;
   background: linear-gradient(92deg, #0089a7 0%, #04165d 100%);
   box-shadow: 0px 10px 14px #033f7733;
@@ -103,6 +117,62 @@ const FooterLeft = styled.div`
     font-weight: 300;
   }
 `;
+
+const InfoBox = styled.div`
+  padding: 3vh 3.8vw 3.5vh;
+  display: flex;
+  flex-direction: column;
+
+  & > div {
+    display: flex;
+    align-items: center;
+
+    &:first-child {
+      img {
+        width: 10vh;
+        height: 10vh;
+        object-fit: contain;
+        margin-left: 25px;
+        flex-shrink: 0;
+      }
+      p {
+        font-size: 5vw;
+        font-weight: 500;
+        margin: 0;
+      }
+    }
+
+    &:nth-child(2) {
+      margin-bottom: 20px;
+      img {
+        width: 10vh;
+        height: 10vh;
+        object-fit: contain;
+        margin-left: 25px;
+      }
+      p {
+        font-size: 1.8vw;
+        font-weight: 300;
+        margin: 0;
+      }
+    }
+    &:nth-child(3) {
+      img {
+        width: 10vh;
+        height: 10vh;
+        object-fit: contain;
+        margin-left: 25px;
+      }
+      p {
+        font-size: 1.8vw;
+        font-weight: 300;
+        margin: 0;
+      }
+    }
+  }
+`;
+
+const FormBox = styled.div``;
 
 const CopyRight = styled.div`
   color: #04165d;
@@ -123,23 +193,23 @@ const CopyRight = styled.div`
 const SocialBox = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 11vw 2vw 2vw;
+  justify-content: flex-end;
+  padding: 5vw 8vw 2vw 3vw;
 
   & > div {
-    width: 3.6vw;
-    height: 3.6vw;
+    width: 4vw;
+    height: 4vw;
     border-radius: 50%;
     background: #f9f8f7;
     box-shadow: inset 0px 0px 80px #75c9db80;
     border: 1px solid #b9e4ed;
     display: flex;
-    margin: 10px;
+    margin: 5px;
     cursor: pointer;
 
     & > img {
-      width: 50%;
-      height: 50%;
+      width: 60%;
+      height: 60%;
       object-fit: contain;
       margin: auto;
     }

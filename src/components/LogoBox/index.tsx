@@ -20,6 +20,7 @@ export default function LogoBox() {
   });
   return (
     <LogoBoxElement
+      className="LogoBox"
       onClick={() => {
         if (activeSection !== 1) {
           setNextSection(1);

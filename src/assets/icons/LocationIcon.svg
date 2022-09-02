@@ -1,0 +1,19 @@
+<svg id="Group_1633" data-name="Group 1633" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="111.92" height="112.025" viewBox="0 0 111.92 112.025">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_720" data-name="Rectangle 720" width="49.21" height="66.65" fill="#fff" stroke="#fff" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Group_1626" data-name="Group 1626" transform="translate(0)">
+    <g id="Rectangle_646" data-name="Rectangle 646" fill="none" stroke="#fff" stroke-width="3">
+      <rect width="111.92" height="112.025" rx="55.96" stroke="none"/>
+      <rect x="1.5" y="1.5" width="108.92" height="109.025" rx="54.46" fill="none"/>
+    </g>
+  </g>
+  <g id="Group_1630" data-name="Group 1630" transform="translate(31.458 23.57)" style="isolation: isolate">
+    <g id="Group_1629" data-name="Group 1629" clip-path="url(#clip-path)">
+      <path id="Path_1467" data-name="Path 1467" d="M26.3,0c1.3.217,2.612.362,3.89.663A24.2,24.2,0,0,1,44.9,10.718a24.006,24.006,0,0,1,4.036,10.224,24.3,24.3,0,0,1-3.349,16.2c-2.153,3.725-4.614,7.273-6.975,10.877q-5.428,8.286-10.921,16.531a5.822,5.822,0,0,1-1.552,1.622,2.907,2.907,0,0,1-3.952-.745c-1.046-1.377-1.974-2.844-2.929-4.288q-7.021-10.621-14.03-21.25a31.469,31.469,0,0,1-4.9-11.771A21.726,21.726,0,0,1,.34,20.558a24.07,24.07,0,0,1,6.737-13.2A24.033,24.033,0,0,1,21.125.262c.6-.085,1.194-.175,1.79-.262ZM24.6,63.832c.242-.32.42-.529.571-.757q8.25-12.5,16.488-25a30.07,30.07,0,0,0,3.194-6.22,20.5,20.5,0,0,0,.837-12.3A21.425,21.425,0,0,0,35.669,5.986,21.05,21.05,0,0,0,23.775,2.963,20.977,20.977,0,0,0,13.9,5.771,21.356,21.356,0,0,0,3.989,17.915a19.593,19.593,0,0,0-.755,9.793A28.13,28.13,0,0,0,7.606,38.169q8.187,12.459,16.423,24.887c.152.231.328.446.572.776" transform="translate(0)" fill="#fff" stroke="#fff" stroke-width="1"/>
+      <path id="Path_1468" data-name="Path 1468" d="M64.131,77.162a13.03,13.03,0,1,1,13.024-13,13.02,13.02,0,0,1-13.024,13m.02-23.14a10.12,10.12,0,1,0,10.11,10.144,10.161,10.161,0,0,0-10.11-10.144" transform="translate(-39.526 -39.52)" fill="#fff" stroke="#fff" stroke-width="1"/>
+    </g>
+  </g>
+</svg>
