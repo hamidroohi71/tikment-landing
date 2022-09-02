@@ -217,7 +217,7 @@ const FormBox = styled(animated.div)<{ end: boolean }>`
   box-shadow: inset 0px 0px 80px #75c9db80;
   background: linear-gradient(180deg, #75c9db1a 0%, #4af3f81a 100%);
   border: ${({ end }) => (end ? "none" : "1px solid #b9e4ed")};
-  border-radius: 3vw;
+  border-radius: 3vw 0 3vw 3vw;
   backdrop-filter: blur(13px);
   transform-origin: top;
   padding: ${({ end }) => (end ? "0" : "2.5vw 2vw")};

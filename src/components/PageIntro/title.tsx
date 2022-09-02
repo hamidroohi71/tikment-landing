@@ -43,7 +43,9 @@ export default function Title({ formOpen }: { formOpen: boolean }) {
     <TitleElement style={{ ...styleProps3, ...styleProps4 }}>
       <Title2 style={styleProps1}>سیستم‌های حضور و غیاب</Title2>
       <Title1 style={styleProps2} src={TikmentName} alt="تیکمنت" />
-      <Title3 style={styleProps1}>انتخاب مدیران، شایستهٔ کارمندان</Title3>
+      <Title3 style={styleProps1}>
+        فعال در بیش از <span>۳۷۰۰۰</span> صنف اداری، درمانی، تجاری و صنعتی
+      </Title3>
     </TitleElement>
   );
 }
@@ -85,10 +87,14 @@ const Title2 = styled(animated.h2)`
   }
 `;
 const Title3 = styled(animated.h3)`
-  font-size: 3vw;
+  font-size: 2vw;
   color: #183573;
-  font-weight: 500;
+  font-weight: 300;
   margin: 0 0 10px;
+
+  span {
+    color: #e67205;
+  }
   @media (max-width: 1200px) {
     font-size: 3vw;
   }
