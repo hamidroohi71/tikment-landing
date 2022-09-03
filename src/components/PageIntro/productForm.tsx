@@ -15,9 +15,11 @@ import ProductSelection from "./formOptions/productSelection";
 export default function ProductForm({
   handleFormOpen,
   setSelectedProduct,
+  selectedProduct,
 }: {
   handleFormOpen: (status: boolean) => void;
   setSelectedProduct: any;
+  selectedProduct: number;
 }) {
   const [done, setDone] = useState(false);
   const width = useWidth();
@@ -121,7 +123,10 @@ export default function ProductForm({
       </TitleBox>
       <FormBox end={step === 6} style={styleProps2}>
         <FormContent style={styleProps3}>
-          <ProductSelection setSelectedProduct={setSelectedProduct} />
+          <ProductSelection
+            selectedProduct={selectedProduct}
+            setSelectedProduct={setSelectedProduct}
+          />
         </FormContent>
       </FormBox>
     </StartFormElement>

@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import data from "./productData.json";
 
-export default function ProductSelection({ setSelectedProduct }: any) {
+export default function ProductSelection({
+  setSelectedProduct,
+  selectedProduct,
+}: any) {
   const [selected, setSelected] = useState(1);
 
-  useEffect(() => {
-    setSelectedProduct(selected);
-  }, [selected]);
   const formOptions = data.productData.map((item, index) => (
     <Option
       onClick={() => {
-        setSelected(index);
+        setSelectedProduct(index);
       }}
-      selected={selected === index}
+      selected={selectedProduct === index}
     >
       <svg>
         <use width="100%" height="100%" href={item.icon} />

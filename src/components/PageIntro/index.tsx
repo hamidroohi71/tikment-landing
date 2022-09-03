@@ -8,6 +8,7 @@ import Mobile from "./mobile";
 import ProductForm from "./productForm";
 import StartForm from "./startForm";
 import Title from "./title";
+let myTime: any;
 
 export default function PageIntro() {
   const { activeSection, nextSection, setActiveSection } = useSection();
@@ -27,6 +28,17 @@ export default function PageIntro() {
     setFormOpen(status);
   };
 
+  useEffect(() => {
+    clearTimeout(myTime);
+    myTime = setTimeout(() => {
+      if (selectedProduct < 2) {
+        setSelectedProduct(selectedProduct + 1);
+      } else {
+        setSelectedProduct(0);
+      }
+    }, 4000);
+  }, [selectedProduct]);
+
   return (
     <PageIntroduction active={active}>
       <GlassPattern />
@@ -37,6 +49,7 @@ export default function PageIntro() {
       <ProductForm
         setSelectedProduct={setSelectedProduct}
         handleFormOpen={handleFormOpen}
+        selectedProduct={selectedProduct}
       />
       {/* for advantage section */}
       {/* <StartForm handleFormOpen={handleFormOpen} /> */}
