@@ -43,7 +43,7 @@ const ConfirmBox = styled.section<{ show: boolean }>`
     font-weight: 500;
     line-height: 150%;
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 2.7vh;
   }
 
   & > div {
@@ -56,12 +56,12 @@ const ConfirmBox = styled.section<{ show: boolean }>`
     flex-shrink: 0;
     margin-right: 29px;
     background: linear-gradient(-30deg, #ff5151, #ffd011);
-    height: 73px;
+    height: 6.7vh;
     padding: 0 33px;
     color: #fff;
     font-size: 1.7vw;
     font-weight: 500;
-    border-radius: 36px;
+    border-radius: 3.3vh;
     border: none;
     outline: none;
     font-family: YekanBakh;
@@ -76,13 +76,13 @@ const ContactInfo = styled.div`
   border: 2px solid #ffffff;
   padding: 0 32px;
   flex-grow: 1;
-  border-radius: 36px;
+  border-radius: 3.3vh;
 
   h3,
   p {
     font-size: 1.8vw;
     color: #4af3f8;
     margin: 0;
-    line-height: 73px;
+    line-height: 6.7vh;
   }
 `;

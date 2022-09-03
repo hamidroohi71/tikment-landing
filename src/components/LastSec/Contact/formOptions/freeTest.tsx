@@ -118,8 +118,8 @@ const YesOption = styled(Option)`
   & > p {
     color: ${({ selected }) => (selected ? "#2be2f4" : "#fff")};
     background: ${({ selected }) => (selected ? "#fff" : "#fdcd10")};
-    line-height: 43px;
-    border-radius: 22px;
+    line-height: 3.9vh;
+    border-radius: 1.9vh;
     padding: 0 30px;
     font-size: 1.5vw;
 
@@ -180,8 +180,8 @@ const NoOption = styled(Option)`
   & > p {
     color: ${({ selected }) => (selected ? "#2be2f4" : "#fff")};
     background: ${({ selected }) => (selected ? "#fff" : "#2be2f4")};
-    line-height: 43px;
-    border-radius: 22px;
+    line-height: 3.9vh;
+    border-radius: 1.9vh;
     padding: 0 24px;
     font-size: 1.5vw;
 

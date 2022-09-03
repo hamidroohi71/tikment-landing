@@ -46,12 +46,12 @@ const Option = styled(OptionBase)`
   & > p {
     color: ${({ selected }) => (selected ? "#2d578b" : "#fff")};
     background: ${({ selected }) => (selected ? "#fff" : "#4af3f8")};
-    line-height: 43px;
-    border-radius: 22px;
-    padding: 0 1.6vw;
+    line-height: 3.9vh;
+    border-radius: 1.9vh;
+    padding: 0 1vw;
     font-size: 1.5vw;
 
-    @media (max-width: 480px){
+    @media (max-width: 480px) {
       font-size: 20px;
       padding: 0 25px;
     }
