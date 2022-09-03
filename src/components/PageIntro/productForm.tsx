@@ -151,8 +151,8 @@ const TitleBox = styled.div`
 const Title = styled(animated.h2)`
   background: transparent linear-gradient(252deg, #37abb8 0%, #71fbff 100%) 0%
     0% no-repeat padding-box;
-  line-height: 64px;
-  border-radius: 32px;
+  line-height: 5.9vh;
+  border-radius: 2.9vh;
   box-shadow: 0px 7px 15px #00000033;
   font-size: 1.8vw;
   color: #fff;
@@ -173,7 +173,7 @@ const Result = styled(Title)`
   position: absolute;
   top: 0;
   right: 5.5vw;
-  height: 64px;
+  height: 5.9;
   width: 39vw;
 
   @media (max-width: 480px) {
@@ -195,11 +195,11 @@ const Tick = styled.video`
 
 const RingSign = styled.span`
   display: block;
-  width: 64px;
-  height: 64px;
+  width: 5.9vh;
+  height: 5.9vh;
   border-radius: 50%;
   background: #fff;
-  border: 13.5px solid #38acb9;
+  border: 1.5vh solid #38acb9;
   margin-left: 13px;
   box-shadow: 0px 7px 15px #00000033;
   @media (max-width: 480px) {
@@ -210,9 +210,9 @@ const RingSign = styled.span`
 
 const FormBox = styled(animated.div)<{ end: boolean }>`
   position: absolute;
-  top: 32px;
+  top: 2.9vh;
   bottom: ${({ end }) => (end ? "calc(100% - 32px)" : "0")};
-  right: 32px;
+  right: 2.9vh;
   width: 37vw;
   box-shadow: inset 0px 0px 80px #75c9db80;
   background: linear-gradient(180deg, #75c9db1a 0%, #4af3f81a 100%);
