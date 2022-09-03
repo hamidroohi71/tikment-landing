@@ -5,7 +5,7 @@ import PersonIcon from "./person.svg";
 import PhoneIcon from "./phone.svg";
 import useWidth from "../../../../hooks/useWidth";
 
-export default function ContactInfo({
+export default function TimeInfo({
   step,
   answers,
   nextStep,
@@ -15,40 +15,103 @@ export default function ContactInfo({
   nextStep: (newStep: number) => void;
 }) {
   const width = useWidth();
-  const [timeOption, setTimeOption] = useState(0);
+  const [dayOption, setDayOption] = useState("همین امروز");
+  const [timeOption, setTimeOption] = useState("");
   const styleProps1 = useSpring({
     from: { opacity: 0 },
-    to: { opacity: step === 6 ? 1 : 0 },
+    to: { opacity: step === 5 ? 1 : 0 },
     config: { duration: 500, easing: easings.easeOutQuart },
   });
+
+  const date = new Date();
+  const day = date.getDay();
+  const hour = date.getHours();
+  console.log(date);
+  let weekDays = [] as any;
+  let hourList = [] as any;
+
+  switch (day) {
+    case 0:
+      weekDays = ["همین امروز", "دوشنبه", "سه شنبه", "چهارشنبه", "شنبه"];
+      break;
+    case 1:
+      weekDays = ["همین امروز", "سه شنبه", "چهارشنبه", "شنبه", "یکشنبه"];
+      break;
+    case 2:
+      weekDays = ["همین امروز", "چهارشنبه", "شنبه", "یکشنبه", "دوشنبه"];
+      break;
+    case 3:
+      weekDays = ["همین امروز", "شنبه", "یکشنبه", "دوشنبه", "سه شنبه"];
+      break;
+    case 4:
+      weekDays = ["شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه"];
+      setDayOption("شنبه");
+      break;
+    case 5:
+      weekDays = ["شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه"];
+      setDayOption("شنبه");
+      break;
+    case 6:
+      weekDays = ["همین امروز", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه"];
+      break;
+  }
+
+  if (hour < 10) {
+    hourList = ["۱۰-۱۲", "۱۲-۱۴", "۱۴-۱۶"];
+  } else if (hour < 12) {
+    hourList = ["۱۲-۱۴", "۱۴-۱۶"];
+  } else if (hour < 16) {
+    hourList = ["۱۴-۱۶"];
+  } else {
+    hourList = ["۱۰-۱۲", "۱۲-۱۴", "۱۴-۱۶"];
+    if (weekDays.includes("همین امروز")) {
+      weekDays.slice(1);
+    }
+  }
+
+  const daysOptions = weekDays.map((day: any) => (
+    <TimeOption
+      smlWidth={width < 1290}
+      selected={dayOption === day}
+      onClick={() => {
+        setDayOption(day);
+      }}
+    >
+      {day}
+    </TimeOption>
+  ));
+
+  const timesOption = hourList.map((item: any) => (
+    <TimeOption
+      smlWidth={width < 1290}
+      selected={timeOption === item}
+      onClick={() => {
+        setTimeOption(item);
+        nextStep(6);
+      }}
+    >
+      {item}
+    </TimeOption>
+  ));
+
   return (
     <>
-      <FormBox style={styleProps1} show={step === 6}>
-        <ContactForm
-          onSubmit={(e) => {
-            e.preventDefault();
-            nextStep(7);
-          }}
-        >
-          <FormInput
-            type="text"
-            placeholder="نام و نام خانوادگی"
-            style={{ flexGrow: 1 }}
-          />
-          <FormInput
-            type="text"
-            placeholder="نام شرکت"
-            style={{
-              marginRight: "21px",
-            }}
-          />
-          <FormInput
-            type="text"
-            placeholder="شماره تماس"
-            style={{ flexGrow: 1 }}
-          />
-          <SubmitButton type="submit" value="ثبت" />
-        </ContactForm>
+      <FormBox style={styleProps1} show={step === 5}>
+        <TimeForm show={step === 5}>
+          <p>
+            در هفته‌ی جاری، چه روز و ساعتی برای تماس مشاورین ما با شما مناسب‌تر
+            است؟
+          </p>
+          <div>
+            <p>روز</p>
+            {daysOptions}
+          </div>
+
+          <div>
+            <p>ساعت</p>
+            {timesOption}
+          </div>
+        </TimeForm>
       </FormBox>
     </>
   );
@@ -58,29 +121,36 @@ const FormBox = styled(animated.div)<{ show: boolean }>`
   opacity: ${({ show }) => (show ? 1 : 0)};
 `;
 
-const TimeForm = styled(animated.div)`
+const TimeForm = styled(animated.div)<{ show: boolean }>`
+  z-index: ${({ show }) => (show ? 10 : 0)};
   position: absolute;
   top: 27vh;
-  height: 20vh;
   right: -2px;
   left: -2px;
   box-sizing: border-box;
-  padding: 39px 31px 39px 47px;
-  background: rgb(249 248 247 / 54%);
-  border: 3px solid #75c9db4d;
+  padding: 1.3vh 31px 39px 47px;
   opacity: 1;
-  backdrop-filter: blur(80px);
 
-  p {
-    font-size: 1.2vw;
-    color: #376796;
+  & > p {
+    font-size: 1.5vw;
+    color: #183573;
     margin: 0 0 10px;
+    font-weight: 300;
+    border-top: 2px solid #fff;
+    padding-top: 1.3vh;
   }
 
   & > div {
     display: flex;
-    align-items: cemter;
-    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #fff;
+    p {
+      font-size: 1.2vw;
+      color: #183573;
+      font-weight: 500;
+      margin-left: 20px;
+      width: 2vw;
+    }
   }
 
   @media (max-width: 480px) {
@@ -103,14 +173,14 @@ const TimeOption = styled.span<{ selected: boolean; smlWidth: boolean }>`
     selected ? "7px 7px 20px #00000038" : "none"};
   border: ${({ selected }) =>
     selected ? "1px solid #ffffff99;" : "2px solid #FFFFFF"};
-  border-radius: 3vw;
+  border-radius: 3.2vh;
   font-size: 1.2vw;
-  line-height: ${({ smlWidth }) => (smlWidth ? "3.5vh" : "6vh")};
+  line-height: ${({ smlWidth }) => (smlWidth ? "3.5vh" : "6.8vh")};
   font-weight: 300;
   color: ${({ selected }) => (selected ? "#fff" : "#00DDE3")};
-  padding: 0 2.5vw;
+  padding: 0 1.5vw;
   cursor: pointer;
-
+  margin: 0 2.5px;
   @media (max-width: 480px) {
     font-size: 10px;
   }

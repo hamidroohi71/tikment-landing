@@ -11,6 +11,7 @@ import { useSection } from "../../../context/sectionStore";
 import useWidth from "../../../hooks/useWidth";
 import TickVideo from "../../../assets/video/Tick01.webm";
 import FirstConfirm from "./formOptions/firstConfirm";
+import TimeInfo from "./formOptions/timeInfo";
 
 export default function StartForm({ handleFormOpen, open }: any) {
   const [done, setDone] = useState(false);
@@ -30,9 +31,9 @@ export default function StartForm({ handleFormOpen, open }: any) {
   const styleProps2 = useSpring({
     from: { transform: "scaleY(0)" },
     to: {
-      transform: open ? (step === 6 ? "scaleY(0)" : "scaleY(1)") : "scaleY(0)",
+      transform: open ? (step === 7 ? "scaleY(0)" : "scaleY(1)") : "scaleY(0)",
     },
-    delay: open ? (step === 6 ? 0 : 2000) : 0,
+    delay: open ? (step === 7 ? 0 : 2000) : 0,
     config: { duration: open ? 1000 : 0, easing: easings.easeOutQuart },
   });
 
@@ -52,13 +53,13 @@ export default function StartForm({ handleFormOpen, open }: any) {
 
   const styleProps6 = useSpring({
     from: { opacity: 0 },
-    to: { opacity: step === 6 ? 0 : 1 },
+    to: { opacity: step === 7 ? 0 : 1 },
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
   const styleProps7 = useSpring({
     from: { transform: "scaleX(0)" },
-    to: { transform: step === 6 ? "scaleX(1)" : "scaleX(0)" },
+    to: { transform: step === 7 ? "scaleX(1)" : "scaleX(0)" },
     delay: 2000,
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
@@ -79,12 +80,12 @@ export default function StartForm({ handleFormOpen, open }: any) {
     // } else {
     //   handleFormOpen(false);
     // }
-    if (step === 5) {
+    if (step === 5 || step === 6) {
       handleFormOpen(true);
     } else {
       handleFormOpen(false);
     }
-    if (step === 6) {
+    if (step === 7) {
       setTimeout(() => {
         setTick(true);
       }, 100);
@@ -145,6 +146,7 @@ export default function StartForm({ handleFormOpen, open }: any) {
             nextStep={changeStep}
             addAnswer={addAnswer}
           />
+          <TimeInfo step={step} answers={answers} nextStep={changeStep} />
           <ContactInfo step={step} answers={answers} nextStep={changeStep} />
           <ProgressBar show={step !== 0} percent={(step / 5) * 100} />
         </FormContent>
