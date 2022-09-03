@@ -79,6 +79,7 @@ const AboutUsSec = styled.section`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  justify-content: space-between;
 `;
 
 const Title = styled.h2`
