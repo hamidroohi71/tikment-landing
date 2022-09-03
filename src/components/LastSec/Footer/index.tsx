@@ -44,7 +44,7 @@ export default function Footer() {
           <FormBox>
             <h2>پیام‌تان را در اولین فرصت پاسخ می‌دهیم:</h2>
             <form>
-              <input type="textarea" placeholder="پیام‌تان را بنویسد." />
+              <textarea placeholder="پیام‌تان را بنویسد." />
               <input type="text" placeholder="نام و نام خانوداگی" />
               <div>
                 <input type="text" placeholder="شمارهٔ‌ تماس" />
@@ -199,13 +199,18 @@ const FormBox = styled.div`
     display: flex;
     flex-direction: column;
 
-    input[type="textarea"] {
+    textarea {
       height: 17vh;
       background: #fff;
       border-radius: 32px;
       border: none;
       outline: none;
       margin-bottom: 2vh;
+      padding: 22px;
+      font-family: YekanBakh;
+      * {
+        vertical-align: top;
+      }
     }
 
     input[type="text"] {
@@ -215,6 +220,8 @@ const FormBox = styled.div`
       border: none;
       outline: none;
       margin-bottom: 2vh;
+      padding: 0 22px;
+      font-family: YekanBakh;
     }
 
     & > div {

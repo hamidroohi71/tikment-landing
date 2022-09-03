@@ -15,6 +15,7 @@ import TimeInfo from "./formOptions/timeInfo";
 
 export default function StartForm({ handleFormOpen, open }: any) {
   const [done, setDone] = useState(false);
+  const { activeSection } = useSection();
   const width = useWidth();
   const [result, setResult] = useState(
     "همکار گرامی؛ به زوی لینک کاتالوگ فنی برای شما ارسال می‌شود و همکاران ما با شما تماس خواهند گرفت. کمال تشکر و قدردانی را از همراهی شما داریم"
@@ -74,6 +75,16 @@ export default function StartForm({ handleFormOpen, open }: any) {
     newOne[index] = answer;
     setAnswers([...newOne]);
   };
+
+  useEffect(() => {
+    if (activeSection !== 6) {
+      handleFormOpen(false);
+    } else {
+      if (step === 5 || step === 6) {
+        handleFormOpen(true);
+      }
+    }
+  }, [activeSection]);
 
   useEffect(() => {
     // if (step === 5) {

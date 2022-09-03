@@ -53,14 +53,6 @@ export default function Contact() {
     setFormOpen(open);
   };
 
-  useEffect(() => {
-    if (activeSection !== 6) {
-      setFormOpen(false);
-    } else {
-      setFormOpen(true);
-    }
-  }, [activeSection]);
-
   return (
     <ContactSection style={styleProps3}>
       {/* <TitleBox>
