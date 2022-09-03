@@ -6,11 +6,13 @@ import PhoneIcon from "../../PageIntro/formOptions/phone.svg";
 import TickVideo from "../../../assets/video/Tick01.webm";
 import useWidth from "../../../hooks/useWidth";
 import StartForm from "./startForm";
+import { useSection } from "../../../context/sectionStore";
 
 export default function Contact() {
   const [timeOption, setTimeOption] = useState(0);
   const [tick, setTick] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
+  const { activeSection } = useSection();
 
   const styleProps1 = useSpring({
     from: { transform: "scaleX(0)" },
@@ -50,6 +52,14 @@ export default function Contact() {
   const handleFormOpen = (open: boolean) => {
     setFormOpen(open);
   };
+
+  useEffect(() => {
+    if (activeSection !== 6) {
+      setFormOpen(false);
+    } else {
+      setFormOpen(true);
+    }
+  }, [activeSection]);
 
   return (
     <ContactSection style={styleProps3}>
