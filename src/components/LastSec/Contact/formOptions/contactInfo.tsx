@@ -9,10 +9,12 @@ export default function ContactInfo({
   step,
   answers,
   nextStep,
+  time,
 }: {
   step: number;
   answers: any;
   nextStep: (newStep: number) => void;
+  time: any;
 }) {
   const width = useWidth();
   const [timeOption, setTimeOption] = useState(0);
@@ -24,6 +26,22 @@ export default function ContactInfo({
   return (
     <>
       <FormBox style={styleProps1} show={step === 6}>
+        <TimePart>
+          <p
+            onClick={() => {
+              nextStep(5);
+            }}
+          >
+            {time.day}
+          </p>
+          <p
+            onClick={() => {
+              nextStep(5);
+            }}
+          >
+            {time.time}
+          </p>
+        </TimePart>
         <ContactForm
           onSubmit={(e) => {
             e.preventDefault();
@@ -56,6 +74,28 @@ export default function ContactInfo({
 
 const FormBox = styled(animated.div)<{ show: boolean }>`
   opacity: ${({ show }) => (show ? 1 : 0)};
+`;
+
+const TimePart = styled.div`
+  padding: 0 44px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  height: 6.8vh;
+  top: 28vh;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  & > p {
+    background: linear-gradient(210deg, #05185e, #4b86ac);
+    line-height: 6.8vh;
+    margin: 0 0 0 20px;
+    padding: 0 2vw;
+    font-size: 1.8vw;
+    color: #fff;
+    border-radius: 3.4vh;
+    cursor: pointer;
+  }
 `;
 
 const TimeForm = styled(animated.div)`
@@ -118,7 +158,7 @@ const TimeOption = styled.span<{ selected: boolean; smlWidth: boolean }>`
 
 const ContactForm = styled(animated.form)`
   position: absolute;
-  top: 47.5vh;
+  top: 35vh;
   bottom: 0;
   right: 0;
   left: 0;

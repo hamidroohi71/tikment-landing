@@ -17,7 +17,7 @@ export default function StartForm({ handleFormOpen, open }: any) {
   const [done, setDone] = useState(false);
   const width = useWidth();
   const [result, setResult] = useState(
-    "کارشناسان ما امروز با شما تماس خواهند گرفت"
+    "همکار گرامی؛ به زوی لینک کاتالوگ فنی برای شما ارسال می‌شود و همکاران ما با شما تماس خواهند گرفت. کمال تشکر و قدردانی را از همراهی شما داریم"
   );
   const [tick, setTick] = useState(false);
   const [step, setStep] = useState(0);
@@ -158,8 +158,16 @@ export default function StartForm({ handleFormOpen, open }: any) {
             nextStep={changeStep}
             addTime={addTime}
           />
-          <ContactInfo step={step} answers={answers} nextStep={changeStep} />
-          <ProgressBar show={step !== 0} percent={(step / 5) * 100} />
+          <ContactInfo
+            step={step}
+            answers={answers}
+            nextStep={changeStep}
+            time={time}
+          />
+          <ProgressBar
+            show={step !== 0}
+            percent={step > 5 ? 100 : (step / 5) * 100}
+          />
         </FormContent>
       </FormBox>
     </StartFormElement>
@@ -211,8 +219,12 @@ const Result = styled(Title)`
   position: absolute;
   top: 0;
   right: 85px;
-  height: 64px;
-  width: 39vw;
+  height: 13vh;
+  width: 56vw;
+  font-size: 1.5vw;
+  font-weight: 500;
+  line-height: 1.8;
+  padding: 2vh 3vh;
 `;
 
 const Tick = styled.video`
