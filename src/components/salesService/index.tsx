@@ -212,7 +212,7 @@ const ServicesSection = styled(animated.section)<{
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  padding: 13vh 0 0;
+  padding: 7vh 0 0;
   position: relative;
   z-index: ${({ active }) => (active ? 20 : 0)};
   transition: 0.5s ease-in;

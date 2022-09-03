@@ -40,7 +40,6 @@ const FaqBlock = styled.div<{ open: boolean }>`
   @media (max-width: 480px) {
     margin: 25px 0;
     max-height: ${({ open }) => (open ? "fit-content" : "100px")};
-    
   }
 `;
 
@@ -124,8 +123,11 @@ const Answer = styled.p<{ open: boolean; even: boolean }>`
   border: 1px solid #9e9e9e;
   padding: 57px 80px 24px;
   border-radius: 64px;
+  border-radius: ${({ even }) => (even ? "64px 0 64px 64px" : "0 64px 64px")};
   position: relative;
-  top: -35px;
+  top: -1.6vw;
+  right: ${({ even }) => (even ? "1.6vw" : "unset")};
+  left: ${({ even }) => (even ? "unset" : "1.6vw")};
   width: 80%;
   text-align: ${({ even }) => (even ? "left" : "right")};
   color: #6e6d6d;

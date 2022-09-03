@@ -171,6 +171,7 @@ const Title = styled.h2`
   color: #e67205;
   font-weight: 500;
   text-align: center;
+  margin-top: 0;
 `;
 
 const CustomerElement = styled.section<{ active: boolean; status: string }>`

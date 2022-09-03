@@ -155,4 +155,5 @@ const Title = styled.h2`
   color: #e67205;
   margin: 0;
   text-align: center;
+  margin-top: 0;
 `;

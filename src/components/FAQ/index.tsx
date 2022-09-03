@@ -97,7 +97,7 @@ const FAQSection = styled(animated.section)`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10vh 12vw;
+  padding: 7vh 12vw;
   position: relative;
   height: 100vh;
   @media (max-width: 480px) {
@@ -107,7 +107,7 @@ const FAQSection = styled(animated.section)`
 `;
 
 const Title = styled.h2`
-  font-size: 3.9vw;
+  font-size: 2.9vw;
   color: #e67205;
   font-weight: 500;
   text-align: center;
