@@ -22,6 +22,7 @@ export default function StartForm({ handleFormOpen, open }: any) {
   const [tick, setTick] = useState(false);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState([] as any);
+  const [time, setTime] = useState({ day: "", time: "" });
   const styleProps1 = useSpring({
     from: { transform: "scaleX(0)" },
     to: { transform: open ? "scaleX(1)" : "scaleX(0)" },
@@ -80,6 +81,7 @@ export default function StartForm({ handleFormOpen, open }: any) {
     // } else {
     //   handleFormOpen(false);
     // }
+
     if (step === 5 || step === 6) {
       handleFormOpen(true);
     } else {
@@ -99,6 +101,10 @@ export default function StartForm({ handleFormOpen, open }: any) {
       setStep(0);
     }
   }, [open]);
+
+  const addTime = (day: string, time: string) => {
+    setTime({ day: day, time: time });
+  };
 
   // console.log(answers);
   return (
@@ -146,7 +152,12 @@ export default function StartForm({ handleFormOpen, open }: any) {
             nextStep={changeStep}
             addAnswer={addAnswer}
           />
-          <TimeInfo step={step} answers={answers} nextStep={changeStep} />
+          <TimeInfo
+            step={step}
+            answers={answers}
+            nextStep={changeStep}
+            addTime={addTime}
+          />
           <ContactInfo step={step} answers={answers} nextStep={changeStep} />
           <ProgressBar show={step !== 0} percent={(step / 5) * 100} />
         </FormContent>
@@ -239,7 +250,7 @@ const FormBox = styled(animated.div)<{ step: number }>`
   border-radius: 3vw 0 3vw 3vw;
   backdrop-filter: blur(13px);
   transform-origin: top;
-  padding: ${({ step }) => (step === 6 ? "0" : "2.5vw 2vw")};
+  padding: ${({ step }) => (step === 7 ? "0" : "2.5vw 2vw")};
   transition: 0.5s ease-out;
 
   @media (max-width: 480px) {

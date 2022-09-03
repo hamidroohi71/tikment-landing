@@ -18,7 +18,7 @@ export default function FreeTest({
       <Title show={step === 4}>مایل به تست رایگان تیکمنت هستید؟</Title>
       <OptionBox>
         <YesOption
-          lastStep={step === 5}
+          lastStep={step === 5 || step === 6}
           index={0}
           step={step} //saber
           show={step === 4}
@@ -58,7 +58,7 @@ export default function FreeTest({
           </p>
         </YesOption>
         <NoOption
-          lastStep={step === 5}
+          lastStep={step === 5 || step === 6}
           index={1}
           step={step} //saber
           show={step === 4}

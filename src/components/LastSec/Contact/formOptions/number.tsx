@@ -16,7 +16,7 @@ export default function Number({
 }) {
   const numberElements = data.number.map((number, index) => (
     <Option
-      lastStep={step === 5}
+      lastStep={step === 5 || step === 6}
       index={index}
       show={step === 2}
       step={step} //saber

@@ -18,7 +18,7 @@ export default function FreeTest({
       <Title show={step === 4}>مایل به تست رایگان تیکمنت هستید؟</Title>
       <OptionBox>
         <YesOption
-          lastStep={step === 5}
+          lastStep={step === 5 || step === 6}
           index={0}
           step={step} //saber
           show={step === 4}
@@ -43,14 +43,14 @@ export default function FreeTest({
               />
             )}
           </svg> */}
-          {step === 5 ? (
+          {step === 5 || step === 6 ? (
             <img src="/fastContactForm/freeTest/yesTick.png" alt="tikment" />
           ) : (
             <img src="/fastContactForm/freeTest/yes.png" alt="tikment" />
           )}
 
           <p>
-            {step === 5 ? (
+            {step === 5 || step === 6 ? (
               <span className="se-content">نسخۀ تست رایگان (۳۰روزه)</span>
             ) : (
               "بله"
@@ -58,7 +58,7 @@ export default function FreeTest({
           </p>
         </YesOption>
         <NoOption
-          lastStep={step === 5}
+          lastStep={step === 5 || step === 6}
           index={1}
           step={step} //saber
           show={step === 4}

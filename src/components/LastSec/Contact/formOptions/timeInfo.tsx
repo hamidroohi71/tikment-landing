@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSpring, animated, easings } from "react-spring";
 import PersonIcon from "./person.svg";
@@ -9,10 +9,12 @@ export default function TimeInfo({
   step,
   answers,
   nextStep,
+  addTime,
 }: {
   step: number;
   answers: any;
   nextStep: (newStep: number) => void;
+  addTime: (day: string, time: string) => void;
 }) {
   const width = useWidth();
   const [dayOption, setDayOption] = useState("همین امروز");
@@ -81,18 +83,30 @@ export default function TimeInfo({
     </TimeOption>
   ));
 
-  const timesOption = hourList.map((item: any) => (
+  const timesOption = hourList.map((item: any, index: number) => (
     <TimeOption
       smlWidth={width < 1290}
       selected={timeOption === item}
       onClick={() => {
         setTimeOption(item);
-        nextStep(6);
       }}
     >
       {item}
     </TimeOption>
   ));
+
+  useEffect(() => {
+    if (timeOption) {
+      addTime(dayOption, timeOption);
+      nextStep(6);
+    }
+  }, [timeOption]);
+
+  useEffect(() => {
+    if (step === 5) {
+      setTimeOption("");
+    }
+  }, [step]);
 
   return (
     <>
@@ -144,6 +158,7 @@ const TimeForm = styled(animated.div)<{ show: boolean }>`
     display: flex;
     align-items: center;
     border-top: 2px solid #fff;
+    padding: 1.3vh 0;
     p {
       font-size: 1.2vw;
       color: #183573;

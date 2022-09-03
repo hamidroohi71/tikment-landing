@@ -17,7 +17,7 @@ export default function Method({
   const methodElements = data.method.map((method, index) => (
     <Option
       step={step}
-      lastStep={step === 5}
+      lastStep={step === 5 || step === 6}
       index={index}
       show={step === 3}
       selected={step > 3 && answers[2] === index}

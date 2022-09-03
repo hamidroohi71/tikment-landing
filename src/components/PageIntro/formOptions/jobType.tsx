@@ -19,7 +19,7 @@ export default function JobType({
       selected={step > 1 && answers[0] === index}
       index={index}
       step={step} // saber added
-      lastStep={step === 5}
+      lastStep={step === 5 || step === 6}
       onClick={() => {
         nextStep(step > 1 && answers[0] === index ? 1 : 2);
         //  console.log('clicked');

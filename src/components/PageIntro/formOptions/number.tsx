@@ -16,7 +16,7 @@ export default function Number({
 }) {
   const numberElements = data.number.map((number, index) => (
     <Option
-      lastStep={step === 5}
+      lastStep={step === 5 || step === 6}
       index={index}
       show={step === 2}
       step={step} //saber
@@ -51,7 +51,7 @@ const Option = styled(OptionBase)`
     padding: 0 1.6vw;
     font-size: 1.5vw;
 
-    @media (max-width: 480px){
+    @media (max-width: 480px) {
       font-size: 20px;
       padding: 0 25px;
     }
