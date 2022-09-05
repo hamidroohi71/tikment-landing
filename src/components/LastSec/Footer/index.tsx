@@ -6,6 +6,9 @@ import data from "./data.json";
 import PhoneIcon from "../../../assets/icons/PhoneIcon.png";
 import TimeIcon from "../../../assets/icons/TimeIcon.svg";
 import LocationIcon from "../../../assets/icons/LocationIcon.svg";
+import MessageIcon from "../../../assets/icons/formMessage.svg";
+import NameIcon from "../../../assets/icons/formName.svg";
+import FormPhoneIcon from "../../../assets/icons/formPhone.svg";
 
 export default function Footer() {
   const socicalElement = data.footerSocial.map((item) => (
@@ -201,12 +204,12 @@ const FormBox = styled.div`
 
     textarea {
       height: 17vh;
-      background: #fff;
-      border-radius: 32px;
+      background: #fff url(${MessageIcon}) 95% 10%/1.4vw no-repeat;
+      border-radius: 1.6vw;
       border: none;
       outline: none;
       margin-bottom: 2vh;
-      padding: 22px;
+      padding: 2% 12% 2% 2%;
       font-family: YekanBakh;
       font-size: 1.2vw;
       * {
@@ -214,16 +217,19 @@ const FormBox = styled.div`
       }
     }
 
-    input[type="text"] {
+    & > input[type="text"] {
       height: 5.9vh;
-      background: #fff;
-      border-radius: 32px;
+      border-radius: 1.6vw;
       border: none;
       outline: none;
       margin-bottom: 2vh;
-      padding: 0 22px;
+      padding: 0 12% 0 2%;
       font-family: YekanBakh;
       font-size: 1.2vw;
+    }
+
+    & > input {
+      background: #fff url(${NameIcon}) 95%/1.4vw no-repeat;
     }
 
     & > div {
@@ -232,12 +238,14 @@ const FormBox = styled.div`
       input[type="text"] {
         width: 17vw;
         height: 5.9vh;
-        background: #fff;
-        border-radius: 32px;
+        background: #fff url(${FormPhoneIcon}) 92%/1.4vw no-repeat;
+        border-radius: 1.6vw;
         border: none;
         outline: none;
         flex-shrink: 0;
         margin: 0;
+        padding: 0 12% 0 2%;
+        font-size: 1.2vw;
       }
       input[type="submit"] {
         background: linear-gradient(210deg, #37abb8, #71fbff);
