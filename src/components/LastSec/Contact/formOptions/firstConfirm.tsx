@@ -44,6 +44,8 @@ const ConfirmBox = styled.section<{ show: boolean }>`
     line-height: 150%;
     margin-top: 0;
     margin-bottom: 2.7vh;
+    text-align: justify;
+    letter-spacing: -0.5px;
   }
 
   & > div {
