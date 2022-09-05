@@ -72,11 +72,7 @@ const patternInfo = [
   },
 ];
 
-export default function GlassPattern({
-  showComment,
-}: {
-  showComment: boolean;
-}) {
+export default function GlassPattern() {
   const { activeSection } = useSection();
 
   const glassStyle = useSpring({
@@ -85,8 +81,8 @@ export default function GlassPattern({
     },
     to: {
       transform:
-        activeSection === 3 && showComment
-          ? `rotate(45deg) translateX(0%) translateY(0%)`
+        activeSection === 5
+          ? `rotate(45deg) translateX(60%) translateY(-200%)`
           : `rotate(45deg) translateX(-500%) translateY(-500%)`,
     },
     config: { duration: 1000, easing: easings.easeOutQuart },
@@ -103,7 +99,7 @@ export default function GlassPattern({
       border={item.border}
       radius={item.radius}
       index={index}
-      active={activeSection === 3}
+      active={activeSection === 5}
       glassStyle={glassStyle}
     />
   ));
@@ -121,6 +117,5 @@ const GlassPatternElement = styled.div`
   left: 0;
   z-index: 1;
   opacity: 0.15;
-  transform: translateY(-70vh);
   mix-blend-mode: multiply;
 `;

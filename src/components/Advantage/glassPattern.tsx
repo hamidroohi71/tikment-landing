@@ -134,7 +134,7 @@ export default function GlassPattern({ listIndex }: { listIndex: number }) {
     },
     to: {
       transform:
-        activeSection === 4
+        activeSection === 2
           ? `rotate(45deg) translateX(0%) translateY(0%)`
           : `rotate(45deg) translateX(500%) translateY(500%)`,
     },
@@ -147,7 +147,7 @@ export default function GlassPattern({ listIndex }: { listIndex: number }) {
     },
     to: {
       transform:
-        activeSection === 4
+        activeSection === 2
           ? `rotate(45deg) translateX(0%) translateY(0%)`
           : `rotate(45deg) translateX(-500%) translateY(-500%)`,
     },
@@ -188,7 +188,7 @@ export default function GlassPattern({ listIndex }: { listIndex: number }) {
       border={item.border}
       radius={item.radius}
       index={index}
-      active={activeSection === 4}
+      active={activeSection === 2}
       glassStyle={index % 2 === 0 ? glassStyleEven : glassStyleOdd}
     />
   ));
@@ -211,11 +211,11 @@ const GlassPatternElement = styled(animated.div)<{ show: boolean }>`
   transform-origin: left;
   mix-blend-mode: multiply;
 
-  @media(max-width:480px){
+  @media (max-width: 480px) {
     width: 100%;
     left: 0;
-    top:0;
-    opacity:1;
+    top: 0;
+    opacity: 1;
     transform: none !important;
     background-image: url(${ZBpic});
     background-size: contain;

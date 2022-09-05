@@ -7,6 +7,7 @@ import { useSpring, easings, animated } from "react-spring";
 import useWidth from "../../hooks/useWidth";
 import { useWheel } from "react-use-gesture";
 import TitleTick from "../../assets/icons/orangeTick.svg";
+import GlassPattern from "./glassPattern";
 const { Lethargy } = require("lethargy");
 
 export default function FAQ() {
@@ -87,6 +88,7 @@ export default function FAQ() {
   ));
   return (
     <FAQSection style={sectionStyle}>
+      <GlassPattern />
       <Title>پرسش‌های شما</Title>
       {faqElements}
     </FAQSection>
