@@ -20,6 +20,7 @@ import LaptopImage2 from "./assets/laptop2.webp";
 import managementImage from "./assets/management.webp";
 import laughingManImage from "./assets/laughingMan.webp";
 import DeviceImage from "./assets/device.webp";
+import CircleBack from "./assets/circle.webp";
 import Badge from "./assets/freeTest.webp";
 import MobilePic from "./assets/mobile.png";
 import FastDetection from "./fastDetection";
@@ -150,6 +151,27 @@ export default function AdvantagesList({
     config: { duration: 1000, easing: easings.easeOutQuart },
   });
 
+  const circleStyle2 = useSpring({
+    from: {
+      opacity: 0,
+      transform: "translateX(-10%) scale(1)",
+      transformOrigin: "left",
+    },
+    to: {
+      opacity: index === 4 || index === 5 ? 1 : 0,
+      transform:
+        index === 4
+          ? "translate(0%, 0%) scale(1)"
+          : index === 5
+          ? "translate(-1%,-12%) scale(1)"
+          : index < 4
+          ? "translate(-10%,0&%) scale(1)"
+          : "translate(0%,0%) scale(0.4)",
+      transformOrigin: "left",
+    },
+    delay: index === 4 ? 1000 : index === 5 ? 500 : 0,
+    config: { duration: 1000, easing: easings.easeOutQuart },
+  });
   return (
     <Advantages style={sectionStyle}>
       <GlassPattern listIndex={index} />
@@ -169,6 +191,7 @@ export default function AdvantagesList({
         src={GeoFenceImage}
         alt="geo-fence"
       />
+      <Image style={circleStyle2} src={CircleBack} alt="سفر" />
       <Image style={mobileImageStyle2} src={MobileImage2} alt="سفر" />
       <ImageContent style={tripMobileContentStyle} src={TripImage} alt="trip" />
       <Image

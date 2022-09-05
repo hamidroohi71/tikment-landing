@@ -174,7 +174,7 @@ export default function Advantage() {
           alt="tikment"
         />
       </Background>
-      <CircleBack style={CircleStyle} />
+      {/* <CircleBack style={CircleStyle} /> */}
       <TitlePart>
         <MainTitle style={titleStyle}>
           از کسب‌وکارهای کوچک تا سازمان‌های بزرگ <br />
