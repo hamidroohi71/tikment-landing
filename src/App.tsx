@@ -65,9 +65,9 @@ function App() {
   return (
     <div>
       {!loaded && <InitialVideo handleLoaded={handleLoaded} />}
+      <Header />
       <ScrollBody loaded={loaded}>
         <>
-          <Header />
           <PageIntro />
           <Advantage />
           <Customer />

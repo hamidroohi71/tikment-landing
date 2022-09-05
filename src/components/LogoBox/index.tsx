@@ -43,7 +43,6 @@ const LogoBoxElement = styled(animated.section)`
   width: 19vw;
   height: 69px;
   border-radius: 35px 0 0 35px;
-  position: absolute;
   top: 40px;
   right: 0;
   display: flex;

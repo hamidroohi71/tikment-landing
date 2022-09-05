@@ -58,7 +58,6 @@ const TopBarElement = styled(animated.section)`
   border-radius: 0 34px 34px 0;
   align-items: center;
   width: 78vw;
-  position: absolute;
   top: 41px;
   left: 0;
   height: 68px;
