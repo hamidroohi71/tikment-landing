@@ -66,6 +66,7 @@ const MainTitle = styled(animated.h2)`
   font-size: 3.6vw;
   color: #183573;
   margin: 0;
+  letter-spacing: -1.5px;
   @media (max-width: 480px) {
     font-size: 42px;
   }
