@@ -225,6 +225,12 @@ const Image = styled(animated.img)`
   }
 `;
 
+const LongImage = styled(Image)`
+  height: 200vh;
+  top: 0;
+  transform-origin: left top;
+`;
+
 const ImageContent = styled(Image)`
   z-index: 26;
 `;
