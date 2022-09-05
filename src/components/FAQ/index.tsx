@@ -6,6 +6,7 @@ import { useSection } from "../../context/sectionStore";
 import { useSpring, easings, animated } from "react-spring";
 import useWidth from "../../hooks/useWidth";
 import { useWheel } from "react-use-gesture";
+import TitleTick from "../../assets/icons/orangeTick.svg";
 const { Lethargy } = require("lethargy");
 
 export default function FAQ() {
@@ -112,4 +113,7 @@ const Title = styled.h2`
   font-weight: 500;
   text-align: center;
   margin: 0;
+  background: url(${TitleTick}) right/40px no-repeat;
+  padding-right: 50px;
+  margin: 0 auto;
 `;

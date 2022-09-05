@@ -5,6 +5,7 @@ import { useSection } from "../../context/sectionStore";
 import { useSpring, easings, animated } from "react-spring";
 import useWidth from "../../hooks/useWidth";
 import { useWheel } from "react-use-gesture";
+import TitleTick from "../../assets/icons/orangeTick.svg";
 const { Lethargy } = require("lethargy");
 
 let myTime: any;
@@ -231,6 +232,10 @@ const Title = styled.h2`
   text-align: center;
   margin: 0;
   font-weight: 500;
+  width: fit-content;
+  background: url(${TitleTick}) right/40px no-repeat;
+  padding-right: 50px;
+  margin: 0 auto;
 
   @media (max-width: 480px) {
     font-size: 32px;

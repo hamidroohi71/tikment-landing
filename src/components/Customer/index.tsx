@@ -7,6 +7,7 @@ import useWidth from "../../hooks/useWidth";
 import GlassPattern from "./glassPattern";
 import { useWheel } from "react-use-gesture";
 import data from "./customerData.json";
+import TitleTick from "../../assets/icons/orangeTick.svg";
 
 const { Lethargy } = require("lethargy");
 
@@ -172,6 +173,10 @@ const Title = styled.h2`
   font-weight: 500;
   text-align: center;
   margin-top: 0;
+  width: fit-content;
+  background: url(${TitleTick}) right/64px no-repeat;
+  padding-right: 80px;
+  margin: 0 auto;
 `;
 
 const CustomerElement = styled.section<{ active: boolean; status: string }>`
