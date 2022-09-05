@@ -117,7 +117,7 @@ export default function ProductForm({
         {!tick && <RingSign></RingSign>}
 
         <Title style={{ ...styleProps1, ...styleProps6 }}>
-          {"برای انتخاب بهتر"}
+          {"امکانات تیکمنت"}
         </Title>
         <Result style={styleProps7}>{result}</Result>
       </TitleBox>
@@ -159,9 +159,10 @@ const Title = styled(animated.h2)`
   line-height: 5.9vh;
   border-radius: 2.9vh;
   box-shadow: 0px 7px 15px #00000033;
-  font-size: 1.8vw;
+  font-size: 1.7vw;
+  font-weight: 500;
   color: #fff;
-  padding: 0 59px;
+  padding: 0 35px;
   margin: 0;
   transform-origin: right;
   @media (max-width: 480px) {
