@@ -89,13 +89,13 @@ export default function CustomerCarousel({
         <CommentSlider selectedIndex={currentIndex} />
       </CommentContainer>
       <CarouselSection style={carouselStyle} onClick={enterComment}>
-        <Back
+        {/* <Back
           onClick={() =>
             currentIndex === 0 ? "" : setCurrentIndex(currentIndex - 1)
           }
-        ></Back>
+        ></Back> */}
         {customerData}
-        <Forward onClick={() => goNextSlide()}></Forward>
+        {/* <Forward onClick={() => goNextSlide()}></Forward> */}
       </CarouselSection>
     </>
   );
