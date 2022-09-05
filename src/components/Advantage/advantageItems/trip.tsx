@@ -45,7 +45,7 @@ export default function Trip({ active }: { active: boolean }) {
 const TextBox = styled.div`
   position: absolute;
   top: 26vh;
-  left: 43vw;
+  left: 52vw;
   right: 13vw;
   display: flex;
   flex-direction: column;
