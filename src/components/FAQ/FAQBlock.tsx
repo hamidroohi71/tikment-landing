@@ -136,6 +136,7 @@ const Answer = styled.p<{ open: boolean; even: boolean }>`
   margin-right: ${({ even }) => (even ? "0" : "auto")};
   font-size: 1.8vw;
   font-weight: 500;
+  text-align: right;
 
   @media (max-width: 480px) {
     font-size: 21px;
