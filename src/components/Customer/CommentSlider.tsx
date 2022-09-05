@@ -17,14 +17,14 @@ export default function CommentSlider({
         <h2>
           {item.comment.position}
           <span />
+          <TickMotion
+            id={"tickVideo" + index}
+            src={TickVideo}
+            loop={false}
+            muted
+            selected={index === selectedIndex}
+          ></TickMotion>
         </h2>
-        <TickMotion
-          id={"tickVideo" + index}
-          src={TickVideo}
-          loop={false}
-          muted
-          selected={index === selectedIndex}
-        ></TickMotion>
       </Title>
     );
   });
@@ -183,8 +183,8 @@ const TickMotion = styled.video<{ selected: boolean }>`
   width: 4.6vw;
   height: 4.6vw;
   position: absolute;
-  right: -148px;
-  bottom: -11px;
+  right: calc(-60px - 5.5vw);
+  bottom: -0.5vw;
   object-fit: contain;
   opacity: ${({ selected }) => (selected ? 1 : 0)};
   transition-delay: ${({ selected }) => (selected ? "0.7s" : "0s")};
@@ -208,6 +208,7 @@ const Title = styled.div<{ selected: boolean }>`
     position: relative;
     transition: 0.5s ease-out;
     transition-delay: ${({ selected }) => (selected ? "1s" : "0s")};
+    z-index: 50;
 
     & > span {
       position: absolute;
