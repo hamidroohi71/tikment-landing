@@ -208,6 +208,7 @@ const FormBox = styled.div`
       margin-bottom: 2vh;
       padding: 22px;
       font-family: YekanBakh;
+      font-size: 1.2vw;
       * {
         vertical-align: top;
       }
@@ -222,6 +223,7 @@ const FormBox = styled.div`
       margin-bottom: 2vh;
       padding: 0 22px;
       font-family: YekanBakh;
+      font-size: 1.2vw;
     }
 
     & > div {
