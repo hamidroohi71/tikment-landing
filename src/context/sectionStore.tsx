@@ -7,7 +7,7 @@ export default function SectionContext({
 }: {
   children: JSX.Element;
 }) {
-  const [activeSection, setActiveSection] = useState<any>(1);
+  const [activeSection, setActiveSection] = useState<any>(0);
   const [nextSection, setNextSection] = useState(1);
 
   return (

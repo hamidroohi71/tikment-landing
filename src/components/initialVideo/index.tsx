@@ -37,6 +37,10 @@ export default function InitialVideo({
     });
   }, []);
 
+  useEffect(() => {
+    console.log(domLoaded);
+  }, [domLoaded]);
+
   const onLoad = (index: number) => {
     const newList = loadList;
     newList.push(index);
@@ -117,7 +121,7 @@ export default function InitialVideo({
         autoPlay={playIndex === 2}
         muted={true}
         width="100%"
-        loop={!loadList.includes(3)}
+        loop={!domLoaded}
         onCanPlayThrough={() => {
           onLoad(2);
         }}
@@ -135,7 +139,7 @@ export default function InitialVideo({
 }
 
 const VideoSections = styled.section`
-  position: relative;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   overflow: hidden;

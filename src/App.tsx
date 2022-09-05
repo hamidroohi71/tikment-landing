@@ -59,30 +59,26 @@ function App() {
 
   const handleLoaded = () => {
     setLoaded(true);
+    console.log(loaded);
   };
 
   return (
     <div>
-      {loaded ? (
+      {!loaded && <InitialVideo handleLoaded={handleLoaded} />}
+      <ScrollBody loaded={loaded}>
         <>
-          <ScrollBody>
-            <>
-              <Header />
-              <PageIntro />
-              <Advantage />
-              <Customer />
-              {/* <Product /> */}
-              <SalesService />
-              {/* <Comments /> */}
-              <FAQ />
-              <LastSec />
-              <AboutUs />
-            </>
-          </ScrollBody>
+          <Header />
+          <PageIntro />
+          <Advantage />
+          <Customer />
+          {/* <Product /> */}
+          <SalesService />
+          {/* <Comments /> */}
+          <FAQ />
+          <LastSec />
+          <AboutUs />
         </>
-      ) : (
-        <InitialVideo handleLoaded={handleLoaded} />
-      )}
+      </ScrollBody>
     </div>
   );
 }

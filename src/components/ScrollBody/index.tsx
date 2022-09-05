@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useWheel } from "react-use-gesture";
 import Navigation from "../navigation";
@@ -6,7 +6,13 @@ import { useSection } from "../../context/sectionStore";
 import useWidth from "../../hooks/useWidth";
 const { Lethargy } = require("lethargy");
 
-export default function ScrollBody({ children }: { children: JSX.Element }) {
+export default function ScrollBody({
+  children,
+  loaded,
+}: {
+  children: JSX.Element;
+  loaded: boolean;
+}) {
   const width = useWidth();
   const { activeSection, setActiveSection, nextSection, setNextSection } =
     useSection();
@@ -24,6 +30,12 @@ export default function ScrollBody({ children }: { children: JSX.Element }) {
   };
 
   console.log(activeSection, nextSection);
+
+  useEffect(() => {
+    if (loaded) {
+      setActiveSection(1);
+    }
+  }, [loaded]);
 
   const lethargy = new Lethargy();
 
