@@ -191,6 +191,11 @@ const NoOption = styled(Option)`
     }
   }
 
+  svg {
+    width: ${({ lastStep }) => (lastStep ? "7vw" : "4vw")};
+    height: ${({ lastStep }) => (lastStep ? "7vw" : "4vw")};
+  }
+
   &:hover {
     background: ${({ selected }) =>
       selected
