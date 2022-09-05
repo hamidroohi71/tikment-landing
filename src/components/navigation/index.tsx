@@ -52,7 +52,7 @@ export default function Navigation({
   });
   const elements = [];
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 6; i++) {
     elements.push(
       <NavigationDot
         goToSection={goToSection}
@@ -65,7 +65,7 @@ export default function Navigation({
   return (
     <NavigationBar style={styleProps}>
       {elements}
-      <Progress active={activeSection < 6 ? activeSection : 5} />
+      <Progress active={activeSection < 7 ? activeSection : 6} />
     </NavigationBar>
   );
 }
@@ -73,7 +73,7 @@ export default function Navigation({
 const Progress = styled.div<{ active: number }>`
   position: absolute;
   top: 4px;
-  bottom: ${({ active }) => `${(5 - active) * 21 + 4}px`};
+  bottom: ${({ active }) => `${(6 - active) * 21 + 4}px`};
   width: 13px;
   background: #9e9e9e;
   border-radius: 6.5px;
