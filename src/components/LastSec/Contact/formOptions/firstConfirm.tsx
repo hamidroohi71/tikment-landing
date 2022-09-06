@@ -38,12 +38,13 @@ const ConfirmBox = styled.section<{ show: boolean }>`
   left: 4.5vh;
 
   & > h2 {
-    font-size: 1.8vw;
+    font-size: 1.6vw;
     color: #183573;
     font-weight: 500;
     line-height: 150%;
     margin-top: 0;
     margin-bottom: 2.7vh;
+    padding: 1rem;
     text-align: justify;
     letter-spacing: -0.5px;
   }
