@@ -14,6 +14,7 @@ import AboutUs from "./components/AboutUs";
 import { useSection } from "./context/sectionStore";
 import { useWheel } from "react-use-gesture";
 import useWidth from "./hooks/useWidth";
+import DownScroll from "./components/DownArrow/DownScroll";
 const { Lethargy } = require("lethargy");
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
     <div>
       {!loaded && <InitialVideo handleLoaded={handleLoaded} />}
       <Header />
+      <DownScroll />
       <ScrollBody loaded={loaded}>
         <>
           <PageIntro />
