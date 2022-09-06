@@ -39,9 +39,21 @@ export default function FastDetection({ active }: { active: boolean }) {
           حتی در استفاده‌های طولانی مدت هم دقیق و سریع عمل کند
         </Text>
       </TextBox>
+      <Number>۱</Number>
     </>
   );
 }
+
+const Number = styled.p`
+  font-size: 15vw;
+  font-weight: 500;
+  color: #e4e4e4;
+  position: absolute;
+  left: 5vw;
+  bottom: 5vw;
+  line-height: 0.8;
+  margin: 0;
+`;
 
 const TextBox = styled.div`
   position: absolute;
