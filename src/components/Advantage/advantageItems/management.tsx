@@ -41,9 +41,21 @@ export default function Management({ active }: { active: boolean }) {
           </b>
         </Text>
       </TextBox>
+      <Number style={sectionStyle}>۶</Number>
     </>
   );
 }
+
+const Number = styled(animated.p)`
+  font-size: 15vw;
+  font-weight: 500;
+  color: #e4e4e4;
+  position: absolute;
+  left: 4vw;
+  bottom: 2vw;
+  line-height: 0.8;
+  margin: 0;
+`;
 
 const Image = styled(animated.img)`
   width: 100vw;

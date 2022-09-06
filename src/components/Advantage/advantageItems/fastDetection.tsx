@@ -39,12 +39,12 @@ export default function FastDetection({ active }: { active: boolean }) {
           حتی در استفاده‌های طولانی مدت هم دقیق و سریع عمل کند
         </Text>
       </TextBox>
-      <Number>۱</Number>
+      <Number style={sectionStyle}>۱</Number>
     </>
   );
 }
 
-const Number = styled.p`
+const Number = styled(animated.p)`
   font-size: 15vw;
   font-weight: 500;
   color: #e4e4e4;

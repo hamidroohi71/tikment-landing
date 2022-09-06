@@ -45,9 +45,21 @@ export default function GEOFence({ active }: { active: boolean }) {
           ترتیب، دیگر ثبت ورود و خروجتان را فراموش نخواهید کرد
         </Text>
       </TextBox>
+      <Number style={textStyle}>۲</Number>
     </>
   );
 }
+
+const Number = styled(animated.p)`
+  font-size: 15vw;
+  font-weight: 500;
+  color: #e4e4e4;
+  position: absolute;
+  left: 5vw;
+  bottom: 5vw;
+  line-height: 0.8;
+  margin: 0;
+`;
 
 const Image = styled(animated.img)`
   width: 100vw;
