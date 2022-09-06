@@ -8,7 +8,7 @@ export default function Header() {
   const { activeSection } = useSection();
 
   return (
-    <HeaderSec show={activeSection < 6}>
+    <HeaderSec show={activeSection < 6 && activeSection > 0}>
       <LogoBox />
       <TopBar />
     </HeaderSec>

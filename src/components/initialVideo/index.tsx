@@ -143,7 +143,7 @@ const VideoSections = styled.section`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  z-index: 100;
+  z-index: 1000;
   background: #fff;
   @media (max-width: 480px) {
     background: #fff;

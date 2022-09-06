@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import useWidth from "../../hooks/useWidth";
 
 export default function ContactUs() {
-  const { activeSection } = useSection();
+  const { activeSection, setActiveSection } = useSection();
   const [contact, setContact] = useState(false);
 
   const navigate = useNavigate();
@@ -32,7 +32,9 @@ export default function ContactUs() {
     <ContactElement
       activeSection={activeSection}
       contact={contact}
-      onClick={() => navigate("/contactUs")}
+      onClick={() => {
+        setActiveSection(6);
+      }}
     >
       <img src={Phone} alt="contact" />
       <animated.p style={styleProp}>
