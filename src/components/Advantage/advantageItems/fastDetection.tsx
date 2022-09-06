@@ -53,6 +53,7 @@ const Number = styled(animated.p)`
   bottom: 5vw;
   line-height: 0.8;
   margin: 0;
+  mix-blend-mode: multiply;
 `;
 
 const TextBox = styled.div`

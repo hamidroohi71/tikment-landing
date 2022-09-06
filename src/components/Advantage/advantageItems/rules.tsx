@@ -54,6 +54,7 @@ const Number = styled(animated.p)`
   bottom: 2vw;
   line-height: 0.8;
   margin: 0;
+  mix-blend-mode: multiply;
 `;
 
 const Image = styled(animated.img)`
