@@ -45,7 +45,7 @@ export default function Report({ active }: { active: boolean }) {
           است
         </Text>
       </TextBox>
-      <Number style={sectionStyle}>۶</Number>
+      <Number style={sectionStyle}>۷</Number>
     </>
   );
 }
