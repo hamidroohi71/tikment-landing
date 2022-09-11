@@ -74,7 +74,7 @@ export default function LastSec() {
     >
       <div ref={lengthRef} className="last">
         <Contact />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </LastSection>
   );

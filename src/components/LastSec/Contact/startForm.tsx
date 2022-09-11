@@ -187,11 +187,9 @@ export default function StartForm({ handleFormOpen, open }: any) {
 
 const StartFormElement = styled(animated.section)<{ open: boolean }>`
   z-index: ${({ open }) => (open ? 70 : 0)};
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
 
+  // border: 3px solid red;
+  width: 100% ;
   @media (max-width: 480px) {
     position: relative;
     top: 0;
@@ -204,7 +202,10 @@ const TitleBox = styled(animated.div)`
   display: flex;
   align-items: center;
   z-index: 10;
-  position: relative;
+  position: absolute;
+  top: -2.5vh ;
+  right: -1.3vw;
+  // border:3px solid black;
 `;
 
 const Title = styled(animated.h2)`
@@ -218,6 +219,7 @@ const Title = styled(animated.h2)`
   padding: 0 59px;
   margin: 0;
   transform-origin: right;
+
   @media (max-width: 480px) {
     font-size: 30px;
     padding: 0 21px;
@@ -235,6 +237,7 @@ const Result = styled(Title)`
   font-size: 1.5vw;
   font-weight: 500;
   line-height: 1.8;
+  border:3px solid yellow;
   padding: 2vh 3vh;
 `;
 
@@ -262,20 +265,19 @@ const RingSign = styled.span`
 `;
 
 const FormBox = styled(animated.div)<{ step: number }>`
-  position: absolute;
-  top: 2.9vh;
-  bottom: 0;
-  right: 2.9vh;
   width: 53vw;
+  margin-top: 24px;
   box-shadow: inset 0px 0px 80px #75c9db80;
   background: linear-gradient(180deg, #75c9db1a 0%, #4af3f81a 100%);
   border: ${({ step }) => (step === 6 ? "none" : "1px solid #b9e4ed")};
   border-radius: 3vw 0 3vw 3vw;
   backdrop-filter: blur(13px);
   transform-origin: top;
+  border: 3px solid black;
   padding: ${({ step }) => (step === 7 ? "0" : "2.5vw 2vw")};
   transition: 0.5s ease-out;
-
+  // border:13px solid green ;
+  
   @media (max-width: 480px) {
     position: relative;
     top: -20px;

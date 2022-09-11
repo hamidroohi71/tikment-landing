@@ -109,7 +109,6 @@ export default function TimeInfo({
   }, [step]);
 
   return (
-    <>
       <FormBox style={styleProps1} show={step === 5}>
         <TimeForm show={step === 5}>
           <p>
@@ -127,24 +126,30 @@ export default function TimeInfo({
           </div>
         </TimeForm>
       </FormBox>
-    </>
   );
 }
 
 const FormBox = styled(animated.div)<{ show: boolean }>`
   opacity: ${({ show }) => (show ? 1 : 0)};
+  display : ${({ show }) => (show ? "block" : "none")};
+  // border:3px solid red;
+  margin-top: -15px
 `;
 
 const TimeForm = styled(animated.div)<{ show: boolean }>`
-  z-index: ${({ show }) => (show ? 10 : 0)};
-  position: absolute;
-  top: 27vh;
-  right: -2px;
-  left: -2px;
+  z-index: ${({ show }) => (show ? 100 : 0)};
+  // position: absolute;
+ 
+  // display:none;
   box-sizing: border-box;
-  padding: 1.3vh 31px 39px 47px;
+  padding: 1.3vh 31px 20px 47px;
   opacity: 1;
+  // border:6px solid red;
+  // background-color: red;
+  display: ${({ show }) => (show ? "block" : "none")};
+  //  //////////////////////////////////////////////////
 
+  z-index: 100;
   & > p {
     font-size: 1.5vw;
     color: #183573;
@@ -196,6 +201,8 @@ const TimeOption = styled.span<{ selected: boolean; smlWidth: boolean }>`
   padding: 0 1.5vw;
   cursor: pointer;
   margin: 0 2.5px;
+  z-index: 100;
+  white-space: nowrap;
   @media (max-width: 480px) {
     font-size: 10px;
   }
@@ -212,7 +219,7 @@ const ContactForm = styled(animated.form)`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-
+  border:4px solid green ;
   @media (max-width: 480px) {
     padding: 20px 10px 50px;
     z-index: 60;

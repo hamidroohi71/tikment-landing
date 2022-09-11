@@ -62,7 +62,7 @@ function App() {
     setLoaded(true);
     console.log(loaded);
   };
-
+  console.log("loaded");
   return (
     <div>
       {!loaded && <InitialVideo handleLoaded={handleLoaded} />}
@@ -76,9 +76,9 @@ function App() {
           {/* <Product /> */}
           <SalesService />
           {/* <Comments /> */}
-          <FAQ />
+          {/* <FAQ /> */}
           <LastSec />
-          <AboutUs />
+          {/* <AboutUs /> */}
         </>
       </ScrollBody>
     </div>

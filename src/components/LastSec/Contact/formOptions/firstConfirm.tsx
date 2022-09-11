@@ -7,7 +7,7 @@ export default function FirstConfirm({ step, nextStep }: any) {
       <h2>
         شما می‌توانید همین امروز برای دریافت کاتالوگ محصولات با ما تماس بگیرید.
         پیشنهاد ما این است که قبل از تماس، فرم مشاوره را پر نمایید تا راهنمایی
-        دقیق‌تری در اختیار شما قرار گیرد
+        دقیق‌تری در اختیار شما قرار گیرد.
       </h2>
       <div>
         <ContactInfo>
@@ -31,28 +31,26 @@ const ConfirmBox = styled.section<{ show: boolean }>`
   flex-direction: column;
   opacity: ${({ show }) => (show ? 1 : 0)};
   z-index: ${({ show }) => (show ? 100 : -1)};
-  position: absolute;
-  top: 4.5vh;
-  right: 4.5vh;
-  bottom: 4.5vh;
-  left: 4.5vh;
-
+  // border:2px solid blue;
+  padding:0 0 15px;
   & > h2 {
     font-size: 1.6vw;
     color: #183573;
     font-weight: 500;
     line-height: 150%;
     margin-top: 0;
-    margin-bottom: 2.7vh;
+    margin-bottom: 0;
     padding: 1rem;
     text-align: justify;
     letter-spacing: -0.5px;
+    z-index: 100;
   }
 
   & > div {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    // border:3px solid black;
   }
 
   button {
@@ -60,12 +58,14 @@ const ConfirmBox = styled.section<{ show: boolean }>`
     margin-right: 29px;
     background: linear-gradient(-30deg, #ff5151, #ffd011);
     height: 6.7vh;
+    z-index: 100;
     padding: 0 33px;
     color: #fff;
     font-size: 1.7vw;
     font-weight: 500;
     border-radius: 3.3vh;
     border: none;
+    // border:4px solid red;
     outline: none;
     font-family: YekanBakh;
     cursor: pointer;

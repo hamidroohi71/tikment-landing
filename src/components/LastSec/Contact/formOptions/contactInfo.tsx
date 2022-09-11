@@ -24,7 +24,6 @@ export default function ContactInfo({
     config: { duration: 500, easing: easings.easeOutQuart },
   });
   return (
-    <>
       <FormBox style={styleProps1} show={step === 6}>
         <TimePart>
           <p
@@ -68,20 +67,24 @@ export default function ContactInfo({
           <SubmitButton type="submit" value="ثبت" />
         </ContactForm>
       </FormBox>
-    </>
   );
 }
 
 const FormBox = styled(animated.div)<{ show: boolean }>`
-  opacity: ${({ show }) => (show ? 1 : 0)};
+  // opacity: ${({ show }) => (show ? 1 : 0)};
+
+  display: ${({ show }) => (show ? "block" : "none")};
+  // border:3px solid red;
+  // display:none;
+  //  //////////////////////////////////////////////////
 `;
 
 const TimePart = styled.div`
   padding: 0 44px;
   display: flex;
   align-items: center;
-  position: absolute;
   height: 6.8vh;
+  position: absolute;
   top: 28vh;
   bottom: 0;
   right: 0;
@@ -157,16 +160,15 @@ const TimeOption = styled.span<{ selected: boolean; smlWidth: boolean }>`
 `;
 
 const ContactForm = styled(animated.form)`
-  position: absolute;
-  top: 35vh;
-  bottom: 0;
-  right: 0;
-  left: 0;
+  margin-top: 3.5vh;
+  margin-bottom: 1vh;
   box-sizing: border-box;
-  padding: 26px 44px 79px;
+  // padding: 26px 44px 79px;
+  padding: 30px 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  // border:3px solid red;
 
   @media (max-width: 480px) {
     padding: 20px 10px 50px;

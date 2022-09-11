@@ -48,7 +48,9 @@ export const OptionBox = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  // border:3px solid red;
+  // display:none;
+  margin-top:-5px;
   @media (max-width: 480px) {
     flex-wrap: wrap;
     justify-content: flex-start;

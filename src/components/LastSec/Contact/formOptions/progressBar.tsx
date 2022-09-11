@@ -28,8 +28,9 @@ const ProgressBarElement = styled.section<{ show: boolean }>`
   background: #fff;
   border: 2px solid #ffffff99;
   backdrop-filter: blur(0px);
-  // background: linear-gradient(-90deg, #ffffff78 0%, #71fbffa6 100%);
-
+  background: linear-gradient(-90deg, #ffffff78 0%, #71fbffa6 100%);
+  // border:2px solid red;
+  // margin-bottom: -30px; 
   @media (max-width: 480px) {
     bottom: 24px;
     width: 75%;
