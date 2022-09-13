@@ -178,6 +178,6 @@ const GlassPatternElement = styled.div`
   overflow: hidden;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: -2;
   opacity: 0.15;
 `;

@@ -138,6 +138,9 @@ const StartFormElement = styled(animated.section)`
   position: absolute;
   top: 57vh;
   bottom: 12vh;
+  right: 10.5vw;
+  // padding-right: 11vw;
+  // padding-top: 20vh;
   @media (max-width: 480px) {
     position: relative;
     top: 0;

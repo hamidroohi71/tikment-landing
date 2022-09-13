@@ -5,6 +5,7 @@ import { useSection } from "../../context/sectionStore";
 import { useSpring, animated } from "react-spring";
 import useWidth from "../../hooks/useWidth";
 import data from "./formOptions/productData.json";
+import faceRotated from "./face-rotated.png"
 
 export default function Mobile({ selectedProuct }: any) {
   const { activeSection } = useSection();
@@ -26,6 +27,7 @@ export default function Mobile({ selectedProuct }: any) {
         src={data.productData[selectedProuct].image}
         alt="Handy tikment app"
       />
+    
     </MobilePhoto>
   );
 }
@@ -37,12 +39,18 @@ const MobilePhoto = styled(animated.section)`
   position: absolute;
   top: 0;
   left: 0;
+  // border:5px solid green;
 
   & > img {
+    // border:6px solid blue;
     width: 100%;
     height: 100%;
     object-fit: contain;
     object-position: left;
+    padding:0;
+    margin-top: 0;
+    // margin-right:30px
+    // z-index:100;
   }
 
   @media (max-width: 480px) {

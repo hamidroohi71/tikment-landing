@@ -135,7 +135,7 @@ export default function Customer() {
       <Title>نظرات مشتریان تیکمنت</Title>
       <GlassPattern showComment={showComment} />
       <MobileCircle />
-      <BackgroundElement style={BackgroundElmStyle} />
+      {/* <BackgroundElement style={BackgroundElmStyle} /> */}
       <Statistics style={styleProps2}>
         <UntilToday>
           تا امروز

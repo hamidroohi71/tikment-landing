@@ -42,7 +42,7 @@ export default function PageIntro() {
   return (
     <PageIntroduction active={active}>
       <GlassPattern />
-      <Background />
+      {/* <Background /> */}
       <Mobile selectedProuct={selectedProduct} />
       <Title formOpen={formOpen} />
       {/* for first section */}
@@ -58,13 +58,15 @@ export default function PageIntro() {
 }
 
 const PageIntroduction = styled.section<{ active: boolean }>`
-  padding: 20vh 11vw 0;
+  // padding: 20vh 11vw 0;
+  padding : 0;
+  // padding: 0 11vw;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   position: relative;
   z-index: ${({ active }) => (active ? 20 : 0)};
-
+  // border:7px solid red;
   @media (max-width: 1200px) {
     padding: 19vh 8vw 0;
   }

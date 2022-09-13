@@ -42,7 +42,7 @@ export default function Background() {
   return (
     <BackgroundImage style={{ ...maskPositionStyle, ...maskStyle }}>
       <BackMain src={BackgroundImg} alt="tikment-station" />
-      <BackCover style={CoverStyle} src={YellowBack} alt="tikment" />
+      {/* <BackCover style={CoverStyle} src={YellowBack} alt="tikment" /> */}
     </BackgroundImage>
   );
 }

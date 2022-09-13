@@ -53,7 +53,8 @@ export default function Title({ formOpen }: { formOpen: boolean }) {
 const TitleElement = styled(animated.section)`
   display: flex;
   flex-direction: column;
-  padding-right: 2vw;
+  padding-right: 11vw;
+  padding-top: 20vh;
 `;
 
 const Title1 = styled(animated.img)`

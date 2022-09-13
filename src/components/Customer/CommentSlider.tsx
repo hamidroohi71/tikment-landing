@@ -63,7 +63,10 @@ export default function CommentSlider({
 
   return (
     <CommentSliderElement>
-      <ProfilePicture>{avatarPart}</ProfilePicture>
+      <ProfilePicture>
+        {avatarPart}
+        <BackgroundElement /> 
+      </ProfilePicture>
       <CommentPart>
         <CommentTitle className="TitlePart">{namePart}</CommentTitle>
         <CommentBox className="CommentBox">{commentPart}</CommentBox>
@@ -72,11 +75,38 @@ export default function CommentSlider({
   );
 }
 
+const BackgroundElement = styled.div `
+  width: 25vw;
+  height:100%;
+  position: absolute;
+  left: 0;
+  // top: 0;
+  // right: 10vw;
+  background: linear-gradient(
+    5deg,
+    rgb(255 128 128 / 12%) 0%,
+    rgb(255 208 17 / 12%) 100%
+    );
+  box-shadow: inset 0px 0px 99px #80a5ac21;
+  border: 2px solid #ffd01140;
+  opacity: 0.5;
+  backdrop-filter: blur(19px);
+  border-radius: 50%;
+  z-index: 0;
+  z-index: -1;
+  transform-origin: 75% 25%;
+
+  @media (max-width: 480px) {
+    // display: none;
+  }
+`
+
 const CommentSliderElement = styled.section`
   display: flex;
   align-items: center;
+  justify-content:space-between;
   height: 100%;
-
+  // border:4px solid orange;
   @media (max-width: 480px) {
     flex-direction: column;
     position: relative;
@@ -89,6 +119,7 @@ const ProfilePicture = styled.div`
   height: 100%;
   overflow: hidden;
   margin-left: 5%;
+  // border:3px solid red;
   @media (max-width: 480px) {
     width: 100%;
   }
@@ -100,6 +131,7 @@ const CommentPart = styled.div`
   height: 100%;
   flex-direction: column;
   padding: 0 56px 56px;
+  // border:3px solid red;
   @media (max-width: 480px) {
     width: 100%;
     padding: 2vw;
@@ -125,18 +157,21 @@ const CommentBox = styled.div`
 
 const Avatar = styled.div<{ selected: boolean; preSelected: boolean }>`
   position: absolute;
+  top: 0;
   left: 0;
-  top: 56px;
   bottom: 0;
-  margin: auto;
+  margin: auto 0;
   width: 6vw;
   height: 6vw;
   border-radius: 50%;
+  z-index:100;
+  // border:2px solid red;
+
   transform: ${({ selected, preSelected }) =>
     selected
-      ? " translateX(200%)"
+      ? " translateX(186%)"
       : preSelected
-      ? "translateX(320%)"
+      ? "translateX(355%)"
       : " translateX(-100%)"};
 
   transform-origin: left;
@@ -145,6 +180,7 @@ const Avatar = styled.div<{ selected: boolean; preSelected: boolean }>`
   filter: ${({ selected }) => (selected ? " blur(0px)" : " blur(4px)")};
 
   & > img {
+    // border:2px solid blue;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -186,6 +222,7 @@ const TickMotion = styled.video<{ selected: boolean }>`
   right: calc(-60px - 5.5vw);
   bottom: -0.5vw;
   object-fit: contain;
+
   opacity: ${({ selected }) => (selected ? 1 : 0)};
   transition-delay: ${({ selected }) => (selected ? "0.7s" : "0s")};
 
@@ -266,6 +303,8 @@ const Title = styled.div<{ selected: boolean }>`
 
 const Comment = styled.div<{ selected: boolean }>`
   position: absolute;
+  margin :10px 0;
+  // border:2px solid black ;
   & > h2 {
     font-size: 1.6vw;
     opacity: ${({ selected }) => (selected ? 1 : 0)};
@@ -332,6 +371,9 @@ const CommentBubble = styled.div<{ selected: boolean }>`
   border-radius: 30px;
   transition: 0.5s ease-out;
   transition-delay: ${({ selected }) => (selected ? "1s" : "0s")};
+  // border: 2px solid red;
+  height:238px;
+  height:30vh ;
 
   &::after,
   &::before {
