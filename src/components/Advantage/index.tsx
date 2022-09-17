@@ -73,10 +73,17 @@ export default function Advantage() {
   const CircleStyle = useSpring({
     from: { opacity: 0, transform: "scale(0)", transformOrigin: "center" },
     to: {
-      opacity: index > 3 ? 1 : 0,
+      // opacity: 0,
+      opacity: index === 5 ? 0 : 0.3,
       transform:
-        index === 4 ? "scale(1)" : index > 4 ? "scale(0.8)" : "scale(0.8)",
-      transformOrigin: index > 3 ? "left top" : "center",
+        // index === 6 ? "translate(6%, -16.5%) scale(0.75)" : "translate(-100%, -100%) scale(1)", 
+        index === 6 ? "translate(6%, -12.5%) scale(0.75)" : index ===7 ? "translate(5%, -12.5%) scale(0.75)" : "translate(-100%, -100%) scale(1)", 
+        // transform: index === 5 ? "translate(0%, 0%)" : "translate(-100%, -100%)",
+        // index > 4 ? "scale(0.8)" : "scale(0.8)",
+        // index === 4 ? "scale(1)" : index > 4 ? "scale(0.9)" : "scale(5)",
+      // transformOrigin: index > 3 ? "left top" : "center",
+      
+
     },
     delay: index > 4 ? 1000 : 0,
     config: { duration: 500, easing: easings.easeOutQuart },
@@ -173,8 +180,8 @@ export default function Advantage() {
           src={BackgroundImage}
           alt="tikment"
         />
-      </Background>
-      {/* <CircleBack style={CircleStyle} /> */}
+      </Background> 
+      <CircleBack style={CircleStyle} />
       <TitlePart>
         <MainTitle style={titleStyle}>
           از کسب‌وکارهای کوچک تا سازمان‌های بزرگ <br />
@@ -267,7 +274,7 @@ const Cover = styled(animated.div)`
   left: 0;
   opacity: 1;
   backdrop-filter: blur(15px);
-  mix-blend-mode: normal;
+  // mix-blend-mode: normal;
   z-index: 10;
 `;
 

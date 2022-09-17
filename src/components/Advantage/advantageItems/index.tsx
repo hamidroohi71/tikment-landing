@@ -17,13 +17,14 @@ import GeoFenceImage from "./assets/geoFence.webp";
 import ReportImage from "./assets/report.webp";
 import LaptopImage1 from "./assets/laptop.webp";
 import LaptopImage2 from "./assets/laptop2.webp";
-import managementImage from "./assets/management.webp";
 import laughingManImage from "./assets/laughingMan.webp";
 import DeviceImage from "./assets/device.webp";
 import CircleBack from "./assets/circle.webp";
 import Badge from "./assets/freeTest.webp";
 import MobilePic from "./assets/mobile.png";
 import FastDetection from "./fastDetection";
+import managementImage from "./assets/management.webp";
+
 
 export default function AdvantagesList({
   show,
@@ -77,7 +78,7 @@ export default function AdvantagesList({
         index === 4
           ? "translateX(0%) scale(1)"
           : index === 5
-          ? "translateX(0%) scale(0.4)"
+          ? "translateX(7.8%) scale(0.4)"
           : index < 4
           ? "translateX(-10%) scale(1)"
           : "translateX(0%) scale(0.4)",
@@ -92,13 +93,13 @@ export default function AdvantagesList({
     to: {
       opacity: index === 4 || index === 5 ? 1 : 0,
       transform:
-        index === 4
-          ? " scale(1)"
+          index === 4
+          ? "translateX(0%) scale(1)"
           : index === 5
-          ? "scale(0.4)"
+          ? "translateX(7.8%) scale(0.4)"
           : index < 4
-          ? "scale(1)"
-          : "scale(0.4)",
+          ? "translateX(-10%) scale(1)"
+          : "translateX(0%) scale(0.4)",
       transformOrigin: "left",
     },
     delay: index === 4 ? 1000 : index === 5 ? 500 : 0,
@@ -160,13 +161,17 @@ export default function AdvantagesList({
     to: {
       opacity: index === 4 || index === 5 ? 1 : 0,
       transform:
-        index === 4
+          index === 4
           ? "translate(0%, 0%) scale(1)"
           : index === 5
-          ? "translate(-1%,-12%) scale(1)"
-          : index < 4
+          ? "translate(6%, -4%) scale(0.8)"
+          : index === 6 
+          ? "translate(6%, -4%) scale(3)" : 
+          index < 4
           ? "translate(-10%,0&%) scale(1)"
-          : "translate(0%,0%) scale(0.4)",
+          : "translate(0%,0%) scale(0.4)"
+          ,
+          
       transformOrigin: "left",
     },
     delay: index === 4 ? 1000 : index === 5 ? 500 : 0,
@@ -209,10 +214,11 @@ export default function AdvantagesList({
         src={LaptopImage2}
         alt="مدیریت بهینهٔ شیفت‌ها"
       />
+      
       <ImageContent
         style={managementContentStyle}
         src={managementImage}
-        alt="geo-fence"
+        alt="مدیریت بهینهٔ شیفت‌ها"
       />
       <Image
         style={laughingManStyle}
